@@ -10,7 +10,8 @@ def create_movie(title, genre, rating):
     '''
     if not title or genre or rating:
         return None
-    movie_dict = {}
+    movie_dict = {"title":"", "genre":"", "rating":""}
+    return movie_dict
 
 def add_to_watched(user_data, movie):
     pass
