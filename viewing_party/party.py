@@ -16,11 +16,11 @@ def add_to_watched(user_data, movie):
 
     # Check movie isn't empty and is a dictionary
     # Try to add movie to watched, otherwise give error message
-    try:
-        if movie and isinstance(movie, dict):
+    if movie and isinstance(movie, dict):
+        try:
             user_data["watched"].append(movie)
-    except KeyError:
-        print("'Watched' key does not exist; could not add movie")
+        except KeyError:
+            print("'Watched' key does not exist; could not add movie")
     
     return user_data
 
