@@ -1,5 +1,24 @@
 # Viewing Party
 
+Fork and Clone -- Complete
+Virtual Enviroment -- Complete
+Dependencies -- Complete
+Comment -- Setting up
+
+Access needs -- in-person/zoom, maybe mornings
+Your learning style -- bringing ideas together and setting goals for working independently
+Feedback -- email/slack, in-person
+Communcation skill you want to improve with this experience -- meeting with people to improve communication
+  speaking redundantly, understanding google code
+
+Wave 01 -- Mon
+Wave 02 -- Tues
+Wave 03 -- Tues
+Wave 04 -- Wed
+Wave 05 -- Thurs
+Turn in Friday 10am
+
+
 ## Skills Assessed
 
 Solving problems with...
