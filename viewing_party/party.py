@@ -30,10 +30,8 @@ def add_to_watchlist(user_data, movie):
     return user_data
 
 def watch_movie(user_data, title):
-    # if item in list
     for i in range(len(user_data['watchlist'])):
         title_from_dict = user_data['watchlist'][i]['title']
-    # print("TITLE:", title)
 
     # If title is in watchlist, remove that movie from watchlist
         if title_from_dict == title:
@@ -41,8 +39,7 @@ def watch_movie(user_data, title):
             user_data["watchlist"].remove(dict_from_list)
             # Add that movie to "watched"
             user_data["watched"].append(dict_from_list)
-        print(user_data)
-        print("USER DATA WATCHLIST:", user_data['watchlist'])
+
     return user_data
 
 
@@ -54,12 +51,6 @@ print(watch_movie({
             }],
             "watched": []
         }, "Scooby Doo"))
-
-
-
-
-
-
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
