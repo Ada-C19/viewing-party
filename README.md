@@ -1,4 +1,15 @@
 # Viewing Party
+# Pair Programming Contract 
+Access Needs: 
+- We will be utilizing coworking hours 1-3 and additionally 3-5 if necessary. Depending on the progress we will assess if we need to work outside of these hours (potentially around ~8pm)
+- Separate processing times and then come together (before each wave as well)
+- Drivers will type and navigators will communicate as needed. Accountabiliy will be needed when either of us want to try another idea at the same time haha
+- We're both not sensitive to criticism, so we're open to feedback! 
+- We'll both be intentional about communicating when the other needs help
+- NO JUDGEMENT ZONE! Helping each other will definitely minimize stress 
+
+
+
 
 ## Skills Assessed
 
