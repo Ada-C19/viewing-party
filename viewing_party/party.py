@@ -1,6 +1,11 @@
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
+    if title == True and genre == True and rating == True:
+        movies = {}
+    return None 
+
+def add_to_watched(user_data, movie):
     pass
 
 # -----------------------------------------

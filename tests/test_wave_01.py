@@ -25,7 +25,7 @@ def test_create_successful_movie():
 # create_movie should be able to create dictionary with no title
 # Returns None (bool) if any keys,values are falsey
 # new_movie title to be None (bool)
-@pytest.mark.skip()
+# @pytest.mark.skip()
 def test_create_no_title_movie():
     # Arrange
     movie_title = None
@@ -41,7 +41,7 @@ def test_create_no_title_movie():
 # create_movie accepts key:genre to have value: None (bool)
 # returns None (bool) if any keys,values are falsey
 # new_movie genre to be None (bool)
-@pytest.mark.skip()
+# @pytest.mark.skip()
 def test_create_no_genre_movie():
     # Arrange
     movie_title = "Title A"
@@ -58,7 +58,7 @@ def test_create_no_genre_movie():
 # create_movie accepts key:genre to have value: None (bool)
 # returns None (bool) if any keys,values are falsey
 # new_movie rating to be None (bool)
-@pytest.mark.skip()
+# @pytest.mark.skip()
 def test_create_no_rating_movie():
     # Arrange
     movie_title = "Title A"
