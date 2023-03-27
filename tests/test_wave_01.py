@@ -158,11 +158,7 @@ def test_moves_movie_from_watchlist_to_empty_watched():
     # Assert
     assert len(updated_data["watchlist"]) == 0
     assert len(updated_data["watched"]) == 1
-    
-    raise Exception("Test needs to be completed.")
-    # *******************************************************************************************
-    # ****** Add assertions here to test that the correct movie was added to "watched" **********
-    # *******************************************************************************************
+    assert HORROR_1 in updated_data["watched"]
 
 @pytest.mark.skip()
 def test_moves_movie_from_watchlist_to_watched():
