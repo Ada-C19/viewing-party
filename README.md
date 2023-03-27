@@ -1,4 +1,5 @@
 # Viewing Party
+<!-- Evenings work both for us, take time to read Monday evening. -->
 
 ## Skills Assessed
 
