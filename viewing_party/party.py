@@ -1,7 +1,32 @@
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
-    pass
+    """
+    input: title, genre, rating
+    output: dictionary with the three keys "title", "genre", and "rating"
+    """
+
+
+def add_to_watched(user_data, movie):
+    """
+    input: user_data dictionary with nested list as values, movie dictionary
+    output: updated user_data dictionary 
+    """
+
+
+
+def add_to_watchlist(user_data, movie):
+    """
+    input: user_data dictionary, and movie 
+    output:
+    """
+
+
+def watch_movie(user_data, title):
+    """
+    input: user_data dictionary, and title string
+    output:
+    """ 
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
