@@ -96,7 +96,8 @@ def test_adds_movie_to_user_watched():
     assert updated_data["watched"][0]["genre"] == GENRE_1
     assert updated_data["watched"][0]["rating"] == RATING_1
 
-# add_to_watched function should be able to add 
+# add_to_watched function should be able to add movie_dictionary to user_data dictionary's "watched" list
+    # takes parameters: user_data (dictionary) and adds movie (dictionary) to watched ()
 @pytest.mark.skip()
 def test_adds_movie_to_non_empty_user_watched():
     # Arrange
