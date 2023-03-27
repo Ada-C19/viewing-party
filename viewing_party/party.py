@@ -39,6 +39,13 @@ def watch_movie(user_data, title):
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
 
+# Barbara
+def get_watched_avg_rating(janes_data):
+    pass
+
+# Alycia
+def get_most_watched_genre(janes_data):
+    pass
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
