@@ -2,6 +2,7 @@
 
 def create_movie(title, genre, rating):
     pass
+    title_string = title
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
