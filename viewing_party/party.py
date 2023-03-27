@@ -37,7 +37,19 @@ print(create_movie("title", "genre", "rating"))
     #     # print(None)
     #     return None
         
-        
+
+# take two parameters: user_data, movie 
+def add_to_watched(user_data, movie):
+    
+    #  user_data is dictionary containting a list as a value
+    # "watched" as a key
+    user_data = {
+        "watched": [movie]
+            }
+                
+    user_data["watched"] = [movie]
+    
+    return user_data
         
     
 
