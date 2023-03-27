@@ -1,6 +1,6 @@
 # Viewing Party
 <!-- Evenings work both for us, take time to read Monday evening. -->
-
+<!-- Feedback - compromise and discuss pros and cons of approach -->
 ## Skills Assessed
 
 Solving problems with...
