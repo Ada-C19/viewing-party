@@ -41,6 +41,22 @@ def get_unique_watched(user_data):
             unique_movies.append(movie)
     return unique_movies
 
+def get_friends_unique_watched(user_data):
+    watched = user_data["watched"]
+    friends = user_data["friends"]
+    if not watched: return []
+
+    #Make list of all movies watched by friends (dupes ok?)
+    friend_watched = []
+    for friend in friends:
+        friend_watched.extend(friend["watched"])
+
+    #Compare friends' watched movies to own watched movies
+    friend_unique_movies = []
+    for movie in friend_watched:
+        if movie not in watched and movie not in friend_unique_movies:
+            friend_unique_movies.append(movie)
+    return friend_unique_movies
 
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
