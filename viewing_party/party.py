@@ -1,7 +1,12 @@
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
+<<<<<<< HEAD
     print("This is my change.")
+=======
+    pass
+    title_string = title
+>>>>>>> eda7f7c2f5972f1bfb3e7c0df749f8b3289a8095
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
