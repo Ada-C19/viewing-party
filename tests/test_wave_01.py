@@ -180,7 +180,7 @@ def test_moves_movie_from_watchlist_to_empty_watched():
     assert len(updated_data["watched"]) == 1
     assert updated_data["watched"][0]["title"] == MOVIE_TITLE_1
     # adding an assert message to make sure MOVIE_TITLE_1 was added to updated_data["watched"]
-    print("from test print: }", updated_data["watched"][0]["title"] == MOVIE_TITLE_1 )
+    # print("from test print: }", updated_data["watched"][0]["title"] == MOVIE_TITLE_1 )
     # raise Exception("Test needs to be completed.")
     
     # *******************************************************************************************
