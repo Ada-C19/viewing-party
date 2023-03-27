@@ -22,9 +22,19 @@ def create_movie(title, genre, rating):
 create_movie("Scream 6", "Horror", 4.0)
 
 
-def add_to_watched():
-    pass
+def add_to_watched(user_data, movie):
+    user_data["watched"].append(movie)
+    return user_data
 
+
+movie = {
+    "title": "Lion King",
+    "genre": "Family",
+    "rating": 5.0
+}
+user_data = {"watched": []}
+
+add_to_watched(user_data, movie)
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
