@@ -25,6 +25,9 @@ def add_to_watched(user_data, movie):
     return user_data
 
 def add_to_watchlist(user_data, movie):
+
+    # Check movie isn't empty and is a dictionary
+    # Try to add movie to watchlist, otherwise give error message
     if movie and isinstance(movie, dict):
         try:
             user_data["watchlist"].append(movie)
