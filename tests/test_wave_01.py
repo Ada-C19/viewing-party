@@ -4,13 +4,14 @@ import pytest
 from viewing_party.party import *
 from tests.test_constants import *
 
-@pytest.mark.skip()
+# @pytest.mark.skip()
 def test_create_successful_movie():
     # Arrange
     movie_title = MOVIE_TITLE_1
     genre = GENRE_1
     rating = RATING_1
 
+    
     # Act
     new_movie = create_movie(movie_title, genre, rating)
 
@@ -129,7 +130,7 @@ def test_adds_movie_to_non_empty_user_watchlist():
         "rating": RATING_1
     }
     user_data = {
-        "watched": [FANTASY_2]
+        "watchedlist": [FANTASY_2]
     }
 
     # Act
