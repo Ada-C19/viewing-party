@@ -4,6 +4,12 @@ def create_movie(title, genre, rating):
     # if the parameters are truthy; return dictionary
     # 3 keys: title, genre, rating
 
+    #if any of the parameters is Falsy,...
+    if title == None or genre == None or rating == None:
+        #...then return None
+        return None
+    
+    #initialize empty dictionary
     movie_ratings = {}
 
     if not title or not genre or not rating:
@@ -16,13 +22,13 @@ def create_movie(title, genre, rating):
     
         return movie_ratings
 
+    #print(movie_ratings)
+    return movie_ratings
+
 def add_to_watched(user_data, movie):
-    user_data[“watched”] = movie
+    user_data["watched"] = movie
 
     return user_data
-
-
-
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
