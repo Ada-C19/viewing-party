@@ -23,6 +23,20 @@ def add_to_watched(user_data, movie):
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
 
+def get_most_watched_genre(user_data):
+    if user_data["watched"] == []:
+        return None
+    
+    genre_frequencies = {}
+
+    for movie in user_data["watched"]:
+        if movie["genre"] in genre_frequencies:
+            genre_frequencies[movie["genre"]] += 1
+        else:
+            genre_frequencies[movie["genre"]] = 1
+    
+    return max(genre_frequencies, key=genre_frequencies.get)
+ 
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
