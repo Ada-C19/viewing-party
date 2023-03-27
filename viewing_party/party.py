@@ -1,7 +1,8 @@
-# ------------- WAVE 1 --------------------
+# ------------- WAVE 1 -------------------- 
+
 
 def create_movie(title, genre, rating):
-    movies = {}
+    # movies = {}
     
     # If those three attributes are truthy, then return a dictionary. This dictionary should...
     if title and genre and rating:
@@ -22,6 +23,25 @@ print(create_movie("title", "genre", "rating"))
 #   - Have three key-value pairs, with specific keys
 #   - The three keys should be `"title"`, `"genre"`, and `"rating"`
 #   - The values of these key-value pairs should be appropriate values
+
+
+    # new_movie = {}
+    # if title and genre and rating : 
+    #     new_movie["title"] = title
+    #     new_movie["genre"] = genre
+    #     new_movie["rating"]= rating   
+    #     # print(new_movie)
+    #     return new_movie
+    
+    # else: 
+    #     # print(None)
+    #     return None
+        
+        
+        
+    
+
+
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
