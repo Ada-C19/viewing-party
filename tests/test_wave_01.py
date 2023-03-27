@@ -184,11 +184,9 @@ def test_moves_movie_from_watchlist_to_watched():
     # Assert
     assert len(updated_data["watchlist"]) == 1
     assert len(updated_data["watched"]) == 2
-    
-    raise Exception("Test needs to be completed.")
-    assert len(updated_data["watched"]) == 2
-    assert movie in updated_data["watched"]
-    assert FANTASY_2 in updated_data["watched"]
+    assert watchlist in updated_data["watched"]
+    assert FANTASY_1 in updated_data["watched"]
+
     # *******************************************************************************************
     # ****** Add assertions here to test that the correct movie was added to "watched" **********
     # *******************************************************************************************
