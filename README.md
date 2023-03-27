@@ -1,3 +1,7 @@
+
+
+# Ariel Williams (she/they), (714) 900-6524, arielwilliams121013@gmail.com
+
 # Viewing Party
 
 ## Skills Assessed
