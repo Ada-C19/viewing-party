@@ -54,7 +54,6 @@ def test_create_no_rating_movie():
     # Assert
     assert new_movie is None
 
-@pytest.mark.skip()
 def test_adds_movie_to_user_watched():
     # Arrange
     movie = {
@@ -75,7 +74,6 @@ def test_adds_movie_to_user_watched():
     assert updated_data["watched"][0]["genre"] == GENRE_1
     assert updated_data["watched"][0]["rating"] == RATING_1
 
-@pytest.mark.skip()
 def test_adds_movie_to_non_empty_user_watched():
     # Arrange
     movie = {
@@ -95,7 +93,6 @@ def test_adds_movie_to_non_empty_user_watched():
     assert movie in updated_data["watched"]
     assert FANTASY_2 in updated_data["watched"]
 
-@pytest.mark.skip()
 def test_adds_movie_to_user_watchlist():
     # Arrange
     movie = {
@@ -116,7 +113,6 @@ def test_adds_movie_to_user_watchlist():
     assert updated_data["watchlist"][0]["genre"] == GENRE_1
     assert updated_data["watchlist"][0]["rating"] == RATING_1
 
-@pytest.mark.skip()
 def test_adds_movie_to_non_empty_user_watchlist():
     # Arrange
     movie = {
