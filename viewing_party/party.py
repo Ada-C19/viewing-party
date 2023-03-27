@@ -18,7 +18,7 @@ def add_to_watched(user_data, movie):
         return user_data
 
     user_data["watched"].append(movie)
-    
+
     return user_data
 
 def add_to_watchlist(user_data, movie):
@@ -28,6 +28,32 @@ def add_to_watchlist(user_data, movie):
     user_data["watchlist"].append(movie)
 
     return user_data
+
+def watch_movie(user_data, title):
+    # if item in list
+    for i in range(len(user_data['watchlist'])):
+        title_from_dict = user_data['watchlist'][i]['title']
+    # print("TITLE:", title)
+
+    # If title is in watchlist, remove that movie from watchlist
+        if title_from_dict == title:
+            dict_from_list = user_data['watchlist'][i]
+            user_data["watchlist"].remove(dict_from_list)
+            # Add that movie to "watched"
+            user_data["watched"].append(dict_from_list)
+        print(user_data)
+        print("USER DATA WATCHLIST:", user_data['watchlist'])
+    return user_data
+
+
+print(watch_movie({
+            "watchlist": [{
+                "title": "Scooby Doo",
+                "genre": "GENRE_1",
+                "rating": 1
+            }],
+            "watched": []
+        }, "Scooby Doo"))
 
 
 
