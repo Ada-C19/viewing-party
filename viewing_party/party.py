@@ -25,10 +25,11 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 
 def get_friend_movies(user_data):
-    #Return list of movies watched by friends (duplicates ok)
+    #Return list of movies watched by friends (no duplicates)
     friend_watched = []
     for friend in user_data["friends"]:
-        friend_watched.extend(friend["watched"])
+        for movie in friend["watched"]:
+            if movie not in friend_watched: friend_watched.append(movie)
     return friend_watched
 
 def get_unique_watched(user_data):
@@ -53,7 +54,7 @@ def get_friends_unique_watched(user_data):
     #Compare friends' watched movies to own watched movies
     friend_unique_movies = []
     for movie in friend_watched:
-        if movie not in watched and movie not in friend_unique_movies:
+        if movie not in watched:
             friend_unique_movies.append(movie)
     return friend_unique_movies
 
