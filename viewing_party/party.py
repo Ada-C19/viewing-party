@@ -28,21 +28,6 @@ def add_to_watched(user_data, movie):
     return user_data
 
 def add_to_watchlist(user_data, movie):  
-# 3. Create a function named `add_to_watchlist`. This function should...
-
-# - take two parameters: `user_data`, `movie`
-#   - the value of `user_data` will be a dictionary with a key `"watchlist"`, and a value which is a list of dictionaries representing the movies the user wants to watch
-#     - An empty list represents that the user has no movies in their watchlist
-#   - the value of `movie` will be a dictionary in this format:
-#     - ```python
-#       {
-#         "title": "Title A",
-#         "genre": "Horror",
-#         "rating": 3.5
-#       }
-#       ```
-# - add the `movie` to the `"watchlist"` list inside of `user_data`
-# - return the `user_data`
     future_watch_list = user_data["watchlist"]
     is_valid = True
 
@@ -58,6 +43,8 @@ def add_to_watchlist(user_data, movie):
         future_watch_list.append(movie)
 
     return user_data
+
+
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
