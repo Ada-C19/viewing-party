@@ -27,9 +27,18 @@ def add_to_watched(user_data, movie):
         user_data["watched"].update(movie)
     else:
         return None
-    
 
-    # - An empty list represents that the user has no movies in their watched list
+# 3. Create a function named `add_to_watchlist`. This function should...take two parameters: `user_data`, `movie`
+def add_to_watchlist(user_data, movie):
+#   - the value of `user_data` will be a dictionary with a key `"watchlist"`, and a value which is a list of dictionaries representing the movies the user wants to watch
+    user_data["watchlist"] = movie
+    if user_data:
+        user_data["watchlist"].update(movie)
+        return user_data
+    # return An empty list represents that the user has no movies in their watchlist
+    else:
+        return None
+#   - the value of `movie` will be a dictionary
 #   - the value of `movie` will be a dictionary in this format:
     # - ```python
     #   {
