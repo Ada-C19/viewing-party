@@ -1,5 +1,17 @@
 # Viewing Party
 
+## Pair Plan
+- Access Needs: patience, refactoring together, dedicating time to project
+- Learning style: taking breaks, pseudocode, discussion/questioning code
+- Feedback method: in-person or via call, comments next to code
+- Communication skill to improve: breaking down goals/steps
+- Workflow plan:
+  - Day 1: Finish wave 1 and 2
+  - Day 2: Finish wave 3 and 4
+  - Day 3: Finish wave 5 and start tests
+  - Day 4: Finish tests and refactor
+  - Day 5: Submit if not already
+
 ## Skills Assessed
 
 Solving problems with...
