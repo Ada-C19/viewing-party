@@ -1,5 +1,15 @@
 # Viewing Party
 
+Group plan of action
+
+
+- Flexible to meet after core hours
+- Aim to be done by end of Thursday co-working session, any other changes can be done after 3pm 
+- Learning style: prefer to have someone show their code and verbally explain it 
+- Open to feedback, “sandwich method”
+- Use slack to communicate with each other
+- Can send messages but don’t expect responses after 9pm
+
 ## Skills Assessed
 
 Solving problems with...
