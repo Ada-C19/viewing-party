@@ -51,6 +51,33 @@ user_data = {
     "watchlist": []
 }
 add_to_watchlist(user_data, movie)
+
+
+def watch_movie(user_data, title):
+    # iterate through each movie dictionary in the list
+    for movie in user_data["watchlist"]:
+        # checks if the title entered is found inside of the watchlist
+        if title in movie["title"]:
+            # move_movie captures the current movie found to be moved
+            move_movie = movie
+            # updates user_data to remove current movie from watchlist
+            user_data["watchlist"].remove(movie)
+            # updates user_data to add current movie to watched
+            user_data["watched"].append(move_movie)
+    # returns updated user_data
+    return user_data
+
+
+janes_data = {
+    "watchlist": [{
+        "title": "Super Man",
+        "genre": "Action",
+        "rating": 4.0
+    }],
+    "watched": []
+}
+watch_movie(janes_data, "Super Man")
+
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
