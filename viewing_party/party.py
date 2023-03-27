@@ -2,11 +2,22 @@
 
 def create_movie(title, genre, rating):
     if title == True and genre == True and rating == True:
-        movies = {}
+        movies = {
+            "title": title,
+            "genre": genre,
+            "rating": rating
+        }
     return None 
 
 def add_to_watched(user_data, movie):
-    pass
+
+    user_data = {
+        "watched": [{
+            movie,
+            }]
+                 
+        }
+    return user_data
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
