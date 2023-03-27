@@ -4,7 +4,9 @@
 def create_movie(title, genre, rating):
     # movies = {}
     
-    # If those three attributes are truthy, then return a dictionary. This dictionary should...
+    # If those three attributes are truthy, 
+    # then return a dictionary. 
+    # This dictionary should...
     if title and genre and rating:
         # movies.update(new_movies)
         return {
@@ -13,15 +15,18 @@ def create_movie(title, genre, rating):
         "rating": rating
     }
     else:
-    # - If `title` is falsy, `genre` is falsy, or `rating` is falsy, this function should return `None`
+    # - If `title` is falsy, `genre` is falsy, 
+    # or `rating` is falsy, this function should return `None`
         return None
-    return movies
+    # return movies
 
 
 # Create a function named `add_to_watched`. This function should...
 # take two parameters: `user_data`, `movie`
 def add_to_watched(user_data, movie):
-#   - the value of `user_data` will be a dictionary with a key `"watched"`, and a value which is a list of dictionaries representing the movies the user has watched
+#   - the value of `user_data` will be a dictionary with a key 
+# `"watched"`, and a value which is a list of dictionaries representing 
+# the movies the user has watched
     user_data["watched"] = movie
     if user_data:
         user_data["watched"].update(movie)
@@ -64,7 +69,19 @@ def add_to_watchlist(user_data, movie):
     #     # print(None)
     #     return None
         
-        
+
+# take two parameters: user_data, movie 
+def add_to_watched(user_data, movie):
+    user_data["watched"].append(movie)
+
+    # print(user_data)
+    return user_data
+
+def add_to_watchlist(user_data, movie):
+    user_data= {
+        "watchlist": [movie]
+        }
+    return user_data
         
     
 
