@@ -46,14 +46,14 @@ def watch_movie(user_data, title):
     return user_data
 
 
-print(watch_movie({
-            "watchlist": [{
-                "title": "Scooby Doo",
-                "genre": "GENRE_1",
-                "rating": 1
-            }],
-            "watched": []
-        }, "Scooby Doo"))
+# print(watch_movie({
+#             "watchlist": [{
+#                 "title": "Scooby Doo",
+#                 "genre": "GENRE_1",
+#                 "rating": 1
+#             }],
+#             "watched": []
+#         }, "Scooby Doo"))
 
 
 # -----------------------------------------
@@ -74,9 +74,32 @@ def get_watched_avg_rating(user_data):
     num_of_movies = len(user_data["watched"])
     return total_rating / num_of_movies
 
-print(get_watched_avg_rating({'watchlist': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8}], 'watched': [{'title': 'The Lord of the Functions: The Two Parameters', 'genre': 'Fantasy', 'rating': 4.0}, {'title': 'It Came from the Stack Trace', 'genre': 'Horror', 'rating': 3.5}]}))
+# print(get_watched_avg_rating({'watchlist': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8}], 'watched': [{'title': 'The Lord of the Functions: The Two Parameters', 'genre': 'Fantasy', 'rating': 4.0}, {'title': 'It Came from the Stack Trace', 'genre': 'Horror', 'rating': 3.5}]}))
     
+def get_most_watched_genre(user_data):
+    genres_most_watched = {}
 
+    # Iterate through "watched" list
+    for i in range(len(user_data['watched'])):
+        genre = user_data['watched'][i]['genre']
+        if genre in genres_most_watched:
+            genres_most_watched[genre] += 1
+        else:
+            genres_most_watched[genre] = 1
+
+    highest_occurence = 0
+    most_watched = None
+
+    # Iterate through out genres_most_watched dict
+    for genre, num in genres_most_watched.items():
+        if num > highest_occurence:
+            highest_occurence = num
+            most_watched = genre
+            
+    return most_watched
+
+
+# print(get_most_watched_genre({'watchlist': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8}], 'watched': [{'title': 'The Lord of the Functions: The Two Parameters', 'genre': 'Fantasy', 'rating': 4.0}, {'title': 'It Came from the Stack Trace', 'genre': 'Horror', 'rating': 3.5}]}))
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
