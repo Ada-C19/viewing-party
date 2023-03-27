@@ -1,5 +1,6 @@
 # ------------- WAVE 1 -------------------- 
 
+# ========================================= wave 01- # 1. add to watched ==========
 
 def create_movie(title, genre, rating):
     # movies = {}
@@ -20,6 +21,7 @@ def create_movie(title, genre, rating):
         return None
     # return movies
 
+# ========================================= wave 01- # 2. add to watched ==========
 
 # Create a function named `add_to_watched`. This function should...
 # take two parameters: `user_data`, `movie`
@@ -68,10 +70,17 @@ def add_to_watched(user_data, movie):
     # print(user_data)
     return user_data
 
+# ========================================= wave 01- # 3. add to watchlist ==========
+# take two parameters: user_data, movie
+
 def add_to_watchlist(user_data, movie):
-    user_data= {
-        "watchlist": [movie]
-        }
+    #  value of user_data is a dict w/ key "watch_list"
+    
+    # user_data= {
+    #     "watchlist": []
+    #     }
+    
+    user_data["watchlist"].append(movie)
     return user_data
         
     
