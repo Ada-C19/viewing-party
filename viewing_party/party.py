@@ -17,8 +17,26 @@ def create_movie(title, genre, rating):
         return None
     return movies
 
-print(create_movie("title", "genre", "rating"))
 
+# Create a function named `add_to_watched`. This function should...
+# take two parameters: `user_data`, `movie`
+def add_to_watched(user_data, movie):
+#   - the value of `user_data` will be a dictionary with a key `"watched"`, and a value which is a list of dictionaries representing the movies the user has watched
+    user_data["watched"] = movie
+    if user_data:
+        user_data["watched"].update(movie)
+    else:
+        return None
+    
+
+    # - An empty list represents that the user has no movies in their watched list
+#   - the value of `movie` will be a dictionary in this format:
+    # - ```python
+    #   {
+    #     "title": "Title A",
+    #     "genre": "Horror",
+    #     "rating": 3.5
+    #   }
 
 #   - Have three key-value pairs, with specific keys
 #   - The three keys should be `"title"`, `"genre"`, and `"rating"`
