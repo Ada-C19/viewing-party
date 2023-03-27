@@ -29,8 +29,7 @@ def add_to_watchlist(user_data, movie):
     user_data["watchlist"].append(movie)
     
     return user_data
-print(add_to_watchlist({"watchlist": ["FANTASY_2"]}, {"title": "MOVIE_TITLE_1", "genre": "GENRE_1",
-        "rating": "RATING_1"}))
+
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
