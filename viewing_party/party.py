@@ -14,7 +14,7 @@ def create_movie(title, genre, rating):
     else:
     # - If `title` is falsy, `genre` is falsy, or `rating` is falsy, this function should return `None`
         return None
-
+    return movies
 
 print(create_movie("title", "genre", "rating"))
 
