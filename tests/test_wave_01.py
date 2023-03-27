@@ -148,8 +148,9 @@ def test_adds_movie_to_non_empty_user_watchlist():
         "rating": RATING_1
     }
     user_data = {
-        "watched": [FANTASY_2]
+        "watchlist": [FANTASY_2]
     }
+    #changed watch to watchlist
 
     # Act
     updated_data = add_to_watchlist(user_data, movie)
