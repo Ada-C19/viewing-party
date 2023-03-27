@@ -14,22 +14,22 @@ def create_movie(title, genre, rating):
     return movie
 
 def add_to_watched(user_data, movie):
-    movie_data = {
-        "watched": []
-    }
+    if not movie:
+        return user_data
 
-    movie_data["watched"].append(movie)
-    return movie_data
+    user_data["watched"].append(movie)
+    
+    return user_data
 
 def add_to_watchlist(user_data, movie):
-
     if not movie:
         return user_data
     
     user_data["watchlist"].append(movie)
-    
-    return user_data
 
+    return user_data
+print(add_to_watchlist({"watchlist": ["FANTASY_2"]}, {"title": "MOVIE_TITLE_1", "genre": "GENRE_1",
+        "rating": "RATING_1"}))
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
