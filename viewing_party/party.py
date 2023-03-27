@@ -13,19 +13,17 @@ def create_movie(title, genre, rating):
     # Return the dictionary
     return movie
 
-# print(create_movie("Seahawks", "sportsball", 1))
-
 def add_to_watched(user_data, movie):
     user_data = {
         "watched": []
     }
 
-    user_data["watched"].append(movie)
-    return user_data
+    movie_data["watched"].append(movie)
+    return movie_data
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
-    
+
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
