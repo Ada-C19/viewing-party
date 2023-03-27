@@ -8,13 +8,13 @@ def create_movie(title, genre, rating):
 
     if not title or not genre or not rating:
         return None
-
     
-    movie_ratings["title"] = title
-    movie_ratings["genre"] = genre
-    movie_ratings["rating"] = rating
-
+    movie_ratings[“title”] = title
+    movie_ratings[“genre”] = genre
+    movie_ratings[“rating”] = rating
+    
     return movie_ratings
+
 
 def add_to_watched(user_data, movie):
     user_data["watched"] = movie
