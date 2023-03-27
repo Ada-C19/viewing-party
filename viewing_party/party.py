@@ -67,6 +67,12 @@ def add_to_watched(user_data, movie):
 
     # print(user_data)
     return user_data
+
+def add_to_watchlist(user_data, movie):
+    user_data= {
+        "watchlist": [movie]
+        }
+    return user_data
         
     
 
