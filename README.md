@@ -1,3 +1,8 @@
+# Monica Lagdaan (She/Her)
+360-513-9577
+MonicaLagdaan@hotmail.com
+
+
 # Viewing Party
 
 ## Skills Assessed
