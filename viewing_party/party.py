@@ -82,7 +82,23 @@ def get_unique_watched(user_data):
                     break
         if not friend_watched:    
             unique_titles.append(movie)
-    return unique_titles        
+    return unique_titles   
+
+def get_friends_unique_watched(user_data):
+    unique_titles = []
+    unique_title_names = []
+    for friend in user_data["friends"]:
+        for friends_movie in friend["watched"]:
+            user_watched = False
+            for movie in user_data["watched"]:
+                if friends_movie["title"] == movie["title"]:
+                    user_watched = True
+                    break
+            if not user_watched and friends_movie["title"] not in unique_title_names:
+                unique_titles.append(friends_movie)
+                unique_title_names.append(friends_movie["title"])
+
+    return unique_titles     
 
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
