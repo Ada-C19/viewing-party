@@ -22,15 +22,14 @@ def add_to_watchlist(user_data, movie):
     return user_data
 
 def watch_movie(user_data, title): 
-    # if title not in user_data["watchlist"]:
-    #     return user_data
+    if title not in [movie["title"] for movie in user_data["watchlist"]]:
+        return user_data
     for value in user_data.values():
         for movie in value: 
             if movie["title"] == title: 
-                user_data["watchlist"].remove(movie)
                 user_data["watched"].append(movie)
-
-    return user_data
+                user_data["watchlist"].remove(movie)
+                return user_data
 
 
 # -----------------------------------------
@@ -44,14 +43,19 @@ def get_watched_avg_rating(user_data):
         rating_average = sum / len(user_data["watched"])
     return rating_average
 
+def get_most_watched_genre(user_data):
+    pass
+
+
 
 
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
-
-        
+def get_unique_(user_data):
+    pass
+    
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
