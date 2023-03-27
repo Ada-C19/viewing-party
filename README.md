@@ -1,3 +1,15 @@
+# Pair-programming agreements
+1. Collaborating style: we will work together in-person during co-working sessions and online through VSCode if needed.
+2. Schedule:
+   1. Tues, Wed: 1-5pm
+   2. Availability for online collaboration outside of co-working: after 7pm
+   3. Breaks: 15 mins break every 1 hour
+3. Switching roles after every break.
+4. Communication:
+   1. Feedbacks: frequent, direct, to-the-point feedbacks.
+   2. The navigator do the guiding and the driver do the coding.
+   3. Talk through the problems together before starting pair-programming to make sure that everyone understands the problems and are the same page.
+
 # Viewing Party
 
 ## Skills Assessed
