@@ -1,5 +1,11 @@
 # Viewing Party
 
+## Pair Plan 
+- Prioritize co-locating to work so we can share a screen, otherwise, share screens via Zoom 
+- Jessie's learning style is mostly independent. Danica would like to write psuedocode together, and then talk through implementation.  We'll try using the navigator/driver set up. 
+- We'll do feedback in person, either at lunch or after class. 
+- We both want to practice the driver/navigator setup to talk through code as we write it. 
+
 ## Skills Assessed
 
 Solving problems with...
