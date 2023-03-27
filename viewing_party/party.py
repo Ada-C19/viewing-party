@@ -11,6 +11,7 @@ def create_movie(title, genre, rating):
         "genre": genre,
         "rating": rating
     }
+    return movie
     
     
 
