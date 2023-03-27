@@ -1,6 +1,7 @@
 # Viewing Party
 <!-- Evenings work both for us, take time to read Monday evening. -->
 <!-- Feedback - compromise and discuss pros and cons of approach -->
+<!-- Communication goals - learn how to work together efficiently and be able collaborate equally as a team -->
 ## Skills Assessed
 
 Solving problems with...
