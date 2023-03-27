@@ -37,7 +37,7 @@ def test_new_genre_rec_from_empty_watched():
 
     # Assert
     assert len(recommendations) == 0
-
+# 
 @pytest.mark.skip()
 def test_new_genre_rec_from_empty_friends():
     # Arrange

@@ -43,6 +43,7 @@ def test_friends_unique_movies():
     assert FANTASY_4 in friends_unique_movies
     assert amandas_data == clean_wave_3_data()
 
+# Let's try and pair program this together
 @pytest.mark.skip()
 def test_friends_unique_movies_not_duplicated():
     # Arrange
