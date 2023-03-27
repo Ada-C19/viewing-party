@@ -4,9 +4,12 @@ def create_movie(title, genre, rating):
     # if the parameters are truthy; return dictionary
     # 3 keys: title, genre, rating
 
+    #if any of the parameters is Falsy,...
     if title == False or genre == False or rating == False:
+        #...then return None
         return None
     
+    #initialize empty dictionary
     movie_ratings = {}
 
     movie_ratings["title"] = title
