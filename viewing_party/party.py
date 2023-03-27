@@ -1,8 +1,10 @@
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
-    if title == None or genre == None:
+    if title == None or genre == None or rating == None:
         new_movie = None
+    # elif rating == None:
+    #     new_movie = None
     else:
         new_movie = {"title": title, "genre": genre, "rating": rating}
     return new_movie
