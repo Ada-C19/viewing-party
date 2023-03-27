@@ -123,3 +123,11 @@ def get_new_rec_by_genre(user_data):
             rec_movies.append(movie)
     return rec_movies
 
+def get_rec_from_favorites(user_data):
+    unique_to_user = get_unique_watched(user_data)
+    fave_rec_movies = []
+    for movie in unique_to_user:
+        for favorite in user_data["favorites"]:
+            if movie["title"] == favorite["title"]:
+                fave_rec_movies.append(movie)
+    return fave_rec_movies            
