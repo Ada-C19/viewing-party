@@ -1,7 +1,13 @@
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
-    pass
+    # Input validation
+    if not title or not genre or not rating:
+        return None
+    
+    # Creating a dictionary
+
+
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
