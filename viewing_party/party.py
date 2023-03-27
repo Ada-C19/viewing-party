@@ -5,10 +5,15 @@ def create_movie(title, genre, rating):
     if not title or not genre or not rating:
         return None
     
-    # Creating a dictionary
+    movie = {
+        "title": title,
+        "genre": genre,
+        "rating": rating
+    }
+    # Return the dictionary
+    return movie
 
-
-
+print(create_movie("Seahawks", "sportsball", 1))
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
