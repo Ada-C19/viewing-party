@@ -1,5 +1,14 @@
 # Viewing Party
 
+# Pair Plan
+# slack, text if emergency
+# schedule: open availability.
+# Ericka: usually in at 9am-5pm, Kathleen: can adapt to Ericka
+# Learning style: Need some time to process. Struggle for 10 min and then step in to help. if both struggling for 30 min, go to office hours. Both work on code together and switch on/off every 20 min or so.
+# Feedback preferences: ask partner for feedback. sandwich method: positive + area for improvement + positive
+# Communication skills to improve while working together: talking out and explaining your code
+# Be proud of the learning process even if we do not finish project...but we will finish it.
+
 ## Skills Assessed
 
 Solving problems with...
