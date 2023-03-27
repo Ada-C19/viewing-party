@@ -14,6 +14,10 @@ def add_to_watched(user_data, movie):
     user_data_copy["watched"].append(movie)
     return user_data_copy
 
+def add_to_watchlist(user_data, movie):
+    user_data_copy = copy.deepcopy(user_data)
+    user_data_copy["watchlist"].append(movie)
+    return user_data_copy
 
 
 # -----------------------------------------
