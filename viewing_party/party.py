@@ -1,8 +1,17 @@
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
-    pass
+    # Validation
+    # Creating a dictionary
+    movie = {
+        "title": title,
+        "genre": genre,
+        "rating": rating
+    }
+    # Return the dictionary
+    return movie
 
+print(create_movie("Seahawks", "sportsball", 1))
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
