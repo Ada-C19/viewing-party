@@ -24,6 +24,17 @@ def add_to_watched(user_data, movie):
     
     return user_data
 
+def add_to_watchlist(user_data, movie):
+    if movie and isinstance(movie, dict):
+        try:
+            user_data["watchlist"].append(movie)
+        except KeyError:
+            print("'Watchlist' key does not exist; could not add movie")
+    
+    return user_data
+
+
+
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
