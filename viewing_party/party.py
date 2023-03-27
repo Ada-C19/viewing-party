@@ -4,6 +4,10 @@ RATING_1 = 3.5
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
+    '''
+    input: title, genre, rating
+    output: 
+    '''
     if not title or genre or rating:
         return None
     movie_dict = {"title":"", "genre":"", "rating":""}
