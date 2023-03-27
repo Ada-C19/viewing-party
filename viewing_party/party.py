@@ -35,6 +35,22 @@ movie = {
 user_data = {"watched": []}
 
 add_to_watched(user_data, movie)
+
+
+def add_to_watchlist(user_data, movie):
+    user_data["watchlist"].append(movie)
+    return user_data
+
+
+movie = {
+    "title": "Title A",
+    "genre": "Horror",
+    "rating": 3.5
+}
+user_data = {
+    "watchlist": []
+}
+add_to_watchlist(user_data, movie)
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
