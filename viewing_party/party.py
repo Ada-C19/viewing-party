@@ -1,5 +1,5 @@
 # ------------- WAVE 1 --------------------
-
+# Let's start
 def create_movie(title, genre, rating):
     pass
 
