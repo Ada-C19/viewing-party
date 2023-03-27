@@ -57,7 +57,9 @@ def watch_movie(user_data, title):
     # iterate through each movie dictionary in the list
     for movie in user_data["watchlist"]:
         # checks if the title entered is found inside of the watchlist
-        if title in movie["title"]:
+        # Changed "in" to "=="" to avoid title being seen as a substring of
+        # a similar movie title (e.g. Super Man vs Super Man 2)
+        if title == movie["title"]:
             # move_movie captures the current movie found to be moved
             move_movie = movie
             # updates user_data to remove current movie from watchlist
@@ -70,7 +72,7 @@ def watch_movie(user_data, title):
 
 janes_data = {
     "watchlist": [{
-        "title": "Super Man",
+        "title": "Super Man 2",
         "genre": "Action",
         "rating": 4.0
     }],
@@ -81,6 +83,18 @@ watch_movie(janes_data, "Super Man")
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
+def get_watched_avg_rating(user_data):
+    sum = 0
+    if not user_data["watched"]:
+            return 0.0
+    
+    for movie in user_data["watched"]:
+        try:
+            sum += movie["rating"]
+        except TypeError:
+            return f"The rating for {movie['title']} is invalid"
+
+    return sum/len(user_data["watched"])
 
 
 # -----------------------------------------
