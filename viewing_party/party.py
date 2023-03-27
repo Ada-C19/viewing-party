@@ -1,5 +1,6 @@
 # ------------- WAVE 1 --------------------
 
+# Hola, Laura! 
 def create_movie(title, genre, rating):
     pass
 
