@@ -38,18 +38,18 @@ def add_to_watchlist(user_data, movie):
 
 def watch_movie(user_data, title):
 
+    # Check title is a string and not empty, otherwise return user_data
     if not isinstance(title, str) or not title:
         return user_data
-    
-    # if title in watchlist, remove from watchlist, add to watched
-    movies_watched = user_data["watched"]
-    movies_to_watch = user_data["watchlist"]
 
-    movie_to_move = None
-    for movie in movies_to_watch:
+    # Check if movie with title in watchlist
+    # If it is, append movie to watched and remove from watchlist
+    for movie in user_data["watchlist"]:
         if title in movie["title"]:
-            # movie_to_move = movie[]
-            print("title exists")
+            user_data["watched"].append(movie)
+            user_data["watchlist"].remove(movie)
+
+    return user_data
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
