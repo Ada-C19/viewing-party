@@ -164,11 +164,18 @@ def get_available_recs(user_data):
 # - Return the list of recommended movies
 
     user_not_watched = get_friends_unique_watched(user_data)
-    print("User Not Watch List: ", user_not_watched)
+    list_of_rec_movies = []
+    # print("User Not Watch List: ", user_not_watched)
+    # print("*********************")
+    for movie in user_not_watched:
+        if movie["host"] in user_data["subscriptions"]:
+            list_of_rec_movies.append(movie)
+    
+    # print("List of Rec Movies: ", list_of_rec_movies)
+    return list_of_rec_movies
+
     # match movie title key to the title key of user_not_watched 
     # check for value in key 'host' is found in the value of subscription 
-
-    return #list of recommended movies
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
