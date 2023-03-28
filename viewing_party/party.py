@@ -7,7 +7,8 @@ def create_movie(title, genre, rating):
         return None
 
 def add_to_watched(user_data, movie):
-    
+   user_data["watched"].append(movie)
+   return user_data
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
@@ -28,16 +29,16 @@ def add_to_watched(user_data, movie):
 
 # ------------- WAVE 1 --------------------
 
-def create_movie(title, genre, rating):
-    pass
+# def create_movie(title, genre, rating):
+#     pass
 
 # If parameters title, genre, rating are all truthy:
 # Return a dictionary with: 3 key-value pairs 
 # If title, genre, and rating are falsy: return NONE
 
 
-def add_to_watched(user_data, movie):
-    pass
+# def add_to_watched(user_data, movie):
+#     pass
 # Dictionary of list of dictionaries
 # Value of user_data is a dictionary with key: "watched", value is a list of dictionary with movies watched
 # Empty list --> no movies in watched list
@@ -49,7 +50,8 @@ def add_to_watched(user_data, movie):
 # return user data
 
 
-def add_to_watchlist(user_data, movie):
+# def add_to_watchlist(user_data, movie):
+#     pass
 
 # Dictionary of list of dictionaries
 # Value of user_data is a dictionary with key: "watchlist", value is a list of dictionary with movies watched
@@ -67,8 +69,8 @@ def add_to_watchlist(user_data, movie):
 # add "movie" to the watchlist list inside of user_data
 # return user data
 
-def watch_movie(user_data, title):
-    pass
+# def watch_movie(user_data, title):
+#     pass
 # The value of user_data is a dictonary with "watchlist" and "watched" -Keys
 # Value of keys is a list of the watchlist and list of watched movies
 # 
