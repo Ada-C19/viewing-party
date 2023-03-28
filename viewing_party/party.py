@@ -27,7 +27,8 @@ def watch_movie(user_data, movie):
     for movie_dict in user_data["watchlist"]:
         if movie == movie_dict["title"]:
             tracker_dict = movie_dict
-    
+        else:
+            return user_data
     # reassign movie dictionary to watchedlist
     user_data["watched"].append(tracker_dict)
 
