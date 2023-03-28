@@ -67,23 +67,22 @@ def get_most_watched_genre(user_data):
     genre_list = []
     watched_list = user_data["watched"]
     genre_count = 0
-    max_genre = genre_list[0]
+    max_genre = None
 
     if not watched_list:
         return None
     
-    for movie in range(len(watched_list)):
+    for movie in watched_list:
         genre = movie["genre"] 
-        genre_list.append("genre")
+        genre_list.append(genre)
 
-    for i in genre_list:
-        current_genre = genre_list.count(i)
-        if current_genre > genre_count:
-            genre_count = current_genre
-            max_genre = i
-
-
-    return max_genre 
+    for genre in genre_list:
+        current_genre_count = genre_list.count(genre)
+        if current_genre_count > genre_count:
+            genre_count = current_genre_count
+            max_genre = genre
+            
+    return max_genre
 
 
 
