@@ -39,7 +39,7 @@ def watch_movie(user_data, title):
 def get_watched_avg_rating(user_data):
     average_rate = 0
     if len(user_data["watched"]) == 0:
-        return (0.0)
+        return 0.0
     for movie_dict in user_data["watched"]:
         average_rate += movie_dict["rating"]
     count = len(user_data["watched"])
@@ -61,11 +61,12 @@ def get_most_watched_genre(user_data):
     #         best_dict = resturant_dict
             
     # return best_dict
+    best_genre = {}
     if len(user_data["watched"]) == 0:
         return None
-    for genra in user_data["watched"]:
-        average_rate += genra["rating"]
-    count = len(user_data["watched"])
+    for genre in user_data["watched"]:
+       best_genre = best_genre["genre"].key()
+    print()
 
 user_data = {"watched":[{"title":"Ghost","genre":"horror","rating":5},{"title":"Wednesday","genre":"comedy","rating":5},{"title":"The well","genre":"horror","rating":3}]}
 
