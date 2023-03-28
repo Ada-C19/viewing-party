@@ -34,15 +34,16 @@ def add_to_watched(user_data, movie):
 def add_to_watchlist(user_data, movie):
     # user_data is a dict with key "watchlist"
     movies_user_wants_to_watch = user_data["watchlist"]
-
+    if movies_user_wants_to_watch is None:
         # an empty list rep that the user has no movies in their watchlist
-    movies_user_wants_to_watch = []
+        movies_user_wants_to_watch = []
         # a list of dicts rep the movies the user has watched
     # append (represent) movie to list of dict
     movies_user_wants_to_watch.append(movie)
 
 
     return user_data
+
 
 def watch_movie(user_data, title):
     '''
