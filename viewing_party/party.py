@@ -7,7 +7,7 @@ def create_movie(title, genre, rating):
     movie = { "title": "", "genre" : "", "rating" : 0}
 
     #Check for edge case of one item being empty 
-    if title is False or genre is False or rating is False:
+    if title is None or genre is None or rating is None:
         return None
     else:
         movie["title"]= title
