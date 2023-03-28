@@ -3,17 +3,23 @@
 def create_movie(title, genre, rating):
     """- add the `movie` to the `"watched"` list inside of `user_data`
 - return the `user_data`"""
-    pass
+    user_data = {"title":title,"genre":genre,"rating":rating}
+    if title and genre and rating:
+        return user_data
+    else:
+        return None
 
 def add_to_watched(user_data, movie):
     """- add the `movie` to the `"watched"` list inside of `user_data`
 - return the `user_data`"""
-    pass
+    user_data["watched"].append(movie)
+    return user_data
 
 def add_to_watchlist(user_data, movie):
     """- add the `movie` to the `"watchlist"` list inside of `user_data`
 - return the `user_data`"""
-    pass
+    user_data["watchlist"].append(movie)
+    return user_data
 
 def watch_movie(user_data, title):
     """- If the title is in a movie in the user's watchlist:
@@ -22,7 +28,14 @@ def watch_movie(user_data, title):
 - return the `user_data`
 - If the title is not a movie in the user's watchlist:
 - return the `user_data`"""
-    pass
+    
+    for i in user_data["watchlist"]:
+        if i["title"] == title:
+            user_data["watchlist"].remove(i)
+            user_data["watched"].append(title)
+    return user_data
+
+
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 
@@ -36,7 +49,7 @@ def get_most_watched_genre(user_data):
     """- Determine which genre is most frequently occurring in the watched list
 - return the genre that is the most frequently watched
 - If the value of "watched" is an empty list, `get_most_watched_genre` should return `None`."""
-pass
+    pass
 
 # -----------------------------------------
 # -----------------------------------------
