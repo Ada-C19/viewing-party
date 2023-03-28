@@ -164,7 +164,7 @@ def test_moves_movie_from_watchlist_to_empty_watched():
     #that was in watchlist in jane's data
 
 
-@pytest.mark.skip()
+#@pytest.mark.skip()
 def test_moves_movie_from_watchlist_to_watched():
     # Arrange
     movie_to_watch = HORROR_1
