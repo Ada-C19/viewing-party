@@ -1,4 +1,5 @@
 # ------------- WAVE 1 --------------------
+import pprint
 
 def create_movie(title, genre, rating):
     """Create dictionary containing title, genre, and rating of a movie
@@ -120,8 +121,30 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
+def get_unique_watched(user_data):
 
-        
+    user_watched = set()
+    for movie in user_data["watched"]:
+        user_watched.add(movie.get("title"))
+
+    friends_watched = set()
+    # pprint.pprint(user_data["friends"])
+    # pprint.pprint(type(user_data["friends"])) # list
+    for watched_list in user_data["friends"]:
+        # pprint.pprint(watched_list["watched"])
+        # pprint.pprint(type(watched_list["watched"]))
+        # pprint.pprint(f'title: {watched_list["watched"].get("title")}')
+        for movie in watched_list["watched"]:
+            friends_watched.add(movie["title"])
+    
+    unique_watched = {}
+    difference = list(friends_watched - user_watched)
+
+    unique_watched["watched"] = difference
+
+    return unique_watched
+
+
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
