@@ -1,12 +1,12 @@
 from statistics import multimode,mode
 # ------------- WAVE 1 --------------------
 
-#Create definition to store movie
+# Create definition to store movie
 def create_movie(title, genre, rating):
-    #create empty dictionary to store the movie
+    # Create empty dictionary to store the movie
     movie = { "title": "", "genre" : "", "rating" : 0}
 
-    #Check for edge case of one item being none
+    # Check for edge case of one item being none
     if title is None or genre is None or rating is None:
         return None
     else:
@@ -17,18 +17,18 @@ def create_movie(title, genre, rating):
     return movie
 
 def add_to_watched(user_data, movie):
-    #add movie a dictionary to watched
+    # Add movie a dictionary to watched
     user_data["watched"].append(movie)
     return user_data
     
 def add_to_watchlist(user_data, movie):
-    #add movie a dictionary to watchlist
+    # Add movie a dictionary to watchlist
     user_data["watchlist"].append(movie)
     return user_data
 
 def watch_movie(user_data, title):
     
-    #check if title is in watchlist, add it to watched
+    # Check if title is in watchlist, add it to watched
     for movie in user_data["watchlist"]:
         if title in movie["title"]:
             add_to_watched(user_data, movie) 
@@ -79,6 +79,8 @@ def get_unique_watched(user_data):
     pass
     
 
+def get_friends_unique_watched(user_data):
+    pass
 
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
