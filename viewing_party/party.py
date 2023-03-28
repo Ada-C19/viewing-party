@@ -79,10 +79,6 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 
 def get_unique_watched(user_data):
-    # user_data = {
-    #     "watched" : [{"title" : "movie1"},{"title" : "movie2"}],
-    #     "friends": {"watched":[{"title" : "movie1"}, {"title" : "movie2"}]}
-    # }
     watched_movies = user_data["watched"].copy()
     friend_watched_movies = []
     not_watched_by_friends = []
@@ -96,13 +92,6 @@ def get_unique_watched(user_data):
     for movie in watched_movies:
         if movie not in friend_watched_movies:
             not_watched_by_friends.append(movie)
-
-    # print(watched_movies)
-    # print(len(watched_movies))
-    # print(friend_watched_movies)
-    # print(len(friend_watched_movies))
-    # print(not_watched_by_friends)
-
 
     return not_watched_by_friends
 
