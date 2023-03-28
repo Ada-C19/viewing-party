@@ -132,12 +132,35 @@ def watch_movie(user_data, title):
 # -----------------------------------------
 
 def get_watched_avg_rating(user_data):
+    # This represents that the user has a list of watched movies
     watched = user_data.get("watched", [])
+    # The average rating of an empty watched list is `0.0`
     if not watched:
         return 0.0
+    # Calculate the average rating of all movies in the watched list
     total_ratings = sum(movie.get("rating", 0.0) for movie in watched)
+    # return the average rating
     avg_rating = total_ratings / len(watched)
     return avg_rating
+
+def get_most_watched_genre(user_data):
+    watched_genres = {}
+
+# - Determine which genre is most frequently occurring in the watched list
+    # iterate through 
+    for movie in user_data["watched"]:
+        genre = movie["genre"]
+        if genre in watched_genres:
+            watched_genres["genre"] += 1
+        else:
+            watched_genres["genre"] = 1
+
+    if not watched_genres:
+        return None 
+    print(watched_genres)
+    return max(watched_genres, key=watched_genres.get)
+
+
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
@@ -151,3 +174,5 @@ def get_watched_avg_rating(user_data):
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
+# test commment
+# test comment 2
