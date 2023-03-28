@@ -34,34 +34,17 @@ def add_to_watched(user_data, movie):
         user_data["watched"].update(movie)
     else:
         return None
-    
 
-    # - An empty list represents that the user has no movies in their watched list
-#   - the value of `movie` will be a dictionary in this format:
-    # - ```python
-    #   {
-    #     "title": "Title A",
-    #     "genre": "Horror",
-    #     "rating": 3.5
-    #   }
-
-#   - Have three key-value pairs, with specific keys
-#   - The three keys should be `"title"`, `"genre"`, and `"rating"`
-#   - The values of these key-value pairs should be appropriate values
-
-
-    # new_movie = {}
-    # if title and genre and rating : 
-    #     new_movie["title"] = title
-    #     new_movie["genre"] = genre
-    #     new_movie["rating"]= rating   
-    #     # print(new_movie)
-    #     return new_movie
-    
-    # else: 
-    #     # print(None)
-    #     return None
-        
+# 3. Create a function named `add_to_watchlist`. This function should...take two parameters: `user_data`, `movie`
+def add_to_watchlist(user_data, movie):
+#   - the value of `user_data` will be a dictionary with a key `"watchlist"`, and a value which is a list of dictionaries representing the movies the user wants to watch
+    user_data["watchlist"] = movie
+    if user_data:
+        user_data["watchlist"].update(movie)
+        return user_data
+    # return An empty list represents that the user has no movies in their watchlist
+    else:
+        return None
 
 # take two parameters: user_data, movie 
 def add_to_watched(user_data, movie):
@@ -74,18 +57,41 @@ def add_to_watched(user_data, movie):
 # take two parameters: user_data, movie
 
 def add_to_watchlist(user_data, movie):
-    #  value of user_data is a dict w/ key "watch_list"
-    
-    # user_data= {
-    #     "watchlist": []
-    #     }
-    
     user_data["watchlist"].append(movie)
     return user_data
         
+def watch_movie(user_data, title):
+    # - the value of `user_data` will be a dictionary with a `"watchlist"` and a `"watched"`   
+    # This represents that the user has a watchlist and a list of watched movies
+    # The value of `title` will be a string
+    # This represents the title of the movie the user has watched
+    for movie in user_data["watchlist"]:
+    # - If the title is in a movie in the user's watchlist:
+        # if
+        # remove that movie from the watchlist
+        user_data["watchlist"].pop(movie)
+        # add that movie to watched
+        user_data["watched"].append(movie)
+        # return the `user_data`
+        return user_data
+    # - If the title is not a movie in the user's watchlist:
+        # else:
+            # return the `user_data`    
+            # return user_data
 # ========================================= wave 01- # 4. add to watchlist ==========
-    
-    
+
+def watch_movie(user_data, title):
+    # if there's a movie dictionary in watchlist with the title fleabag, remove it from watchlist and add it to watched
+    for movie in user_data["watchlist"]:
+    # check the title for each element
+        if title == movie["title"]:
+            user_data["watchlist"].remove(movie)
+            user_data["watched"].append(movie)
+            print(user_data)  
+            return user_data
+    if title not in user_data["watchlist"]:
+        return user_data
+            
     # user_data= {
     #     "watchlist": [{"title": "A movie title", "genre": "A movie genre", "rating": "soem number"}],
         
