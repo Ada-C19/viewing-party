@@ -8,9 +8,18 @@ def create_movie(title, genre, rating):
     input: title, genre, rating
     output: dictionary
     '''
-
+    if not title:
+        return None
+    if not genre: 
+        return None
+    if not rating:
+        return None
+    
     movie_dict = {'title': title, 'genre': genre, 'rating': rating}
+    if movie_dict == False:
+        return None
     return movie_dict
+        
 
 def add_to_watched(user_data, movie):
     #user_data is a dict with key "watched"
@@ -23,7 +32,17 @@ def add_to_watched(user_data, movie):
     return user_data
 
 def add_to_watchlist(user_data, movie):
-    
+    # user_data is a dict with key "watchlist"
+    movies_user_wants_to_watch = user_data["watchlist"]
+
+        # an empty list rep that the user has no movies in their watchlist
+    movies_user_wants_to_watch = []
+        # a list of dicts rep the movies the user has watched
+    # append (represent) movie to list of dict
+    movies_user_wants_to_watch.append(movie)
+
+
+    return user_data
 
 def watch_movie(user_data, title):
     '''
