@@ -222,5 +222,19 @@ def get_rec_from_favorites(user_data):
     # print("user_data", user_data)
     # print("*****************")
     user_watched = get_unique_watched(user_data)
+    favorite_movie_titles = []
+
+    for movie in user_data["favorites"]:
+        favorite_movie_titles.append(movie["title"])
+    
+    for movie in user_watched:
+        if movie["title"] in favorite_movie_titles:
+            user_favorite_movie.append(movie)
+    print("user favorite movie", user_favorite_movie)
+    return user_favorite_movie
+
+
+#test comment 
+    
 
     
