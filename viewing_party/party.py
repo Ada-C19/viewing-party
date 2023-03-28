@@ -81,14 +81,29 @@ def get_most_watched_genre(user_data):
         if value == high_genre:
             return key
 
-            
-
-
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 
-        
+def get_unique_watched(user_data):
+    watched = user_data["watched"].copy()
+    friends = user_data["friends"].copy()
+    for friend in friends: 
+        for movie in friend["watched"]: 
+            if movie in watched:
+                watched.remove(movie)
+    return watched
+
+def get_friends_unique_watched(user_data):
+    watched = user_data ["watched"].copy()
+    friends = user_data ["friends"].copy()
+    unique_movies = []
+    for friend in friends: 
+        for movie in friend["watched"]:
+            if movie not in watched and movie not in unique_movies:
+                unique_movies.append(movie)
+    return unique_movies
+
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
