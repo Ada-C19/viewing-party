@@ -30,8 +30,7 @@ def watch_movie(user_data, title):
        
             watched_value.append(item)
             return user_data
-        else:
-            return user_data
+    return user_data
     
     #user_data = {"watchlist": [new_movie], "watched": [watched_movie]}
     #title = ""
