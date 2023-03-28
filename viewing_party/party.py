@@ -1,3 +1,4 @@
+import copy
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
@@ -77,10 +78,67 @@ def get_most_watched_genre(user_data):
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 
+def get_unique_watched(user_data):
+    # user_data = {
+    #     "watched" : [{"title" : "movie1"},{"title" : "movie2"}],
+    #     "friends": {"watched":[{"title" : "movie1"}, {"title" : "movie2"}]}
+    # }
+    watched_movies = user_data["watched"].copy()
+    friend_watched_movies = []
+    not_watched_by_friends = []
+    
+    for movies in user_data["friends"]:
+        for movie in movies["watched"]:
+            friend_watched_movies.append(movie)
+
+    fw_copy = friend_watched_movies.copy()
+
+    for movie in watched_movies:
+        if movie not in friend_watched_movies:
+            not_watched_by_friends.append(movie)
+
+    # print(watched_movies)
+    # print(len(watched_movies))
+    # print(friend_watched_movies)
+    # print(len(friend_watched_movies))
+    # print(not_watched_by_friends)
+
+
+    return not_watched_by_friends
+
+def get_friends_unique_watched(user_data):
+    watched_movies = user_data["watched"].copy()
+    friend_watched_movies = []
+    not_watched_by_user = []
+    
+    for movies in user_data["friends"]:
+        for movie in movies["watched"]:
+            friend_watched_movies.append(movie)
+
+    fw_copy = friend_watched_movies.copy()
+
+    for movie in friend_watched_movies:
+        if movie not in watched_movies and movie not in not_watched_by_user:
+            not_watched_by_user.append(movie)   
+
+    return not_watched_by_user
+
         
-# ------------------z-----------------------
+# -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
+
+def get_available_recs(user_data):
+    # user_data["subscriptions"] = ["netflix", "hulu", "disney+"]
+    # user_data["friends"] = {"watched":
+                # [{"title" : "movie1", "host": "hulu"}, 
+                # {"title" : "movie2", "host" : "disney+"}]}
+    # append to recommended_movies if: 
+    #   movie not in user_data["watched"]
+    #   movie in user_data[friends]--[watched]
+    #   movie["host"] in user_data["subscriptions"]
+    recommended_movies = []
+    pass
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
