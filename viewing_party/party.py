@@ -83,25 +83,30 @@ def get_unique_watched(user_data):
     unique_movies = []
     friends_watched_set = set()
     user_watched_set = set()
-    unique_movies = []
-    
-    for index in range(len(user_data["friends"][0]["watched"])):
-        friends_watched_set.add(user_data["friends"][0]["watched"][index]["title"])
 
-    for index in range(len(user_data["watched"])):
-        user_watched_set.add(user_data["watched"][index]["title"])
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            friends_watched_set.add(movie["title"])
+
+    for i in range(len(user_data["watched"])):
+        user_watched_set.add(user_data["watched"][i]["title"])
 
     differences = user_watched_set.difference(friends_watched_set)
+   
     
-    for item in differences:
-        dict = {}
-        dict["title"]=item
-        unique_movies.append(dict)
+    for i in user_data["watched"]:
+        if i["title"] in differences:
+            unique_movies.append(i)
 
-    output_dict = {}
-for val,item in enumerate(input_set):
-    output_dict[item] = val
-    print(unique_movies)
+    return unique_movies
+
+def get_friends_unique_watched(user_data):
+    friends_unique_watched = []
+
+
+    # for val,item in enumerate(input_set):
+    #     output_dict[item] = val
+    #     print(unique_movies)
     # # make list of friends movies
     # for index in range(len(user_data["watched"])):
     #     title = user_data["watched"][index]["title"]
@@ -117,7 +122,7 @@ for val,item in enumerate(input_set):
     
     
     
-get_unique_watched(user_data)
+# get_unique_watched(user_data)
 # set.union(*my_dict.values())
 #1. convert friend title into set
 
