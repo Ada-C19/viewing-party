@@ -59,6 +59,12 @@ def get_friend_movies(user_data):
             if movie not in friend_watched: friend_watched.append(movie)
     return friend_watched
 
+def create_unique_list(movies, comparison):
+    unique_movies = []
+    for movie in movies:
+        if movie not in comparison: unique_movies.append(movie)
+    return unique_movies
+
 def get_unique_watched(user_data):
     watched = user_data["watched"]
     if not watched: return []
@@ -66,10 +72,7 @@ def get_unique_watched(user_data):
     friend_watched = get_friend_movies(user_data)
 
     #Compare own watched movies to friends' watched movies
-    unique_movies = []
-    for movie in watched:
-        if movie not in friend_watched: unique_movies.append(movie)
-    return unique_movies
+    return create_unique_list(watched, friend_watched)
 
 def get_friends_unique_watched(user_data):
     watched = user_data["watched"]
@@ -78,10 +81,7 @@ def get_friends_unique_watched(user_data):
     friend_watched = get_friend_movies(user_data)
 
     #Compare friends' watched movies to own watched movies
-    friend_unique_movies = []
-    for movie in friend_watched:
-        if movie not in watched: friend_unique_movies.append(movie)
-    return friend_unique_movies
+    return(create_unique_list(friend_watched, watched))
 
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
