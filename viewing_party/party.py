@@ -50,10 +50,7 @@ def get_watched_avg_rating(user_data):
     print(rate)
     return rate
     
-# user_data = {"watched":[{"title":"Ghost","genre":"horror","rating":5}, {"title":"The well","genre":"horror","rating":3}]}
-user_data = {"watched":[{"title":"Ghost","genre":"horror","rating":5},{"title":"Ghost","genre":"horror","rating":5},{"title":"The well","genre":"horror","rating":3},{"title":"Wednesday","genre":"comedy","rating":5},{"title":"Wednesday","genre":"comedy","rating":5},{"title":"The car","genre":"horror","rating":3}]}
 
-# get_watched_avg_rating(user_data)
 def get_most_watched_genre(user_data):
     
     if user_data["watched"] == []:
@@ -76,6 +73,67 @@ def get_most_watched_genre(user_data):
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 
+user_data = {"watched":[{"title":"meep","genre":"horror","rating":5},{"title":"Ghost","genre":"horror","rating":5},{"title":"Hehe","genre":"horror","rating":5}], "friends": [{"watched":[{"title":"Bionicles"},{"title":"Ghost"}, {"title":"Paranormal"} ]}]}
+# make list of friend movies 
+# print(user_data["friends"][0]["watched"][0]["title"])
+# print(user_data)
+# user_data = {"watched":[{"title":"Ghost","genre":"horror","rating":5},{"title":"Ghost","genre":"horror","rating":5},{"title":"The well","genre":"horror","rating":3},{"title":"Wednesday","genre":"comedy","rating":5},{"title":"Wednesday","genre":"comedy","rating":5},{"title":"The car","genre":"horror","rating":3}]}
+def get_unique_watched(user_data):
+    unique_movies = []
+    friends_watched_set = set()
+    user_watched_set = set()
+    unique_movies = []
+    
+    for index in range(len(user_data["friends"][0]["watched"])):
+        friends_watched_set.add(user_data["friends"][0]["watched"][index]["title"])
+
+    for index in range(len(user_data["watched"])):
+        user_watched_set.add(user_data["watched"][index]["title"])
+
+    differences = user_watched_set.difference(friends_watched_set)
+    
+    for item in differences:
+        dict = {}
+        dict["title"]=item
+        unique_movies.append(dict)
+
+    output_dict = {}
+for val,item in enumerate(input_set):
+    output_dict[item] = val
+    print(unique_movies)
+    # # make list of friends movies
+    # for index in range(len(user_data["watched"])):
+    #     title = user_data["watched"][index]["title"]
+    #     print(title)
+    #     for position in range(len(user_data["friends"][0]["watched"])):
+    #         if title in user_data["friends"][0]["watched"][position]:
+    #             continue
+    #         else:
+    #             unique_movies.append(user_data["watched"][index])
+    # print(unique_movies)
+    
+    
+    
+    
+    
+get_unique_watched(user_data)
+# set.union(*my_dict.values())
+#1. convert friend title into set
+
+#2. convert user watched titles into set 
+#3. user.different to compare the two sets
+# 4. return differences in list of dictionaries 
+
+
+# 1. Create a function named `get_unique_watched`. This function should...
+
+#   - the value of `user_data` will be a dictionary with a `"watched"` list of movie dictionaries, and a `"friends"`
+#     - This represents that the user has a list of watched movies and a list of friends
+#     - The value of `"friends"` is a list
+#     - Each item in `"friends"` is a dictionary. This dictionary has a key `"watched"`, which has a list of movie dictionaries.
+#     - Each movie dictionary has a `"title"`.
+# - Consider the movies that the user has watched, and consider the movies that their friends have watched. Determine which movies the user has watched, but none of their friends have watched.
+# - Return a list of dictionaries, that represents a list of movies
         
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
