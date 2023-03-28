@@ -19,14 +19,12 @@ def watch_movie(user_data, title):
         if user_data['watchlist'][i]['title'] == title:
             user_data['watched'].append(user_data['watchlist'][i])
             user_data['watchlist'].pop(i)
-    return user_data
-
-
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
 def get_watched_avg_rating(user_data):
     pass
+    
 
 
 def get_most_watched_genre(user_data):
