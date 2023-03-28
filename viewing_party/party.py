@@ -1,3 +1,86 @@
+
+import copy
+
+HORROR_1 = {
+    "title": "MOVIE_TITLE_1",
+    "genre": "GENRE_1",
+    "rating": 1
+}
+FANTASY_1 = {
+    "title": "The Lord of the Functions: The Fellowship of the Function",
+    "genre": "Fantasy",
+    "rating": 4.8
+}
+FANTASY_2 = {
+    "title": "The Lord of the Functions: The Two Parameters",
+    "genre": "Fantasy",
+    "rating": 4.0
+}
+FANTASY_3 = {
+    "title": "The Lord of the Functions: The Return of the Value",
+    "genre": "Fantasy",
+    "rating": 4.0
+}
+FANTASY_4 = {
+    "title": "The Programmer: An Unexpected Stack Trace",
+    "genre": "Fantasy",
+    "rating": 4.0
+}
+ACTION_1 = {
+    "title": "The JavaScript and the React",
+    "genre": "Action",
+    "rating": 2.2
+}
+ACTION_2 = {
+    "title": "2 JavaScript 2 React",
+    "genre": "Action",
+    "rating": 4.2
+}
+ACTION_3 = {
+    "title": "JavaScript 3: VS Code Lint",
+    "genre": "Action",
+    "rating": 3.5
+}
+INTRIGUE_1 = {
+    "title": "Recursion",
+    "genre": "Intrigue",
+    "rating": 2.0
+}
+INTRIGUE_2 = {
+    "title": "Instructor Student TA Manager",
+    "genre": "Intrigue",
+    "rating": 4.5
+}
+INTRIGUE_3 = {
+    "title": "Zero Dark Python",
+    "genre": "Intrigue",
+    "rating": 3.0
+}
+USER_DATA_3 = { "watched": [FANTASY_3,
+                FANTASY_4,
+                HORROR_1],
+            "friends" : [
+        {
+            "watched": [
+                FANTASY_1,
+                FANTASY_3,
+                FANTASY_4,
+                HORROR_1,
+            ]
+        },
+        {
+            "watched": [
+                FANTASY_1,
+                ACTION_1,
+                INTRIGUE_1,
+                INTRIGUE_3,
+            ]
+        }
+]}  
+
+
+
+
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
@@ -103,8 +186,38 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
+def get_unique_watched(user_data):
+    copy_from_user_data = copy.deepcopy(user_data)
+    
+    friends_movie_titles = []
+    users_movie_titles = []
+    my_list = copy_from_user_data["watched"]
+    friends_list = copy_from_user_data["friends"]
+    
+    for i in range(len(friends_list)):
+        values_of_watched = friends_list[i]["watched"]
+        print(values_of_watched)
+        for j in range(len(values_of_watched)):
+            titles = values_of_watched[j]["title"]
+            friends_movie_titles.append(titles)
 
-        
+    for i in range(len(my_list)):
+        users_movie_titles.append(my_list[i]["title"])
+
+    user_unique_movies = set(users_movie_titles) - set(friends_movie_titles)
+    users_unique_movies_list = list(user_unique_movies)
+    print(users_unique_movies_list)
+    
+    result_list = []
+
+    for movie_title in users_unique_movies_list:
+        for movie in my_list:
+            if movie["title"] == movie_title:
+                result_list.append(movie)
+
+    return result_list
+
+print(get_unique_watched(USER_DATA_3))
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
