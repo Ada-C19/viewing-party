@@ -95,6 +95,14 @@ def get_unique_watched(user_data):
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
 
+def get_available_recs(user_data):
+    recommendation = []
+    movies_to_watch = get_friends_unique_watched(user_data)
+    for movies in movies_to_watch:
+        if movies['host'] in user_data['subscriptions']:
+            recommendation.append(movies)
+    return recommendation
+
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
