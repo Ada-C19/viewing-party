@@ -117,8 +117,6 @@ def get_most_watched_genre(user_data):
     most_watched_genre = max(most_watched_genres, key=most_watched_genres.get)
     return most_watched_genre
 
-
-
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
