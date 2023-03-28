@@ -29,12 +29,17 @@ def get_watched_avg_rating(user_data):
 def get_most_watched_genre(user_data):
     genre_list = []
 
+    # Create a new list of "watched" movies in user_data dict
     movie_list = user_data["watched"]
+    # Iterate through movies in list of movies
     for movie in movie_list:
+        # Append genre values to the empty list genre_list
         genre_list.append(movie["genre"])
+    # If genre_list is empty, return None
     if len(genre_list) == 0:
         return None
     else:
+        # It was returning as a string in a list, so I used [0] to return genre as a string
         return(multimode(genre_list)[0])
 
 
