@@ -1,17 +1,12 @@
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
-    pass
-
-    # if the three parameters are valid, return a dictionary:
-        # 'title': movie name   'genre': '(eg horror, drama, suspense)'     'rating': (float)
-    # elif one of the three parameters are not valid: (valid == type (str vs float)? if type(int)
-    # cast to float; present vs not present?)
-        # return None
-
-    # if (title, genre, rating) == True: return dict
-    # elif: 
-    # return None
+    # validate_parameters (empty strings and zero evaluate to Falsy)
+    if title and genre and rating:
+        new_movie = {"title": title, "genre": genre, "rating": rating}
+        return new_movie
+    else:
+        return None
     
 
 def add_to_watched(user_data, movie):
