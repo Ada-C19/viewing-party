@@ -1,6 +1,4 @@
-MOVIE_TITLE_1 = "It Came from the Stack Trace"
-GENRE_1 = "Horror"
-RATING_1 = 3.5
+
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
@@ -70,7 +68,11 @@ def get_watched_avg_rating(user_data):
     # an empty "watched" list has a value of 0.0
     output: average rating 
     '''    
-
+# HORROR_1 = {
+#     "title": MOVIE_TITLE_1,
+#     "genre": GENRE_1,
+#     "rating": RATING_1
+# }
 def get_most_watched_genre(user_data):
     '''
     input: user_data is a dictionary with a "watched" list of movies dictionaries. 
@@ -79,6 +81,7 @@ def get_most_watched_genre(user_data):
     # if the value of 'watched' is an empty string, function should return None
     output: genre that's most frequently watched 
     ''' 
+
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
