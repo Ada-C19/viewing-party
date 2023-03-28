@@ -140,8 +140,8 @@ def test_adds_movie_to_non_empty_user_watchlist():
     assert movie in updated_data["watchlist"]
     assert FANTASY_2 in updated_data["watchlist"]
 
-# Hannah will finish this test
-@pytest.mark.skip()
+
+#@pytest.mark.skip()
 def test_moves_movie_from_watchlist_to_empty_watched():
     # Arrange
     janes_data = {
@@ -159,13 +159,11 @@ def test_moves_movie_from_watchlist_to_empty_watched():
     # Assert
     assert len(updated_data["watchlist"]) == 0
     assert len(updated_data["watched"]) == 1
-    
-    raise Exception("Test needs to be completed.")
-    # *******************************************************************************************
-    # ****** Add assertions here to test that the correct movie was added to "watched" **********
-    # *******************************************************************************************
+    assert updated_data["watched"][0]["title"] == MOVIE_TITLE_1
+    # the only item in watched should be the dictionary
+    #that was in watchlist in jane's data
 
-# Niambi will complete this test's assert statement
+
 @pytest.mark.skip()
 def test_moves_movie_from_watchlist_to_watched():
     # Arrange
