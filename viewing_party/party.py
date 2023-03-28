@@ -114,4 +114,12 @@ def get_available_recs(user_data):
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
+def get_rec_from_favorites(user_data):
+    recs = []
+    unique = get_unique_watched(user_data)
 
+    for movie in unique:
+        if movie in user_data["favorites"]:
+            recs.append(movie)
+
+    return recs
