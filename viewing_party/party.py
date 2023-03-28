@@ -13,6 +13,14 @@ def create_movie(title, genre, rating):
     
     return movie
 
+def add_to_watched(user_data, movie):
+    '''GOAL: passing in user_data and movie
+    add movie to user_data
+    
+    append dictionary to list of watched'''
+    user_data["watched"].append(movie)
+    return user_data
+
  
 
 # -----------------------------------------
