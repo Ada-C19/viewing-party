@@ -62,18 +62,21 @@ def watch_movie(user_data, title):
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
 def get_watched_avg_rating(user_data):
+    pass
     '''
     input: user_data is a dictionary with a "watched" list of movies dictionaries
     # calculate the average rating of all movies in the watched list
     # an empty "watched" list has a value of 0.0
     output: average rating 
     '''    
-# HORROR_1 = {
-#     "title": MOVIE_TITLE_1,
-#     "genre": GENRE_1,
-#     "rating": RATING_1
+    # #user_data is a dict with "watched" list of dict
+    # user_list_of_watched_movies = user_data["watched"]
+    # #calc th avg rating of all movies in the watched list
+    # for i in range(len(user_data)):
+    #     sum(user_list_of_watched_movies)
 # }
 def get_most_watched_genre(user_data):
+    pass
     '''
     input: user_data is a dictionary with a "watched" list of movies dictionaries. 
     # each movie dictionary has a key 'genre' which is a string
