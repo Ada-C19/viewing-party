@@ -68,7 +68,28 @@ def get_watched_avg_rating(user_data):
         ratings_list.append(movie["rating"])
     return statistics.mean(ratings_list)
 
+def get_most_watched_genre(user_data):
 
+
+    if len(user_data["watched"]) == 0:
+        return None
+
+    movie_genre={}
+    for movie in user_data['watched']:
+        if movie['genre'] not in movie_genre:
+            movie_genre[movie['genre']]=1
+        else:
+            movie_genre[movie['genre']]+=1
+
+    most_watched_genre=''
+    frequency=0
+
+    for genre, amount in movie_genre.items():
+        if amount > frequency:
+            most_watched_genre = genre
+            frequency = amount
+
+    return most_watched_genre
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
