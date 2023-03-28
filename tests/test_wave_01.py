@@ -196,6 +196,7 @@ def test_moves_movie_from_watchlist_to_watched():
     # *******************************************************************************************
     # ****** Add assertions here to test that the correct movie was added to "watched" **********
     # *******************************************************************************************
+    assert MOVIE_TITLE_1 in updated_data["watched"][1]["title"]
 
     
 # @pytest.mark.skip()
