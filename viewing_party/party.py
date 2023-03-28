@@ -31,14 +31,18 @@ def watch_movie(user_data, title):
     # Check each movie in the watchlist to see if it matches the given title
     for movie in watchlist:
         if movie["title"] == title:
+            if len(watchlist) > 0:
+                watched_list.append(watchlist[0])
+                watchlist.remove(watchlist[0])
+            else:
             # If a match is found, remove the movie from the watchlist and add it to the watched list
-            watchlist.remove(movie)
-            watched_list.append(movie)
+                watchlist.remove(movie)
+                watched_list.append(movie)
             # Update the new_user_data dictionary with the modified watchlist and watched list
-            new_user_data["watchlist"] = watchlist
-            new_user_data["watched"] = watched_list
+                new_user_data["watchlist"] = watchlist
+                new_user_data["watched"] = watched_list
             # Return the updated new_user_data dictionary
-            return new_user_data
+                return new_user_data
     # If no match is found, return the original user_data dictionary unchanged
     return new_user_data
 
