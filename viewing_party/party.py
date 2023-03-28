@@ -1,7 +1,6 @@
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
-
     movie = {
         "title": title,
         "genre": genre,
@@ -20,7 +19,6 @@ def add_to_watched(user_data, movie):
 
 
 def add_to_watchlist(user_data, movie):
-
     user_data["watchlist"].append(movie)
     return user_data
 
@@ -40,7 +38,6 @@ def watch_movie(user_data, title):
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 def get_watched_avg_rating(user_data):
-
     if not user_data["watched"]:
         return 0.0
 
@@ -91,7 +88,6 @@ def get_most_watched_genre(user_data):
 
 # ------------- WAVE 3 --------------------
 def get_unique_watched(user_data):
-
     # initialize emoty list
     # nested dictionary - friends - watched
     # append list
