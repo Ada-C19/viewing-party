@@ -1,7 +1,6 @@
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
-    new_movie = {}
     static_keys = ["title", "genre","rating"]
     inputs = [title, genre, rating]
     if (type(title)) is str and (type(genre)) is str and (type(rating)) is float:
@@ -43,6 +42,21 @@ def watch_movie(user_data, title):
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
 
+def get_watched_avg_rating(user_data):
+    watched = user_data["watched"]
+    avg_list = [movie["rating"] for movie in watched]
+    if len(avg_list) == 0:
+        return 0
+    avg_rating = sum(avg_list) / len(avg_list)
+    return avg_rating
+
+
+def get_most_watched_genre(user_data):
+    watched = user_data["watched"]
+    genre_freq = [movie["genre"] for movie in watched]
+    if genre_freq == []:
+        return None
+    return max(set(genre_freq), key=genre_freq.count)
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
