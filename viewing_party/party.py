@@ -42,20 +42,20 @@ def get_watched_avg_rating(user_data):
         return sum(rating) / len(rating)
     except ZeroDivisionError:
         return 0.0
-    except KeyError: # Incase the key "watched" is missing
+    except KeyError: # Incase the key watched is missing
         return None
 
 def get_most_watched_genre(user_data):
     genre = {}
 
     try:
-        for movie in user_data.get("watched"):
+        for movie in user_data["watched"]:
             if movie["genre"] not in genre:
                 genre[movie["genre"]] = 1
 
             genre[movie["genre"]] += 1
             print(genre)
-    except TypeError:
+    except KeyError: # Incase the key watched is missing
         return None
     
     if genre:
