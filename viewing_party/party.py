@@ -53,35 +53,6 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
-# USER_DATA_4 = {
-#     "watched": [
-#         FANTASY_1b, 
-#         FANTASY_2b, 
-#         FANTASY_3b, 
-#         ACTION_1b, 
-#         INTRIGUE_1b, 
-#         INTRIGUE_2b
-#         ],  
-#     "friends":  [
-#         {
-#             "watched": [
-#                 FANTASY_1b,
-#                 FANTASY_3b,
-#                 FANTASY_4b,
-#                 HORROR_1b,
-#             ]
-#         },
-#         {
-#             "watched": [
-#                 FANTASY_1b,
-#                 FANTASY_4b,
-#                 ACTION_1b,
-#                 INTRIGUE_1b,
-#                 INTRIGUE_3b,
-#             ]
-#         }  
-#     ]
-# }
 
 def get_unique_watched(user_data):
     movies_user_watched = []
@@ -97,12 +68,22 @@ def get_unique_watched(user_data):
             unique_movies.append(movies)
     return unique_movies
 
-    # users_movies = set(tuple(movie) for movie in movies_user_watched)
-    # friends_movies = set(tuple(movie) for movie in movies_friends_watched)
-    # return users_movies - friends_movies
-    
+
 def get_friends_unique_watched(user_data):
-    pass
+    movies_user_watched = []
+    movies_friends_watched = []
+    for movies in user_data["watched"]:
+        movies_user_watched.append(movies)
+    for friend in user_data["friends"]:
+        for film in friend["watched"]:
+            movies_friends_watched.append(film)
+    friend_unique_movies = []
+    for movies in movies_friends_watched:
+        if movies not in movies_user_watched:
+            if movies not in friend_unique_movies:
+                friend_unique_movies.append(movies)
+    return friend_unique_movies
+
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
