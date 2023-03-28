@@ -6,11 +6,16 @@ RATING_1 = 3.5
 def create_movie(title, genre, rating):
     '''
     input: title, genre, rating
-    output: 
+    output: dictionary
     '''
-    if not title or genre or rating:
+    if not title:
         return None
-    movie_dict = {"title":"", "genre":"", "rating":""}
+    if not genre: 
+      return None
+    if not rating:
+        return None
+    
+    movie_dict = {'title': title, 'genre': genre, 'rating': rating}
     return movie_dict
 
 def add_to_watched(user_data, movie):
