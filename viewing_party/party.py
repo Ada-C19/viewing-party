@@ -1,10 +1,20 @@
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
-    if title and genre and rating:
-        return {"title": title, "genre": genre, "rating": rating}
-    else:
-        return None
+    #create and empty dictionary to store title, genre and rating of the movie
+    movie_dictionary = {}
+    #this if statement evaluate that title, genre and rating
+    #have some value different from None
+    #besides checking if this parameters are truthy we also evaluate that they're the 
+    #appropiate type of data
+    if type(title) == str and type(genre) == str and type(rating) == float:
+        #if the parameters are truthy then we add title,genre and rating
+        #to movie_dictionary
+        movie_dictionary["title"] = title
+        movie_dictionary["genre"] = genre
+        movie_dictionary["rating"] = rating
+        return movie_dictionary
+    return None
 
 def add_to_watched(user_data, movie):
     watched_list = user_data["watched"]
@@ -12,8 +22,6 @@ def add_to_watched(user_data, movie):
     user_data["watched"] = watched_list
     return user_data
 
-
-#Theffy's solutions:
 def add_to_watchlist(user_data, movie):
     user_data["watchlist"].append(movie)
     return user_data
@@ -34,18 +42,63 @@ def watch_movie(user_data, title):
 
 
 
-
-
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
 
+def get_watched_avg_rating(user_data):
+    avg_rating = 0.0
+    sum = 0.0
+    count = 0.0
+
+    for movie in user_data["watched"]:
+        sum += movie["rating"]
+        count += 1
+    
+    try:
+        avg_rating = sum / count 
+    
+    except ZeroDivisionError:
+        return 0.0
+    
+    return avg_rating
+
 def get_most_watched_genre(user_data):
+    genre_list = []
     watched_list = user_data["watched"]
-    for movie in watched_list:
+    genre_count = 0
+    max_genre = genre_list[0]
+
+    if not watched_list:
+        return None
+    
+    for movie in range(len(watched_list)):
         genre = movie["genre"] 
+        genre_list.append("genre")
+
+    for i in genre_list:
+        current_genre = genre_list.count(i)
+        if current_genre > genre_count:
+            genre_count = current_genre
+            max_genre = i
 
 
+    return max_genre 
+
+
+
+
+# def get_highest_word_score(word_list):
+#     high_score = 0
+#     best_word = ""
+
+#     for word in word_list:
+#         score = score_word(word)
+
+#         if score > high_score:
+#             high_score = score
+#             best_word = word
+    
 
 # Create a function named `get_most_watched_genre`. This function should...
 
