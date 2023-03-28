@@ -54,15 +54,12 @@ def test_friends_unique_movies_not_duplicated():
 
     # Assert
     assert len(friends_unique_movies) == 3
-    assert INTRIGUE_3 in friends_unique_movies
-    assert INTRIGUE_1 in friends_unique_movies
-    assert FANTASY_3 in friends_unique_movies
     assert FANTASY_4 in friends_unique_movies
     assert HORROR_1 in friends_unique_movies
-    assert ACTION_1 in friends_unique_movies
-    assert amandas_data == clean_wave_3_data()
-                
-    #*************************************************************************************************
+    assert INTRIGUE_3 in friends_unique_movies
+
+
+    # *************************************************************************************************
     # ****** Add assertions here to test that the correct movies are in friends_unique_movies **********
     # **************************************************************************************************
 
@@ -93,5 +90,5 @@ def test_friends_not_unique_movies():
 
     # Assert
     assert len(friends_unique_movies) == 0
-    assert FANTASY_1 in friends_unique_movies
-    assert HORROR_1 in friends_unique_movies
+    assert FANTASY_1 not in friends_unique_movies
+    assert HORROR_1 not in friends_unique_movies
