@@ -38,6 +38,7 @@ def watch_movie(user_data, title):
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
+
 # Barbara
 def get_watched_avg_rating(user_data):
     sum_rating = 0
