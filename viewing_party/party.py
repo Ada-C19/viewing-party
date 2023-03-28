@@ -83,8 +83,43 @@ def add_to_watchlist(user_data, movie):
     user_data["watchlist"].append(movie)
     return user_data
         
+# ========================================= wave 01- # 4. add to watchlist ==========
     
+    
+    # user_data= {
+    #     "watchlist": [{"title": "A movie title", "genre": "A movie genre", "rating": "soem number"}],
+        
+    #     "watched" : [{"title": "A movie title", "genre": "A movie genre", "rating": "soem number"}] 
+    #     }
+    
+    # user_data is a dict that contains 2 keys: watchlist and watched
+    
+    # movie is a ditionary format contained in both watched and watchlist
+    
+    # each movie dictionary has a key named "title"
+    
+    # the parameter title is a value, associated with the key "title"
+def watch_movie(user_data, title):
+    
+    for movie in user_data["watchlist"]: 
+        
+        if title == movie["title"]:
+            # remove that movie dictionary from the watchlist
+            user_data["watchlist"].remove(movie)
 
+            # add the movie dictionary to the the watched
+            user_data["watched"].append(movie)
+            
+            #then return user data
+            # print(user_data)
+            return user_data
+            
+            # else, if the title is not a movie in the user's watchlist, 
+            # return the user_data
+    else: 
+        return user_data
+            
+        
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
