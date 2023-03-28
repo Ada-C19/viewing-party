@@ -83,11 +83,13 @@ watch_movie(janes_data, "Super Man")
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
+
+
 def get_watched_avg_rating(user_data):
     sum = 0
     if not user_data["watched"]:
         return 0.0
- 
+
     for movie in user_data["watched"]:
         try:
             sum += movie["rating"]
@@ -99,7 +101,7 @@ def get_watched_avg_rating(user_data):
 
 def get_most_watched_genre(user_data):
     genre_list = []
-   
+
     if not user_data["watched"]:
         return None
 
@@ -108,7 +110,7 @@ def get_most_watched_genre(user_data):
             genre_list.append(movie["genre"])
         else:
             return f"Invalid genre for {movie['title']}"
-      
+
     return max(genre_list, key=genre_list.count)
 
 # -----------------------------------------
@@ -116,9 +118,79 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 
 
+def get_unique_watched(user_data):
+    friend_watched = set()
+    user_watched = []
+
+    for friend_dict in user_data["friends"]:
+        for movie_dict in friend_dict["watched"]:
+            friend_movie_title = movie_dict["title"]
+            friend_watched.add(friend_movie_title)
+
+    for user_dict in user_data["watched"]:
+        user_title = user_dict["title"]
+        if user_title not in friend_watched:
+            user_watched.append(user_dict)
+
+    return user_watched
+
+
+user_data = {'friends': [{'watched': [{'genre': 'Fantasy',
+                                       'rating': 4.8,
+                                       'title': 'The Lord of the Functions: '
+                                       'The Fellowship of the '
+                                       'Function'},
+                                      {'genre': 'Fantasy',
+                                          'rating': 4.0,
+                                                'title': 'The Lord of the Functions: '
+                                       'The Return of the Value'},
+                                      {'genre': 'Fantasy',
+                                       'rating': 4.0,
+                                       'title': 'The Programmer: An '
+                                       'Unexpected Stack Trace'},
+                                      {'genre': 'Horror',
+                                          'rating': 3.5,
+                                          'title': 'It Came from the Stack '
+                                                   'Trace'}]},
+                         {'watched': [{'genre': 'Fantasy',
+                                       'rating': 4.8,
+                                       'title': 'The Lord of the Functions: '
+                                       'The Fellowship of the '
+                                       'Function'},
+                                      {'genre': 'Action',
+                                       'rating': 2.2,
+                                       'title': 'The JavaScript and the '
+                                       'React'},
+                                      {'genre': 'Intrigue',
+                                       'rating': 2.0,
+                                       'title': 'Recursion'},
+                                      {'genre': 'Intrigue',
+                                       'rating': 3.0,
+                                       'title': 'Zero Dark Python'}]}],
+             'watched': [{'genre': 'Fantasy',
+                          'rating': 4.8,
+                          'title': 'The Lord of the Functions: The Fellowship of '
+                          'the Function'},
+                         {'genre': 'Fantasy',
+                          'rating': 4.0,
+                          'title': 'The Lord of the Functions: The Two '
+                          'Parameters'},
+                         {'genre': 'Fantasy',
+                          'rating': 4.0,
+                          'title': 'The Lord of the Functions: The Return of the '
+                          'Value'},
+                         {'genre': 'Action',
+                          'rating': 2.2,
+                          'title': 'The JavaScript and the React'},
+                         {'genre': 'Intrigue', 'rating': 2.0, 'title': 'Recursion'},
+                         {'genre': 'Intrigue',
+                          'rating': 4.5,
+                          'title': 'Instructor Student TA Manager'}]}
+get_unique_watched(user_data)
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
+
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
