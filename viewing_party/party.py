@@ -91,6 +91,7 @@ def get_unique_watched(user_data):
 
     # print(unique_movie)
 
+
 # 2. Create a function named `get_friends_unique_watched`. This function should...
 
 # - take one parameter: `user_data`
