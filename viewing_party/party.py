@@ -112,15 +112,6 @@ def get_available_recs(user_data):
 # # ------------- WAVE 5 --------------------
 # # -----------------------------------------
 
-def get_most_watched_genre(user_data):
-    genre_count = {}
-    for movie in user_data["watched"]:
-        genre = movie["genre"]
-        if genre not in genre_count:
-            genre_count[genre] = 1
-        else:
-            genre_count[genre] += 1
-    return max(genre_count, key=genre_count.get, default=None)
 
 def get_new_rec_by_genre(user_data):
     recommended = []
