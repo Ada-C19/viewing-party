@@ -1,3 +1,4 @@
+from tests.test_constants import *
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
@@ -58,7 +59,25 @@ def get_unique_watched(user_data):
     """- Consider the movies that the user has watched, and consider the movies that their friends have watched. Determine which movies the user has watched, but none of their friends have watched.
 - Return a list of dictionaries, that represents a list of movies
 """
-    pass
+
+    set_of_data = {}
+    list_of_user_data = []
+    list_of_friends_data = []
+    
+    for i in user_data["watched"]:
+        list_of_user_data.append(i)
+        
+    for p in user_data["friends"]:
+        for k in p["watched"]:
+        
+            list_of_friends_data.append(k["title"])
+    
+    list_of_user_data = set(list_of_user_data)
+    list_of_friends_data = set(list_of_friends_data)
+    set_of_data = list_of_user_data.difference(list_of_friends_data)
+    return_list_of_user_data = list(set_of_data)   
+    return return_list_of_user_data
+
 
 def get_friends_unique_watched(user_data):
     """- Consider the movies that the user has watched, and consider the movies that their friends have watched. Determine which movies at least one of the user's friends have watched, but the user has not watched.
