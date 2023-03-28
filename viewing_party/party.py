@@ -169,9 +169,12 @@ def get_friends_unique_watched(user_data):
     unique_watched = []
     for watched_list in user_data["friends"]:
         for movie in watched_list["watched"]:
-            if movie.get("title") in difference:
+            title = movie.get("title")
+            if title not in unique_watched and title in difference:
                 unique_watched.append(movie)
-    
+    pprint.pprint(difference)
+    print()
+    pprint.pprint(unique_watched)
     return unique_watched    
 
 # -----------------------------------------
