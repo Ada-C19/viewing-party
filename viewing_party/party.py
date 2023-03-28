@@ -14,8 +14,11 @@ def create_movie(title, genre, rating):
     
 
 # 3rd function in wave_01
-def add_to_watch_list(user_data, movie): 
-    pass
+def add_to_watchlist(user_data, movie): 
+
+    user_data["watchlist"].append(movie)
+    return user_data
+
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
