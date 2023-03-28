@@ -221,6 +221,7 @@ def get_new_rec_by_genre (user_data):
 def get_rec_from_favorites(user_data):
     # print("user_data", user_data)
     # print("*****************")
+    user_favorite_movie = []
     user_watched = get_unique_watched(user_data)
     favorite_movie_titles = []
 
