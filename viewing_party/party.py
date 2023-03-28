@@ -6,7 +6,7 @@ def create_movie(title, genre, rating):
     #create empty dictionary to store the movie
     movie = { "title": "", "genre" : "", "rating" : 0}
 
-    #Check for edge case of one item being empty 
+    #Check for edge case of one item being none
     if title is None or genre is None or rating is None:
         return None
     else:
@@ -17,8 +17,12 @@ def create_movie(title, genre, rating):
     return movie
 
 def add_to_watched(user_data, movie):
-    pass
+    #add movie a dictionary to watchlist
+    user_data["watched"].append(movie)
+    return user_data
     
+    
+
 def add_to_watchlist(user_data, movie):
     pass
 
@@ -50,17 +54,12 @@ def get_watched_avg_rating(user_data):
 def get_most_watched_genre(user_data):
     genre_list = []
 
-    # Create a new list of "watched" movies in user_data dict
     movie_list = user_data["watched"]
-    # Iterate through movies in list of movies
     for movie in movie_list:
-        # Append genre values to the empty list genre_list
         genre_list.append(movie["genre"])
-    # If genre_list is empty, return None
     if len(genre_list) == 0:
         return None
     else:
-        # It was returning as a string in a list, so I used [0] to return genre as a string
         return(multimode(genre_list)[0])
 
 
