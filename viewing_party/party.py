@@ -24,7 +24,7 @@ def add_to_watched(user_data, movie):
     """Add a movie to watched list.
     
     Keyword arguments:
-    user_data -- dictionary containing movies user has watched
+    user_data -- dictionary containing movies user has and wants to watch
     movie -- dictionary containing title, genre, and rating
     """
     # Check movie isn't empty and is a dictionary
@@ -41,7 +41,7 @@ def add_to_watchlist(user_data, movie):
     """Add a movie to a watchlist.
     
     Keyword arguments:
-    user_data -- dictionary containing movies user wants to watch
+    user_data -- dictionary containing movies user has and wants to watch
     movie -- dictionary containing title, genre, and rating
     """
     # Check movie isn't empty and is a dictionary
@@ -78,15 +78,45 @@ def watch_movie(user_data, title):
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
 def get_watched_avg_rating(user_data):
-
+    """Return average rating of all movies in watched list.
+    
+    Keyword arguments:
+    user_data -- dictionary containing movies user has and wants to watch
+    """
+    # Empty watched list
     if not user_data["watched"]:
         return 0.0
     
-    avg_rating = 0 
+    sum_of_ratings = 0 
     for movie in user_data["watched"]:
-        avg_rating += movie.get("rating")
+        sum_of_ratings += movie.get("rating") # Add to sum
     
-    return avg_rating / len(user_data["watched"])
+    # Calculate and return average
+    return sum_of_ratings / len(user_data["watched"])
+
+def get_most_watched_genre(user_data):
+    """Return most watched genre in watched list.
+    
+    Keyword arguments:
+    user_data -- dictionary containing movies user has and wants to watch
+    """
+    # Empty watched list
+    if not user_data["watched"]:
+        return None
+    
+    # Track each genre and its count
+    most_watched_genres = {}
+    for movie in user_data["watched"]:
+        genre = movie.get("genre")
+        if not genre in most_watched_genres:
+            most_watched_genres[genre] = 1
+        else:
+            most_watched_genres[genre] += 1
+    
+    # Determine first instance of genre in dictionary with highest count
+    most_watched_genre = max(most_watched_genres, key=most_watched_genres.get)
+    return most_watched_genre
+
 
 
 # -----------------------------------------
