@@ -36,7 +36,7 @@ def watch_movie(user_data, title):
 
 def get_watched_avg_rating(user_data):
     watched = user_data["watched"]
-    if not watched: return 0
+    if not watched: return 0.0
 
     return sum(watched[i]["rating"] for i in range(len(watched))) / len(watched)
 
@@ -60,6 +60,7 @@ def get_friend_movies(user_data):
     return friend_watched
 
 def create_unique_list(movies, comparison):
+    #Return a list of items in movies that are not in comparison
     unique_movies = []
     for movie in movies:
         if movie not in comparison: unique_movies.append(movie)
@@ -81,7 +82,7 @@ def get_friends_unique_watched(user_data):
     friend_watched = get_friend_movies(user_data)
 
     #Compare friends' watched movies to own watched movies
-    return(create_unique_list(friend_watched, watched))
+    return create_unique_list(friend_watched, watched)
 
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
