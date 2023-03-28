@@ -31,7 +31,6 @@ def watch_movie(user_data, title):
                 user_data["watchlist"].remove(movie)
                 return user_data
 
-
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
@@ -45,10 +44,6 @@ def get_watched_avg_rating(user_data):
 
 def get_most_watched_genre(user_data):
     pass
-
-
-
-
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
