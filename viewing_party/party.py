@@ -1,3 +1,4 @@
+from collections import Counter
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
@@ -37,38 +38,39 @@ def watch_movie(user_data, title):
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 def get_watched_avg_rating(user_data):
+    # could make simpler using counter import
     average_rate = 0
     if len(user_data["watched"]) == 0:
         return (0.0)
     for movie_dict in user_data["watched"]:
         average_rate += movie_dict["rating"]
     count = len(user_data["watched"])
-    
+
     rate = average_rate / count
     print(rate)
     return rate
     
 # user_data = {"watched":[{"title":"Ghost","genre":"horror","rating":5}, {"title":"The well","genre":"horror","rating":3}]}
+user_data = {"watched":[{"title":"Ghost","genre":"horror","rating":5},{"title":"Ghost","genre":"horror","rating":5},{"title":"The well","genre":"horror","rating":3},{"title":"Wednesday","genre":"comedy","rating":5},{"title":"Wednesday","genre":"comedy","rating":5},{"title":"The car","genre":"horror","rating":3}]}
 
 # get_watched_avg_rating(user_data)
 def get_most_watched_genre(user_data):
-
-    # for resturant_dict in restaurants:
-   
-    #     if len(best_dict) == 0:
-    #         best_dict = resturant_dict
-    #     elif best_dict["rating"] < resturant_dict["rating"]:
-    #         best_dict = resturant_dict
-            
-    # return best_dict
-    if len(user_data["watched"]) == 0:
+    
+    if user_data["watched"] == []:
         return None
-    for genra in user_data["watched"]:
-        average_rate += genra["rating"]
-    count = len(user_data["watched"])
+    else: 
+        genres_dict = {}
 
-user_data = {"watched":[{"title":"Ghost","genre":"horror","rating":5},{"title":"Wednesday","genre":"comedy","rating":5},{"title":"The well","genre":"horror","rating":3}]}
+        for index in range(len(user_data["watched"])):
+            genre = user_data["watched"][index]["genre"]
+            if genre in genres_dict:
+                genres_dict[genre] += 1
+            else:
+                genres_dict[genre] = 1
 
+        most_popular = max(genres_dict, key = genres_dict.get)
+
+        return most_popular
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
