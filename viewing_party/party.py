@@ -137,14 +137,16 @@ def get_watched_avg_rating(user_data):
         return 0.0
     total_ratings = sum(movie.get("rating", 0.0) for movie in watched)
     avg_rating = total_ratings / len(watched)
-    return avg_rating# ========================================= wave 02- # 1. get_watched_avg_rating ==========
+    return avg_rating
+
+# ========================================= wave 02- # 1. get_watched_avg_rating ==========
 
 # user_data = {
     # 'watched': [
         # {'genre': 'Fantasy', 'rating': 4.8, 'title': 'The Lord of the Functions: The Fellowship of the Function'}... 'rating': 2.0, 'title': 'Recursion'}, 
         # {'genre': 'Intrigue', 'rating': 4.5, 'title': 'Instructor Student TA Manager'}]}
 
-def get_watched_avg_rating(user_data):
+# def get_watched_avg_rating(user_data):
     
     # for movie in user_data["watched": ]
     # average = total ratings / length of watched list
