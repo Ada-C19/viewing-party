@@ -17,16 +17,18 @@ def create_movie(title, genre, rating):
     return movie
 
 def add_to_watched(user_data, movie):
-    #add movie a dictionary to watchlist
+    #add movie a dictionary to watched
     user_data["watched"].append(movie)
     return user_data
     
-    
-
 def add_to_watchlist(user_data, movie):
-    pass
+    #add movie a dictionary to watchlist
+    user_data["watchlist"].append(movie)
+    return user_data
 
-
+def watch_movie(user_data, title):
+    
+    
 
 
 # -----------------------------------------
