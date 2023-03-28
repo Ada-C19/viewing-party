@@ -44,6 +44,25 @@ def watch_movie(user_data, title):
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
+def get_watched_avg_rating(user_data):
+    total_rating = 0
+    
+    
+    watched = user_data["watched"]
+    
+    for movie in watched:
+        rating = movie["rating"]
+        total_rating += rating
+
+    try:
+        average_rating = total_rating / len(watched)
+    except ZeroDivisionError:
+        average_rating = 0.0
+
+    return average_rating
+    
+    
+        
 
 
 # -----------------------------------------
