@@ -17,15 +17,15 @@ def add_to_watched(user_data, movie):
 
 def add_to_watchlist(user_data, movie):
     """
-    input: user_data dictionary, and movie 
-    output:
+    input: user_data dictionary, and movie dictionary
+    output: updated user_data dictionary
     """
 
 
 def watch_movie(user_data, title):
     """
     input: user_data dictionary, and title string
-    output:
+    output: updated user_data dictionary 
     """ 
 
 # -----------------------------------------
@@ -89,4 +89,3 @@ def get_rec_from_favorites(user_data):
     input: user_data dictionary with field "favorites", value of "favorites" is a list of movie dictionaries
     output: recommended movies list
     """
-
