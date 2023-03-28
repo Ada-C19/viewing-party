@@ -22,6 +22,13 @@ def add_to_watchlist(user_data, movie):
         user_data["watchlist"].append(movie)
     return user_data
 
+def watch_movie(user_data, title):
+    for user in user_data["watchlist"]:
+        if user["title"] == title:
+            user_data["watchlist"].remove(user)
+            user_data["watched"].append(user)
+
+    return user_data
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
