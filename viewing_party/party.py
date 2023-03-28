@@ -63,6 +63,7 @@ def get_unique_watched(user_data):
 
     for movie in user_data["watched"]:
         user_watched.append(movie)
+
     for each in user_data["friends"]:
         for i in range(len(each["watched"])):
             friend_watched.append(each["watched"][i])
@@ -72,16 +73,26 @@ def get_unique_watched(user_data):
             friend_not_watched.append(movie)
     return friend_not_watched
 
+def get_friends_unique_watched(user_data):
+    user_watched = []
+    friend_watched = []
+    user_not_watched = []
 
+    for movie in user_data["watched"]:
+        user_watched.append(movie)
 
+    for each in user_data["friends"]:
+        for i in range(len(each["watched"])):
+            friend_watched.append(each["watched"][i])
 
+    for movie in friend_watched:
+        if movie not in user_watched and movie not in user_not_watched:
+            user_not_watched.append(movie)
 
+    return user_not_watched
 
-
-        
-# -----------------------------------------
 # ------------- WAVE 4 --------------------
-# -----------------------------------------
+
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
