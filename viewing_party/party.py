@@ -45,18 +45,11 @@ def get_watched_avg_rating(user_data):
 
 def get_most_watched_genre(user_data):
     genres = []
-    print(user_data)
-    # iterate over list of dicts
-    if user_data["watched"]: 
+    if user_data["watched"]:
         for movie in user_data["watched"]:
             genres.append(movie["genre"])
-            # print(genres)
-            genre_most_watched = max(genres, key = genres.count)
-            return genre_most_watched
+        return max(genres, key=genres.count)
     return None
-
-
-
 
 
 # -----------------------------------------
@@ -97,7 +90,28 @@ def get_friends_unique_watched(user_data):
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
 
+def get_available_recs(user_data): 
+    recommended_movies = []
+    friends_watched = []
+    friends_movies = []
+    for friend in user_data["friends"]: 
+        for movie in friend["watched"]:
+            friends_watched.append(movie)
+            if movie not in user_data["watched"]:
+                friends_movies.append(movie)
+
+    for movie in user_data["watched"]:
+        user_host = movie["host"]
+        for film in friends_movies: 
+            if film["host"] in user_host: 
+                if film not in recommended_movies:
+                    recommended_movies.append(film)
+
+    return recommended_movies
+
+
+
+
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
-
