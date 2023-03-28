@@ -40,6 +40,7 @@ def test_new_genre_rec_from_empty_friends():
     # Arrange
     sonyas_data = {
         "watched": [INTRIGUE_1b],
+        "favorites": [],
         "friends": [
             {
                 "watched": []
