@@ -13,7 +13,6 @@ def create_movie(movie_title, genre, rating):
     return None
 
 
-
 # user data is a dict and it has a key "watched" --> list 
 # add movie to this list 
 
@@ -50,6 +49,9 @@ def get_watched_avg_rating(user_data):
         running_total += movie["rating"]
 
     return running_total / len(user_data["watched"])
+
+
+
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
