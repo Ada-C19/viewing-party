@@ -16,8 +16,31 @@ def create_movie(title, genre, rating):
         return movie_dictionary
     return None
 
+def add_to_watched(user_data, movie):
+    #append movie dictionary to the key "watched" in user_data dictionary
+    user_data["watched"].append(movie)
 
+    return user_data
 
+def add_to_watchlist(user_data, movie):
+    #append movie dictionary to the key "watchlist" in user_data dictionary
+    user_data["watchlist"].append(movie)
+
+    return user_data
+
+def watch_movie(user_data, title):
+    #nested for loop to loop through the outer dictionary first "user_data"
+    #and look for the key "watchlist"
+    for watch in user_data.keys():
+        if watch == "watchlist":
+            #inner for loop check if the title of the movie is in the list of dictionaries
+            #stored in "watchlist key"
+            for movie in user_data[watch]:
+                if movie["title"] == title:
+                    temp_movie = user_data[watch].pop()
+                    add_to_watched(user_data, temp_movie)
+                    
+    return user_data
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
