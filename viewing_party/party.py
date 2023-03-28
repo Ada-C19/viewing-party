@@ -69,26 +69,49 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
-def get_unique_watched(user_data):
-    user_titles = []
-    friend_titles = []
-    unique_list_dict = []
-    
+def get_user_titles(user_data):
+    user_titles  = []
     for movie in user_data["watched"]:
         user_titles.append(movie["title"])
-    
+    return user_titles
+
+def get_friend_titles(user_data):
+    friend_titles = []
     for friend_movie in user_data["friends"]:
         for watched_dict in friend_movie['watched']:
             friend_titles.append(watched_dict["title"])
+    return friend_titles
+
+def get_unique_watched(user_data):
+    user_titles = get_user_titles(user_data)
+    friend_titles = get_friend_titles(user_data)
     
-    result = set(user_titles) - set(friend_titles)
-    
+    user_unique_list = []
+  
+    set_difference = set(user_titles) - set(friend_titles)
    
     for movie in user_data["watched"]:
-        for title in result:
+        for title in set_difference:
             if movie["title"] == title:
-                unique_list_dict.append(movie)
-    return unique_list_dict
+                user_unique_list.append(movie)
+    return user_unique_list
+
+def get_friends_unique_watched(user_data):
+    user_titles = get_user_titles(user_data)
+    friend_titles = get_friend_titles(user_data)
+
+    friend_unique_list = []
+    set_difference = set(friend_titles) - set(user_titles)
+
+    for friend_movie in user_data["friends"]:
+        for friends_watched_dict in friend_movie['watched']:
+            for title in set_difference:
+                if friends_watched_dict["title"] == title:
+                    friend_unique_list.append(friends_watched_dict)
+
+    return friend_unique_list
+
+
 
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
