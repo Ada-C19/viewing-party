@@ -23,22 +23,24 @@ def add_to_watchlist(user_data, movie):
 
 def watch_movie(user_data, movie):
     # look up movie in watchlist
-    tracker_dict = {}
+    tracker_dict = None
     for movie_dict in user_data["watchlist"]:
         if movie == movie_dict["title"]:
+            add_to_watched(user_data, movie_dict)
             tracker_dict = movie_dict
-        else:
-            return user_data
+        #else:
+            #return user_data
+
     # reassign movie dictionary to watchedlist
-    user_data["watched"].append(tracker_dict)
+    #user_data["watched"].append(movie_dict)
 
     # iterate through index of watchlist
-    index = 0
-    for i in range(len(user_data["watchlist"])):
-        if user_data["watchlist"][i] == tracker_dict:
-            index = i
-
-    user_data["watchlist"].pop(index)
+    # index = 0
+    # for i in range(len(user_data["watchlist"])):
+    #     if user_data["watchlist"][i] == tracker_dict:
+    #         index = i
+    if tracker_dict:
+        user_data["watchlist"].remove(tracker_dict)
 
     return user_data
 # -----------------------------------------
