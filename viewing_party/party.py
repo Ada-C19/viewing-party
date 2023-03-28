@@ -78,7 +78,7 @@ def watch_movie(user_data, title):
         # else:
             # return the `user_data`    
             # return user_data
-# ========================================= wave 01- # 4. add to watchlist ==========
+# ========================================= wave 01- # 4. watch movie ==========
 
 def watch_movie(user_data, title):
     # if there's a movie dictionary in watchlist with the title fleabag, remove it from watchlist and add it to watched
@@ -131,6 +131,22 @@ def watch_movie(user_data, title):
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
 
+# ========================================= wave 02- # 1. get_watched_avg_rating ==========
+
+# user_data = {
+    # 'watched': [
+        # {'genre': 'Fantasy', 'rating': 4.8, 'title': 'The Lord of the Functions: The Fellowship of the Function'}... 'rating': 2.0, 'title': 'Recursion'}, 
+        # {'genre': 'Intrigue', 'rating': 4.5, 'title': 'Instructor Student TA Manager'}]}
+
+def get_watched_avg_rating(user_data):
+    
+    # for movie in user_data["watched": ]
+    # average = total ratings / length of watched list
+    # total_ratings = user_data["watched"]["ratings"]
+    
+    # print(user_data["watched"][0]["rating"]) = 4.8
+    # print(len(user_data["watched"])) # 6
+    
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
