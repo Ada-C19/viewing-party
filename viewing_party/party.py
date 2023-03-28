@@ -147,6 +147,33 @@ def get_unique_watched(user_data):
     
     return unique_watched
 
+def get_friends_unique_watched(user_data):
+    """Return list of dictionaries of movies only friends watched.
+    
+    Keyword arguments:
+    user_data -- dictionary containing movies user and friends has watched
+    """
+    # Create set of user movies watched
+    user_watched = set()
+    for movie in user_data["watched"]:
+        user_watched.add(movie.get("title"))
+
+    # Create set of friends' movies watched
+    friends_watched = set()
+    for watched_list in user_data["friends"]:
+        for movie in watched_list["watched"]:
+            friends_watched.add(movie["title"])
+
+    # Find watched movies unique to friends
+    difference = friends_watched - user_watched
+    unique_watched = []
+    for watched_list in user_data["friends"]:
+        for movie in watched_list["watched"]:
+            if movie.get("title") in difference:
+                unique_watched.append(movie)
+    
+    return unique_watched    
+
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
