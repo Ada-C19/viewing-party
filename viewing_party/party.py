@@ -13,7 +13,6 @@ def create_movie(movie_title, genre, rating):
     
     return None
 
-
 # user data is a dict and it has a key "watched" --> list 
 # add movie to this list 
 
@@ -129,14 +128,16 @@ def get_new_rec_by_genre(user_data):
 
 def get_rec_from_favorites(user_data):
     recommended = []
+    unique_watched = get_unique_watched(user_data)
     for movie in user_data["favorites"]:
-        if movie not in user_data["friends"]:
+        if movie in unique_watched:
             recommended.append(movie)
 
     return recommended
 
 # def get_rec_from_favorites(user_data):
 #     recommended = []
+    
 #     for movie in user_data["favorites"]:
 #         movie_in_friends_watched = False
 #         for friend in user_data["friends"]:
