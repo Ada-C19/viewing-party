@@ -102,14 +102,20 @@ def get_friends_unique_watched(user_data):
 
     friend_unique_list = []
     set_difference = set(friend_titles) - set(user_titles)
+    
 
     for friend_movie in user_data["friends"]:
         for friends_watched_dict in friend_movie['watched']:
             for title in set_difference:
                 if friends_watched_dict["title"] == title:
                     friend_unique_list.append(friends_watched_dict)
-
-    return friend_unique_list
+    no_duplicates_friends_list = []
+    for item in friend_unique_list:
+        if item not in no_duplicates_friends_list:
+            no_duplicates_friends_list.append(item)
+   
+    
+    return no_duplicates_friends_list
 
 
 
