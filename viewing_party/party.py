@@ -33,9 +33,9 @@ def add_to_watchlist(user_data, movie):
     output: updated user_data dictionary
     """
 
-    # user_data["watch_list"].append(movie) 
+    user_data["watchlist"].append(movie) 
 
-    # return user_data
+    return user_data
 
 
 
