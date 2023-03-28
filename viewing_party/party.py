@@ -24,7 +24,6 @@ def create_movie(title, genre, rating):
         movie_dict["rating"] = rating
 
 # return the dictionary
-    print(movie_dict)
     return movie_dict
 
 create_movie("Title", "Genre", "Rating")
@@ -48,14 +47,40 @@ add_to_watched({"watched": []}, {
 def add_to_watchlist(user_data, movie):
 
     user_data["watchlist"].append(movie)
-    print(user_data)
     return user_data
 
-
-
+# janes_data = {
+#             "watchlist": [{
+#                 "title": "MOVIE_TITLE_1",
+#                 "genre": "GENRE_1",
+#                 "rating": "RATING_1"
+#             }],
+#             "watched": []
+#         }
+# print (janes_data["watchlist"][0]["title"])
 
 #---Wave_1_function_4---
-# def watch_movie(user_data, title):
+def watch_movie(user_data, title):
+
+    # if title not in user_data["watchlist"]["title"]:
+    #     return user_data
+
+    # else:
+        for movie in user_data["watchlist"]:
+            if title in movie["title"]:
+                user_data["watchlist"].remove(user_data["watchlist"][movie])
+                user_data["watched"].append(user_data["watchlist"][movie])
+            return user_data
+            
+
+# watch_movie({
+#             "watchlist": [{
+#                 "title": "MOVIE_TITLE_1",
+#                 "genre": "GENRE_1",
+#                 "rating": "RATING_1"
+#             }],
+#             "watched": []
+#         }, "MOVIE_TITLE_1")
 
 # ------------- WAVE 2 --------------------
 # ---Wave_2_function_1---
