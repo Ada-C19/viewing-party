@@ -5,7 +5,9 @@ def create_movie(title, genre, rating):
     movie_dictionary = {}
     #this if statement evaluate that title, genre and rating
     #have some value different from None
-    if title and genre and rating:
+    #besides checking if this parameters are truthy we also evaluate that they're the 
+    #appropiate type of data
+    if type(title) == str and type(genre) == str and type(rating) == float:
         #if the parameters are truthy then we add title,genre and rating
         #to movie_dictionary
         movie_dictionary["title"] = title
