@@ -60,7 +60,7 @@ def get_most_watched_genre(user_data):
     highest_count = 0
 
     if len(user_data["watched"]) == 0:
-        return Nonegit 
+        return None
 
     for movie in user_data["watched"]:
         if movie["genre"] in freq:
