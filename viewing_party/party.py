@@ -1,7 +1,28 @@
 # ------------- WAVE 1 --------------------
 
+#Create definition to store movie
 def create_movie(title, genre, rating):
+    #create empty dictionary to store the movie
+    movie = { "title": "", "genre" : "", "rating" : 0}
+
+    #Check for edge case of one item being empty 
+    if title is False or genre is False or rating is False:
+        return None
+    else:
+        movie["title"]= title
+        movie["genre"]= genre
+        movie["rating"]= rating
+
+    return movie
+
+def add_to_watched(user_data, movie):
     pass
+    
+def add_to_watchlist(user_data, movie):
+    pass
+
+
+
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
