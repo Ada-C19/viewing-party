@@ -1,7 +1,11 @@
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
-    def create_movie(title, genre, rating):
+
+    """
+    input: title, genre, rating
+    output: dictionary with the three keys "title", "genre", and "rating"
+    """
     movie_dict = {}
     if title and genre and rating == True: 
         movie_dict.keys["title"] = title
@@ -10,7 +14,32 @@ def create_movie(title, genre, rating):
     else:
         return None 
 
-create_movie("harry potter", "fantasy", "10")
+
+  
+
+
+
+
+def add_to_watched(user_data, movie):
+    """
+    input: user_data dictionary with nested list as values, movie dictionary
+    output: updated user_data dictionary 
+    """
+
+
+
+def add_to_watchlist(user_data, movie):
+    """
+    input: user_data dictionary, and movie 
+    output:
+    """
+
+
+def watch_movie(user_data, title):
+    """
+    input: user_data dictionary, and title string
+    output:
+    """ 
 
 
 # -----------------------------------------
