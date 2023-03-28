@@ -1,16 +1,15 @@
 # Viewing Party
-Collaborators: Lou & Linh </br>
-</br>
-Pair Plan: </br>
-</br>
-Access Needs: Active collaboration times are flexible anytime between 3:00 pm - 5:30 pm and virtually from 7:00 pm - 12:00 am as long as needed. </br>
-</br>
-Learning Style: Experimental "learn as we go" method where we prefer to explore different approaches to solving the problem in code and watching it fail. This helps us gain a better understanding of what our code is doing, what works or not, and why. </br>
-</br>
-Feedback Preferences: As long as communication is clear and ongoing, we have no preference whether the feedback is through Slack, email, phone, or verablly in person. We think it's great to keep notes of each other's feedback just to make sure we accomodate and learn from other. </br>
-</br>
-One communication skill we would like to improve during this project: We would like to get better at articulating our algorithmic thought process when sharing how to approach problems with each other while also addressing any self-doubt and supporting one another. </br>
-</br>
+<p><b>Collaborators:</b> Lou Loera & Linh Huynh</p>
+
+<p><h2>Pair Plan:</h2></p>
+
+<p><b>Access Needs:</b> Active collaboration times are flexible anytime between 3:00 pm - 5:30 pm and virtually from 7:00 pm - 12:00 am as long as needed. </p>
+
+<p><b>Learning Style:</b> Experimental "learn as we go" method where we prefer to explore different approaches to solving the problem in code and watching it fail. This helps us gain a better understanding of what our code is doing, what works or not, and why. </br>
+
+<p><b>Feedback Preferences:</b> As long as communication is clear and ongoing, we have no preference whether the feedback is through Slack, email, phone, or verablly in person. We think it's great to keep notes of each other's feedback just to make sure we accomodate and learn from other. </p>
+
+<p><b>One communication skill we would like to improve during this project:</b> We would like to get better at articulating our algorithmic thought process when sharing how to approach problems with each other while also addressing any self-doubt and supporting one another. </p>
 
 ## Skills Assessed
 
