@@ -124,15 +124,6 @@ def get_friends_unique_watched(user_data):
     return friend_unique_movies
             
 
-
-
-
-
-    
-    
-
-
-    
     
         
 # -----------------------------------------
