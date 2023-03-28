@@ -19,7 +19,7 @@ def test_create_successful_movie():
     assert new_movie["genre"] == GENRE_1
     assert new_movie["rating"] == pytest.approx(RATING_1)
 
-#@pytest.mark.skip()
+# @pytest.mark.skip()
 def test_create_no_title_movie():
     # Arrange
     movie_title = None
@@ -158,9 +158,9 @@ def test_moves_movie_from_watchlist_to_empty_watched():
     # Assert
     assert len(updated_data["watchlist"]) == 0
     assert len(updated_data["watched"]) == 1
-    assert updated_data["watchlist"] == []
+    assert updated_data['watched'][0]['title'] ==  MOVIE_TITLE_1
     
-    raise Exception("Test needs to be completed.")
+    # raise Exception("Test needs to be completed.")
     # *******************************************************************************************
     # ****** Add assertions here to test that the correct movie was added to "watched" **********
     # *******************************************************************************************
@@ -183,8 +183,9 @@ def test_moves_movie_from_watchlist_to_watched():
     # Assert
     assert len(updated_data["watchlist"]) == 1
     assert len(updated_data["watched"]) == 2
+    assert updated_data['watched'][1]['title'] == MOVIE_TITLE_1
     
-    raise Exception("Test needs to be completed.")
+    # raise Exception("Test needs to be completed.")
     # *******************************************************************************************
     # ****** Add assertions here to test that the correct movie was added to "watched" **********
     # *******************************************************************************************
