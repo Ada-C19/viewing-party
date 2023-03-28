@@ -5,19 +5,21 @@ def create_movie(title, genre, rating):
         return { "title": title, "genre": genre, "rating": rating}
     else:
         return None
-    
+
+
 def add_to_watched(user_data, movie):
     user_data["watched"].append(movie)
     return user_data
+
 
 def add_to_watchlist(user_data, movie):
     user_data["watchlist"].append(movie)
     return user_data
 
+
 def watch_movie(user_data, title):
     watchlist = user_data["watchlist"]
     watched = user_data["watched"]
-    
     for movie in watchlist:
         if movie["title"] == title:
             watchlist.remove(movie)
@@ -29,21 +31,32 @@ def watch_movie(user_data, title):
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
-# def get_watched_avg_rating(user_data):
-    # get values from "rating" keys
-    # avg values
-    # return avg
-    # if no movies, return None
+def get_watched_avg_rating(user_data):
+    rating_sum = 0
+    if len(user_data["watched"]) < 1:
+        return 0.0
+    for movie in user_data["watched"]:
+        rating_sum += movie["rating"]
+        rating_sum = float(rating_sum)
+    avg_rating = rating_sum / len(user_data["watched"])
+    return avg_rating
 
 
-# def get_most_watched_genre(user_data):
-
+def get_most_watched_genre(user_data):
+    genre_list = []
+    if len(user_data["watched"]) < 1:
+        return None
+    for movie in user_data["watched"]:
+        genre = movie.get("genre")
+        genre_list.append(genre)
+    genre_count = max(set(genre_list), key=genre_list.count)
+    return genre_count
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 
-        
+
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
@@ -54,13 +67,23 @@ def watch_movie(user_data, title):
 # title = True
 # genre = True
 # rating = True
-# user_data = {"watched": []}
-# movie = {
+# user_data = {
+#     "watched": [{
 #         "title": "Title A",
 #         "genre": "Horror",
 #         "rating": 3.5
+#     }, {
+#         "title": "Title A",
+#         "genre": "Romance",
+#         "rating": 4.7}, 
+#         {
+#         "title": "Title A",
+#         "genre": "Romance",
+#         "rating": 3.5
+#     }]
 #     }
-
+# get_watched_avg_rating(user_data)
+# get_most_watched_genre(user_data)
 # movie2 = {
 #         "title": "Title B",
 #         "genre": "Horror",
