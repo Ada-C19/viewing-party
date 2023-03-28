@@ -28,6 +28,12 @@ def add_to_watchlist(user_data, movie):
 
 def watch_movie(user_data, title):
     
+    #check if title is in watchlist, add it to watched
+    for movie in user_data["watchlist"]:
+        if title in movie["title"]:
+            add_to_watched(user_data, movie) 
+            user_data["watchlist"].remove(movie)
+    return user_data
     
 
 
