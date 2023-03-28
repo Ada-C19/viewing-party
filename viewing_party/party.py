@@ -29,8 +29,8 @@ def watch_movie(user_data, title):
     watchlist = user_data["watchlist"]
     for i in range(len(watchlist)):
         if watchlist[i]["title"] == title:
-            del watchlist[i]
             watched.append(watchlist[i])
+            del watchlist[i]
         
     return user_data 
 
@@ -63,36 +63,28 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
-def get_unique_watched(user_data):
-    my_movie_list = []
-    for i in range(0,len(user_data["watched"])):
-	    my_movie_list.append(user_data["watched"][i])
-    
+def get_unique_watched(user_data):    
     friend_movie_list = []
-    for i in range(0,len(user_data["friends"])):
-	    for j in range(0,len(user_data["friends"][i]["watched"])):
+    for i in range(len(user_data["friends"])):
+	    for j in range(len(user_data["friends"][i]["watched"])):
 		    friend_movie_list.append(user_data["friends"][i]["watched"][j])
 
     unique_movies = []
-    for movie in my_movie_list:
+    for movie in user_data["watched"]:
 	    if movie not in friend_movie_list:
 		    unique_movies.append(movie)
 
     return unique_movies
 
 def get_friends_unique_watched(user_data):
-    my_movie_list = []
-    for i in range(0,len(user_data["watched"])):
-	    my_movie_list.append(user_data["watched"][i])
-    
     friend_movie_list = []
-    for i in range(0,len(user_data["friends"])):
-	    for j in range(0,len(user_data["friends"][i]["watched"])):
+    for i in range(len(user_data["friends"])):
+	    for j in range(len(user_data["friends"][i]["watched"])):
 		    friend_movie_list.append(user_data["friends"][i]["watched"][j])
 
     unique_movies = []
     for movie in friend_movie_list:
-	    if movie not in my_movie_list and movie not in unique_movies:
+	    if movie not in user_data["watched"] and movie not in unique_movies:
 		    unique_movies.append(movie)
 
     return unique_movies
@@ -123,6 +115,7 @@ def get_new_rec_by_genre(user_data):
         if movie["genre"] == genre:
             recommendation_movie.append(movie)
     return recommendation_movie
+
 def get_rec_from_favorites(user_data):
     recs = []
     unique = get_unique_watched(user_data)
