@@ -3,8 +3,6 @@ from statistics import mode
 
 # ------------- WAVE 1 --------------------
 
-def create_movie(title, genre, rating):
-    pass 
 def create_movie(movie_title, genre, rating):
     if movie_title and genre and rating:
         return {
@@ -110,7 +108,24 @@ def get_available_recs(user_data):
     return available_movies
 
 
-# -----------------------------------------
-# ------------- WAVE 5 --------------------
-# -----------------------------------------
+# # -----------------------------------------
+# # ------------- WAVE 5 --------------------
+# # -----------------------------------------
 
+def get_new_rec_by_genre(user_data):
+    recommended = []
+    favorite_genre = get_most_watched_genre(user_data)
+
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            if movie not in user_data["watched"] and movie["genre"] == favorite_genre:
+                recommended.append(movie)
+    print(recommended)
+    return recommended
+
+def get_rec_from_favorites(user_data):
+    recommended = []
+    for movie in user_data["favorites"]:
+        if movie not in user_data["friends"]["watched"]:
+            recommended.append(movie)
+    return recommended
