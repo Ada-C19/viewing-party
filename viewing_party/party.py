@@ -55,7 +55,7 @@ def get_most_watched_genre(user_data):
     num_action_movies = 0
     num_intrigue_movies = 0
 
-    # iterate through the watched list to add ratings and genres to their respective variables
+    # iterate through the watched list movies to increment the corresponding genre count
     for movie in watched_list:
         if movie["genre"] == "Fantasy":
             num_fantasy_movies += 1
@@ -66,7 +66,7 @@ def get_most_watched_genre(user_data):
 
     most_watched = max(num_action_movies, num_fantasy_movies, num_intrigue_movies)
 
-    # find the corresponding genre to the max rating
+    # find the corresponding genre to the most_watched amount
     if num_action_movies == most_watched:
         return "Action"
     elif num_fantasy_movies == most_watched:
