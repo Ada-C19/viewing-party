@@ -52,16 +52,40 @@ def get_watched_avg_rating(user_data):
     
     sum_rating = 0
     watched_movies = user_data["watched"]
+
     if len(watched_movies) == 0: return 0.0
+
     for movie in watched_movies:
         sum_rating += movie["rating"]
+
     average_rating = sum_rating / len(watched_movies)
+
     return average_rating
 
 
 # Alycia
-def get_most_watched_genre(janes_data):
-    pass
+def get_most_watched_genre(user_data):
+    genre_dict = {}
+    highest_num = 0
+    highest_genre = ""
+    watched_movies = user_data["watched"]
+
+    if len(watched_movies) == 0: return None
+
+    for movie in watched_movies:
+        if movie["genre"] in genre_dict:
+            genre_dict[movie["genre"]] += 1
+        else:
+            genre_dict[movie["genre"]] = 1
+
+    for genre, num in genre_dict.items():
+        if num > highest_num:
+            highest_num = num
+            highest_genre = genre
+    
+    return highest_genre
+
+
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
