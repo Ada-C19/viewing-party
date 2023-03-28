@@ -31,35 +31,13 @@ def watch_movie(user_data, title):
             watched_value.append(item)
             return user_data
     return user_data
-    
-    #user_data = {"watchlist": [new_movie], "watched": [watched_movie]}
-    #title = ""
-    # if title != str:
-    #     return None
-    #elif title in user_data["watchlist"][0]["title"]:
-    # for index in len(user_data["watchlist"]):
-    #     if title in user_data["watchlist"][index]["title"]:
-    #         user_data["watchlist"].pop(index)
-    #         #user_data["wacthlist"].remove(title)
-    #         user_data["watched"].append(title)
-    #         return user_data
-    #     else:
-    #         return user_data 
-        
-        
-        
-        
-    
-    
-     
-      
-     
-        
-    
+
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
+
+
 
 
 # -----------------------------------------
