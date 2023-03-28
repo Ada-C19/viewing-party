@@ -59,6 +59,8 @@ def get_watched_avg_rating(user_data):
         average_rating = 0.0
 
     return average_rating
+
+
     
 
 
