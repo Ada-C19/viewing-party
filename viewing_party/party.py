@@ -45,6 +45,7 @@ def watch_movie(user_data, movie):
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
 def get_watched_avg_rating(user_data):
+    pass
     #access watched and sum key values in list
     #take sum of key values or rating and divide by len of 
 
