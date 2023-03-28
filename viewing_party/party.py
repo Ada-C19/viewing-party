@@ -63,8 +63,22 @@ def watch_movie(user_data, title):
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
+def get_watched_avg_rating(user_data):
+    '''
+    input: user_data is a dictionary with a "watched" list of movies dictionaries
+    # calculate the average rating of all movies in the watched list
+    # an empty "watched" list has a value of 0.0
+    output: average rating 
+    '''    
 
-
+def get_most_watched_genre(user_data):
+    '''
+    input: user_data is a dictionary with a "watched" list of movies dictionaries. 
+    # each movie dictionary has a key 'genre' which is a string
+    # determine which genre is the most frequently occurring in the 'watched' list 
+    # if the value of 'watched' is an empty string, function should return None
+    output: genre that's most frequently watched 
+    ''' 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
