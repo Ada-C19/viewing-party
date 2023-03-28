@@ -138,12 +138,12 @@ def get_unique_watched(user_data):
         # pprint.pprint(f'title: {watched_list["watched"].get("title")}')
         for movie in watched_list["watched"]:
             friends_watched.add(movie["title"])
-    
+
     unique_watched = {}
     difference = list(friends_watched - user_watched)
-
+    
     unique_watched["watched"] = difference
-
+    
     return unique_watched
 
 
