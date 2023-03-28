@@ -1,7 +1,13 @@
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
-
+    """Create dictionary containing title, genre, and rating of a movie
+    
+    Keyword arguments:
+    title -- the title of the movie
+    genre -- the genre of the movie
+    rating -- the rating of the movie
+    """
     # Return None if any parameter is falsy
     if not title or not genre or not rating:
         return None
@@ -15,7 +21,12 @@ def create_movie(title, genre, rating):
     return movie
 
 def add_to_watched(user_data, movie):
-
+    """Add a movie to watched list.
+    
+    Keyword arguments:
+    user_data -- dictionary containing movies user has watched
+    movie -- dictionary containing title, genre, and rating
+    """
     # Check movie isn't empty and is a dictionary
     # Try to add movie to watched, otherwise give error message
     if movie and isinstance(movie, dict):
@@ -27,7 +38,12 @@ def add_to_watched(user_data, movie):
     return user_data
 
 def add_to_watchlist(user_data, movie):
-
+    """Add a movie to a watchlist.
+    
+    Keyword arguments:
+    user_data -- dictionary containing movies user wants to watch
+    movie -- dictionary containing title, genre, and rating
+    """
     # Check movie isn't empty and is a dictionary
     # Try to add movie to watchlist, otherwise give error message
     if movie and isinstance(movie, dict):
@@ -39,7 +55,12 @@ def add_to_watchlist(user_data, movie):
     return user_data
 
 def watch_movie(user_data, title):
-
+    """Move movie if in watchlist to watched
+    
+    Keyword arguments:
+    user_data -- dictionary containing movies user has and wants to watch
+    title -- the movie title 
+    """
     # Check title is a string and not empty, otherwise return user_data
     if not isinstance(title, str) or not title:
         return user_data
