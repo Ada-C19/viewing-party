@@ -8,13 +8,7 @@ def create_movie(title, genre, rating):
     input: title, genre, rating
     output: dictionary
     '''
-    if not title:
-        return None
-    if not genre: 
-      return None
-    if not rating:
-        return None
-    
+
     movie_dict = {'title': title, 'genre': genre, 'rating': rating}
     return movie_dict
 
@@ -29,12 +23,12 @@ def add_to_watched(user_data, movie):
     return user_data
 
 def add_to_watchlist(user_data, movie):
-    pass
+    
 
 def watch_movie(user_data, title):
     '''
     input: user_data is a dictionary with a "watchlist" and a "watched" list of movies;
-           title is a string representing the title of the movie the user has watched
+    title is a string representing the title of the movie the user has watched
     output: user_data
     '''
     #If title in user's watchlist
