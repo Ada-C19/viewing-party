@@ -1,4 +1,5 @@
 # ------------- WAVE 1 --------------------
+import statistics
 
 def create_movie(title, genre, rating):
     '''
@@ -57,6 +58,16 @@ def watch_movie(user_data, title):
 #2. create dictionary that creates key for each new genere and increments value 
 #      when it reappears
 #  
+def get_watched_avg_rating(user_data):
+
+    if len(user_data["watched"]) == 0:
+        return 0.0
+
+    ratings_list = []
+    for movie in user_data["watched"]:
+        ratings_list.append(movie["rating"])
+    return statistics.mean(ratings_list)
+
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
