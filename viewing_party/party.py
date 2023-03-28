@@ -6,7 +6,8 @@ def create_movie(title, genre, rating):
     movie = {
         "title": title,
         "genre": genre,
-        "rating": rating    }
+        "rating": rating
+    }
     return movie    
 
 def add_to_watched(user_data, movie):
@@ -32,9 +33,8 @@ def watch_movie(user_data, title):
         return user_data_copy
     movie = user_data_copy["watchlist"][movie_index]
     del user_data_copy["watchlist"][movie_index]
-    user_data_copy["watched"].append(movie)
+    user_data_copy = add_to_watched(user_data_copy, movie)
     return user_data_copy
-
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
@@ -97,7 +97,6 @@ def get_friends_unique_watched(user_data):
             if not user_watched and friends_movie["title"] not in unique_title_names:
                 unique_titles.append(friends_movie)
                 unique_title_names.append(friends_movie["title"])
-
     return unique_titles     
 
 # -----------------------------------------
