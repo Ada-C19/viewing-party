@@ -139,13 +139,18 @@ def get_friends_unique_watched(user_data):
                 friends_watched_list_title.append(movie["title"])
                 unique_movie.append(movie)
                 
-    print("unique_movies", unique_movie)
+    # print("unique_movies", unique_movie)
     return unique_movie
 
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
 # 1. Create a function named `get_available_recs`. This function should...
+
+def get_available_recs(user_data):
+    print("*********************")
+    print("Wave 4 User Data: ", user_data)
+    print("*********************")
 
 # - take one parameter: `user_data`
 #   - `user_data` will have a field `"subscriptions"`. The value of `"subscriptions"` is a list of strings
@@ -157,8 +162,12 @@ def get_friends_unique_watched(user_data):
 #   - The `"host"` of the movie is a service that is in the user's `"subscriptions"`
 # - Return the list of recommended movies
 
+    user_not_watched = get_friends_unique_watched(user_data)
+    print("User Not Watch List: ", user_not_watched)
+    # match movie title key to the title key of user_not_watched 
+    # check for value in key 'host' is found in the value of subscription 
 
-
+    return #list of recommended movies
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
