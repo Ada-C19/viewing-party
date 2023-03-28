@@ -117,7 +117,10 @@ def get_available_recs(user_data):
             if movie not in watched and movie not in recommendations:
     #["subscriptions"] is for people; ["host"] is for movie
     # compare subscription to host; if they match, put in recommendation 
-                if friend["subscriptions"] != subscriptions["subscriptions"]:
+    # movie[host] is the value of the "host" key in th movie dictionary.
+    #Check if streaming service that hosts the mmovie is included in the list of straming services of the user. If true, nthe movie is
+    # added to 'remommendations' list.  
+                if movie ["host"] in  subscriptions:
                     recommendations.append(movie)   
     return recommendations
 
