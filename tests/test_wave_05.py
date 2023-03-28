@@ -40,6 +40,7 @@ def test_new_genre_rec_from_empty_friends():
     # Arrange
     sonyas_data = {
         "watched": [INTRIGUE_1b],
+        "favorites": [],
         "friends": [
             {
                 "watched": []
@@ -52,6 +53,7 @@ def test_new_genre_rec_from_empty_friends():
 
     recommendations = get_rec_from_favorites(sonyas_data)
     assert len(recommendations) == 0
+
 
 def test_unique_rec_from_favorites():
     # Arrange
