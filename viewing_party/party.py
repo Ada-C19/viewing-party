@@ -1,3 +1,4 @@
+from statistics import multimode,mode
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
@@ -8,28 +9,34 @@ def create_movie(title, genre, rating):
 # -----------------------------------------
 
 def get_watched_avg_rating(user_data):
-    # average_rating = 0.0
-    # sum_rating = 0
-    # for movies in user_data:
-    #     sum_rating += sum(["rating"])
-    #     average_rating = sum_rating / len(movies)
-
-    # return average_rating
+    # Set initial value of sum_rating to 0
     sum_rating = 0
-    average_rating = 0.0
-    watched_movies = user_data.get("watched")
-    if not watched_movies:
+    # Create a new list of "watched" movies in user_data dict
+    movie_list = user_data["watched"]
+
+    # Iterate through movies in list of movies
+    for movie in movie_list:
+        # Find the sum of the integers in value for "rating" in the movie dict
+        sum_rating += movie["rating"]
+    # If the input is an empty list, return 0.0 for average
+    if len(movie_list) == 0:
         return 0.0
-    for movie in watched_movies:
-        sum_rating += movie.get("rating", 0)
-    average_rating = sum_rating / len(watched_movies)
-    return average_rating 
+    else:
+        # Return the sum of movie ratings divided by the number of movies in input user_data dict
+        return sum_rating / len(movie_list)
+
 
 def get_most_watched_genre(user_data):
-    most_watched_genre = None
-    # genre_list = user_data.get("watched")
+    genre_list = []
 
-    return most_watched_genre
+    movie_list = user_data["watched"]
+    for movie in movie_list:
+        genre_list.append(movie["genre"])
+    if len(genre_list) == 0:
+        return None
+    else:
+        return(multimode(genre_list)[0])
+
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
