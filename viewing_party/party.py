@@ -41,7 +41,7 @@ def get_watched_avg_rating(user_data):
     # could make simpler using counter import
     average_rate = 0
     if len(user_data["watched"]) == 0:
-        return (0.0)
+        return 0.0
     for movie_dict in user_data["watched"]:
         average_rate += movie_dict["rating"]
     count = len(user_data["watched"])
@@ -68,6 +68,7 @@ def get_most_watched_genre(user_data):
         most_popular = max(genres_dict, key = genres_dict.get)
 
         return most_popular
+    
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
