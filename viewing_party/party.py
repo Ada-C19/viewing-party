@@ -32,8 +32,24 @@ def add_to_watchlist(user_data, movie):
     pass
 
 def watch_movie(user_data, title):
-    pass
-
+    '''
+    input: user_data is a dictionary with a "watchlist" and a "watched" list of movies;
+           title is a string representing the title of the movie the user has watched
+    output: user_data
+    '''
+    #If title in user's watchlist
+    #   remove movie from watchlist
+    #   add to movies watched
+    #   return user_data
+    #if not title in user's watchlist
+    #   return user_data
+    if not title in user_data:
+        return user_data
+    
+    if title in user_data:
+        user_data.remove(title)
+        user_data.append(title)
+        return user_data
 
 
 # -----------------------------------------
