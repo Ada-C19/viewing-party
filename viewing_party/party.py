@@ -144,11 +144,15 @@ def get_watched_avg_rating(user_data):
     return avg_rating
 
 def get_most_watched_genre(user_data):
+    # keep the var the same
     watched = user_data["watched"]
+    # if movie title not watched, return none
     if not watched:
         return None
     
+    # iterate thru each "genre" key's value for the entire length of nested dictionary
     genres_watched = [watched[i]["genre"] for i in range(len(watched))]
+    # get the most watched genre with max function
     return max(genres_watched, key=genres_watched.count)
 
 # ========================================= wave 02- # 1. get_watched_avg_rating ==========
