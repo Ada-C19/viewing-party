@@ -149,9 +149,9 @@ def get_friends_unique_watched(user_data):
 # 1. Create a function named `get_available_recs`. This function should...
 
 def get_available_recs(user_data):
-    print("*********************")
-    print("Wave 4 User Data: ", user_data)
-    print("*********************")
+    # print("*********************")
+    # print("Wave 4 User Data: ", user_data)
+    # print("*********************")
 
 # - take one parameter: `user_data`
 #   - `user_data` will have a field `"subscriptions"`. The value of `"subscriptions"` is a list of strings
@@ -181,3 +181,46 @@ def get_available_recs(user_data):
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
+# 1. Create a function named  `get_new_rec_by_genre`. This function should...
+
+# - take one parameter: `user_data`
+# - Consider the user's most frequently watched genre. Then, determine a list of recommended movies. A movie should be added to this list if and only if:
+#   - The user has not watched it
+#   - At least one of the user's friends has watched
+#   - The `"genre"` of the movie is the same as the user's most frequent genre
+# - Return the list of recommended movies
+
+def get_new_rec_by_genre (user_data):
+    user_not_watched = get_friends_unique_watched(user_data)
+    most_freq_genre = get_most_watched_genre(user_data)
+    # print("user data", user_data)
+    # print("***********************")
+
+    # print("most freq genre", most_freq_genre)
+    # print("***********************")
+    # print("user not watched", user_not_watched)
+    rec_movies_by_genre = []
+
+    for movies in user_not_watched:
+        if movies["genre"] == most_freq_genre:
+            rec_movies_by_genre.append(movies)
+    
+    # print(rec_movies_by_genre)
+    return rec_movies_by_genre
+
+# 2. Create a function named  `get_rec_from_favorites`. This function should...
+
+# - take one parameter: `user_data`
+#   - `user_data` will have a field `"favorites"`. The value of `"favorites"` is a list of movie dictionaries
+#     - This represents the user's favorite movies
+# - Determine a list of recommended movies. A movie should be added to this list if and only if:
+#   - The movie is in the user's `"favorites"`
+#   - None of the user's friends have watched it
+# - Return the list of recommended movies
+
+def get_rec_from_favorites(user_data):
+    # print("user_data", user_data)
+    # print("*****************")
+    user_watched = get_unique_watched(user_data)
+
+    
