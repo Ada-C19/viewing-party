@@ -31,7 +31,6 @@ def watch_movie(user_data, title):
                 user_data["watchlist"].remove(movie)
                 return user_data
 
-
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
