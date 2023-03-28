@@ -9,10 +9,10 @@ def test_my_unique_movies():
 
     # Act
     amandas_unique_movies = get_unique_watched(amandas_data)
-    print("************************")
-    print("what was returned from function: ", amandas_unique_movies)
-    print()
-    print("Amanda's Original Data: ", amandas_data)
+    # print("************************")
+    # print("what was returned from function: ", amandas_unique_movies)
+    # print()
+    # print("Amanda's Original Data: ", amandas_data)
     # Assert
     assert len(amandas_unique_movies) == 2
     assert FANTASY_2 in amandas_unique_movies
