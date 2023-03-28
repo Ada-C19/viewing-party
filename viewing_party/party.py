@@ -3,6 +3,14 @@
 def create_movie(title, genre, rating):
     pass
 
+#function 2
+def add_to_watched(user_data, movie):
+
+    user_data["watched"].append(movie)
+
+    return user_data
+
+
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
