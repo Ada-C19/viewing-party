@@ -35,7 +35,7 @@ def watch_movie(user_data, title):
         if movie["title"] == title:
             user_data["watchlist"].remove(movie)
             user_data["watched"].append(movie)
-        else:
+        # else:
             return user_data
     return user_data
 # -----------------------------------------
