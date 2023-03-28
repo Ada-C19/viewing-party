@@ -88,7 +88,45 @@ def get_unique_watched(user_data):
     final_list = []
 
     for dict in user_data["watched"]:
-        print(dict["title"])
+        # print(dict["title"])
+        user_list.append(dict["title"])
+        
+    for movie_dict in user_data["friends"]:
+        # list of dictionaries in friends
+        for i in range(len(user_data["friends"])):
+            # list of dictionaries in watched
+            for movie_dict in user_data["friends"][i]["watched"]:
+                # print(movie_dict["title"])
+                friends_list.append(movie_dict["title"])
+
+    user_set = set(user_list)
+    friends_set = set(friends_list)
+
+    # print(f"user_set is {user_set}")
+    # print(f"friends_set is {friends_set}")
+    #unique_movies = user_set.difference(friends_set)
+    unique_movies = user_set - friends_set
+    # print(f"unique_movies is {unique_movies}")
+    unique_movies_list = list(unique_movies)
+    # print(f"unique_movies_list is {unique_movies_list}")
+
+    for movie_dict in user_data["watched"]:
+        for unique_movie in unique_movies_list:
+            if unique_movie in movie_dict["title"]:
+                final_list.append(movie_dict)
+            
+    return final_list
+
+
+    
+def get_friends_unique_watched(user_data):
+    user_list = []
+    friends_list = []
+    final_list = []
+
+    for dict in user_data["watched"]:
+        # print(dict["title"])
+        # print("--------------")
         user_list.append(dict["title"])
         
     for movie_dict in user_data["friends"]:
@@ -102,33 +140,103 @@ def get_unique_watched(user_data):
     user_set = set(user_list)
     friends_set = set(friends_list)
 
-    print(f"user_set is {user_set}")
-    print(f"friends_set is {friends_set}")
-    #unique_movies = user_set.difference(friends_set)
-    unique_movies = user_set - friends_set
-    print(f"unique_movies is {unique_movies}")
+    # print(f"user_set is {user_set}")
+    # print(f"friends_set is {friends_set}")
+    unique_movies = friends_set - user_set
+    # print(f"unique_movies is {unique_movies}")
     unique_movies_list = list(unique_movies)
-    print(f"unique_movies_list is {unique_movies_list}")
+    # print(f"unique_movies_list is {unique_movies_list}")
 
-    for movie_dict in user_data["watched"]:
-        for unique_movie in unique_movies_list:
-            if unique_movie in movie_dict["title"]:
-                final_list.append(movie_dict)
-            
+    for movie_dict in user_data["friends"]:
+        for i in range(len(user_data["friends"])):
+            # list of dictionaries in watched
+            for movie_dict_2 in user_data["friends"][i]["watched"]:
+                # print(movie_dict["title"])
+                for unique_movie in unique_movies_list:
+                    if unique_movie in movie_dict_2["title"] and not movie_dict_2 in final_list:
+                        final_list.append(movie_dict_2)
+                            
+        
     return final_list
 
-amandas_data = clean_wave_3_data()
-print(amandas_data)
-amandas_unique_movies = get_unique_watched(amandas_data)
-# print(amandas_unique_movies)
-    
-        
-        
+# amandas_data = clean_wave_3_data()
+# print(amandas_data)
+# amandas_unique_movies = get_friends_unique_watched(amandas_data)
+# print(amandas_unique_movies)      
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
+def get_available_recs(user_data):
+    user_list = []
+    friends_list = []
+    final_list = []
 
+    for dict in user_data["watched"]:
+        # print(dict["title"])
+        # print("--------------")
+        user_list.append(dict["title"])
+        
+    for movie_dict in user_data["friends"]:
+        # list of dictionaries in friends
+        for i in range(len(user_data["friends"])):
+            # list of dictionaries in watched
+            for movie_dict in user_data["friends"][i]["watched"]:
+                print(movie_dict["title"])
+                friends_list.append(movie_dict["title"])
+
+    user_set = set(user_list)
+    friends_set = set(friends_list)
+
+    # print(f"user_set is {user_set}")
+    # print(f"friends_set is {friends_set}")
+    unique_movies = friends_set - user_set
+    # print(f"unique_movies is {unique_movies}")
+    unique_movies_list = list(unique_movies)
+    # print(f"unique_movies_list is {unique_movies_list}")
+
+    for movie_dict in user_data["friends"]:
+        for i in range(len(user_data["friends"])):
+            # list of dictionaries in watched
+            for movie_dict_2 in user_data["friends"][i]["watched"]:
+                # print(movie_dict["title"])
+                for unique_movie in unique_movies_list:
+                    if unique_movie in movie_dict_2["title"] and not movie_dict_2 in final_list:
+                        final_list.append(movie_dict_2)
+    
+    final_list_subscribed = []
+    for movie_dict in final_list:
+        if movie_dict["host"] in user_data["subscriptions"]:
+            final_list_subscribed.append(movie_dict)
+        
+    return final_list_subscribed
+
+amandas_data = clean_wave_4_data()
+# print(amandas_data)
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
+
+def get_new_rec_by_genre(user_data):
+    most_watched = get_most_watched_genre(user_data)
+    friends_unique_watched = get_friends_unique_watched(user_data)
+
+    rec_list = []
+
+    for movie_dict in friends_unique_watched:
+        if movie_dict["genre"] == most_watched:
+            rec_list.append(movie_dict)
+
+    return rec_list
+
+def get_rec_from_favorites(user_data):
+    unique_watched = get_unique_watched(user_data)
+    favorites = user_data["favorites"]
+    
+    rec_favorite_list = []
+
+    for movie_dict in unique_watched:
+        if movie_dict in favorites:
+            rec_favorite_list.append(movie_dict)
+
+    return rec_favorite_list
 
