@@ -129,11 +129,19 @@ def get_new_rec_by_genre(user_data):
 def get_rec_from_favorites(user_data):
     recommended = []
     for movie in user_data["favorites"]:
-        movie_in_friends_watched = False
-        for friend in user_data["friends"]:
-            if movie in friend["watched"]:
-                movie_in_friends_watched = True
-                break
-        if not movie_in_friends_watched:
+        if movie not in user_data["friends"]:
             recommended.append(movie)
+
     return recommended
+
+# def get_rec_from_favorites(user_data):
+#     recommended = []
+#     for movie in user_data["favorites"]:
+#         movie_in_friends_watched = False
+#         for friend in user_data["friends"]:
+#             if movie in friend["watched"]:
+#                 movie_in_friends_watched = True
+#                 break
+#         if not movie_in_friends_watched:
+#             recommended.append(movie)
+#     return recommended
