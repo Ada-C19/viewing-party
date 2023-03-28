@@ -71,10 +71,14 @@ def get_most_watched_genre(user_data):
         most_popular = max(genres_dict, key = genres_dict.get)
 
         return most_popular
+    
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
+def get_unique_watched():
+    unique_watch = []
+    for friend in use_data["watch"]
 
         
 # -----------------------------------------
