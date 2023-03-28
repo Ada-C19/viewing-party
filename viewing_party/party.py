@@ -15,13 +15,16 @@ def create_movie(title, genre, rating):
     return None 
 
 
-
 def add_to_watched(user_data, movie):
     """
     input: user_data dictionary with nested list as values, movie dictionary
     output: updated user_data dictionary 
     """
 
+    user_data["watched"].append(movie) 
+
+    return user_data
+    
 
 
 def add_to_watchlist(user_data, movie):
@@ -29,6 +32,14 @@ def add_to_watchlist(user_data, movie):
     input: user_data dictionary, and movie dictionary
     output: updated user_data dictionary
     """
+
+    # user_data["watch_list"].append(movie) 
+
+    # return user_data
+
+
+
+
 
 
 def watch_movie(user_data, title):
