@@ -30,23 +30,29 @@ def create_movie(title, genre, rating):
 create_movie("Title", "Genre", "Rating")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 #---Wave_1_function_2---
-# def add_to_watched(user_data, movie):
+def add_to_watched(user_data, movie):
+
+    user_data["watched"].append(movie)
+    print (user_data)
+#  we need to add movie to the list that is the value dictionary user_data 
+    return (user_data)
+ 
+add_to_watched({"watched": []}, {
+        "title": "MOVIE_TITLE_1",
+        "genre": "GENRE_1",
+        "rating": "RATING_1"})
+
 
 #---Wave_1_function_3---
-# def add_to_watchlist(user_data, movie):
+def add_to_watchlist(user_data, movie):
+
+    user_data["watchlist"].append(movie)
+    print(user_data)
+    return user_data
+
+
+
 
 #---Wave_1_function_4---
 # def watch_movie(user_data, title):
