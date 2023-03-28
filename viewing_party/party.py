@@ -114,11 +114,13 @@ def get_available_recs(user_data):
     recommendations = []
     for friend in friends:
         for movie in friend["watched"]:
-            if movie not in watched and movie not in recommendations: 
+            if movie not in watched and movie not in recommendations:
+    #["subscriptions"] is for people; ["host"] is for movie
+    # compare subscription to host; if they match, put in recommendation 
                 if friend["subscriptions"] != subscriptions["subscriptions"]:
                     recommendations.append(movie)   
     return recommendations
-    
+
 
 
 # -----------------------------------------
