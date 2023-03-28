@@ -11,7 +11,10 @@ def create_movie(title, genre, rating):
         return movie
 
     return None
-    
+# 2nd function in wave_01
+def add_to_watched(user_data, movie):      
+    user_data["watched"].append(movie)
+    return user_data
 
 # 3rd function in wave_01
 def add_to_watchlist(user_data, movie): 
