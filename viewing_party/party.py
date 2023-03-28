@@ -43,8 +43,27 @@ def get_watched_avg_rating(user_data):
         
     return average
             
+def get_most_watched_genre(user_data):
+    frequency_genre = {}
 
+    if not user_data['watched']:
+        return None 
+    for movie in user_data['watched']:
+        genre = movie['genre']
+        if genre in frequency_genre:
+            frequency_genre[genre] += 1
+        else:
+            frequency_genre[genre] = 1
     
+    max_frequency = max(frequency_genre.values())
+    most_common_genre = None   
+    for genre, frequency in frequency_genre.items():
+        if frequency == max_frequency:
+            most_common_genre = genre
+            break
+
+    return most_common_genre  
+
            
 
 
