@@ -65,14 +65,31 @@ def get_most_watched_genre(user_data):
 
     return most_common_genre  
 
-           
-
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
+def get_unique_watched(user_data):
+    user_titles = []
+    friend_titles = []
+    unique_list_dict = []
+    
+    for movie in user_data["watched"]:
+        user_titles.append(movie["title"])
+    
+    for friend_movie in user_data["friends"]:
+        for watched_dict in friend_movie['watched']:
+            friend_titles.append(watched_dict["title"])
+    
+    result = set(user_titles) - set(friend_titles)
+    
+   
+    for movie in user_data["watched"]:
+        for title in result:
+            if movie["title"] == title:
+                unique_list_dict.append(movie)
+    return unique_list_dict
 
-        
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
