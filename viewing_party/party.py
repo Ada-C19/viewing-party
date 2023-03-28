@@ -103,17 +103,6 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
-# 1. Create a function named `get_unique_watched`. This function should...
-
-# - take one parameter: `user_data`
-#   - the value of `user_data` will be a dictionary with a `"watched"` list of movie dictionaries, and a `"friends"`
-#     - This represents that the user has a list of watched movies and a list of friends
-#     - The value of `"friends"` is a list
-#     - Each item in `"friends"` is a dictionary. This dictionary has a key `"watched"`, which has a list of movie dictionaries.
-#     - Each movie dictionary has a `"title"`.
-# - Consider the movies that the user has watched, and consider the movies that their friends 
-# have watched. Determine which movies the user has watched, but none of their friends have watched.
-# - Return a list of dictionaries, that represents a list of movies
 
 def get_unique_watched(user_data):
     watched_list = user_data["watched"]
@@ -122,26 +111,25 @@ def get_unique_watched(user_data):
     friends_watched_list_set = set()
     unique_watched_list = []
 
+### if watched_list empty, return empty list
     if not watched_list:
         return []
+### if friends_watched_list empty, return user's watched_list
     elif not friends_watched_list:
         return watched_list
-
+### creating set of user's watched titles
     for movie_dict in watched_list:
         watched_list_set.add(movie_dict["title"])
-        print(f"watched_list_set = {watched_list_set}")
-    
+### creating set of user's friends' watched titles
     for friend in friends_watched_list:
         for movie_dict in friend["watched"]:
-            print(f"movie_dict in friend = {movie_dict}")
             friends_watched_list_set.add(movie_dict["title"])
-            print(f"friends_watched_list_set = {friends_watched_list_set}")
-    
+### checking for titles in user watched_list that are not also present in friends_watched_list
     unique_watched_set = watched_list_set - friends_watched_list_set
-
+### if complete overlap, return empty list
     if len(unique_watched_set) == 0:
         return []
-
+### else return list of dictionaries with title, genre, rating for unique items
     for title in unique_watched_set:
         for movie_dict in watched_list:
             if movie_dict["title"] == title:
