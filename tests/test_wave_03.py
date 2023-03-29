@@ -55,8 +55,13 @@ def test_friends_unique_movies_not_duplicated():
     # Assert
     assert len(friends_unique_movies) == 3
 
-    #re check thursday
-    assert INTRIGUE_3 not in friends_unique_movies
+    #re check wednesday
+    # *************************************************************************************************
+    # ****** Add assertions here to test that the correct movies are in friends_unique_movies **********
+    # **************************************************************************************************
+    assert INTRIGUE_3 in friends_unique_movies
+    #add a couple more to check more / improve understanding
+    #
 
 
 # @pytest.mark.skip()
