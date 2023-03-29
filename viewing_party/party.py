@@ -7,7 +7,6 @@ def create_movie(title, genre, rating):
     if title is None or genre is None or rating is None:
         return None
     return {"title": title, "genre": genre, "rating": rating}
-    # I thought about making this a try/except, but I'm not sure what error we would get?
 
 def add_to_watched(user_data, movie):
     '''
@@ -37,6 +36,7 @@ def watch_movie(user_data, title):
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
+
 def get_watched_avg_rating(user_data):
     rating = 0
     try:
@@ -59,7 +59,7 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
-#REFACTOR:
+
 def get_unique_watched(user_data):
 
     user_movies_watched = user_data["watched"] #list of dicts of movies
@@ -79,32 +79,25 @@ def get_unique_watched(user_data):
 
     return user_unique_movies
 
-
-#REFACTOR:
 def get_friends_unique_watched(user_data):
 
-        
+    user_movies_watched = user_data["watched"] #list of dicts of movies
+    user_movie_titles = [movie["title"] for movie in user_movies_watched] # list of titles only
 
-    same_movies = []
+    friends_movies_watched = [] # list of dicts of movies (all friends combined)
+    for friend in user_data["friends"]:
+        friends_movies_watched.extend(friend["watched"])
+    friend_movie_titles = [movie["title"] for movie in friends_movies_watched] #list of titles only
+
+    friend_unique_movie_titles = set(friend_movie_titles) - set(user_movie_titles)
     friend_unique_movies = []
-    non_duplicate_movies = []
 
-    for i in range(len(user_data["watched"])):
-        for j in range(len(user_data["friends"])):
-            for k in range(len(user_data["friends"][j]["watched"])):
-                if user_data["watched"][i]["title"] == user_data["friends"][j]["watched"][k]["title"]:
-                    same_movies.append(user_data["watched"][i]["title"])
-    
-    for j in range(len(user_data["friends"])):
-        for k in range(len(user_data["friends"][j]["watched"])):
-                if user_data["friends"][j]["watched"][k]["title"] not in same_movies:
-                        if user_data["friends"][j]["watched"][k]["title"] not in non_duplicate_movies:
-                            friend_unique_movies.append(user_data["friends"][j]["watched"][k])
-                            non_duplicate_movies.append(user_data["friends"][j]["watched"][k]["title"])
+    for movie in friends_movies_watched:
+        if movie["title"] in friend_unique_movie_titles and movie not in friend_unique_movies:
+            friend_unique_movies.append(movie)
 
-    return friend_unique_movies
+    return friend_unique_movies        
 
-        
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
@@ -119,7 +112,6 @@ def get_available_recs(user_data):
     
     return recommended_movies
         
-
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
