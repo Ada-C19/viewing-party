@@ -65,6 +65,7 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
+
 def get_unique_watched(user_data):
     unique_set = set()
     unique_watched = []
@@ -128,7 +129,24 @@ def get_friends_unique_watched(user_data):
 # At least one of the user's friends has watched
 # The "host" of the movie is a service that is in the user's "subscriptions"
 # Return the list of recommended movies
-# def get_available_recs(user_data):
+def check_user_suscriptions(user_data):
+    list_of_suscriptions = user_data["subscriptions"]
+    return list_of_suscriptions
+
+def get_available_recs(user_data):
+    recomendations_for_user = []
+    user_suscriptions = check_user_suscriptions(user_data)
+    # list of dictionaries:
+    friends_unique_watched = get_friends_unique_watched(user_data)
+    # search in list of dict for host == users'host:
+    for movie in friends_unique_watched:
+        if movie["host"] in user_suscriptions:
+            recomendations_for_user.append(movie)
+    return recomendations_for_user
+
+
+    
+
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
