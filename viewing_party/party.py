@@ -153,3 +153,17 @@ def get_new_rec_by_genre(user_data):
                 recs_by_genre.append(user_data["friends"][i]["watched"][j])
 
     return recs_by_genre
+
+
+def get_rec_from_favorites(user_data):
+    recs_by_favs = []
+
+    for i in range(len(user_data["favorites"])):
+        favorite_movie = user_data["favorites"][i]
+        recs_by_favs.append(favorite_movie)
+        for j in range(len(user_data["friends"])):
+            if favorite_movie in user_data["friends"][j]["watched"] \
+            and favorite_movie in  recs_by_favs:
+                recs_by_favs.remove(favorite_movie)
+    print(recs_by_favs)
+    return recs_by_favs
