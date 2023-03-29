@@ -123,33 +123,16 @@ def get_new_rec_by_genre(user_data):
     return rec_movies
 
 def get_rec_from_favorites(user_data):
-    recommendations = set()
+    # Build a set of all movies that the user's friends have watched
+    watched_by_friends = set()
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            watched_by_friends.add(tuple(movie.items()))
 
-    
-    watched = set(user_data["watched"])
-    favorites = set(user_data["favorites"])
+    # Build a list of recommended movies
+    recommended_movies = []
+    for movie in user_data["favorites"]:
+        if tuple(movie.items()) not in watched_by_friends:
+            recommended_movies.append(movie)
 
-    if not user_data["friends"]:
-        recommendations = favorites - watched
-
-    
-    else:
-        friend_watched = set()
-        for friend in user_data["friends"]:
-            friend_watched.update(friend["watched"])
-
-        
-        common_movies = Counter(friend_watched - watched)
-        common_movies = set(movie for movie, count in common_movies.items() if count >= 2)
-
-        
-        priority = ["HORROR", "COMEDY", "DRAMA"]
-        for p in priority:
-            for movie in sorted(common_movies):
-                if movie.startswith(p):
-                    recommendations.add(movie)
-                    break
-            if recommendations:
-                break
-
-    return recommendations
+    return recommended_movies
