@@ -32,7 +32,7 @@ def test_my_not_unique_movies():
     assert len(amandas_unique_movies) == 0
 
 
-@pytest.mark.skip()
+# @pytest.mark.skip()
 def test_friends_unique_movies():
     # Arrange
     amandas_data = clean_wave_3_data()
@@ -48,7 +48,7 @@ def test_friends_unique_movies():
     assert amandas_data == clean_wave_3_data()
 
 
-@pytest.mark.skip()
+# @pytest.mark.skip()
 def test_friends_unique_movies_not_duplicated():
     # Arrange
     amandas_data = clean_wave_3_data()
@@ -60,13 +60,21 @@ def test_friends_unique_movies_not_duplicated():
     # Assert
     assert len(friends_unique_movies) == 3
 
-    raise Exception("Test needs to be completed.")
+    # raise Exception("Test needs to be completed.")
     # *************************************************************************************************
     # ****** Add assertions here to test that the correct movies are in friends_unique_movies **********
     # **************************************************************************************************
+    assert friends_unique_movies == [
+        {'title': 'The Programmer: An Unexpected Stack Trace',
+            'genre': 'Fantasy', 'rating': 4.0},
+        {'title': 'It Came from the Stack Trace',
+            'genre': 'Horror', 'rating': 3.5},
+        {'title': 'Zero Dark Python', 'genre': 'Intrigue', 'rating': 3.0}
+    ]
+
+# @pytest.mark.skip()
 
 
-@pytest.mark.skip()
 def test_friends_not_unique_movies():
     # Arrange
     amandas_data = {
