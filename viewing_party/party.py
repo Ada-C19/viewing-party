@@ -91,22 +91,49 @@ def get_new_rec_by_genre(user_data):
 
     recommended_movies = []
 
+    # evaluate if there is data in the user's watched list
     if not user_data["watched"]:
         return recommended_movies
     
+    # retrieve the most watched genre for that user
     most_watched_genre = get_most_watched_genre(user_data)
 
+    # create an initial recommended_movies list based on
+    # all of the movies the friends have watched
     for friend in user_data["friends"]:
         for movie in friend["watched"]:
             if movie["genre"] == most_watched_genre and movie not in recommended_movies:
                 recommended_movies.append(movie)
     
+    # evaluate if recommended movies is truthy, else return the empty list
     if not recommended_movies:
         return recommended_movies
 
-
+    # remove any movies from recommended_movies that the user has already seen
     for movie in user_data["watched"]:
         if movie in recommended_movies:
             recommended_movies.remove(movie)
     
     return recommended_movies
+
+
+def get_rec_from_favorites(user_data):
+
+    # establish empty lists to hold our movie data
+    friend_watched_list = []
+    recommended_movies = []
+
+    # get the movies in from friends watched lists:
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            if movie not in friend_watched_list:
+                friend_watched_list.append(movie)
+
+    # compare each movie from the user's favorites to the friend watched list:
+    for movie in user_data["favorites"]:
+        if movie not in friend_watched_list:
+            recommended_movies.append(movie)
+
+    return recommended_movies
+
+    
