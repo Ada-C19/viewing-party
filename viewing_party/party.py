@@ -158,16 +158,15 @@ def get_available_recs(user_data):
 
 
 
+
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
 def get_new_rec_by_genre(user_data):
     most_watched_genre = get_most_watched_genre(user_data)
-    recommended_movies_genre_list = []
-    friend_watched_genre = []  
+    recommended_movies_genre_list = [] 
 
-   
     user_watched = get_unique_watched(user_data)
     friends_watched = get_friends_unique_watched(user_data)
     
@@ -178,17 +177,24 @@ def get_new_rec_by_genre(user_data):
             
     return recommended_movies_genre_list
 
+def get_rec_from_favorites(user_data):
+    favorite_movies = user_data["favorites"]
+    friends_watched = get_friends_unique_watched(user_data)
+    recommended_favorite_movies = []
+    #movie_count = 0
 
+    for movie in favorite_movies:
+        if movie not in friends_watched:
+            recommended_favorite_movies.append(movie)
+    
+    for movie in recommended_favorite_movies:
+        current_movie_count = recommended_favorite_movies.count(movie)
+        if current_movie_count > 1:
+            current_movie_count -= 1
+            recommended_favorite_movies.remove(movie)
 
+    return recommended_favorite_movies
 
-# Create a function named  `get_new_rec_by_genre`. This function should...
-
-# - take one parameter: `user_data`
-# - Consider the user's most frequently watched genre. Then, determine a list of recommended movies. A movie should be added to this list if and only if:
-#   - The user has not watched it
-#   - At least one of the user's friends has watched
-#   - The `"genre"` of the movie is the same as the user's most frequent genre
-# - Return the list of recommended movies
 
 # 2. Create a function named  `get_rec_from_favorites`. This function should...
 
