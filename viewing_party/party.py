@@ -130,13 +130,29 @@ def get_most_watched_genre(user_data):
     #return genre with highest value from genre_dict
     return most_popular_genre
 
-        
-
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
+def get_unique_watched(user_data):
+    '''
+    input: user_data is a dictionary with a "watched" list of movies dictionaries and a "friends"
+    # user_data represents a list of watched movies and a list of friends 
+    # each item in "friends" is a dictionary that has a key "watched"  with a list of movie dictionaries  
+    # each movie dictionary has a "title" 
+    # function should determine which movies the the user has uniquely watched, friends have not watched it
+    output: list of dictionaries that represents a list of movies 
+    '''     
 
-        
+def get_friends_unique_watched(user_data):
+    '''
+    input: user_data is a dictionary with a "watched" list of movies dictionaries and a "friends"
+    # user_data represents a list of watched movies and a list of friends 
+    # each item in "friends" is a dictionary that has a key "watched"  with a list of movie dictionaries  
+    # each movie dictionary has a "title" 
+    # function should determine which movies at least one of the friends has watched, user has not watched it
+    output: list of dictionaries that represents a list of movies 
+    '''
+
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
