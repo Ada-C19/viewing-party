@@ -97,21 +97,53 @@ def get_most_watched_genre(user_data):
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 
-def get_unique_watched(user_data):
-    count = 0
-    both_users_watched = set()
-    only_user_watched = set()
-    for movie in user_data["watched"]:
-        for item in user_data["friends"]:
-            
-            if movie == item["watched"][count]:
-                both_users_watched.add(movie)
-            if movie not in item["watched"][count]:
-                only_user_watched.add(movie)
-            count += 1
-    return only_user_watched
-                
+# def get_unique_watched(user_data):
+#     count = 0
+#     both_users_watched = []
+#     only_user_watched = []
+#     for movie in user_data["watched"]:
+#         # for item in user_data["friends"]:
+#             if movie in user_data["friends"]:
+#             # if movie in item["watched"]:
+#                 both_users_watched.append(movie)
+#             # if movie not in item["watched"]:
+#             else:
+#                 only_user_watched.append(movie)
     
+#     return only_user_watched
+                
+def get_unique_watched(user_data):
+    only_user_watched = []
+    friends_watched =[]
+    for item in user_data["friends"]:
+        for movie in item["watched"]:
+            friends_watched.append(movie) 
+ 
+    for movie in user_data["watched"]:
+            if movie not in friends_watched:
+                only_user_watched.append(movie)
+    return only_user_watched   
+
+
+def get_friends_unique_watched(user_data):
+    only_friends_watched = []
+    friends_watched =[]
+
+    for item in user_data["friends"]:
+        for movie in item["watched"]:
+            friends_watched.append(movie)
+
+    unique_movies = []
+    for movie in friends_watched:
+        if movie not in user_data["watched"] and not unique_movies:
+            #     only_friends_watched.append(movie)
+            unique_movies.append(movie)
+
+    return only_friends_watched
+
+     
+
+ 
     
         
 # -----------------------------------------
