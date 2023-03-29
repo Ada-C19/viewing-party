@@ -260,24 +260,33 @@ def get_unique_watched(user_data):
 # ========================================= wave 03- # 2. get_friends_unique_watched ========== RC
 
 
-def get_friends_unique_watched(user_data):
-    # Create var for movies user has watched already
-    user_watched = {movie['title'] for movie in user_data['watched']}
+# def get_friends_unique_watched(user_data):
+#     # Create var for movies user has watched already
+#     user_watched = {movie['title'] for movie in user_data['watched']}
 
-    # Create var for movies friends have watched 
-    friends_watched = {movie['title'] for friend in user_data['friends'] for movie in friend['watched']}
+#     # Create var for movies friends have watched 
+#     friends_watched = {movie['title'] for friend in user_data['friends'] for movie in friend['watched']}
 
-    # Create a set of the movies that the user's friends have watched, but the user has not watched
-    unique_movies = friends_watched - user_watched
+#     # Create a set of the movies that the user's friends have watched, but the user has not watched
+#     unique_movies = friends_watched - user_watched
 
-    # Return a list of dictionaries representing the unique movies
-    return [{"title": movie} for movie in unique_movies]
+#     # Return a list of dictionaries representing the unique movies
+#     return [{"title": movie} for movie in unique_movies]
 
     
     
 # ========================================= wave 03- # 1. get_unique_watched ========== SJ
+# ------------------------- IGNORE MY PSEUDO, don't delete, i'll come back to it-------
+# 
+# def get_unique_watched(user_data):
+#     watched = user_data["watched"]
+#     if not watched: return []
 
-    
+#     friend_watched = get_friend_movies(user_data)
+
+#     #Compare own watched movies to friends' watched movies
+#     return create_unique_list(watched, friend_watched)
+
 # save my watch list, remove every movie my friends have seen, and remove it from my watch list
 # to do that iterate over my friends list, iterate over every movie that that friend has watched
 # enumerate the key in values in my watch list 
@@ -323,8 +332,77 @@ def get_friends_unique_watched(user_data):
 # and consider the movies that their friends have watched. 
 # Determine which movies the user has watched, but none of their friends have watched.
 
+# ========================================= wave 03- # 2. get_friends_unique_watched ========== SJ
 
+# 1. Consider the movies that the user has watched, 
+# 2. consider the movies that their friends have watched. 
+
+# Determine which movies at least one of the user's friends have watched, 
+# but the user has not watched.
+
+def get_friends_unique_watched(user_data):
+    
+    # all the movies the user has watched
+    user_movies_watched = user_data["watched"]
+    
+    # the return in the helper function get_friends_movies
+    # will return all the movies the friends have watched in a list
+    friends_watched_movies = get_friends_movies(user_data)
+    
+    # if the movie is not in the list of user_movies_watched,
+    # then return those movies in a list
+    if not user_movies_watched: 
+        return []
+
+    #Compare friends' watched movies to own watched movies
+    return create_unique_list(friends_watched_movies, user_movies_watched)
+
+
+# 3. Helper function to compare friends watched to user watched
+def create_unique_list(friends_watched_movies, user_movies_watched):
+    #Return a list of dictionaries that represent a list of movies 
+    # each item in movies that are not in comparison
+    
+    #  set a variable to an empty list to house 
+    # the unique movies the user hasn't watched
+    unique_movies = []
+    
+    # for each movie dictionary that is in the list of friends watched movies, 
+    for movie_dict in friends_watched_movies:
         
+        # if that movie dictionary is NOT in the list of movies dicts the user watched
+        if movie_dict not in user_movies_watched: 
+            
+            # then add that movie to the list of unique movies
+            unique_movies.append(movie_dict)
+            
+    #  return the list of unique movie dicts
+    return unique_movies
+
+
+
+#  2. Helper function to get a list of all the movies frends have watched. 
+def get_friends_movies(user_data):
+    #Return list of movies watched by friends (no duplicates)
+    # initialize an empty list for movies the friend has watched. 
+    friends_watched = []
+    
+    # loop through each element in the list 
+    # that is set to the value user_data["friends"]
+    for list_of_movies in user_data["friends"]:
+        
+        # so for each movie dictionary in the list of movies your friends have watched, 
+        for movie_dict in list_of_movies["watched"]:
+            
+            # if that movie is NOT in the list the friends have watched
+            if movie_dict not in friends_watched: 
+                # add it/ append the friends_wacthed list with that movie
+                friends_watched.append(movie_dict)
+    # return a list with all the movies friends have watched
+    return friends_watched
+
+
+
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
