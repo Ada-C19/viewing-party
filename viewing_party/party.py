@@ -22,7 +22,7 @@ def add_to_watchlist(user_data, movie):
 def watch_movie(user_data, title):
     """
     watch_movie(user_data, title)
-		if title is not in user’s watchlist
+		if title is not in users watchlist
 			return user_data
 		else
 			remove that movie from watchlist
@@ -100,7 +100,6 @@ def get_unique_watched(user_data):
                 unique_watched.remove(user_data["friends"][friend]["watched"][movie])
 
     return unique_watched
-
 
 
 # -----------------------------------------
