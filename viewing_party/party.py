@@ -1,4 +1,15 @@
 import copy
+
+def get_friend_movies(friend_list):
+    friend_watched_movies = []
+
+    for movies in friend_list:
+        for movie in movies["watched"]:
+            friend_watched_movies.append(movie)
+    
+    return friend_watched_movies
+
+
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
@@ -80,12 +91,8 @@ def get_most_watched_genre(user_data):
 
 def get_unique_watched(user_data):
     watched_movies = user_data["watched"].copy()
-    friend_watched_movies = []
+    friend_watched_movies = get_friend_movies(user_data["friends"])
     not_watched_by_friends = []
-    
-    for movies in user_data["friends"]:
-        for movie in movies["watched"]:
-            friend_watched_movies.append(movie)
 
     fw_copy = friend_watched_movies.copy()
 
@@ -97,7 +104,7 @@ def get_unique_watched(user_data):
 
 def get_friends_unique_watched(user_data):
     watched_movies = user_data["watched"].copy()
-    friend_watched_movies = []
+    friend_watched_movies = get_friend_movies(user_data["friends"])
     not_watched_by_user = []
     
     for movies in user_data["friends"]:
@@ -111,6 +118,8 @@ def get_friends_unique_watched(user_data):
             not_watched_by_user.append(movie)   
 
     return not_watched_by_user
+
+
 
         
 # -----------------------------------------
@@ -127,6 +136,7 @@ def get_available_recs(user_data):
     #   movie in user_data[friends]--[watched]
     #   movie["host"] in user_data["subscriptions"]
     recommended_movies = []
+    friend_watched_movies = get_friend_movies(user_data["friends"])
     pass
 
 # -----------------------------------------
