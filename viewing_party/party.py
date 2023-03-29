@@ -93,17 +93,35 @@ def get_friends_unique_watched(user_data):
 # -----------------------------------------
 
 
+# def get_available_recs(user_data):
+#     recommended_movies = []
+#     for friend in user_data["friends"]: #iterate through friends
+#         for friend_movie in friend["watched"]: #iterate through friend movies
+#             is_recommended = True #flag saying movie is recommended or not
+#             #if the movie is in user_data["watched"]:, recommended = False
+#             #if the movie's "host" is not in user_data["subscriptions"] recommended = false
+#             # after passing these tests, if it is still recommended, append it to the list of recommended movie dictionaries
+#     return recommended_movies
+
 def get_available_recs(user_data):
+    subscriptions = user_data["subscriptions"]
+    user_watched = user_data["watched"]
+    friends = user_data["friends"]
     recommended_movies = []
-    for friend in user_data["friends"]: #iterate through friends
-        for friend_movie in friend["watched"]: #iterate through friend movies
-            is_recommended = True #flag saying movie is recommended or not
-            #if the movie is in user_data["watched"]:, recommended = False
-            #if the movie's "host" is not in user_data["subscriptions"] recommended = false
-            # after passing these tests, if it is still recommended, append it to the list of recommended movie dictionaries
+		
+    user_watched_titles = [movie["title"] for movie in user_watched]
+
+
+    # Loop through each friend's watched list
+    for friend in friends:
+        for movie in friend["watched"]:
+            # Check if the user has not watched the movie and the host is in their subscriptions
+            if movie["title"] not in user_watched_titles and movie["host"] in subscriptions:
+                # Check if the movie is not already in the recommended list
+                if movie not in recommended_movies:
+                    recommended_movies.append(movie)
+
     return recommended_movies
-
-
 
 
 # -----------------------------------------
