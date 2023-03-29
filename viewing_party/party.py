@@ -1,4 +1,5 @@
-
+import pprint
+pp = pprint.PrettyPrinter(indent=4)
 import copy
 
 HORROR_1 = {
@@ -254,13 +255,79 @@ def get_friends_unique_watched(user_data):
 
     return result_list
 
-print(get_friends_unique_watched(USER_DATA_3))
-
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
+def get_available_recs(user_data):
+
+    friends_list = user_data["friends"]
+    user_watched = user_data["watched"]
+    # print(friends_list)
+
+    movie_recs = []
+    for dict in friends_list:
+        for value in dict.values():
+            for movie in value:
+                friends_title = movie["title"]
+
+                for user_dict in user_watched:
+                    if friends_title != user_dict["title"] and movie["host"] in user_data["subscriptions"]:
+                        movie_recs.append(friends_title)
+
+    movie_recs = list(set(movie_recs))
+    
+    return movie_recs
+    # print(user_data["watched"])
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
+# Main function will return a list of recommended movies => 
+## User has not watched!, At least 1 friend has watched!, genre of the movie is
+### the same as the most watched movie!
+
+USER_DATA = {"friends": [{"watched": [{"genre": "horror", "host":"netflix", "rating": 4, "title": "parasite"}]}, {"watched": [{"genre": "horror", "host": "yyyyyy", "rating": 6, "title": "zzzzz"}]}], "subscriptions": ["netflix", "hulu"], "watched": [{"genre": "horror", "host":"netflix", "rating": 4, "title": "parasite"}, {"genre": "horror", "host": "vvvvvv", "rating": 7, "title": "bbbbbb"}, {"genre": "rrrrrrr", "host": "ffffff", "rating": 9, "title": "dddddd"}]}
+
+def get_new_rec_by_genre(user_data):
+    # New dict will hold the most watched genre
+    user_watched_list = user_data["watched"]
+    most_watched_genre = {}
+    for movie in user_watched_list:
+        value_genre = movie["genre"]
+        if value_genre in most_watched_genre:
+            most_watched_genre[value_genre] += 1
+        else:
+            most_watched_genre[value_genre] = 1
+
+    # Max_watched_genre hold the value of the most watched genre by user
+    max_watched_genre = ""
+    max_watched = 0
+    for genre, num in most_watched_genre.items():
+        if num > max_watched:
+            max_watched = num
+            max_watched_genre = genre
+    
+    # Create a dict that'll hold the titles of user's watched movies
+    user_watched_movies = {}
+    for movie in user_watched_list:
+        key = movie["title"]
+        user_watched_movies[key] = 1
+
+    # List of recommended movies by most watched genre and user hasn't watched it.
+    rec_movies_by_gender = {}
+    friends_list = user_data["friends"]
+    for dict in friends_list:
+        for value in dict.values():
+            for movie in value:
+                watched_by_friend = movie["title"]
+                genre_movie_friend = movie["genre"]
+                # La agrego si yo no la he visto y si es del genero que mas veo
+                if watched_by_friend in rec_movies_by_gender:
+                    continue
+                if watched_by_friend not in user_watched_movies and genre_movie_friend == max_watched_genre:
+                    rec_movies_by_gender[watched_by_friend] = movie
+
+    return list(rec_movies_by_gender.values())
+
+#print(get_new_rec_by_genre(USER_DATA))
