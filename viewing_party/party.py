@@ -157,8 +157,7 @@ def get_friends_unique_watched(user_data):
     unique_watched = []
     for watched_dict in user_data["friends"]:
         for movie in watched_dict["watched"]:
-            if (movie not in user_watched
-                    and movie not in unique_watched):
+            if (movie not in user_watched and movie not in unique_watched):
                 unique_watched.append(movie)
     
     return unique_watched
