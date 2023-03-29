@@ -84,10 +84,10 @@ def test_unique_from_empty_favorites():
         "favorites": [],
         "friends": [
             {
-                "watched": [INTRIGUE_1b]
+                "watched": ["INTRIGUE_1b"]
             },
             {
-                "watched": [INTRIGUE_2b,HORROR_1b]
+                "watched": ["INTRIGUE_2b", "HORROR_1b"]
             }
         ]
     }
@@ -102,8 +102,8 @@ def test_unique_from_empty_favorites():
 def test_new_rec_from_empty_friends():
     # Arrange
     sonyas_data = {
-        "watched": [INTRIGUE_1b],
-        "favorites": [INTRIGUE_1b],
+        "watched": ["INTRIGUE_1b"],
+        "favorites": ["INTRIGUE_1b"],
         "friends": []
     }
 
@@ -112,4 +112,4 @@ def test_new_rec_from_empty_friends():
 
     # Assert
     assert len(recommendations) == 1
-    assert INTRIGUE_1b in recommendations
+    assert "INTRIGUE_1b" in recommendations
