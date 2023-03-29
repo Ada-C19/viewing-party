@@ -114,4 +114,11 @@ def get_new_rec_by_genre(user_data):
             recommended_movies.append(movie)
     return recommended_movies
 
-    
+def get_rec_from_favorites(user_data):
+    recommended_movies = []
+    friends_not_watched = get_unique_watched(user_data)
+        
+    for movie in user_data["favorites"]:
+        if movie in friends_not_watched:
+            recommended_movies.append(movie)
+    return recommended_movies
