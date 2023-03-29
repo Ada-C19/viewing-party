@@ -117,6 +117,7 @@ def get_most_watched_genre(user_data):
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 
+
 def get_unique_watched(user_data):
     friend_watched = set()
     user_watched = []
@@ -171,13 +172,139 @@ def get_available_recs(user_data):
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
+
 def get_new_rec_by_genre(user_data):
     recommendations = []
     most_watched_genre = get_most_watched_genre(user_data)
     friend_only_watched = get_friends_unique_watched(user_data)
-   
+
     for movie in friend_only_watched:
         if movie["genre"] == most_watched_genre:
             recommendations.append(movie)
-          
+    print(recommendations)
     return recommendations
+
+
+sonyas_data = sonyas_data = {
+    "watched": [{
+        "title": "Recursion",
+        "genre": "Intrigue",
+        "rating": 2.0,
+        'host': 'hulu'
+    }],
+    "friends": [
+        {
+            "watched": []
+        },
+        {
+            "watched": []
+        }
+    ]
+}
+
+get_new_rec_by_genre(sonyas_data)
+
+
+def get_rec_from_favorites(user_data):
+    recommendations = []
+    only_user_watched = get_unique_watched(user_data)
+
+    for fave_movie in user_data['favorites']:
+        for movie in only_user_watched:
+            if movie["title"] == fave_movie["title"]:
+                recommendations.append(fave_movie)
+    return recommendations
+
+
+user_data = {'favorites': [{'genre': 'Fantasy',
+                            'host': 'netflix',
+                            'rating': 4.8,
+                                     'title': 'The Lord of the Functions: The Fellowship '
+                                     'of the Function'},
+                           {'genre': 'Fantasy',
+                               'host': 'netflix',
+                               'rating': 4.0,
+                               'title': 'The Lord of the Functions: The Two '
+                            'Parameters'},
+                           {'genre': 'Intrigue',
+                            'host': 'hulu',
+                            'rating': 2.0,
+                            'title': 'Recursion'},
+                           {'genre': 'Intrigue',
+                            'host': 'disney+',
+                            'rating': 4.5,
+                            'title': 'Instructor Student TA Manager'}],
+             'friends': [{'watched': [{'genre': 'Fantasy',
+                                       'host': 'netflix',
+                                       'rating': 4.8,
+                                       'title': 'The Lord of the Functions: '
+                                       'The Fellowship of the '
+                                       'Function'},
+                                      {'genre': 'Fantasy',
+                                       'host': 'amazon',
+                                       'rating': 4.0,
+                                       'title': 'The Lord of the Functions: '
+                                       'The Return of the Value'},
+                                      {'genre': 'Fantasy',
+                                       'host': 'hulu',
+                                       'rating': 4.0,
+                                       'title': 'The Programmer: An '
+                                       'Unexpected Stack Trace'},
+                                      {'genre': 'Horror',
+                                       'host': 'netflix',
+                                       'rating': 3.5,
+                                       'title': 'It Came from the Stack '
+                                       'Trace'}]},
+                         {'watched': [{'genre': 'Fantasy',
+                                       'host': 'netflix',
+                                       'rating': 4.8,
+                                       'title': 'The Lord of the Functions: '
+                                       'The Fellowship of the '
+                                       'Function'},
+                                      {'genre': 'Fantasy',
+                                       'host': 'hulu',
+                                       'rating': 4.0,
+                                       'title': 'The Programmer: An '
+                                       'Unexpected Stack Trace'},
+                                      {'genre': 'Action',
+                                       'host': 'amazon',
+                                       'rating': 2.2,
+                                       'title': 'The JavaScript and the '
+                                       'React'},
+                                      {'genre': 'Intrigue',
+                                       'host': 'hulu',
+                                       'rating': 2.0,
+                                       'title': 'Recursion'},
+                                      {'genre': 'Intrigue',
+                                       'host': 'disney+',
+                                       'rating': 3.0,
+                                       'title': 'Zero Dark Python'}]}],
+             'subscriptions': ['netflix', 'hulu'],
+             'watched': [{'genre': 'Fantasy',
+                          'host': 'netflix',
+                          'rating': 4.8,
+                          'title': 'The Lord of the Functions: The Fellowship of '
+                          'the Function'},
+                         {'genre': 'Fantasy',
+                          'host': 'netflix',
+                          'rating': 4.0,
+                          'title': 'The Lord of the Functions: The Two '
+                          'Parameters'},
+                         {'genre': 'Fantasy',
+                          'host': 'amazon',
+                          'rating': 4.0,
+                          'title': 'The Lord of the Functions: The Return of the '
+                          'Value'},
+                         {'genre': 'Action',
+                          'host': 'amazon',
+                          'rating': 2.2,
+                          'title': 'The JavaScript and the React'},
+                         {'genre': 'Intrigue',
+                          'host': 'hulu',
+                          'rating': 2.0,
+                          'title': 'Recursion'},
+                         {'genre': 'Intrigue',
+                          'host': 'disney+',
+                          'rating': 4.5,
+                          'title': 'Instructor Student TA Manager'}]}
+get_rec_from_favorites(user_data)
