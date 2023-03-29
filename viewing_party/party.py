@@ -148,16 +148,14 @@ def get_friends_unique_watched(user_data):
     
     Keyword arguments:
     user_data -- dictionary containing movies user and friends has watched
-    """
-    # List of movies user watched
-    user_watched = user_data["watched"]
-    
+    """  
     # Check if each friends' movie is in user's watched list
     # If not, add to unique list if not already in it
     unique_watched = []
     for watched_dict in user_data["friends"]:
         for movie in watched_dict["watched"]:
-            if (movie not in user_watched and movie not in unique_watched):
+            if (movie not in user_data["watched"]
+                    and movie not in unique_watched):
                 unique_watched.append(movie)
     
     return unique_watched
