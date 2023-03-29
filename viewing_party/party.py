@@ -3,7 +3,6 @@ import iteration_utilities
 from iteration_utilities import unique_everseen
 # ------------- WAVE 1 --------------------
 
-
 def create_movie(title, genre, rating):
     """- add the `movie` to the `"watched"` list inside of `user_data`
 - return the `user_data`"""
@@ -17,12 +16,14 @@ def add_to_watched(user_data, movie):
     """- add the `movie` to the `"watched"` list inside of `user_data`
 - return the `user_data`"""
     user_data["watched"].append(movie)
+    
     return user_data
 
 def add_to_watchlist(user_data, movie):
     """- add the `movie` to the `"watchlist"` list inside of `user_data`
 - return the `user_data`"""
     user_data["watchlist"].append(movie)
+    
     return user_data
 
 def watch_movie(user_data, title):
@@ -37,8 +38,8 @@ def watch_movie(user_data, title):
         if i["title"] == title:
             user_data["watchlist"].remove(i)
             user_data["watched"].append(title)
+    
     return user_data
-
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
@@ -53,10 +54,11 @@ def get_watched_avg_rating(user_data):
         for i in user_data["watched"]:
             total += i["rating"]
         avg_rating = total/len(user_data["watched"])
+    
         return avg_rating
     else: 
+    
         return 0.0
-
 
 def get_most_watched_genre(user_data):
     """- Determine which genre is most frequently occurring in the watched list
@@ -68,24 +70,25 @@ def get_most_watched_genre(user_data):
         for i in user_data["watched"]:
             list_genre.append(i["genre"])
         rpt_genre = max(set(list_genre), key=list_genre.count)
+    
         return rpt_genre
+    
     else: 
+    
         return None
 
 # -----------------------------------------
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 
-def helper_join_list_of_lists(list_of_lists):
+def helper_join_list_of_lists_and_removes_duplicates(list_of_lists):
     plain_list = []
     for sublist in list_of_lists:
         for item in sublist:
             plain_list.append(item)
-
-    return plain_list
-
-def helper_that_takes_list_of_dictionaries_and_removes_duplicates(list_of_dictionaries):
-    list_of_dictionaries_comp= list(unique_everseen(list_of_dictionaries))
+    
+    list_of_dictionaries_comp= list(unique_everseen(plain_list))
+    
     return list_of_dictionaries_comp
 
 def get_unique_watched(user_data):
@@ -103,7 +106,7 @@ def get_unique_watched(user_data):
     for i in user_data["friends"]:
         list_of_friends_data.append(i["watched"])
 
-    list_of_friends_data_comp = helper_join_list_of_lists(list_of_friends_data)
+    list_of_friends_data_comp = helper_join_list_of_lists_and_removes_duplicates(list_of_friends_data)
     
     for i in list_of_user_data:
         if i not in list_of_friends_data_comp:
@@ -126,10 +129,9 @@ def get_friends_unique_watched(user_data):
     for i in user_data["friends"]:
         list_of_friends_data.append(i["watched"])
 
-    list_of_friends_data_comp = helper_join_list_of_lists(list_of_friends_data)
-    friends_list_wo_duplicates = helper_that_takes_list_of_dictionaries_and_removes_duplicates(list_of_friends_data_comp)
+    list_of_friends_data_comp = helper_join_list_of_lists_and_removes_duplicates(list_of_friends_data)
     
-    for i in friends_list_wo_duplicates:
+    for i in list_of_friends_data_comp:
         if i not in list_of_user_data:
             result.append(i)
     
@@ -144,8 +146,14 @@ def get_available_recs(user_data):
 - At least one of the user's friends has watched
 - The `"host"` of the movie is a service that is in the user's `"subscriptions"`
 - Return the list of recommended movies"""
-    pass
+    recommended =[]
+    user_hasnt_watched = get_friends_unique_watched(user_data)
 
+    for i in user_hasnt_watched:
+        if i["host"] in user_data["subscriptions"]:
+            recommended.append(i)
+    
+    return recommended
 # -----------------------------------------
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
@@ -154,6 +162,36 @@ def get_new_rec_by_genre(user_data):
 - At least one of the user's friends has watched
 - The `"genre"` of the movie is the same as the user's most frequent genre
 - Return the list of recommended movies"""
-    pass
+    recommended = []
+    user_hasnt_watched = get_friends_unique_watched(user_data)
+    genres_list = []
+    
+    if user_data["watched"]:
+        for i in user_data["watched"]:
+            genres_list.append(i["genre"])
+        
+        frequent_genre = max(set(genres_list), key=genres_list.count)
+
+        for i in user_hasnt_watched:
+            if i["genre"]== frequent_genre:
+                recommended.append(i)
+        
+    return recommended
+
+def get_rec_from_favorites(user_data):
+    """- Determine a list of recommended movies. A movie should be added to this list if and only if:
+    - The movie is in the user's `"favorites"`
+    - None of the user's friends have watched it
+- Return the list of recommended movies"""
+    friends_havent_watched = get_unique_watched(user_data)
+    recommended = []
+    
+    if user_data["favorites"]:
+        for i in user_data["favorites"]:
+            if i in friends_havent_watched:
+                recommended.append(i)
+
+    return recommended
+
 # -----------------------------------------
 
