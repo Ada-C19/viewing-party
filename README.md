@@ -285,7 +285,7 @@ When our test failures leave us confused and stuck, let's use the detailed proje
     - This represents that the user has a watchlist and a list of watched movies
   - the value of `title` will be a string
     - This represents the title of the movie the user has watched
-- If the title is in a movie in the user's watchlist:
+- If the title is a movie in the user's watchlist:
   - remove that movie from the watchlist
   - add that movie to watched
   - return the `user_data`
