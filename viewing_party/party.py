@@ -96,7 +96,32 @@ def get_most_watched_genre(user_data):
 #friends is a list of dics
 #1. deep copy list of watched movies, iterate over all friends dics and remove movies 
 #2. Make list of docs with unique movies friends have and remove all the user has
-        
+
+def get_unique_watched(user_data):
+    # user_watched = []
+    # friends_watched = []
+
+    # for movie in user_data["watched"]:
+    #     user_watched.append((movie["title"], movie))
+    
+    # for friend in user_data["friends"]:
+    #     for movie in friend["watched"]:
+    #         friends_watched.append((movie["title"], movie))
+
+    # return set(user_watched) - set(friends_watched)
+    user_watched = {}
+
+    for movie in user_data["watched"]:
+        user_watched['title']=movie
+    
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            if movie['title'] in user_watched:
+                del user_watched['title']
+
+    return user_watched
+
+
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
