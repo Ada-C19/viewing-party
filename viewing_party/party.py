@@ -21,27 +21,13 @@ def add_to_watchlist(user_data, movie):
 def watch_movie(user_data, title):
     for movie in user_data["watchlist"]:
         if title != movie["title"]:
-            return user_data
+            continue
         elif movie["title"] == title:
             user_data["watched"].append(movie)
             user_data["watchlist"].remove(movie)
-            # print("Here is the user_data within function:")
-            # print(user_data)
             return user_data
-
-# our print tests
-        # Arrange
-        janes_data = {
-            "watchlist": [{
-                "title": MOVIE_TITLE_1,
-                "genre": GENRE_1,
-                "rating": RATING_1
-            }],
-            "watched": []
-        }
-    
-        # Act
-        updated_data = watch_movie(janes_data, MOVIE_TITLE_1)
+        
+    return user_data
 
 
 # -----------------------------------------
