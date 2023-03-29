@@ -41,12 +41,9 @@ def get_most_watched_genre(user_data):
         genre_list.append(movie["genre"])
     
     most_genre = max(genre_list, key=genre_list.count)
-         
+    
     return most_genre
         
-
-
-
 # ------------- WAVE 3 --------------------
 def get_unique_watched(user_data):
     user_watched_only = []
@@ -62,7 +59,7 @@ def get_unique_watched(user_data):
     for movie in user_watched_only:
         if movie not in friends_watched:
             unique_list.append(movie)
-             
+        
     return unique_list
     
                     
