@@ -76,15 +76,17 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 
-def helper_join_list_of_lists_and_remove_duplicates(list_of_lists):
+def helper_join_list_of_lists(list_of_lists):
     plain_list = []
     for sublist in list_of_lists:
         for item in sublist:
             plain_list.append(item)
-    
-    #list(unique_everseen(plain_list))
 
     return plain_list
+
+def helper_that_takes_list_of_dictionaries_and_removes_duplicates(list_of_dictionaries):
+    list_of_dictionaries_comp= list(unique_everseen(list_of_dictionaries))
+    return list_of_dictionaries_comp
 
 def get_unique_watched(user_data):
     """- Consider the movies that the user has watched, and consider the movies that their friends have watched. Determine which movies the user has watched, but none of their friends have watched.
@@ -101,7 +103,7 @@ def get_unique_watched(user_data):
     for i in user_data["friends"]:
         list_of_friends_data.append(i["watched"])
 
-    list_of_friends_data_comp = helper_join_list_of_lists_and_remove_duplicates(list_of_friends_data)
+    list_of_friends_data_comp = helper_join_list_of_lists(list_of_friends_data)
     
     for i in list_of_user_data:
         if i not in list_of_friends_data_comp:
@@ -109,23 +111,29 @@ def get_unique_watched(user_data):
     
     return result
 
-    
-    #list_of_user_data_compiled = helper_join_list_of_lists_and_remove_duplicates(list_of_friends_data)
-    #list_of_friends_data_compiled = 
-
-    #print(list_of_friends_data_compiled)
-    #print(list_of_user_data_compiled)
-    #for i in list_of_user_data_compiled:
-        #if i not in list_of_friends_data_compiled:
-            #result.append(i) 
-    #return result
-
-
 def get_friends_unique_watched(user_data):
     """- Consider the movies that the user has watched, and consider the movies that their friends have watched. Determine which movies at least one of the user's friends have watched, but the user has not watched.
 - Return a list of dictionaries, that represents a list of movies
 """
-    pass
+    list_of_user_data = []
+    list_of_friends_data = []
+    list_of_friends_data_comp = []
+    result = []
+    
+    for i in user_data["watched"]:
+        list_of_user_data.append(i)
+
+    for i in user_data["friends"]:
+        list_of_friends_data.append(i["watched"])
+
+    list_of_friends_data_comp = helper_join_list_of_lists(list_of_friends_data)
+    friends_list_wo_duplicates = helper_that_takes_list_of_dictionaries_and_removes_duplicates(list_of_friends_data_comp)
+    
+    for i in friends_list_wo_duplicates:
+        if i not in list_of_user_data:
+            result.append(i)
+    
+    return result
 
 # -----------------------------------------   
 # -----------------------------------------
