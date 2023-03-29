@@ -152,12 +152,21 @@ def test_moves_movie_from_watchlist_to_empty_watched():
         "watched": []
     }
 
+    # added this variable to use in assert
+    movie_in_index_0 = janes_data["watchlist"][0]
+
     # Act
     updated_data = watch_movie(janes_data, MOVIE_TITLE_1)
 
     # Assert
     assert len(updated_data["watchlist"]) == 0
     assert len(updated_data["watched"]) == 1
+    # modifications must move the entire dict
+    assert movie_in_index_0 in updated_data["watched"]
+
+    # assert updated_data["watched"][0]["title"] == MOVIE_TITLE_1
+    # assert updated_data["watched"][0]["genre"] == GENRE_1
+    # assert updated_data["watched"][0]["rating"] == RATING_1
     # assert MOVIE_TITLE_1 in updated_data["watched"]
     ################# OR assert MOVIE_TITLE_1 in updated_data["watchlist"] #####
     
@@ -186,8 +195,11 @@ def test_moves_movie_from_watchlist_to_watched():
     # Assert
     assert len(updated_data["watchlist"]) == 1
     assert len(updated_data["watched"]) == 2
-    assert movie_to_watch in updated_data["watched"]
+    # assert movie_to_watch in updated_data["watched"]
     ##### OR  assert movie_to_watch in updated_data["watchlist"] #######
+    assert HORROR_1 in updated_data["watched"]
+    assert FANTASY_2 in updated_data["watched"]
+    assert FANTASY_1 in updated_data["watchlist"]
 
     # Added assert above
     #raise Exception("Test needs to be completed.")
