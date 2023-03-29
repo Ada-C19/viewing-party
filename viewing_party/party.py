@@ -337,19 +337,3 @@ def get_new_rec_by_genre(user_data):
     return list(rec_movies_by_gender.values())
 
 #print(get_new_rec_by_genre(USER_DATA))
-
-def get_rec_from_favorites(user_data):
-
-    # New list will hold the titles of the favorite movies.
-    list_favs = []
-    favorites_list = user_data["favorites"]
-    for title in favorites_list:
-        list_favs.append(title["title"])
-
-
-
-
-    return None
-
-print(get_rec_from_favorites())
-print()
