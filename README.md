@@ -1,3 +1,18 @@
+## Project Plan
+Access needs
+- Sel: Before coding, brainstorm problem-solving and how to approach the problem. Okay with in-person and Slack messages. Usually work at home from 4:30pm to 10pm.
+- Julie: Understand the problem first, write pseudocode first. Working at home from 8pm-10pm. 
+- Work together in-person before 3pm. 
+
+Learning style
+How you prefer to receive feedback
+- Sel: In-person
+- Julie: In-person
+
+One team communication skill you want to improve with this experience
+- Sel: Manage time better
+- Julie: Figuring out a good project plan, communication about coding, practice LiveShare
+
 # Viewing Party
 
 ## Skills Assessed
