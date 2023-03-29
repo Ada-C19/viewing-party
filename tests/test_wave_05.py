@@ -2,7 +2,8 @@ import pytest
 from viewing_party.party import *
 from tests.test_constants import *
 
-@pytest.mark.skip()
+
+# @pytest.mark.skip()
 def test_new_genre_rec():
     # Arrange
     sonyas_data = clean_wave_5_data()
@@ -17,7 +18,8 @@ def test_new_genre_rec():
     assert FANTASY_4b in recommendations
     assert sonyas_data == clean_wave_5_data()
 
-@pytest.mark.skip()
+
+# @pytest.mark.skip()
 def test_new_genre_rec_from_empty_watched():
     # Arrange
     sonyas_data = {
@@ -27,7 +29,7 @@ def test_new_genre_rec_from_empty_watched():
                 "watched": [INTRIGUE_1b]
             },
             {
-                "watched": [INTRIGUE_2b,HORROR_1b]
+                "watched": [INTRIGUE_2b, HORROR_1b]
             }
         ]
     }
@@ -38,7 +40,9 @@ def test_new_genre_rec_from_empty_watched():
     # Assert
     assert len(recommendations) == 0
 
-@pytest.mark.skip()
+# @pytest.mark.skip()
+
+
 def test_new_genre_rec_from_empty_friends():
     # Arrange
     sonyas_data = {
@@ -52,13 +56,21 @@ def test_new_genre_rec_from_empty_friends():
             }
         ]
     }
+    # Act
+    recommendations = get_new_rec_by_genre(sonyas_data)
 
-    raise Exception("Test needs to be completed.")
+    # Assert
+    assert recommendations == []
+
+    # raise Exception("Test needs to be completed.")
+
     # *********************************************************************
     # ****** Complete the Act and Assert Portions of these tests **********
     # *********************************************************************
 
-@pytest.mark.skip()
+# @pytest.mark.skip()
+
+
 def test_unique_rec_from_favorites():
     # Arrange
     sonyas_data = clean_wave_5_data()
@@ -72,7 +84,9 @@ def test_unique_rec_from_favorites():
     assert INTRIGUE_2b in recommendations
     assert sonyas_data == clean_wave_5_data()
 
-@pytest.mark.skip()
+# @pytest.mark.skip()
+
+
 def test_unique_from_empty_favorites():
     # Arrange
     sonyas_data = {
@@ -83,7 +97,7 @@ def test_unique_from_empty_favorites():
                 "watched": [INTRIGUE_1b]
             },
             {
-                "watched": [INTRIGUE_2b,HORROR_1b]
+                "watched": [INTRIGUE_2b, HORROR_1b]
             }
         ]
     }
@@ -94,7 +108,9 @@ def test_unique_from_empty_favorites():
     # Assert
     assert len(recommendations) == 0
 
-@pytest.mark.skip()
+# @pytest.mark.skip()
+
+
 def test_new_rec_from_empty_friends():
     # Arrange
     sonyas_data = {
