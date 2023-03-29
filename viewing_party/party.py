@@ -1,6 +1,5 @@
 
 # ------------- WAVE 1 --------------------
-
 def create_movie(title, genre, rating):
     '''
     input: title, genre, rating
@@ -14,8 +13,9 @@ def create_movie(title, genre, rating):
         return None
     
     movie_dict = {'title': title, 'genre': genre, 'rating': rating}
-    if movie_dict == False:
-        return None
+    # I think these 2 lines don't guard against anything (lines 8-13 do)
+    # if movie_dict == False:
+    #     return None
     return movie_dict
         
 
@@ -29,6 +29,7 @@ def add_to_watched(user_data, movie):
 
     return user_data
 
+
 def add_to_watchlist(user_data, movie):
     # user_data is a dict with key "watchlist"
     movies_user_wants_to_watch = user_data["watchlist"]
@@ -39,7 +40,6 @@ def add_to_watchlist(user_data, movie):
     # append (represent) movie to list of dict
     movies_user_wants_to_watch.append(movie)
 
-
     return user_data
 
 
@@ -49,8 +49,6 @@ def watch_movie(user_data, title):
     title is a string representing the title of the movie the user has watched
     output: user_data
     '''
-    # if not title in user_data:
-    #    return user_data
     # value user_data dictionary with "watchlist"
     user_watchlist_movies = user_data["watchlist"]
     # value user_data dictionary with "watched"
@@ -74,36 +72,28 @@ def watch_movie(user_data, title):
 #Note: For Waves 2, 3, 4, and 5, your implementation of each of the functions 
 # should not modify user_data. .copy() or .deepcopy() possibly
 
-
-
-    # for watched_title in watched_movies:
-    #     
-    #     # if the title is in the movie watchlist remove from the watchlist
-    #         
-
-
-
-
-
- 
-    
-    # if title in user_data:
-    #     user_data.remove(title['watchlist'])
-    #     user_data.append(title['watched'])
-    #     return user_data
-
-
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
 def get_watched_avg_rating(user_data):
-    pass
     '''
     input: user_data is a dictionary with a "watched" list of movies dictionaries
     # calculate the average rating of all movies in the watched list
     # an empty "watched" list has a value of 0.0
     output: average rating 
-    '''    
+    '''
+    #initiate sum to 0.0 and guard against an empty watched list
+    sum = 0.0
+    if not user_data['watched']:
+        return sum
+    
+    #grab values of rating from each movie dictionary and add them to the sum
+    for movie in user_data['watched']:
+        sum += movie['rating']
+        
+    #return average (sum / # of watched movies)
+    return sum / len(user_data['watched'])
+    
     # #user_data is a dict with "watched" list of dict
     # user_list_of_watched_movies = user_data["watched"]
     # #calc th avg rating of all movies in the watched list
@@ -111,7 +101,6 @@ def get_watched_avg_rating(user_data):
     #     sum(user_list_of_watched_movies)
 # }
 def get_most_watched_genre(user_data):
-    pass
     '''
     input: user_data is a dictionary with a "watched" list of movies dictionaries. 
     # each movie dictionary has a key 'genre' which is a string
@@ -119,6 +108,29 @@ def get_most_watched_genre(user_data):
     # if the value of 'watched' is an empty string, function should return None
     output: genre that's most frequently watched 
     ''' 
+    #initialize a dictionary that will store genres of all watched movies
+    genre_dict = {}
+    #guard against an empty watched list
+    if not user_data['watched']:
+        return None
+
+    #add genre of each watched movie as a key, adding to its frequency everytime 
+    for movie in user_data['watched']:
+        #get the genre of the movie
+        movie_genre = movie['genre']
+
+        #if the genre is not in genre_dict, add it as a key with a value of 1
+        #else genre is in genre_dict, increase value by 1
+        if not movie_genre in genre_dict:
+            genre_dict[movie_genre] = 1
+        else:
+            genre_dict[movie_genre] += 1
+
+    most_popular_genre = max(genre_dict, key=genre_dict.get)
+    #return genre with highest value from genre_dict
+    return most_popular_genre
+
+        
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
