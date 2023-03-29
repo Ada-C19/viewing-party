@@ -46,25 +46,21 @@ HORROR_1 = {
 }
 
 # ------------- WAVE 1 --------------------
+
 def create_movie(title, genre, rating):
     if title and genre and rating:
         return {"title": title, "genre": genre, "rating": rating}
     else:
         return None
+
     
 def add_to_watched(user_data, movie):
-    add_watched = user_data["watched"]
-    add_watched.append(movie)
+    user_data["watched"].append(movie)
     return user_data
- 
 
 def add_to_watchlist(user_data, movie):
-    add_watchlist = user_data["watchlist"]
-    add_watchlist.append(movie)
+    user_data["watchlist"].append(movie)
     return user_data
-    # user_data["watchlist"].append(movie)
-    # return user_data
-
 
 def watch_movie(user_data, title):
     watched_movie = user_data['watched']
@@ -75,35 +71,11 @@ def watch_movie(user_data, title):
             watched_movie.append(item)
             movie_to_watchlist.remove(item)
     return user_data
-    
-    #print(movie_watched)
-    # user_data = {
-    #         "watchlist": [{
-    #             "title": "It Came from the Stack Trace",
-    #             "genre": "Horor",
-    #             "rating": 5
-    #         }],
-    #         "watched": []
-    #     }
-    # title = "It Came from the Stack Trace"
-
-
-    # # return user_data["watchlist"][0]["title"]
-    # if title in user_data["watchlist"][0]["title"]:
-    #     user_data["watchlist"].remove()
-    #     user_data["watched"] = user_data["watchlist"][0]
-    
-    #     print(user_data)
-    #     # if title == user_data["watchlist"][0]["title"]:
-
-            
-
-            
-    
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
+
 def get_watched_avg_rating(user_data):
     total_ratings = 0
     number_movies = len(user_data["watched"])
