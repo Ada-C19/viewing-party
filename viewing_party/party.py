@@ -144,12 +144,10 @@ def get_available_recs(user_data):
     return avaible_friend_movies
     
 
-# 1. call the function prevously made and check the host of movies
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
-#1. same as before but fikter by genre 
-#2. find unique movies of user filter the favorites
+
 
 def get_new_rec_by_genre(user_data):
 
@@ -163,3 +161,14 @@ def get_new_rec_by_genre(user_data):
             rec_by_genre.append(movie)
     
     return rec_by_genre
+
+
+def get_rec_from_favorites (user_data):
+    favorites = user_data['favorites']
+    user_favorites = []
+    user_watched= get_unique_watched(user_data)
+
+    for movie in user_watched:
+        if movie in favorites:
+            user_favorites.append(movie)
+    return user_favorites
