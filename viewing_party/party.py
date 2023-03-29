@@ -1,6 +1,5 @@
 
 
-#from iteration_utilities import unique_everseen
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
@@ -89,7 +88,6 @@ def helper_join_list_of_lists_and_removes_duplicates(list_of_lists):
     
 
     list_of_dictionaries_comp= [dict(s) for s in set(frozenset(myObject.items()) for myObject in plain_list)]
-    #list_of_dictionaries_comp= list(unique_everseen(plain_list))
     
     return list_of_dictionaries_comp
 
