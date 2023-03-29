@@ -49,13 +49,48 @@ def watch_movie(user_data, title):
     title is a string representing the title of the movie the user has watched
     output: user_data
     '''
-    if not title in user_data:
-        return user_data
+    # if not title in user_data:
+    #    return user_data
+    # value user_data dictionary with "watchlist"
+    user_watchlist_movies = user_data["watchlist"]
+    # value user_data dictionary with "watched"
+    watched_movies = user_data["watched"]
+    # this represents the title of the movie the user has watched
+    for watchlist_dict in user_watchlist_movies:
+        # if this title is in the users watchlist
+        # is title = title of watch_dict 
+        if title == watchlist_dict['title']:
+            user_watchlist_movies.remove(watchlist_dict)
+            watched_movies.append(watchlist_dict)
+    return user_data
+            
+            # value of key called title
+
+# If the title is in a movie in the user's watchlist:
+# remove that movie from the watchlist
+# add that movie to watched
+# return the user_data
+
+#Note: For Waves 2, 3, 4, and 5, your implementation of each of the functions 
+# should not modify user_data. .copy() or .deepcopy() possibly
+
+
+
+    # for watched_title in watched_movies:
+    #     
+    #     # if the title is in the movie watchlist remove from the watchlist
+    #         
+
+
+
+
+
+ 
     
-    if title in user_data:
-        user_data.remove(title['watchlist'])
-        user_data.append(title['watched'])
-        return user_data
+    # if title in user_data:
+    #     user_data.remove(title['watchlist'])
+    #     user_data.append(title['watched'])
+    #     return user_data
 
 
 # -----------------------------------------
