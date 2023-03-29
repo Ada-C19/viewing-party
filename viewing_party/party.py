@@ -147,6 +147,7 @@ def get_friends_unique_watched(user_data):
     #     ]
     # }
     # ]}
+
     unique_watch = []
     no_duplicate_unique_watch = []
    
@@ -160,7 +161,6 @@ def get_friends_unique_watched(user_data):
         if movie not in no_duplicate_unique_watch:
             no_duplicate_unique_watch.append(movie)
     return no_duplicate_unique_watch
-
 
 
 
