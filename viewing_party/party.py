@@ -24,16 +24,12 @@ def add_to_watchlist(user_data, movie):
 
 
 def watch_movie(user_data, title):
-    # Iterates through every movie dict stored in watchlist
-    for i in range(len(user_data["watchlist"])):
-        # Checks to see if the title is in the user's watchlist. If it is,
-        # it adds movie dict to watched, and removes it from watchlist.
-        if title == user_data["watchlist"][i]["title"]:
-            user_data["watched"].append(user_data["watchlist"][i])
-            del user_data["watchlist"][i]
+    for movie in user_data["watchlist"]:
+        if title == movie["title"]:
+            user_data["watched"].append(movie)
+            user_data["watchlist"].remove(movie)
 
     return user_data
-
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
