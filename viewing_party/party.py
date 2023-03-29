@@ -19,7 +19,7 @@ def create_movie(title, genre, rating):
     return new_movie
 
 
-create_movie("Scream 6", "Horror", 4.0)
+# create_movie("Scream 6", "Horror", 4.0)
 
 
 def add_to_watched(user_data, movie):
@@ -34,7 +34,7 @@ movie = {
 }
 user_data = {"watched": []}
 
-add_to_watched(user_data, movie)
+# add_to_watched(user_data, movie)
 
 
 def add_to_watchlist(user_data, movie):
@@ -50,7 +50,7 @@ movie = {
 user_data = {
     "watchlist": []
 }
-add_to_watchlist(user_data, movie)
+# add_to_watchlist(user_data, movie)
 
 
 def watch_movie(user_data, title):
@@ -78,7 +78,7 @@ janes_data = {
     }],
     "watched": []
 }
-watch_movie(janes_data, "Super Man")
+# watch_movie(janes_data, "Super Man")
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
@@ -117,7 +117,6 @@ def get_most_watched_genre(user_data):
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 
-
 def get_unique_watched(user_data):
     friend_watched = set()
     user_watched = []
@@ -135,63 +134,50 @@ def get_unique_watched(user_data):
     return user_watched
 
 
-user_data = {'friends': [{'watched': [{'genre': 'Fantasy',
-                                       'rating': 4.8,
-                                       'title': 'The Lord of the Functions: '
-                                       'The Fellowship of the '
-                                       'Function'},
-                                      {'genre': 'Fantasy',
-                                          'rating': 4.0,
-                                                'title': 'The Lord of the Functions: '
-                                       'The Return of the Value'},
-                                      {'genre': 'Fantasy',
-                                       'rating': 4.0,
-                                       'title': 'The Programmer: An '
-                                       'Unexpected Stack Trace'},
-                                      {'genre': 'Horror',
-                                          'rating': 3.5,
-                                          'title': 'It Came from the Stack '
-                                                   'Trace'}]},
-                         {'watched': [{'genre': 'Fantasy',
-                                       'rating': 4.8,
-                                       'title': 'The Lord of the Functions: '
-                                       'The Fellowship of the '
-                                       'Function'},
-                                      {'genre': 'Action',
-                                       'rating': 2.2,
-                                       'title': 'The JavaScript and the '
-                                       'React'},
-                                      {'genre': 'Intrigue',
-                                       'rating': 2.0,
-                                       'title': 'Recursion'},
-                                      {'genre': 'Intrigue',
-                                       'rating': 3.0,
-                                       'title': 'Zero Dark Python'}]}],
-             'watched': [{'genre': 'Fantasy',
-                          'rating': 4.8,
-                          'title': 'The Lord of the Functions: The Fellowship of '
-                          'the Function'},
-                         {'genre': 'Fantasy',
-                          'rating': 4.0,
-                          'title': 'The Lord of the Functions: The Two '
-                          'Parameters'},
-                         {'genre': 'Fantasy',
-                          'rating': 4.0,
-                          'title': 'The Lord of the Functions: The Return of the '
-                          'Value'},
-                         {'genre': 'Action',
-                          'rating': 2.2,
-                          'title': 'The JavaScript and the React'},
-                         {'genre': 'Intrigue', 'rating': 2.0, 'title': 'Recursion'},
-                         {'genre': 'Intrigue',
-                          'rating': 4.5,
-                          'title': 'Instructor Student TA Manager'}]}
-get_unique_watched(user_data)
+def get_friends_unique_watched(user_data):
+    friend_watched = []
+    friend_watched_titles = []
+    user_watched = []
+
+    for user_dict in user_data["watched"]:
+        user_title = user_dict["title"]
+        user_watched.append(user_title)
+
+    for friend_dict in user_data["friends"]:
+        for movie_dict in friend_dict["watched"]:
+            friend_movie_title = movie_dict["title"]
+            if (friend_movie_title not in friend_watched_titles and
+                    friend_movie_title not in user_watched):
+                friend_watched_titles.append(friend_movie_title)
+                friend_watched.append(movie_dict)
+
+    return friend_watched
+
+
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
 
+def get_available_recs(user_data):
+    recommendations = []
+    friend_only_watched = get_friends_unique_watched(user_data)
+    for movie in friend_only_watched:
+        if movie["host"] in user_data["subscriptions"]:
+            recommendations.append(movie)
+
+    return recommendations
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
+
+def get_new_rec_by_genre(user_data):
+    recommendations = []
+    most_watched_genre = get_most_watched_genre(user_data)
+    friend_only_watched = get_friends_unique_watched(user_data)
+   
+    for movie in friend_only_watched:
+        if movie["genre"] == most_watched_genre:
+            recommendations.append(movie)
+          
+    return recommendations
