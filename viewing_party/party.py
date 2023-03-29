@@ -19,6 +19,7 @@ def watch_movie(user_data, title):
         if user_data['watchlist'][i]['title'] == title:
             user_data['watched'].append(user_data['watchlist'][i])
             user_data['watchlist'].pop(i)
+    return user_data
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
