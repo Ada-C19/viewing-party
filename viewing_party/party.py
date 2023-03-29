@@ -58,7 +58,12 @@ def watch_movie(user_data, title):
     input: user_data dictionary, and title string
     output: updated user_data dictionary 
     """ 
-    # print(user_data, "here")
+    for x in user_data:
+        if title in user_data["watchlist"]:
+            user_data.pop(title)
+            user_data["watched"] = title
+        else:
+            return user_data
 
 
     # new idea! Iterate through user_data to see if title is in watchlist
@@ -77,15 +82,15 @@ def watch_movie(user_data, title):
             
 
 
-    for movie in user_data["watchlist"]:
-        print(movie, 'here')
-        print(title, "lll")
-        if movie["title"] == title:
-            user_data["watchlist"].remove(movie)
-            user_data["watched"].append(movie)
-            return user_data
-        else:
-            return user_data
+    # for movie in user_data["watchlist"]:
+    #     print(movie, 'here')
+    #     print(title, "lll")
+    #     if movie["title"] == title:
+    #         user_data["watchlist"].remove(movie)
+    #         user_data["watched"].append(movie)
+    #         return user_data
+    #     else:
+    #         return user_data
         # if "title" in movie:
         #     ["title"] == title
             
