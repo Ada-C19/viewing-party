@@ -37,16 +37,59 @@ def add_to_watchlist(user_data, movie):
 
     return user_data
 
+# The data below is for testing function watch_movie()
+user_data = {
+    "watchlist": [
+        {"title": "Land Before Time"},
+        {"title": "Spirited Away"}
+    ],
+    "watched": [
+            {"title": "Lord of the Rings"},
+            {"title": "Parasyte"},
+            {"title": "Harry Potter"},
+            {"title": "Ready Player One"}
+    ]
+}
 
-
-
-
+title = 'Land Before Time'
 
 def watch_movie(user_data, title):
     """
     input: user_data dictionary, and title string
     output: updated user_data dictionary 
     """ 
+    # print(user_data, "here")
+
+
+    # new idea! Iterate through user_data to see if title is in watchlist
+    # for key in user_data:
+    #     print(key, "ooooo")
+    #     for element in key.values():
+    #             # print(key, element, "here")
+    #         # if "title" in movie
+    #             if title in "movie":
+    #                 # user_data["watchlist"]["movie"].remove(["title"])
+    #                 del user_data["watchlist"]["movie"]["title"]
+    #                 user_data ["watched"].append("title")
+    #                 return user_data
+    #             else:
+    #                 return user_data 
+            
+
+
+    for movie in user_data["watchlist"]:
+        print(movie, 'here')
+        print(title, "lll")
+        if movie["title"] == title:
+            user_data["watchlist"].remove(movie)
+            user_data["watched"].append(movie)
+            return user_data
+        else:
+            return user_data
+        # if "title" in movie:
+        #     ["title"] == title
+            
+watch_movie(user_data, title)
 
 
 # -----------------------------------------
