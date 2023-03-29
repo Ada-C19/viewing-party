@@ -3,32 +3,22 @@
 def create_movie(title, genre, rating):
     # validate_parameters (empty strings and zero evaluate to Falsy)
     if title and genre and rating:
-        new_movie = {"title": title, "genre": genre, "rating": rating}
-        return new_movie
+        movie = {"title": title, "genre": genre, "rating": rating}
+        return movie
     else:
         return None
     
+user_data = {"watched": [], "watchlist": []}
 
 def add_to_watched(user_data, movie):
-    pass
-
-    # user_data = dictionary
-        # key = 'watched':  value = [list of {dictionaries}] to represent what movies the user has watched.
-            # would each dict contain the format title/genre/rating? yes
-            # empty list = no movies in watch list
-    # add the movie to the "watchlist" inside of user_data
-        
-    # user_data = {"title": "Title A","genre": "Horror", "rating": 3.5}]}
-        # if user_data empty = none watched
-
+    if movie:
+        user_data["watched"].append(movie)
+        return user_data
 
 def add_to_watchlist(user_data, movie):
-    pass
-
-    # user_data = dictionary
-        # key = watchlist:  value = [list of {dictionaries}] to represent what movies the user wants to watch
-            # add movie to 'watchlist' inside of user_data
-            # return user_data
+    if movie:
+        user_data["watchlist"].append(movie)
+        return user_data
 
 def watch_movie(user_data, title):
     pass
