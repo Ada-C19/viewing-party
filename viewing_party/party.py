@@ -164,7 +164,15 @@ def get_available_recs(user_data):
 # -----------------------------------------
 
 def get_new_rec_by_genre(user_data):
-    pass
+    most_watched_genre = get_most_watched_genre(user_data)
+    recommended_movies_list = get_available_recs(user_data)
+    recommended_movies_genre_list = []
+    
+    for movie in recommended_movies_list:
+        if movie["genre"] == most_watched_genre:
+            recommended_movies_genre_list.append(movie)
+            
+    return recommended_movies_genre_list
 
 # Create a function named  `get_new_rec_by_genre`. This function should...
 
