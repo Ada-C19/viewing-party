@@ -171,7 +171,7 @@ def get_available_recs(user_data):
     user_data -- dictionary containing movies user and friends has watched
     """  
     # Check if each friends' movie is in user's watched list
-    # If not, add to unique list if not already in it 
+    # If not, add to movie recs list if not already in it 
     # and user has subscription
     movie_recs = []
     for watched_dict in user_data["friends"]:
@@ -187,3 +187,23 @@ def get_available_recs(user_data):
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
+def get_new_rec_by_genre(user_data):
+    """Return list of dictionaries of movies recommended for user by genre.
+    
+    Keyword arguments:
+    user_data -- dictionary containing movies user and friends has watched
+    """  
+    # Check if each friends' movie is in user's watched list
+    # If not, add to genre recs list if not already in it 
+    # and matches user's most watched genre
+    most_watched_genre = get_most_watched_genre(user_data)
+
+    genre_recs = []
+    for watched_dict in user_data["friends"]:
+        for movie in watched_dict["watched"]:
+            if (movie not in user_data["watched"]
+                    and movie not in genre_recs 
+                    and movie["genre"] == most_watched_genre):
+                genre_recs.append(movie)
+    
+    return genre_recs
