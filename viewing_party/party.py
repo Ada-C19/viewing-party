@@ -26,7 +26,6 @@ def add_to_watched(user_data, movie):
     return user_data
     
 
-
 def add_to_watchlist(user_data, movie):
     """
     input: user_data dictionary, and movie dictionary
@@ -38,50 +37,26 @@ def add_to_watchlist(user_data, movie):
     return user_data
 
 # The data below is for testing function watch_movie()
-user_data = {
-    "watchlist": [
-        {"title": "Land Before Time"},
-        {"title": "Spirited Away"}
-    ],
-    "watched": [
-            {"title": "Lord of the Rings"},
-            {"title": "Parasyte"},
-            {"title": "Harry Potter"},
-            {"title": "Ready Player One"}
-    ]
-}
+# user_data = {
+#     "watchlist": [
+#         {"title": "Land Before Time"},
+#         {"title": "Spirited Away"}
+#     ],
+#     "watched": [
+#             {"title": "Lord of the Rings"},
+#             {"title": "Parasyte"},
+#             {"title": "Harry Potter"},
+#             {"title": "Ready Player One"}
+#     ]
+# }
 
-title = 'Land Before Time'
+# title = 'Land Before Time'
 
 def watch_movie(user_data, title):
     """
     input: user_data dictionary, and title string
     output: updated user_data dictionary 
     """ 
-    for x in user_data:
-        if title in user_data["watchlist"]:
-            user_data.pop(title)
-            user_data["watched"] = title
-        else:
-            return user_data
-
-
-    # new idea! Iterate through user_data to see if title is in watchlist
-    # for key in user_data:
-    #     print(key, "ooooo")
-    #     for element in key.values():
-    #             # print(key, element, "here")
-    #         # if "title" in movie
-    #             if title in "movie":
-    #                 # user_data["watchlist"]["movie"].remove(["title"])
-    #                 del user_data["watchlist"]["movie"]["title"]
-    #                 user_data ["watched"].append("title")
-    #                 return user_data
-    #             else:
-    #                 return user_data 
-            
-
-
 
     for movie in user_data["watchlist"]:
         print(movie, 'here')
@@ -93,8 +68,7 @@ def watch_movie(user_data, title):
     
     return user_data
 
-            
-watch_movie(user_data, title)
+# watch_movie(user_data, title)
 
 
 # -----------------------------------------
