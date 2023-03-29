@@ -95,7 +95,7 @@ def get_unique_watched(user_data):
 
     return unique_movies
 
-user_data = {"watched":[{"title":"meep","genre":"horror","rating":5},{"title":"Ghost","genre":"horror","rating":5},{"title":"Hehe","genre":"horror","rating":5}], "friends": [{"watched":[{"title":"Bionicles"},{"title":"Ghost"}, {"title":"Paranormal"} ]}]}
+user_data = {"watched":[{"title":"meep","genre":"horror","rating":5},{"title":"Ghost","genre":"horror","rating":5},{"title":"Hehe","genre":"horror","rating":5}], "friends": [{"watched":[{"title":"Bionicles"},{"title":"Ghost"}, {"title":"Paranormal"} ]},{"watched":[{"title":"Bionicles"},{"title":"Paranormal"}]}]}
 def get_friends_unique_watched(user_data):
     friends_unique_watched = []
     friends_watched_set = set()
@@ -109,14 +109,14 @@ def get_friends_unique_watched(user_data):
         user_watched_set.add(user_data["watched"][i]["title"])
 
     differences = friends_watched_set.difference(user_watched_set)
-
     for friend in user_data["friends"]:
         for movie in friend["watched"]:
-            if movie["title"] in differences:
+            if movie["title"] in differences and movie not in friends_unique_watched:
                 friends_unique_watched.append(movie)
                 continue
+    print(friends_unique_watched)
     return friends_unique_watched
-
+get_friends_unique_watched(user_data)
 
 
 
