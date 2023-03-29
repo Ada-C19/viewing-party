@@ -97,23 +97,21 @@ def get_most_watched_genre(user_data):
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 
-
-
-
 def get_unique_watched(user_data):
     user_watched = []
     friends_watched = []
     unique_watched = []
-
+    #for loop to loop through the movies the user watched and to store each movie's title in a list
     for movie in user_data["watched"]:
         title = movie["title"]
         user_watched.append(title)
-
+    #for loop to loop through the movies friends watched and to store each movie's title in friends_watched list
     for friend in user_data["friends"]:
         for movie in friend["watched"]:
             title = movie["title"]
             friends_watched.append(title)
-
+    #We use this for loop to compare if some of all the titles stored in user_watched are in friends_watched
+    #the ones that only exist in user_watched are then stored in unique_watched that is a list of dictionaries
     for movie in user_data["watched"]:
         if movie["title"] in user_watched:
             if movie["title"] not in friends_watched:
@@ -121,6 +119,33 @@ def get_unique_watched(user_data):
 
     return unique_watched
 
+def get_friends_unique_watched(user_data):
+    user_watched = []
+    friends_watched = []
+    friends_unique_watched = []
+    #for loop to loop through the movies the user watched and to store each movie's title in a list
+    for movie in user_data["watched"]:
+        title = movie["title"]
+        user_watched.append(title)
+   #for loop to loop through the movies friends watched and to store each movie's title in friends_watched list
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            title = movie["title"]
+            friends_watched.append(title)
+    #We use this for loop to compare if some of all the titles stored in friends_watched are in user_watched
+    #the ones that only exist in user_watched are then stored in friends_unique_watched that is a list of dictionaries
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            if movie["title"] in friends_watched:
+                if movie["title"] not in user_watched:
+                    friends_unique_watched.append(movie)
+    #this for loop evaluates that there's no duplicate movies before returning the list of dictionaries
+    for movie in friends_unique_watched:
+        current_movie = friends_unique_watched.count(movie)
+        if current_movie > 1:
+            friends_unique_watched.remove(movie)
+
+    return friends_unique_watched
 
 
 
@@ -152,8 +177,8 @@ def get_unique_watched(user_data):
 # -----------------------------------------
 
 
-def get_available_recs(user_data):
-    subscriptions = user_data["subscriptions"] 
+#def get_available_recs(user_data):
+#    subscriptions = user_data["subscriptions"] 
 
 
 
@@ -174,7 +199,7 @@ def get_available_recs(user_data):
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
-def get_new_rec_by_genre(user_data):
+#def get_new_rec_by_genre(user_data):
 
 # Create a function named  `get_new_rec_by_genre`. This function should...
 
