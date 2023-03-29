@@ -64,10 +64,6 @@ def get_most_watched_genre(user_data):
     most_watched = None
     times_watched = 0
 
-    # Returns None if watched list is empty
-    if not user_data["watched"]:
-        return None
-
     # Iterates through each movie in watched list and adds
     # each genre to a user_genres dictionary with an initial value of 1.
     # If the genre already exists in user_genres, it +1 to the value.
