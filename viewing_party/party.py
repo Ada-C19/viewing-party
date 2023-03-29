@@ -36,8 +36,6 @@ def watch_movie(user_data, title):
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
 
-
-
 def get_watched_avg_rating(user_data):
 
     try:
@@ -90,27 +88,6 @@ def get_most_watched_genre(user_data):
     elif  counter_intrigue > counter_horror and counter_intrigue > counter_fantasy and \
     counter_intrigue > counter_action:
         return "Intrigue"
-    
-
-
-# -----------------------------------------
-# ------------- WAVE 3 --------------------
-# -----------------------------------------
-
-# def get_unique_watched(user_data):
-#     count = 0
-#     both_users_watched = []
-#     only_user_watched = []
-#     for movie in user_data["watched"]:
-#         # for item in user_data["friends"]:
-#             if movie in user_data["friends"]:
-#             # if movie in item["watched"]:
-#                 both_users_watched.append(movie)
-#             # if movie not in item["watched"]:
-#             else:
-#                 only_user_watched.append(movie)
-    
-#     return only_user_watched
                 
 def get_unique_watched(user_data):
     only_user_watched = []
@@ -140,11 +117,6 @@ def get_friends_unique_watched(user_data):
 
     return unique_movies
 
-     
-
- 
-    
-        
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
