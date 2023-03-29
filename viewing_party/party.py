@@ -1,6 +1,49 @@
+FANTASY_1 = {
+    "title": "The Lord of the Functions: The Fellowship of the Function",
+    "genre": "Fantasy",
+    "rating": 4.8
+}
+FANTASY_2 = {
+    "title": "The Lord of the Functions: The Two Parameters",
+    "genre": "Fantasy",
+    "rating": 4.0
+}
+FANTASY_3 = {
+    "title": "The Lord of the Functions: The Return of the Value",
+    "genre": "Fantasy",
+    "rating": 4.0
+}
+FANTASY_4 = {
+    "title": "The Programmer: An Unexpected Stack Trace",
+    "genre": "Fantasy",
+    "rating": 4.0
+}
+ACTION_1 = {
+"title": "The JavaScript and the React",
+"genre": "Action",
+"rating": 2.2
+}
 
-import collections 
-
+INTRIGUE_1 = {
+    "title": "Recursion",
+    "genre": "Intrigue",
+    "rating": 2.0
+}
+INTRIGUE_2 = {
+    "title": "Instructor Student TA Manager",
+    "genre": "Intrigue",
+    "rating": 4.5
+}
+INTRIGUE_3 = {
+    "title": "Zero Dark Python",
+    "genre": "Intrigue",
+    "rating": 3.0
+}
+HORROR_1 = {
+    "title": "It Came from the Stack Trace",
+    "genre": "Horror",
+    "rating": 3.5
+}
 
 # ------------- WAVE 1 --------------------
 def create_movie(title, genre, rating):
@@ -59,7 +102,65 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
-    
+
+def get_unique_watched(user_data): 
+    unique_watch = []
+    friends_movies_watched = []
+
+    for i in range(len(user_data["friends"])):
+        for movie in user_data["friends"][i]["watched"]:
+            friends_movies_watched.append(movie)
+ 
+    for movie in user_data["watched"]:
+        if movie not in friends_movies_watched:
+            unique_watch.append(movie)
+    return unique_watch
+
+  
+def get_friends_unique_watched(user_data):
+    # user_data = {
+    # "watched": [
+    # FANTASY_1, 
+    # FANTASY_2, 
+    # FANTASY_3, 
+    # ACTION_1, 
+    # INTRIGUE_1, 
+    # INTRIGUE_2
+    # ], "friends": [
+    # {
+    #     "watched": [
+    #         FANTASY_1,
+    #         FANTASY_3,
+    #         FANTASY_4,
+    #         HORROR_1,
+    #     ]
+    # },
+    # {
+    #     "watched": [
+    #         FANTASY_1,
+    #         ACTION_1,
+    #         INTRIGUE_1,
+    #         INTRIGUE_3,
+    #     ]
+    # }
+    # ]}
+    unique_watch = []
+    no_duplicate_unique_watch = []
+   
+
+    for i in range(len(user_data["friends"])):
+        for movie in user_data["friends"][i]["watched"]:
+            if movie not in user_data["watched"]:
+                    unique_watch.append(movie)
+
+    for movie in unique_watch:
+        if movie not in no_duplicate_unique_watch:
+            no_duplicate_unique_watch.append(movie)
+    return no_duplicate_unique_watch
+
+
+
+
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
