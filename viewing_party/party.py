@@ -1,5 +1,6 @@
 
-
+import iteration_utilities
+from iteration_utilities import unique_everseen
 # ------------- WAVE 1 --------------------
 
 
@@ -81,15 +82,9 @@ def helper_join_list_of_lists_and_remove_duplicates(list_of_lists):
         for item in sublist:
             plain_list.append(item)
     
-    seen = set()
-    new_plain_list = []
-    for d in plain_list:
-        t = tuple(d.items())
-        if t not in seen:
-            seen.add(t)
-            new_plain_list.append(d)
+    #list(unique_everseen(plain_list))
 
-    return new_plain_list
+    return plain_list
 
 def get_unique_watched(user_data):
     """- Consider the movies that the user has watched, and consider the movies that their friends have watched. Determine which movies the user has watched, but none of their friends have watched.
@@ -101,16 +96,16 @@ def get_unique_watched(user_data):
     
     for i in user_data["watched"]:
         list_of_user_data.append(i)
-    print(type(list_of_user_data))
-    list_of_user_data_compiled = helper_join_list_of_lists_and_remove_duplicates(list_of_user_data)
+    #print(list_of_user_data)
+    #list_of_user_data_compiled = helper_join_list_of_lists_and_remove_duplicates(list_of_user_data)
 
-    #for i in user_data["friends"]:
-        #list_of_friends_data.append(i["watched"])
-    #print(list_of_friends_data)
+    for i in user_data["friends"]:
+        list_of_friends_data.append(i["watched"])
+    print(list_of_friends_data)
     #list_of_user_data_compiled = helper_join_list_of_lists_and_remove_duplicates(list_of_friends_data)
     
     #print(list_of_friends_data_compiled)
-    print(list_of_user_data_compiled)
+    #print(list_of_user_data_compiled)
     #for i in list_of_user_data_compiled:
         #if i not in list_of_friends_data_compiled:
             #result.append(i) 
