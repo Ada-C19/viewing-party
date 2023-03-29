@@ -28,9 +28,27 @@ def watch_movie(user_data, title):
         user_data['watchlist'].remove(movie)
 
     return user_data
-# -----------------------------------------
+
 # ------------- WAVE 2 --------------------
-# -----------------------------------------
+
+def get_watched_avg_rating(user_data):
+    if len(user_data['watched']) == 0:
+        return 0.0
+
+    sum = 0
+    
+    for movie in user_data['watched']:
+        sum += movie['rating']
+
+    avg_rating = sum / len(user_data['watched'])
+    
+    return avg_rating
+
+# Method 2
+def get_watched_avg_rating_alternative(user_data):
+    avg_rating = sum(int(movie['rating']) for movie in user_data['watched'])/len(user_data['watched'])
+
+    return avg_rating
 
 
 # -----------------------------------------
