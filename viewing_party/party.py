@@ -87,3 +87,26 @@ def get_most_watched_genre(user_data):
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
+def get_new_rec_by_genre(user_data):
+
+    recommended_movies = []
+
+    if not user_data["watched"]:
+        return recommended_movies
+    
+    most_watched_genre = get_most_watched_genre(user_data)
+
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            if movie["genre"] == most_watched_genre and movie not in recommended_movies:
+                recommended_movies.append(movie)
+    
+    if not recommended_movies:
+        return recommended_movies
+
+
+    for movie in user_data["watched"]:
+        if movie in recommended_movies:
+            recommended_movies.remove(movie)
+    
+    return recommended_movies
