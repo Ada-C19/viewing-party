@@ -92,16 +92,24 @@ def get_unique_watched(user_data):
 """
     list_of_user_data = []
     list_of_friends_data = []
+    list_of_friends_data_comp = []
     result = []
     
     for i in user_data["watched"]:
         list_of_user_data.append(i)
-    #print(list_of_user_data)
-    #list_of_user_data_compiled = helper_join_list_of_lists_and_remove_duplicates(list_of_user_data)
 
     for i in user_data["friends"]:
         list_of_friends_data.append(i["watched"])
-    print(list_of_friends_data)
+
+    list_of_friends_data_comp = helper_join_list_of_lists_and_remove_duplicates(list_of_friends_data)
+    
+    for i in list_of_user_data:
+        if i not in list_of_friends_data_comp:
+            result.append(i)
+    
+    return result
+
+    
     #list_of_user_data_compiled = helper_join_list_of_lists_and_remove_duplicates(list_of_friends_data)
     #list_of_friends_data_compiled = 
 
