@@ -2,15 +2,16 @@
 
 def create_movie(title, genre, rating):
     '''
-    Function creates a movie dictionairy
+    create a movie dictionary
     '''
     if title is None or genre is None or rating is None:
         return None
     return {"title": title, "genre": genre, "rating": rating}
+    # I thought about making this a try/except, but I'm not sure what error we would get?
 
 def add_to_watched(user_data, movie):
     '''
-    Function appends movie dictionairy to user_data "watched" list
+    append movie dictionary to user_data "watched" list
     '''
     user_data["watched"].append(create_movie(movie["title"], movie["genre"], movie["rating"]))
     return user_data
@@ -26,12 +27,12 @@ def watch_movie(user_data, title):
     '''
     Function moves a movie from user_data "watchlist" list to "watched" list
     '''
-    for i in range(len(user_data["watchlist"])):
-        if user_data["watchlist"][i]["title"] == title:
-            user_data["watched"].append(user_data["watchlist"][i])
-            user_data["watchlist"].remove(user_data["watchlist"][i])
-    return user_data
 
+    for movie in user_data["watchlist"]: 
+        if movie["title"] == title: 
+            user_data["watched"].append(movie) 
+            user_data["watchlist"].remove(movie)
+    return user_data
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
@@ -39,8 +40,8 @@ def watch_movie(user_data, title):
 def get_watched_avg_rating(user_data):
     rating = 0
     try:
-        for i in range(len(user_data["watched"])):
-            rating += user_data["watched"][i]["rating"]
+        for movie in user_data["watched"]: 
+            rating += movie["rating"]
         return rating/len(user_data["watched"])   
     except ZeroDivisionError:
         return 0.0
@@ -48,8 +49,8 @@ def get_watched_avg_rating(user_data):
 def get_most_watched_genre(user_data):
     genre_list = []
     try:
-        for i in range(len(user_data["watched"])):
-                genre_list.append(user_data["watched"][i]["genre"])
+        for movie in user_data["watched"]: 
+                genre_list.append(movie["genre"])
         
         sorted_genre_list = sorted(genre_list,key=genre_list.count,reverse=True)
         return sorted_genre_list[0]
@@ -60,35 +61,28 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 #REFACTOR:
 def get_unique_watched(user_data):
-    same_movies = []
-    unique_movies = []
 
-    for i in range(len(user_data["watched"])):
-        for j in range(len(user_data["friends"])):
-            for k in range(len(user_data["friends"][j]["watched"])):
-                if user_data["watched"][i]["title"] == user_data["friends"][j]["watched"][k]["title"]:
-                    same_movies.append(user_data["watched"][i]["title"])
+    user_movies_watched = user_data["watched"] #list of dicts of movies
+    user_movie_titles = [movie["title"] for movie in user_movies_watched] # list of titles only
 
-    
-    for i in range(len(user_data["watched"])):
-        if user_data["watched"][i]["title"] not in same_movies:
-            unique_movies.append(user_data["watched"][i])
+    friends_movies_watched = [] # list of dicts of movies (all friends combined)
+    for friend in user_data["friends"]:
+        friends_movies_watched.extend(friend["watched"])
+    friend_movie_titles = [movie["title"] for movie in friends_movies_watched] #list of titles only
 
-    return unique_movies
+    user_unique_movie_titles = set(user_movie_titles) - set(friend_movie_titles)
+    user_unique_movies = []
+
+    for movie in user_movies_watched:
+        if movie["title"] in user_unique_movie_titles:
+            user_unique_movies.append(movie)
+
+    return user_unique_movies
+
 
 #REFACTOR:
 def get_friends_unique_watched(user_data):
-    # user_watched_titles = []
-    # for i in range(len(user_data["watched"])):
-    #     user_watched_titles.extend([value for key, value in user_data["watched"][i] if key == "title"])
 
-    # friend_watched_titles = []
-    # for i in range(len(user_data["friends"])):
-    #     friend_watched_titles.extend([value for key, value in user_data["friend"][i] if key == "title"])
-
-    # unique_titles = set(friend_watched_titles) - set(user_watched_titles)
-    # unique_dicts = []
-    # for title in unique_titles:
         
 
     same_movies = []
