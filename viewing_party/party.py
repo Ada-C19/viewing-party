@@ -181,19 +181,19 @@ def get_rec_from_favorites(user_data):
     favorite_movies = user_data["favorites"]
     friends_watched = get_friends_unique_watched(user_data)
     recommended_favorite_movies = []
-    #movie_count = 0
+    not_duplicated_movies = [] 
 
     for movie in favorite_movies:
         if movie not in friends_watched:
             recommended_favorite_movies.append(movie)
-    
-    for movie in recommended_favorite_movies:
-        current_movie_count = recommended_favorite_movies.count(movie)
-        if current_movie_count > 1:
-            current_movie_count -= 1
-            recommended_favorite_movies.remove(movie)
 
-    return recommended_favorite_movies
+    for movie in recommended_favorite_movies:
+        if movie not in not_duplicated_movies:
+            not_duplicated_movies.append(movie)
+
+    return not_duplicated_movies
+
+
 
 
 # 2. Create a function named  `get_rec_from_favorites`. This function should...
