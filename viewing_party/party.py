@@ -119,8 +119,8 @@ def get_friends_unique_watched(user_data):
     return unique_titles     
 '''
 This function takes in 1 value, a dictionary called user_data. We use the function get_friends_unique_watched to identify
-the movies unique to the friends, and identify which of those movies are on hosts that the user is subscribed to. We return the
-unique movies that the user is also subscribed to. 
+the movies unique to the friends (unwatched by the user), and then identify which of those movies are on hosts that the user is subscribed to. We return the
+ movies that the user hasn't seen and also has access to. 
 '''
 def get_available_recs(user_data):
     rec_movies = []
@@ -131,7 +131,7 @@ def get_available_recs(user_data):
     return rec_movies
 '''
 This function takes in 1 value, a dictionary called user_data. We use the function get_most_watched_genre to identify which genre the
-user watches the most, and use the get_friends_unique_watched to identify the movies that are unique to the friends. Out of the movies that are
+user watches the most, and use the get_friends_unique_watched to identify the movies that the user has not seen. Out of the movies that are
 unique to the friends, we return a list of the ones that match the most watched genre. 
 '''
 def get_new_rec_by_genre(user_data):
@@ -144,7 +144,7 @@ def get_new_rec_by_genre(user_data):
     return rec_movies
 '''
 This function takes in 1 value, a dictionary called user_data. We use the function get_unique_watched to identify which movies are unique to the user. We then
-look through the user's favorite movies, and find an overlap between the unique movies and favorite movies. We return a lit of the overlapping movies. 
+look through the user's favorite movies, and find any overlap between the unique movies and favorite movies. We return a list of the overlapping movies. 
 '''
 def get_rec_from_favorites(user_data):
     unique_to_user = get_unique_watched(user_data)
