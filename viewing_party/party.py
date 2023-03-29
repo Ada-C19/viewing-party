@@ -139,6 +139,7 @@ def watch_movie(user_data, title):
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
+# ========================================= wave 02- # 1. get_watched_avg_rating ========== RC
 
 def get_watched_avg_rating(user_data):
     # This represents that the user has a list of watched movies
@@ -152,6 +153,8 @@ def get_watched_avg_rating(user_data):
     avg_rating = total_ratings / len(watched)
     return avg_rating
 
+# ========================================= wave 02- # 2. get_most_watched_genre ========== RC
+
 def get_most_watched_genre(user_data):
     # keep the var the same
     watched = user_data["watched"]
@@ -164,46 +167,46 @@ def get_most_watched_genre(user_data):
     # get the most watched genre with max function
     return max(genres_watched, key=genres_watched.count)
 
-# ========================================= wave 02- # 1. get_watched_avg_rating ==========
+# ========================================= wave 02- # 1. get_watched_avg_rating ========== RC
 
 # user_data = {
-    # 'watched': [
-        # {'genre': 'Fantasy', 'rating': 4.8, 'title': 'The Lord of the Functions: The Fellowship of the Function'}... 'rating': 2.0, 'title': 'Recursion'}, 
-        # {'genre': 'Intrigue', 'rating': 4.5, 'title': 'Instructor Student TA Manager'}]}
+#     'watched': [
+#         {'genre': 'Fantasy', 'rating': 4.8, 'title': 'The Lord of the Functions: The Fellowship of the Function'}... 'rating': 2.0, 'title': 'Recursion'}, 
+#         {'genre': 'Intrigue', 'rating': 4.5, 'title': 'Instructor Student TA Manager'}]}
 
-# def get_watched_avg_rating(user_data):
-#     # This represents that the user has a list of watched movies
-#     watched = user_data.get("watched", [])
+def get_watched_avg_rating(user_data):
+    # This represents that the user has a list of watched movies
+    watched = user_data.get("watched", [])
     
-#     # The average rating of an empty watched list is `0.0`
-#     if not watched:
-#         return 0.0
+    # The average rating of an empty watched list is `0.0`
+    if not watched:
+        return 0.0
     
-#     # Calculate the average rating of all movies in the watched list
-#     total_ratings = sum(movie.get("rating", 0.0) for movie in watched)
+    # Calculate the average rating of all movies in the watched list
+    total_ratings = sum(movie.get("rating", 0.0) for movie in watched)
     
-#     # return the average rating
-#     avg_rating = total_ratings / len(watched)
-#     return avg_rating
+    # return the average rating
+    avg_rating = total_ratings / len(watched)
+    return avg_rating
 
 # ========================================= wave 02- # 2. get_most_watched_genre ========== RC
 
-# def get_most_watched_genre(user_data):
-#     watched_genres = {}
+def get_most_watched_genre(user_data):
+    watched_genres = {}
 
-# # - Determine which genre is most frequently occurring in the watched list
-#     # iterate through 
-#     for movie in user_data["watched"]:
-#         genre = movie["genre"]
-#         if genre in watched_genres:
-#             watched_genres["genre"] += 1
-#         else:
-#             watched_genres["genre"] = 1
+# - Determine which genre is most frequently occurring in the watched list
+    # iterate through 
+    for movie in user_data["watched"]:
+        genre = movie["genre"]
+        if genre in watched_genres:
+            watched_genres["genre"] += 1
+        else:
+            watched_genres["genre"] = 1
 
-#     if not watched_genres:
-#         return None 
-#     print(watched_genres)
-#     return max(watched_genres, key=watched_genres.get)
+    if not watched_genres:
+        return None 
+    print(watched_genres)
+    return max(watched_genres, key=watched_genres.get)
 
 
 # ========================================= wave 02- # 2. get_watched_avg_rating ========== SJ
@@ -234,56 +237,70 @@ def get_watched_avg_rating(user_data):
 
 # ========================================= wave 02- # 2. get_watched_avg_rating ========== SJ
 
-def get_most_watched_genre(user_data):
-    pass 
+# def get_most_watched_genre(user_data):
+#     pass 
     
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
+
+# ========================================= wave 03- # 1. get_unique_watched ========== RC
+
 def get_unique_watched(user_data):
-     # movies that friends have watched
+    # movies that friends have watched
     friends_watched = {movie['title'] for friend in user_data['friends'] for movie in friend['watched']}
-    
+
     # movies that ONLY user has watched 
     unique_movies = [movie for movie in user_data['watched'] if movie['title'] not in friends_watched]
-    
+
     # Return the list of unique movies
     return unique_movies
+
+# ========================================= wave 03- # 2. get_friends_unique_watched ========== RC
+
 
 def get_friends_unique_watched(user_data):
     # Create var for movies user has watched already
     user_watched = {movie['title'] for movie in user_data['watched']}
-    
+
     # Create var for movies friends have watched 
     friends_watched = {movie['title'] for friend in user_data['friends'] for movie in friend['watched']}
-    
+
     # Create a set of the movies that the user's friends have watched, but the user has not watched
     unique_movies = friends_watched - user_watched
+
+    # Return a list of dictionaries representing the unique movies
+    return [{"title": movie} for movie in unique_movies]
+
+    
+    
+# ========================================= wave 03- # 1. get_unique_watched ========== SJ
+
     
 # save my watch list, remove every movie my friends have seen, and remove it from my watch list
-#  to do that iterate over my friends list, iterate over every movie that that friend has watched
-#  enumerate the key in values in my watch list 
+# to do that iterate over my friends list, iterate over every movie that that friend has watched
+# enumerate the key in values in my watch list 
 # and remove any indicies in my watch list where the value equals the value of the movie title
 
-def get_unique_watched( user_data): 
+# def get_unique_watched( user_data): 
     
-    #  everything that i've watched 
-    my_watched_list = user_data["watched"]
+#     #  everything that i've watched 
+#     my_watched_list = user_data["watched"]
     
-    #  for each friend, loop over their watched then deletd from you watch list
-    for friend in user_data["friends"]: 
+#     #  for each friend, loop over their watched then deletd from you watch list
+#     for friend in user_data["friends"]: 
         
-        friends_watched_list = friend["watched"]
+#         friends_watched_list = friend["watched"]
         
-        #  iterate over my watched list
-        for movie in friends_watched_list: 
+#         #  iterate over my watched list
+#         for movie in friends_watched_list: 
             
-            # if friends_watched_list["title"] == my_watched_list["title"]: 
+#             # if friends_watched_list["title"] == my_watched_list["title"]: 
                 
-                my_watched_list.remove(movie)
+#                 my_watched_list.remove(movie)
                 
-    return my_watched_list
+#     return my_watched_list
 
     
     # user_data_friends
@@ -306,18 +323,20 @@ def get_unique_watched( user_data):
 # and consider the movies that their friends have watched. 
 # Determine which movies the user has watched, but none of their friends have watched.
 
-# Return a list of dictionaries, that represents a list of movies
 
-    # Return a list of dictionaries representing the unique movies
-    return [{"title": movie} for movie in unique_movies]
         
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
+# ========================================= wave 04- # 1. get_available_recs ==========
+
+
+
+
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
+# ========================================= wave 05- # 1.  get_new_rec_by_genre ==========
 
-# test commment
-# test comment 2
+# ========================================= wave 05- # 2. get_rec_from_favorites ==========
