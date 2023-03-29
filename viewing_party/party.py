@@ -143,6 +143,18 @@ def get_friends_unique_watched(user_data):
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
+def get_available_recs(user_data):
+    subscriptions = user_data["subscriptions"]
+    friends_unique_movies= get_friends_unique_watched(user_data)
+    avaible_friend_movies=[]
+
+    for movie in friends_unique_movies:
+        if movie['host'] in subscriptions:
+            avaible_friend_movies.append(movie)
+            
+    return avaible_friend_movies
+    
+
 # 1. call the function prevously made and check the host of movies
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
