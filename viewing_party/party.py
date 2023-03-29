@@ -90,9 +90,40 @@ def get_most_watched_genre(user_data):
             
     return max_genre
 
+
+
+
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
+
+
+
+
+def get_unique_watched(user_data):
+    user_watched = []
+    friends_watched = []
+    unique_watched = []
+
+    for movie in user_data["watched"]:
+        title = movie["title"]
+        user_watched.append(title)
+
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            title = movie["title"]
+            friends_watched.append(title)
+
+    for movie in user_data["watched"]:
+        if movie["title"] in user_watched:
+            if movie["title"] not in friends_watched:
+                unique_watched.append(movie)
+
+    return unique_watched
+
+
+
+
 
 # Create a function named `get_unique_watched`. This function should...
 
@@ -119,6 +150,14 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
+
+
+def get_available_recs(user_data):
+    subscriptions = user_data["subscriptions"] 
+
+
+
+
 # Create a function named `get_available_recs`. This function should...
 
 # - take one parameter: `user_data`
@@ -134,6 +173,8 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
+
+def get_new_rec_by_genre(user_data):
 
 # Create a function named  `get_new_rec_by_genre`. This function should...
 
