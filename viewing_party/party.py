@@ -67,7 +67,7 @@ def get_friends_unique_watched(user_data):
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
 def get_available_recs(user_data):
-    recommended_movies = []
+    recommendedations = []
     friends = user_data["friends"]
     subs = user_data["subscriptions"]
 
