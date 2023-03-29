@@ -73,14 +73,10 @@ def get_friends_unique_watched(user_data):
     return result
 
             
-    
-    
 def get_unique_watched(user_data):
     result = []
     friends_movies_watch = []
 
-    if len(user_data['watched']) == 0:
-        return []
     for friend in user_data['friends']:
         for friends_watched_movie in friend['watched']:
             friends_movies_watch.append(friends_watched_movie)
@@ -116,3 +112,11 @@ def get_new_rec_by_genre(user_data):
             movie_recs.append(movie)
 
     return movie_recs
+
+def get_rec_from_favorites(user_data):
+    result = []
+    user_unique_watched_movies = get_unique_watched(user_data)
+    for movie in user_data["favorites"]:
+        if movie in user_unique_watched_movies:
+            result.append(movie)
+    return result
