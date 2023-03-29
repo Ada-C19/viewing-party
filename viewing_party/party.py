@@ -28,17 +28,6 @@ def watch_movie(user_data, movie):
         if movie == movie_dict["title"]:
             add_to_watched(user_data, movie_dict)
             tracker_dict = movie_dict
-        #else:
-            #return user_data
-
-    # reassign movie dictionary to watchedlist
-    #user_data["watched"].append(movie_dict)
-
-    # iterate through index of watchlist
-    # index = 0
-    # for i in range(len(user_data["watchlist"])):
-    #     if user_data["watchlist"][i] == tracker_dict:
-    #         index = i
     if tracker_dict:
         user_data["watchlist"].remove(tracker_dict)
 
@@ -46,10 +35,10 @@ def watch_movie(user_data, movie):
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
-def get_watched_avg_rating(user_data):
-    pass
+def get_watched_avg_rating(user_data): 
+    user_data["watched"]
     #access watched and sum key values in list
-    #take sum of key values or rating and divide by len of 
+    #take sum of key values of rating and divide by len of 
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
