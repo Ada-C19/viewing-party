@@ -60,31 +60,6 @@ def add_to_watchlist(user_data, movie):
 # print (janes_data["watchlist"][0]["title"])
 
 
-
-# janes_data = {
-#             "watchlist": [{
-#                 "title": "mean girls",
-#                 "genre": "comedy",
-#                 "rating": "10"
-#             }, {
-#                 "title": "iron man",
-#                 "genre": "action",
-#                 "rating": "6"
-#             }],
-#             "watched": [{"title": "black panther",
-#                 "genre": "action",
-#                 "rating": "9"}, {"another watched movie"}]
-#         }
-# title = "iron man"
-
-
-
-# - go into janes_data dictionary 
-# - access watchlist Key : janes_data["watchlist"]
-# - access element inside list (loop?) : 
-# - access value of title key inside dictionary :movie["title"]
-# - compare that to title (parameter given to us)
-
 #---Wave_1_function_4---
 def watch_movie(user_data, title):
 
@@ -98,28 +73,54 @@ def watch_movie(user_data, title):
             user_data["watchlist"].remove(movie)
             print (user_data)
             return user_data
-            
 
-    # else:
-    # for movie in user_data["watchlist"]:
-    #     if title in movie["title"]:
-    #         user_data["watchlist"].remove(user_data["watchlist"][movie])
-    #         user_data["watched"].append(user_data["watchlist"][movie])
-    #     return user_data
-            
-
-# watch_movie({
-#             "watchlist": [{
-#                 "title": "MOVIE_TITLE_1",
-#                 "genre": "GENRE_1",
-#                 "rating": "RATING_1"
-#             }],
-#             "watched": []
-#         }, "MOVIE_TITLE_1")
 
 # ------------- WAVE 2 --------------------
 # ---Wave_2_function_1---
-# def get_watched_avg_rating(user_data):
+
+janes_data = {
+            "watchlist": [{
+                "title": "mean girls",
+                "genre": "comedy",
+                "rating": 10
+            }, {
+                "title": "iron man",
+                "genre": "action",
+                "rating": 6
+            }],
+            "watched": [{"title": "black panther",
+                "genre": "action",
+                "rating": 9},]
+        }
+title = "iron man"
+
+
+def get_watched_avg_rating(janes_data):
+# - navigate to janes_data rating (watchlist -> dictionaries, rating)
+# - new list of ratings
+# - find function to calculate average get_watched_avg_rating
+# - return 0.0 for empty list
+
+
+    ratings = []
+    
+    if len(janes_data["watched"]) == 0:
+        return 0.0
+    
+    for movie in janes_data["watched"]:
+        ratings.append((movie["rating"]))
+    
+    ratings_sum = sum(ratings)
+    ratings_average = (ratings_sum) / len(ratings)
+
+    print (ratings)
+    print (ratings_average)
+    return ratings_average
+
+get_watched_avg_rating(janes_data)
+        
+
+
 
 
 # ---Wave_2_function_2---
