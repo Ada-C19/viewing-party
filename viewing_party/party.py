@@ -1,4 +1,5 @@
-# ------------- WAVE 1 --------------------
+#
+#  ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
     new_movie = {}
@@ -70,7 +71,18 @@ def get_most_watched_genre(user_data):
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 
-        
+def get_unique_watched(user_data):
+    unique_movies = []
+    friend_movies = []
+
+    for watched_list in user_data["friends"]:
+        for movies in watched_list["watched"]:
+            friend_movies.append(movies)
+    for user_movies in user_data["watched"]:
+        if user_movies not in friend_movies:
+            unique_movies.append(user_movies)
+
+    return unique_movies
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
