@@ -118,15 +118,39 @@ def get_available_recs(user_data):
     #["subscriptions"] is for people; ["host"] is for movie
     # compare subscription to host; if they match, put in recommendation 
     # movie[host] is the value of the "host" key in th movie dictionary.
-    #Check if streaming service that hosts the mmovie is included in the list of straming services of the user. If true, nthe movie is
-    # added to 'remommendations' list.  
+    #Check if streaming service that hosts the mmovie is included in the list of streaming services of the user. If true, the movie is
+    # added to 'recommendations' list.  
                 if movie ["host"] in  subscriptions:
                     recommendations.append(movie)   
     return recommendations
-
-
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
+def get_new_rec_by_genre(user_data):
+    watched = user_data["watched"].copy()
+    friends = user_data["friends"].copy()
+    # subscriptions = user_data["subscriptions"].copy()
+    recommendations = []
+    # favorites = get_most_watched_genre(user_data["watched"])
+    genre_dict = {}
+    if user_data["watched"] == []:
+        return recommendations
+    for movie in user_data["watched"]:
+            if movie["genre"] in genre_dict:
+                genre_dict[movie["genre"]] += 1
+            else:
+                genre_dict[movie["genre"]] = 1
+
+    high_genre = max(genre_dict.values())
+
+    for key, value in genre_dict.items():
+        if value == high_genre:
+            favorites = key 
+    for friend in friends:
+        for movie in friend["watched"]:
+            if movie not in watched and movie not in recommendations:
+                if movie["genre"] == favorites:
+                    recommendations.append(movie)
+    return recommendations
