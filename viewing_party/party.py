@@ -83,6 +83,8 @@ def get_unique_watched(user_data):
     
     return unique_watched
 
+
+
 # Consider the movies that the user has watched, 
 # and consider the movies that their friends have watched. 
 # Determine which movies at least one of the user's friends have watched,
@@ -94,51 +96,39 @@ def did_user_watch_this_title(user_data, title):
             return True
     return False
 
-def get_friends_unique_watched(user_data):
-    friends_watched_unique_titles_set = set()
+def get_dictionary_of_friends_movies(user_data):
+    dictionary_friends_watched = {}
     for friend in user_data["friends"]:
-            for i in range(len(friend["watched"])):
-                title = friend["watched"][i]["title"]
-                friends_watched_unique_titles_set.add(title)
-# crear un diccionario para singularidad 
-
-
-
-    list_of_friends_movies = []
-    for film_title in friends_watched_unique_titles_set:
-        if did_user_watch_this_title(user_data, film_title):
-            if film_title not in list_of_friends_movies:
-                list_of_friends_movies.append(user_data["watched"])
+        for i in range(len(friend["watched"])):
+            title = friend["watched"][i]["title"]
+            movie_dict = friend["watched"][i]
+            dictionary_friends_watched[title] = movie_dict
     
-    return list_of_friends_movies
-# key título de la pelicula
-def get_dictionary_of_friends_movies(): 
-    # Devolver un diccionario con la información de User-data friends;
-    # key son las titluos y los valores el diccionario completo de la pelicula.
-    # 
-    # recorrer este diccionario identificando las que no vistas por el usuario. 
+    return dictionary_friends_watched
 
-
-
+def get_friends_unique_watched(user_data):
     
-
-    # for movie in user_data["watched"]:
-    #     for set_movie_title in unique_set:
-    #         if set_movie_title != movie["title"] and set_movie_title not in list_of_friends_movies:
-    #             list_of_friends_movies.append(movie)
-    print(list_of_friends_movies)
-    return list_of_friends_movies
-
-
+    friends_watch_dictionary = get_dictionary_of_friends_movies(user_data)
    
+    list_of_movies = []
     
+    for k, v in friends_watch_dictionary.items():
+        if not did_user_watch_this_title(user_data, k):
+            list_of_movies.append(v)
 
-    
+    return list_of_movies
+
 
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
-
+# Determine a list of recommended movies. 
+# A movie should be added to this list if and only if:
+# The user has not watched it
+# At least one of the user's friends has watched
+# The "host" of the movie is a service that is in the user's "subscriptions"
+# Return the list of recommended movies
+# def get_available_recs(user_data):
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
