@@ -121,24 +121,33 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
-def get_unique_watched(user_data):
-    """Return list of dictionaries of movies only the user watched.
+def get_friends_watched(user_data):
+    """Return list of dictionaries of movies friends watched.
     
     Keyword arguments:
-    user_data -- dictionary containing movies user and friends has watched
+    user_data -- dictionary containing movies user and friends have watched
     """
-    # Create unique list of friends' movies watched
+    # Create unique list of movies friends watched
     friends_watched = []
     for watched_dict in user_data["friends"]:
         for movie in watched_dict["watched"]:
             if movie not in friends_watched:
                 friends_watched.append(movie)
     
-    # Check if each of user's movies is in friends' watched list
-    # If not, add to unique list if not already in it
+    return friends_watched
+
+def get_unique_watched(user_data):
+    """Return list of dictionaries of movies only the user watched.
+    
+    Keyword arguments:
+    user_data -- dictionary containing movies user and friends have watched
+    """
+    # Check if each of user's movies is in friends watched list
+    # If not, add to unique watched list if not already in it
     unique_watched = []
     for movie in user_data["watched"]:
-        if movie not in friends_watched and movie not in unique_watched:
+        if (movie not in get_friends_watched(user_data)
+                and movie not in unique_watched):
             unique_watched.append(movie)
 
     return unique_watched
@@ -147,16 +156,15 @@ def get_friends_unique_watched(user_data):
     """Return list of dictionaries of movies only friends watched.
     
     Keyword arguments:
-    user_data -- dictionary containing movies user and friends has watched
+    user_data -- dictionary containing movies user and friends have watched
     """  
     # Check if each friends' movie is in user's watched list
     # If not, add to unique list if not already in it
     unique_watched = []
-    for watched_dict in user_data["friends"]:
-        for movie in watched_dict["watched"]:
-            if (movie not in user_data["watched"]
-                    and movie not in unique_watched):
-                unique_watched.append(movie)
+    for movie in get_friends_watched(user_data):
+        if (movie not in user_data["watched"]
+                and movie not in unique_watched):
+            unique_watched.append(movie)
     
     return unique_watched
 
@@ -168,18 +176,15 @@ def get_available_recs(user_data):
     """Return list of dictionaries of movies recommended for user.
     
     Keyword arguments:
-    user_data -- dictionary containing movies user and friends has watched
+    user_data -- dictionary containing movies user and friends have watched
     """  
     # Check if each friends' movie is in user's watched list
     # If not, add to movie recs list if not already in it 
     # and user has subscription
     movie_recs = []
-    for watched_dict in user_data["friends"]:
-        for movie in watched_dict["watched"]:
-            if (movie not in user_data["watched"]
-                    and movie not in movie_recs 
-                    and movie["host"] in user_data["subscriptions"]):
-                movie_recs.append(movie)
+    for movie in get_friends_unique_watched(user_data):
+        if movie["host"] in user_data["subscriptions"]:
+            movie_recs.append(movie)
             
     return movie_recs
 
@@ -191,20 +196,15 @@ def get_new_rec_by_genre(user_data):
     """Return list of dictionaries of movies recommended for user by genre.
     
     Keyword arguments:
-    user_data -- dictionary containing movies user and friends has watched
+    user_data -- dictionary containing movies user and friends have watched
     """  
     # Check if each friends' movie is in user's watched list
     # If not, add to genre recs list if not already in it 
     # and matches user's most watched genre
-    most_watched_genre = get_most_watched_genre(user_data)
-
     genre_recs = []
-    for watched_dict in user_data["friends"]:
-        for movie in watched_dict["watched"]:
-            if (movie not in user_data["watched"]
-                    and movie not in genre_recs 
-                    and movie["genre"] == most_watched_genre):
-                genre_recs.append(movie)
+    for movie in get_friends_unique_watched(user_data):
+        if movie["genre"] == get_most_watched_genre(user_data):
+            genre_recs.append(movie)
     
     return genre_recs
 
@@ -212,20 +212,14 @@ def get_rec_from_favorites(user_data):
     """Return list of dictionaries of movies recommended from user favorites.
     
     Keyword arguments:
-    user_data -- dictionary containing movies user and friends has watched
+    user_data -- dictionary containing movies user and friends have watched
     """
-    # Create unique list of friends' movies watched
-    friends_watched = []
-    for watched_dict in user_data["friends"]:
-        for movie in watched_dict["watched"]:
-            if movie not in friends_watched:
-                friends_watched.append(movie)
-    
     # Check if each of user's movies is in friends' list
     # If not, add to favorite recs list if not already in it
     favorite_recs = []
     for movie in user_data["favorites"]:
-        if movie not in friends_watched and movie not in favorite_recs:
+        if (movie not in get_friends_watched(user_data)
+                and movie not in favorite_recs):
             favorite_recs.append(movie)
 
     return favorite_recs
