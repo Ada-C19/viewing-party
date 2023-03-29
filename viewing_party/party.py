@@ -108,16 +108,19 @@ def get_unique_watched(user_data):
 def get_available_recs(user_data):
     movie_recs = []
 
-    for i in range(len(user_data['watched'])):
-        for j in range(len(user_data['friends'])):
-            if user_data['watched'] == []:
-                return movie_recs
-            if user_data["watched"][i]["host"] in user_data['subscriptions']:
-                movie_recs.append(user_data['watched'][i])
-            if user_data['friends'][j]['watched'] in user_data['watched']:
-                return movie_recs
-            else:
-                movie_recs.append(user_data['friends'][j]['watched'])
+    if user_data['watched'] == []:
+        return movie_recs
+
+    for i in range(len(user_data["friends"])):
+        for j in range(len(user_data["friends"][i]["watched"])):
+            if user_data["friends"][i]["watched"][j] in user_data["watched"]:
+                continue
+            elif user_data["friends"][i]["watched"][j] in movie_recs:
+                continue
+            elif user_data["friends"][i]["watched"][j]["host"] in\
+            user_data["subscriptions"]:
+                movie_recs.append(user_data["friends"][i]["watched"][j])
+    
     return movie_recs
 
 
