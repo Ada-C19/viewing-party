@@ -56,7 +56,6 @@ def get_most_watched_genre(user_data):
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 
-
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
@@ -101,3 +100,5 @@ def get_most_watched_genre(user_data):
 # genre = "GENRE_1"
 # rating = "RATING_1"
 # create_movie(title, genre, rating)
+
+# get_unique_watched(user_data)
