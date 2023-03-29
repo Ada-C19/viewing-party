@@ -98,10 +98,10 @@ def get_unique_watched(user_data):
         for each_movie_dict in each_friend_dict.get("watched", []):
             friends_list.append(each_movie_dict)
 
-# initialize a set of my friend's list title
+# initialize a set of friend's list title
 # loop through the friends_list:
 # get value of title
-# if there's title existent, add the title to the set -
+# if title is existent, add the title to the set -
 
     friends_titles = set()
     for each_movie_dict in friends_list:
@@ -110,16 +110,16 @@ def get_unique_watched(user_data):
             friends_titles.add(title)
 
 # loop through the user_data["watched"]
-# empty list - store the list -- unique dict
 
     unique_movies = []
     for each_movie_dict in user_data["watched"]:
         title = each_movie_dict.get("title", [])
-        # if my title is in their list then add the dictionary to my list
+        # if title is not in friends's list then add the dictionary to the unique list
         if title and title not in friends_titles:
             unique_movies.append(each_movie_dict)
 
     return unique_movies
+
 
 def get_friends_unique_watched(user_data):
     user_titles = set()
@@ -134,7 +134,7 @@ def get_friends_unique_watched(user_data):
             friends_titles.add(movie["title"])
 
     unique_titles = friends_titles - user_titles
-    
+
     for friend in user_data["friends"]:
         for movie in friend["watched"]:
             if movie["title"] in unique_titles and movie not in unique_watched:
