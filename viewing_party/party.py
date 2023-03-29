@@ -164,6 +164,25 @@ def get_friends_unique_watched(user_data):
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
 
+def get_available_recs(user_data):
+    """Return list of dictionaries of movies recommended for user.
+    
+    Keyword arguments:
+    user_data -- dictionary containing movies user and friends has watched
+    """  
+    # Check if each friends' movie is in user's watched list
+    # If not, add to unique list if not already in it 
+    # and user has subscription
+    movie_recs = []
+    for watched_dict in user_data["friends"]:
+        for movie in watched_dict["watched"]:
+            if (movie not in user_data["watched"]
+                    and movie not in movie_recs 
+                    and movie["host"] in user_data["subscriptions"]):
+                movie_recs.append(movie)
+            
+    return movie_recs
+
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
