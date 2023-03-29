@@ -61,11 +61,6 @@ def test_friends_unique_movies_not_duplicated():
     assert friends_unique_movies.count(HORROR_1) == 1
     assert friends_unique_movies.count(FANTASY_4) == 1
 
-    # raise Exception("Test needs to be completed.")
-    # # *************************************************************************************************
-    # # ****** Add assertions here to test that the correct movies are in friends_unique_movies **********
-    # # **************************************************************************************************
-
 # @pytest.mark.skip()
 def test_friends_not_unique_movies():
     # Arrange

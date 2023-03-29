@@ -159,9 +159,8 @@ def test_moves_movie_from_watchlist_to_empty_watched():
     assert len(updated_data["watchlist"]) == 0
     assert len(updated_data["watched"]) == 1
     assert MOVIE_TITLE_1 == updated_data["watched"][0]["title"]
-    #check if watched needs brackets or not
-    
-    #raise Exception("Test needs to be completed.")
+    #my assert
+    assert MOVIE_TITLE_1 == updated_data["watched"][0]["title"]
     # *******************************************************************************************
     # ****** Add assertions here to test that the correct movie was added to "watched" **********
     # *******************************************************************************************
@@ -186,7 +185,8 @@ def test_moves_movie_from_watchlist_to_watched():
     assert len(updated_data["watched"]) == 2
     assert HORROR_1 == updated_data["watched"][1]
     
-    #raise Exception("Test needs to be completed.")
+    #INSERTED ASSERT
+    assert HORROR_1 == updated_data["watched"][1]
     # *******************************************************************************************
     # ****** Add assertions here to test that the correct movie was added to "watched" **********
     # *******************************************************************************************
