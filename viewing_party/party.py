@@ -106,6 +106,15 @@ def get_friends_unique_watched(user_data):
 #   - At least one of the user's friends has watched
 #   - The `"host"` of the movie is a service that is in the user's `"subscriptions"`
 # - Return the list of recommended movies
+def get_available_recs(user_data):
+    friends_unique_watched = get_friends_unique_watched(user_data)
+    recommended_list=[]
+    for dict in friends_unique_watched:
+        if dict["host"] in user_data["subscriptions"]: 
+            recommended_list.append(dict)
+    return recommended_list
+
+
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
