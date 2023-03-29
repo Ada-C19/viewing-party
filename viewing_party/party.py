@@ -29,21 +29,21 @@ def create_movie(title, genre, rating):
 create_movie("Title", "Genre", "Rating")
 
 
-#---Wave_1_function_2---
+# #---Wave_1_function_2---
 def add_to_watched(user_data, movie):
 
     user_data["watched"].append(movie)
-    print (user_data)
-#  we need to add movie to the list that is the value dictionary user_data 
-    return (user_data)
- 
+    return user_data
+# #  we need to add movie to the list that is the value dictionary user_data 
+#     return (user_data)
+
 add_to_watched({"watched": []}, {
         "title": "MOVIE_TITLE_1",
         "genre": "GENRE_1",
         "rating": "RATING_1"})
 
 
-#---Wave_1_function_3---
+# #---Wave_1_function_3---
 def add_to_watchlist(user_data, movie):
 
     user_data["watchlist"].append(movie)
@@ -59,18 +59,53 @@ def add_to_watchlist(user_data, movie):
 #         }
 # print (janes_data["watchlist"][0]["title"])
 
+
+
+# janes_data = {
+#             "watchlist": [{
+#                 "title": "mean girls",
+#                 "genre": "comedy",
+#                 "rating": "10"
+#             }, {
+#                 "title": "iron man",
+#                 "genre": "action",
+#                 "rating": "6"
+#             }],
+#             "watched": [{"title": "black panther",
+#                 "genre": "action",
+#                 "rating": "9"}, {"another watched movie"}]
+#         }
+# title = "iron man"
+
+
+
+# - go into janes_data dictionary 
+# - access watchlist Key : janes_data["watchlist"]
+# - access element inside list (loop?) : 
+# - access value of title key inside dictionary :movie["title"]
+# - compare that to title (parameter given to us)
+
 #---Wave_1_function_4---
 def watch_movie(user_data, title):
 
     # if title not in user_data["watchlist"]["title"]:
     #     return user_data
+    for movie in user_data["watchlist"]:
+        if title != (movie["title"]):
+            return user_data
+        elif title in (movie["title"]):
+            user_data["watched"].append(movie)
+            user_data["watchlist"].remove(movie)
+            print (user_data)
+            return user_data
+            
 
     # else:
-        for movie in user_data["watchlist"]:
-            if title in movie["title"]:
-                user_data["watchlist"].remove(user_data["watchlist"][movie])
-                user_data["watched"].append(user_data["watchlist"][movie])
-            return user_data
+    # for movie in user_data["watchlist"]:
+    #     if title in movie["title"]:
+    #         user_data["watchlist"].remove(user_data["watchlist"][movie])
+    #         user_data["watched"].append(user_data["watchlist"][movie])
+    #     return user_data
             
 
 # watch_movie({
