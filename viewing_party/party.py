@@ -175,7 +175,28 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
+def get_unique_watched(user_data):
+     # movies that friends have watched
+    friends_watched = {movie['title'] for friend in user_data['friends'] for movie in friend['watched']}
+    
+    # movies that ONLY user has watched 
+    unique_movies = [movie for movie in user_data['watched'] if movie['title'] not in friends_watched]
+    
+    # Return the list of unique movies
+    return unique_movies
 
+def get_friends_unique_watched(user_data):
+    # Create var for movies user has watched already
+    user_watched = {movie['title'] for movie in user_data['watched']}
+    
+    # Create var for movies friends have watched 
+    friends_watched = {movie['title'] for friend in user_data['friends'] for movie in friend['watched']}
+    
+    # Create a set of the movies that the user's friends have watched, but the user has not watched
+    unique_movies = friends_watched - user_watched
+    
+    # Return a list of dictionaries representing the unique movies
+    return [{"title": movie} for movie in unique_movies]
         
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
