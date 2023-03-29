@@ -262,7 +262,11 @@ def get_available_recs(user_data):
 
     friends_list = user_data["friends"]
     user_watched = user_data["watched"]
-    # print(friends_list)
+    user_watched_titles = []
+
+    # Iterate through user's watched dicts and get the titles user has watched
+    for i in range(len(user_watched)):
+        user_watched_titles.append(user_watched[i]["title"])
 
     movie_recs = []
     for dict in friends_list:
@@ -271,7 +275,13 @@ def get_available_recs(user_data):
                 friends_title = movie["title"]
 
                 for user_dict in user_watched:
-                    if friends_title != user_dict["title"] and movie["host"] in user_data["subscriptions"]:
+                    if friends_title not in user_watched_titles and movie["host"] in user_data["subscriptions"]:
+                        # print("FRIEND'S TITLE: ", friends_title)
+                        # print()
+                        # print("USER DICT TITLE: ", user_dict["title"])
+                        # print()
+                        # print("################")
+                        # print()
                         movie_recs.append(friends_title)
 
     movie_recs = list(set(movie_recs))
@@ -279,6 +289,9 @@ def get_available_recs(user_data):
     return movie_recs
     # print(user_data["watched"])
 
+CLEAN_WAVE_4_DATA = {'watched': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Two Parameters', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Return of the Value', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'amazon'}, {'title': 'The JavaScript and the React', 'genre': 'Action', 'rating': 2.2, 'host': 'amazon'}, {'title': 'Recursion', 'genre': 'Intrigue', 'rating': 2.0, 'host': 'hulu'}, {'title': 'Instructor Student TA Manager', 'genre': 'Intrigue', 'rating': 4.5, 'host': 'disney+'}], 'friends': [{'watched': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Return of the Value', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'amazon'}, {'title': 'The Programmer: An Unexpected Stack Trace', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'hulu'}, {'title': 'It Came from the Stack Trace', 'genre': 'Horror', 'rating': 3.5, 'host': 'netflix'}]}, {'watched': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Programmer: An Unexpected Stack Trace', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'hulu'}, {'title': 'The JavaScript and the React', 'genre': 'Action', 'rating': 2.2, 'host': 'amazon'}, {'title': 'Recursion', 'genre': 'Intrigue', 'rating': 2.0, 'host': 'hulu'}, {'title': 'Zero Dark Python', 'genre': 'Intrigue', 'rating': 3.0, 'host': 'disney+'}]}], 'subscriptions': ['netflix', 'hulu']}
+
+#print(get_available_recs(CLEAN_WAVE_4_DATA))
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
@@ -287,7 +300,8 @@ def get_available_recs(user_data):
 ## User has not watched!, At least 1 friend has watched!, genre of the movie is
 ### the same as the most watched movie!
 
-USER_DATA = {"friends": [{"watched": [{"genre": "horror", "host":"netflix", "rating": 4, "title": "parasite"}]}, {"watched": [{"genre": "horror", "host": "yyyyyy", "rating": 6, "title": "zzzzz"}]}], "subscriptions": ["netflix", "hulu"], "watched": [{"genre": "horror", "host":"netflix", "rating": 4, "title": "parasite"}, {"genre": "horror", "host": "vvvvvv", "rating": 7, "title": "bbbbbb"}, {"genre": "rrrrrrr", "host": "ffffff", "rating": 9, "title": "dddddd"}]}
+USER_DATA = {"favorites": [{"genre": "horror", "host":"netflix", "rating": 4, "title": "parasite"}, {"genre": "fantasy", "host":"netflix", "rating": 4, "title": "cinderella"}], "friends": [{"watched": [{"genre": "horror", "host":"netflix", "rating": 4, "title": "parasite"}]}, {"watched": [{"genre": "horror", "host": "yyyyyy", "rating": 6, "title": "zzzzz"}]}], "subscriptions": ["netflix", "hulu"], "watched": [{"genre": "horror", "host":"netflix", "rating": 4, "title": "parasite"}, {"genre": "horror", "host": "vvvvvv", "rating": 7, "title": "bbbbbb"}, {"genre": "rrrrrrr", "host": "ffffff", "rating": 9, "title": "dddddd"}]}
+
 
 def get_new_rec_by_genre(user_data):
     # New dict will hold the most watched genre
@@ -331,3 +345,17 @@ def get_new_rec_by_genre(user_data):
     return list(rec_movies_by_gender.values())
 
 #print(get_new_rec_by_genre(USER_DATA))
+
+def get_rec_from_favorites(user_data):
+
+    # New list will hold the titles of the favorite movies.
+    list_favs = []
+    favorites_list = user_data["favorites"]
+    for title in favorites_list:
+        list_favs.append(title["title"])
+
+
+
+
+    return None
+print(get_rec_from_favorites(USER_DATA))
