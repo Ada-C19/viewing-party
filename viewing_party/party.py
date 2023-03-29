@@ -92,30 +92,49 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 
 
-
-
 def get_unique_watched(user_data):
-    user_watched = []
-    friends_watched = []
-    unique_watched = []
+    user_watched_titles = []
+    friends_watched_titles = []
+    unique_watched_movies = []
 
     for movie in user_data["watched"]:
         title = movie["title"]
-        user_watched.append(title)
+        user_watched_titles.append(title)
 
     for friend in user_data["friends"]:
         for movie in friend["watched"]:
             title = movie["title"]
-            friends_watched.append(title)
+            friends_watched_titles.append(title)
 
     for movie in user_data["watched"]:
-        if movie["title"] in user_watched:
-            if movie["title"] not in friends_watched:
-                unique_watched.append(movie)
+        if movie["title"] in user_watched_titles:
+            if movie["title"] not in friends_watched_titles:
+                unique_watched_movies.append(movie)
 
-    return unique_watched
+    return unique_watched_movies
+
+def get_friends_unique_watched(user_data): 
+    user_watched_titles = []
+    friends_watched_titles = []
+    friends_unique_watched_movies = []
 
 
+    for movie in user_data["watched"]:
+            title = movie["title"]
+            user_watched_titles.append(title)
+
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            title = movie["title"]
+            friends_watched_titles.append(title)
+
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            if movie["title"] in friends_unique_watched_movies:
+                if movie not in friends_unique_watched_movies:
+                    friends_unique_watched_movies.append(movie)
+
+    return friends_unique_watched_movies
 
 
 
@@ -169,6 +188,7 @@ def get_available_recs(user_data):
 # -----------------------------------------
 
 def get_new_rec_by_genre(user_data):
+    pass
 
 # Create a function named  `get_new_rec_by_genre`. This function should...
 
