@@ -112,14 +112,17 @@ def get_unique_watched(user_data):
     user_watched = {}
 
     for movie in user_data["watched"]:
-        user_watched['title']=movie
+        user_watched[movie['title']]=movie
     
     for friend in user_data["friends"]:
         for movie in friend["watched"]:
             if movie['title'] in user_watched:
-                del user_watched['title']
+                del user_watched[movie['title']]
+    return_list=[]
+    for title in user_watched:
+        return_list.append(user_watched[title])
 
-    return user_watched
+    return return_list
 
 
 # -----------------------------------------
