@@ -31,7 +31,7 @@ def get_watched_avg_rating(user_data):
     for movie in user_data["watched"]:
                 sum += movie["rating"]
     average_rating = sum/len(user_data["watched"])
-    return average_rating   
+    return average_rating
 
 def get_most_watched_genre(user_data):
     genre_list = []
