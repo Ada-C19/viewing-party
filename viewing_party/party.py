@@ -7,6 +7,8 @@ def create_movie(title, genre, rating):
             "genre": genre,
             "rating": rating}
     
+    return None
+    
 def add_to_watched(user_data, movie):
     user_data["watched"].append(movie)
     return user_data
@@ -17,8 +19,9 @@ def add_to_watchlist(user_data, movie):
 
 def watch_movie(user_data, title):
     for index in range(len(user_data["watchlist"])):
-        if user_data["watchlist"][index]["title"] == title:
-            add_to_watched(user_data, user_data["watchlist"][index])
+        movie = user_data["watchlist"][index]
+        if movie["title"] == title:
+            add_to_watched(user_data, movie)
             del user_data["watchlist"][index]
             break
 
@@ -82,6 +85,23 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
+
+def get_available_recs(user_data):
+    available_recs = {}
+    user_watched_titles = []
+    for movie in user_data["watched"]:
+        if not (movie["title"] in user_watched_titles):
+            user_watched_titles.append(movie["title"])
+
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            if (movie["title"] in available_recs.keys() or 
+                not (movie["host"] in user_data["subscriptions"]) or 
+                movie["title"] in user_watched_titles):
+                continue
+            available_recs[movie["title"]] = movie
+                
+    return list(available_recs.values())
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
