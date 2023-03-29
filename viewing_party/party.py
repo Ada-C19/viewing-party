@@ -148,9 +148,27 @@ def get_new_rec_by_genre(user_data):
     for key, value in genre_dict.items():
         if value == high_genre:
             favorites = key 
+            
     for friend in friends:
         for movie in friend["watched"]:
             if movie not in watched and movie not in recommendations:
                 if movie["genre"] == favorites:
                     recommendations.append(movie)
     return recommendations
+
+def get_rec_from_favorites(user_data):
+    friends = user_data["friends"].copy()
+    favorites = user_data["favorites"].copy()
+    recommendations = []
+    unique = get_unique_watched(user_data)
+    for movie in unique:
+        if movie in favorites:
+            recommendations.append(movie)
+
+    # for friend in friends:
+    #     for movie in watched:
+    #         if movie not in friend["watched"] and movie in favorites:
+    #             recommendations.append(movie)
+    
+    return recommendations
+
