@@ -1,3 +1,4 @@
+import operator
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
@@ -50,6 +51,21 @@ def get_watched_avg_rating_alternative(user_data):
 
     return avg_rating
 
+def get_most_watched_genre(user_data):
+    if len(user_data['watched']) == 0:
+        return None
+    
+    max_watched_dict = {}
+
+    for movie in user_data['watched']:
+        max_watched_dict[movie['genre']] = max_watched_dict.get(movie['genre'], 0) + 1
+
+    max_watched_list = list(sorted(max_watched_dict.items(), key=operator.itemgetter(1), reverse=True))
+    
+    return max_watched_list[0][0]
+
+    
+    
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
