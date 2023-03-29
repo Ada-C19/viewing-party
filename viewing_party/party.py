@@ -25,30 +25,21 @@ def add_to_watched(user_data, movie):
     return user_data
 
 
-# add the movie to the "watched" list inside of user_data
-# return the user_data
-    
-#   - the value of `user_data` will be a dictionary with a key `"watched"`, and a value which is 
-# a list of dictionaries representing the movies the user has watched
-#     - An empty list represents that the user has no movies in their watched list
-#   - the value of `movie` will be a dictionary in this format:
-#     - ```python
-#       {
-#         "title": "Title A",
-#         "genre": "Horror",
-#         "rating": 3.5
-#       }
-#       ```
-# - add the `movie` to the `"watched"` list inside of `user_data`
-# - return the `user_data`
-
-    pass
-
 def add_to_watchlist(user_data, movie):
-    pass
+    user_data["watchlist"].append(movie)
+    return user_data
 
 def watch_movie(user_data, title):
-    pass
+    watchlist = user_data["watchlist"]
+    watched = user_data["watched"]
+    for movie in watchlist:
+        if movie["title"] == title:
+            watchlist.remove(movie)
+            watched.append(movie)
+            return user_data 
+    return user_data   
+
+
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
