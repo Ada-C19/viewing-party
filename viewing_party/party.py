@@ -47,9 +47,10 @@ def get_watched_avg_rating(user_data):
 
 # Method 2
 def get_watched_avg_rating_alternative(user_data):
-    avg_rating = sum(int(movie['rating']) for movie in user_data['watched'])/len(user_data['watched'])
-
-    return avg_rating
+    if len(user_data['watched']) == 0:
+        return 0.0
+    
+    return sum(movie['rating'] for movie in user_data['watched']) / len(user_data['watched'])
 
 def get_most_watched_genre(user_data):
     if len(user_data['watched']) == 0:
