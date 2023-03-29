@@ -58,8 +58,27 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
+def get_unique_watched(user_data):
+    user_titles = set()
+    friend_titles = set()
 
-        
+    for movie in user_data["watched"]:
+        for title in movie:
+            user_titles.add(movie["title"])
+
+    for friend_dict in user_data["friends"]:
+        for movie in friend_dict["watched"]:
+            for key, value in movie.items():
+                if key == "title":
+                    friend_titles.add(value)
+
+    unique_titles = user_titles.difference(friend_titles)
+
+    return unique_titles
+
+
+
+
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
