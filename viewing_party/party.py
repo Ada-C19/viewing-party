@@ -98,17 +98,6 @@ def get_most_watched_genre(user_data):
 #2. Make list of docs with unique movies friends have and remove all the user has
 
 def get_unique_watched(user_data):
-    # user_watched = []
-    # friends_watched = []
-
-    # for movie in user_data["watched"]:
-    #     user_watched.append((movie["title"], movie))
-    
-    # for friend in user_data["friends"]:
-    #     for movie in friend["watched"]:
-    #         friends_watched.append((movie["title"], movie))
-
-    # return set(user_watched) - set(friends_watched)
     user_watched = {}
 
     for movie in user_data["watched"]:
@@ -161,3 +150,16 @@ def get_available_recs(user_data):
 # -----------------------------------------
 #1. same as before but fikter by genre 
 #2. find unique movies of user filter the favorites
+
+def get_new_rec_by_genre(user_data):
+
+    user_has_not_watched = get_friends_unique_watched(user_data)
+    most_watched_genre = get_most_watched_genre(user_data)
+
+    rec_by_genre = []
+
+    for movie in user_has_not_watched:
+        if movie['genre'] == most_watched_genre:
+            rec_by_genre.append(movie)
+    
+    return rec_by_genre
