@@ -133,6 +133,7 @@ def get_unique_watched(user_data):
         user_watched.add(movie.get("title"))
 
     # Create set of friends' movies watched
+    # TODO: COMPARE TO USER WATCHED
     friends_watched = set()
     for watched_list in user_data["friends"]:
         for movie in watched_list["watched"]:
@@ -170,12 +171,10 @@ def get_friends_unique_watched(user_data):
     for watched_list in user_data["friends"]:
         for movie in watched_list["watched"]:
             title = movie.get("title")
-            if title not in unique_watched and title in difference:
+            if title in difference and movie not in unique_watched:
                 unique_watched.append(movie)
-    pprint.pprint(difference)
-    print()
-    pprint.pprint(unique_watched)
-    return unique_watched    
+
+    return list(unique_watched)
 
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
