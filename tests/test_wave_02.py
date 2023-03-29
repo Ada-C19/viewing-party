@@ -64,4 +64,14 @@ def test_genre_is_None_if_empty_watched():
     # Assert
     assert popular_genre == None
 
-# TODO: Add test for tied genres
+def test_tied_genre_returns_first():
+    # Arrange
+    janes_data = {
+        "watched": [FANTASY_1, FANTASY_2, ACTION_1, ACTION_2]
+    }
+
+    # Act
+    popular_genre = get_most_watched_genre(janes_data)
+
+    # Assert
+    assert popular_genre == "Fantasy"
