@@ -35,8 +35,7 @@ def watch_movie(user_data, title):
         if movie["title"] == title:
             user_data["watchlist"].remove(movie)
             user_data["watched"].append(movie)
-        else:
-            return user_data
+            break
     return user_data
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
@@ -81,21 +80,59 @@ def get_unique_watched(user_data):
         if my_movie["title"] not in unique_set:
             unique_watched.append(my_movie)
         
-    print(unique_set)
+    
     return unique_watched
 
-            # if my_movie not in friend["watched"] and my_movie not in unique_watched:
-            #     unique_watched.append(my_movie)
-            #     i += 1
-            # break   
-    return unique_watched
+# Consider the movies that the user has watched, 
+# and consider the movies that their friends have watched. 
+# Determine which movies at least one of the user's friends have watched,
+# but the user has not watched.
+# Return a list of dictionaries, that represents a list of movies
+def did_user_watch_this_title(user_data, title):
+    for movie in user_data["watched"]:
+        if movie["title"] == title:
+            return True
+    return False
+
+def get_friends_unique_watched(user_data):
+    friends_watched_unique_titles_set = set()
+    for friend in user_data["friends"]:
+            for i in range(len(friend["watched"])):
+                title = friend["watched"][i]["title"]
+                friends_watched_unique_titles_set.add(title)
+# crear un diccionario para singularidad 
 
 
-        
 
-        # element["title"]
+    list_of_friends_movies = []
+    for film_title in friends_watched_unique_titles_set:
+        if did_user_watch_this_title(user_data, film_title):
+            if film_title not in list_of_friends_movies:
+                list_of_friends_movies.append(user_data["watched"])
+    
+    return list_of_friends_movies
+# key título de la pelicula
+def get_dictionary_of_friends_movies(): 
+    # Devolver un diccionario con la información de User-data friends;
+    # key son las titluos y los valores el diccionario completo de la pelicula.
+    # 
+    # recorrer este diccionario identificando las que no vistas por el usuario. 
+
+
+
+    
+
+    # for movie in user_data["watched"]:
+    #     for set_movie_title in unique_set:
+    #         if set_movie_title != movie["title"] and set_movie_title not in list_of_friends_movies:
+    #             list_of_friends_movies.append(movie)
+    print(list_of_friends_movies)
+    return list_of_friends_movies
+
+
    
     
+
     
 
 # -----------------------------------------
