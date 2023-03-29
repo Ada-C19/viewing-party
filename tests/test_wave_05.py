@@ -52,11 +52,11 @@ def test_new_genre_rec_from_empty_friends():
             }
         ]
     }
+    #ACT
+    recommendations = get_new_rec_by_genre(sonyas_data)
 
-    #raise Exception("Test needs to be completed.")
-    # *********************************************************************
-    # ****** Complete the Act and Assert Portions of these tests **********
-    # *********************************************************************
+    #Assert
+    assert recommendations == []
 
 #@pytest.mark.skip()
 def test_unique_rec_from_favorites():
