@@ -33,7 +33,16 @@ def get_watched_avg_rating(user_data):
     average_rating = sum/len(user_data["watched"])
     return average_rating   
 
-        
+def get_most_watched_genre(user_data):
+    genre_list = []
+    if len(user_data["watched"]) == 0:
+        return None
+    for movie in user_data["watched"]:
+        genre_list.append(movie["genre"])
+    
+    most_genre = max(genre_list, key=genre_list.count)
+         
+    return most_genre
         
 
 
