@@ -143,14 +143,14 @@ def get_unique_watched(user_data):
     output: list of dictionaries that represents a list of movies 
     '''     
     list_watched_movies = user_data['watched']
-    list_of_friends = user_data['friends']['watched']
+    list_of_friends = user_data['friends']
     unique_watched = []
 
-    for movie_friends in list_of_friends.items:
-        for user_movie in list_watched_movies.items:
+    for movie_friends in list_of_friends:
+        for user_movie in list_watched_movies:
             if not movie_friends in list_watched_movies:
                 unique_watched.append(user_movie)
-    return unique_watched
+        return unique_watched
 
 
 
