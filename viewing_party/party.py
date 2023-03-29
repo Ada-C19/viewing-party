@@ -128,3 +128,28 @@ def get_available_recs(user_data):
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
+def get_new_rec_by_genre(user_data):
+    genre_count = []
+    for i in range(len(user_data["watched"])):
+        genre_count.append(user_data["watched"][i]["genre"])
+    current_favorite_count = 0
+    favorite_genre = ""
+    for genre in genre_count:
+        if genre_count.count(genre) > current_favorite_count:
+            current_favorite_count = genre_count.count(genre)
+            favorite_genre = genre
+    
+    recs_by_genre = []
+    for i in range(len(user_data["friends"])):
+        for j in range(len(user_data["friends"][i]["watched"])):
+            if user_data["friends"][i]["watched"][j] in\
+            recs_by_genre:
+                continue
+            if user_data["friends"][i]["watched"][j] in\
+            user_data["watched"]:
+                continue
+            elif user_data["friends"][i]["watched"][j]["genre"] ==\
+            favorite_genre:
+                recs_by_genre.append(user_data["friends"][i]["watched"][j])
+
+    return recs_by_genre
