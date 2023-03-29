@@ -103,7 +103,7 @@ def get_unique_watched(user_data):
         list_of_friends_data.append(i["watched"])
     print(list_of_friends_data)
     #list_of_user_data_compiled = helper_join_list_of_lists_and_remove_duplicates(list_of_friends_data)
-    list_of_friends_data_compiled = 
+    #list_of_friends_data_compiled = 
 
     #print(list_of_friends_data_compiled)
     #print(list_of_user_data_compiled)
