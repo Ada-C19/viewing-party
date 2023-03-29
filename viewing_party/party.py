@@ -68,8 +68,6 @@ def get_unique_watched(user_data):
 
     for movie in user_data["watched"]:
         title = movie["title"]
-        if title not in user_watched:
-            continue
         for friend in user_data["friends"]:
             if title in list(movie["title"] for movie in friend["watched"]):
                 break
