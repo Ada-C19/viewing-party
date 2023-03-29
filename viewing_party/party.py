@@ -88,6 +88,10 @@ def get_most_watched_genre(user_data):
     elif  counter_intrigue > counter_horror and counter_intrigue > counter_fantasy and \
     counter_intrigue > counter_action:
         return "Intrigue"
+
+# -----------------------------------------
+# ------------- WAVE 3 --------------------
+# -----------------------------------------
                 
 def get_unique_watched(user_data):
     only_user_watched = []
@@ -121,7 +125,17 @@ def get_friends_unique_watched(user_data):
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
 
+def get_available_recs(user_data):
+    recommended_movies = []
+    unique_movies = get_friends_unique_watched(user_data)
+    for movie in unique_movies:
+        if movie["host"] in user_data["subscriptions"]:
+            recommended_movies.append(movie)
+    return recommended_movies    
+
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
+def get_new_rec_by_genre(user_data):
+    
