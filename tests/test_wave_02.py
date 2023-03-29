@@ -39,7 +39,6 @@ def test_most_watched_genre():
     assert popular_genre == "Fantasy"
     assert janes_data == clean_wave_2_data()
 
-
 def test_most_watched_genre_order_mixed():
     # Arrange
     janes_data = clean_wave_2b_data()
