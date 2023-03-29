@@ -80,6 +80,21 @@ def get_unique_watched(user_data):
             unique_list.append(movie)
     return unique_list  
 
+def get_friends_unique_watched(user_data):
+    user_watched_set = set()
+    for movie in user_data["watched"]:
+        user_watched_set.add(movie["title"])
+    print(user_watched_set)
+
+    user_friends_watched_set = set()
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            user_friends_watched_set.add(movie["title"])
+        user_friends_watched_set.add(movie["title"])
+    #print(user_friends_watched_set)
+    unique_set = user_friends_watched_set.difference(user_watched_set)
+    print(unique_set)
+    #print(user_watched_set)
 
         
 # -----------------------------------------
