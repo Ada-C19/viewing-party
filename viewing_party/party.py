@@ -1,5 +1,6 @@
 import statistics
 from statistics import mode
+from frozendict import frozendict
 
 # ------------- WAVE 1 --------------------
 
@@ -40,15 +41,21 @@ def watch_movie(user_data, title):
 # -----------------------------------------
 
 
-def get_watched_avg_rating(user_data):
-    if not user_data["watched"]:
-        return 0
+# def get_watched_avg_rating(user_data):
+#     if not user_data["watched"]:
+#         return 0
     
-    running_total = 0
-    for movie in user_data["watched"]:
-        running_total += movie["rating"]
+#     running_total = 0
+#     for movie in user_data["watched"]:
+#         running_total += movie["rating"]
 
-    return running_total / len(user_data["watched"])
+#     return running_total / len(user_data["watched"])
+
+
+def get_watched_avg_rating(user_data):
+    all_ratings = list(map(lambda movie: movie["rating"], user_data["watched"]))
+    return sum(all_ratings) / len(all_ratings) if all_ratings else 0
+
 
 def get_most_watched_genre(user_data):
     if not user_data["watched"]:
@@ -65,28 +72,82 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
+
+
+def get_titles_user_watched(user_data):
+    movies_user_watched = set()
+
+    for movie in user_data["watched"]:
+        movies_user_watched.add(movie["title"])
+
+    return movies_user_watched
+
+
+def get_titles_friends_watched(user_data):
+    movies_friends_have_watched = set()
+
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            movies_friends_have_watched.add(movie["title"])
+
+    return movies_friends_have_watched
+
+
 def get_unique_watched(user_data):
-    user_watched_movies = {movie['title']: movie for movie in user_data['watched']}
-    friends_watched_movies = set()
+    titles_friends_have_watched = get_titles_friends_watched(user_data)
 
-    for friend in user_data['friends']:
-        for movie in friend['watched']:
-            friends_watched_movies.add(movie['title'])
+    movies_only_user_watched = []
+    for movie in user_data["watched"]:
+        if movie["title"] not in titles_friends_have_watched:
+            movies_only_user_watched.append(movie)
 
-    unique_watched_movies = set(user_watched_movies.keys()).difference(friends_watched_movies)
-    return [user_watched_movies[movie] for movie in unique_watched_movies]
+
+    return movies_only_user_watched
+
 
 
 def get_friends_unique_watched(user_data):
-    user_watched_movies = {movie['title']: movie for movie in user_data['watched']}
-    friends_watched_movies = {}
+    titles_user_watched = get_titles_user_watched(user_data)
 
-    for friend in user_data['friends']:
-        for movie in friend['watched']:
-            friends_watched_movies[movie['title']] = movie
+    movies_only_friends_watched = []
 
-    unique_friends_watched_movies = set(friends_watched_movies.keys()).difference(user_watched_movies.keys())
-    return [friends_watched_movies[movie] for movie in unique_friends_watched_movies]
+
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            if movie["title"] not in titles_user_watched:
+                movies_only_friends_watched.append(frozendict(movie))
+
+
+    return list(set(movies_only_friends_watched))
+    
+
+# def get_unique_watched(user_data):
+
+    # user_watched_movies = {movie['title']: movie for movie in user_data['watched']}
+
+    # for movie in user_data['watched']:
+    #     user_watched_movies[movie["title"]] = movie
+
+    # friends_watched_movies = set()
+
+    # for friend in user_data['friends']:
+    #     for movie in friend['watched']:
+    #         friends_watched_movies.add(movie['title'])
+
+    # unique_watched_movies = set(user_watched_movies.keys()).difference(friends_watched_movies)
+    # return [user_watched_movies[movie] for movie in unique_watched_movies]
+
+
+# def get_friends_unique_watched(user_data):
+#     user_watched_movies = {movie['title']: movie for movie in user_data['watched']}
+#     friends_watched_movies = {}
+
+#     for friend in user_data['friends']:
+#         for movie in friend['watched']:
+#             friends_watched_movies[movie['title']] = movie
+
+#     unique_friends_watched_movies = set(friends_watched_movies.keys()).difference(user_watched_movies.keys())
+#     return [friends_watched_movies[movie] for movie in unique_friends_watched_movies]
 
         
 # -----------------------------------------
@@ -113,18 +174,15 @@ def get_available_recs(user_data):
 
 
 def get_new_rec_by_genre(user_data):
-    recommended = []
+    recommended = set()
     favorite_genre = get_most_watched_genre(user_data)
 
     for friend in user_data["friends"]:
         for movie in friend["watched"]:
-            if (
-                movie not in user_data["watched"]
-                and movie["genre"] == favorite_genre
-                and movie not in recommended
-            ):
-                recommended.append(movie)
-    return recommended
+            if movie not in user_data["watched"] and movie["genre"] == favorite_genre:
+                recommended.add(frozendict(movie))
+
+    return list(recommended)
 
 def get_rec_from_favorites(user_data):
     recommended = []
