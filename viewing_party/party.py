@@ -230,20 +230,33 @@ def get_available_recs(user_data):
 # ------------- WAVE 5 --------------------
 # ---Wave_5_function_1---
 def get_new_rec_by_genre(user_data):
-    pass
-#     most_watched_genre = get_most_watched_genre(user_data)
-#     print (most_watched_genre)
+    rec_by_genre = []
     
-# get_most_watched_genre(janes_data)
+
+    users_watched = user_data["watched"]
+    friends_watched = get_friends_unique_watched(user_data)
+    users_most_freq_genre = get_most_watched_genre(user_data)
+
+    # dict_of_most_freq_genre = user_data["users_most_freq_genre"]
+
+    if len(users_watched) == 0:
+        return rec_by_genre
+
+    if len(friends_watched) == 0:
+        return rec_by_genre
+
+    for movie in friends_watched:
+        if movie["genre"] == users_most_freq_genre:
+            rec_by_genre.append(movie)
+    
+    return rec_by_genre
+            
+
+
+
 
 # ---Wave_5_function_2---
 def get_rec_from_favorites(user_data):
     pass
 
 
-# to do:
-# update tests for exception handling
-# update wave 2 function 2
-# finish wave 5
-# add/edit comments?
-# refactor?
