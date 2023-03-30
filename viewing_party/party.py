@@ -178,9 +178,8 @@ def get_available_recs(user_data):
     Keyword arguments:
     user_data -- dictionary containing movies user and friends have watched
     """  
-    # Check if each friends' movie is in user's watched list
-    # If not, add to movie recs list if not already in it 
-    # and user has subscription
+    # Check if each friends' movie uses a service user has
+    # If yes, add to movie recs list if not already in it 
     movie_recs = []
     for movie in get_friends_unique_watched(user_data):
         if movie["host"] in user_data["subscriptions"]:
@@ -198,9 +197,8 @@ def get_new_rec_by_genre(user_data):
     Keyword arguments:
     user_data -- dictionary containing movies user and friends have watched
     """  
-    # Check if each friends' movie is in user's watched list
-    # If not, add to genre recs list if not already in it 
-    # and matches user's most watched genre
+    # Check if each friends' movie is user's most-watched genre
+    # If yes, add to genre recs list if not already in it
     genre_recs = []
     for movie in get_friends_unique_watched(user_data):
         if movie["genre"] == get_most_watched_genre(user_data):
