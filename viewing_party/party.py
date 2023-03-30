@@ -112,27 +112,21 @@ def get_new_rec_by_genre(user_data):
     genre_freq = get_most_watched_genre(user_data)
     watched = user_data["watched"]
     friends_watched = [movie for friend in user_data["friends"] for movie in friend["watched"]]
-    rec_movies = []
-    if len(watched) == 0:
-        return rec_movies
+    recommended_movies = []
     for movie in friends_watched:
-        if movie not in watched and movie["genre"] in genre_freq:
-            if movie not in rec_movies:
-                rec_movies.append(movie)
-        
-    return rec_movies
+        if movie not in watched and movie["genre"] == genre_freq:
+            if movie not in recommended_movies:
+                recommended_movies.append(movie)
+    return recommended_movies
+
 
 def get_rec_from_favorites(user_data):
-    # Build a set of all movies that the user's friends have watched
-    watched_by_friends = set()
+    watched_by_friends = []
     for friend in user_data["friends"]:
         for movie in friend["watched"]:
-            watched_by_friends.add(tuple(movie.items()))
-
-    # Build a list of recommended movies
+            watched_by_friends.append(movie)
     recommended_movies = []
     for movie in user_data["favorites"]:
-        if tuple(movie.items()) not in watched_by_friends:
+        if movie not in watched_by_friends:
             recommended_movies.append(movie)
-
     return recommended_movies
