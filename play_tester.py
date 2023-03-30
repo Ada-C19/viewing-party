@@ -18,9 +18,11 @@ pp = pprint.PrettyPrinter(indent=4)
 # pp.pprint(clean_wave_2_data())
 
 # print("\n-----Wave 03 user_data-----")
-# pp.pprint(clean_wave_3_data())
-# user_data = clean_wave_3_data()
+pp.pprint(clean_wave_3_data())
+user_data = clean_wave_3_data()
 
+print(set_creation(user_data))
+print(get_friends_unique_watched(user_data))
 # def get_friends_unique_watched(user_data):
 #     friends_unique_watched = []
 #     friends_watched_set = set()
@@ -44,12 +46,16 @@ pp = pprint.PrettyPrinter(indent=4)
 #     return friends_unique_watched
 # get_friends_unique_watched(user_data)
 
-# Wave 04 user data
-print("\n-----Wave 04 user_data-----")
-pp.pprint(clean_wave_4_data())
-user_data = clean_wave_4_data()
-get_available_recs(user_data)
+# # Wave 04 user data
+# print("\n-----Wave 04 user_data-----")
+# pp.pprint(clean_wave_4_data())
+# user_data = clean_wave_4_data()
+# get_available_recs(user_data)
 
-# Wave 05 user data
-#print("\n-----Wave 05 user_data-----")
-#pp.pprint(clean_wave_5_data())
+# # Wave 05 user data
+# print("\n-----Wave 05 user_data-----")
+# pp.pprint(clean_wave_5_data())
+
+# user_data = clean_wave_5_data()
+
+# get_rec_from_favorites(user_data)
