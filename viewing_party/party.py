@@ -1,23 +1,31 @@
 # WAVE 1 
-# 1. Create a function named  `create_movie`. This function and all subsequent functions should be in `party.py`. `create_movie` should...
-
-# - take three parameters: `title`, `genre`, `rating`
-# - If those three attributes are truthy, then return a dictionary. This dictionary should...
-#   - Have three key-value pairs, with specific keys
-#   - The three keys should be `"title"`, `"genre"`, and `"rating"`
-#   - The values of these key-value pairs should be appropriate values
-# - If `title` is falsy, `genre` is falsy, or `rating` is falsy, this function should return `None`
 def create_movie(title, genre, rating):
     movie = {}
-    if title is not True or genre is not True or rating is not True:
+    if title is None or genre is None or rating is None: 
+        return None 
+    if title is False or genre is False or rating is False:
         return None 
     movie["title"] = title
     movie["genre"] = genre
     movie["rating"] = rating
     print(movie) 
     return movie 
-     
+  
+def add_to_watched(user_data, movie): 
+    user_data["watched"].append(movie)
+    return user_data
 
+def add_to_watchlist(user_data, movie):
+    user_data["watchlist"].append(movie)
+    return user_data
+
+def watch_movie(user_data, title):
+    for movies in user_data["watchlist"]:
+        if title == movies["title"]: 
+            user_data["watched"].append(movies)
+            user_data["watchlist"].remove(movies) 
+    return user_data
+                  
 # WAVE 2 
 
 #WAVE 3 
