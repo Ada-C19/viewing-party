@@ -65,12 +65,9 @@ def get_most_watched_genre(user_data):
     
     return max_watched_list[0][0]
 
-    
-    
-
-# -----------------------------------------
 # ------------- WAVE 3 --------------------
-def get_unique_watched_1(user_data):
+
+def get_unique_watched(user_data):
     watched_movies_set = set(movie['title'] for movie in user_data['watched'])
     
     friends_movie_set = set()
