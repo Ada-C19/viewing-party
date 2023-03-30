@@ -417,18 +417,8 @@ def get_new_rec_by_genre(user_data):
     # then return list of recomneded movies
     return list_of_recommended
     
-# ========================================= wave 05- # 2.  get_rec_from_favorites ========== SJ
+# ========================================= wave 05- # 2.  get_rec_from_favorites ========== RC
 
-# Create a function named get_rec_from_favorites. 
-# take one parameter: user_data
-
-def get_rec_from_favorites(user_data):
-    
-    # Determine a list of recommended movies.
-    # A movie should be added to this list if and only if:
-    # The movie is in the user's "favorites"
-
-    list_of_recs = []
     
 # 2. Create a function named  `get_rec_from_favorites`. This function should...
 def get_rec_from_favorites(user_data):
@@ -447,8 +437,23 @@ def get_rec_from_favorites(user_data):
         # Check if movie is not watched by any of user's friends
         if movie["title"] not in friends_watched:
             rec_movies.append(movie)
+
+# ========================================= wave 05- # 2.  get_rec_from_favorites ========== SJ
+
+# Create a function named get_rec_from_favorites. 
+# take one parameter: user_data
+
+def get_rec_from_favorites(user_data):
+    
+    # Determine a list of recommended movies.
+    # A movie should be added to this list if and only if:
+    # The movie is in the user's "favorites"
+
+    list_of_recs = []
+    
     #  list of movies the fiends have watched
     friend_movies = get_friends_movies(user_data)
+
 
     # user_data will have a field "favorites". 
     # The value of "favorites" is a list of movie dictionaries
