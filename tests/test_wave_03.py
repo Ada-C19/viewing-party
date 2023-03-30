@@ -48,7 +48,7 @@ def test_friends_unique_movies_not_duplicated():
     # Arrange
     amandas_data = clean_wave_3_data()
     amandas_data["friends"][0]["watched"].append(INTRIGUE_3)
-    expected = [FANTASY_3, FANTASY_4, HORROR_1]
+    expected = []
 
     # Act
     friends_unique_movies = get_friends_unique_watched(amandas_data)
@@ -56,27 +56,7 @@ def test_friends_unique_movies_not_duplicated():
     # Assert
     assert len(friends_unique_movies) == 3
     assert expected == friends_unique_movies
-#     USER_DATA_3["friends"] =  [
-#         {
-#             "watched": [
-#                 FANTASY_1,
-#                 FANTASY_3,
-#                 FANTASY_4,
-#                 HORROR_1,
-#                 INTRIGUE_3
-#             ]
-#         },
-#         {
-#             "watched": [
-#                 FANTASY_1,
-#                 ACTION_1,
-#                 INTRIGUE_1,
-#                 INTRIGUE_3,
-#             ]
-#         }
-#     ]  
 
-# }
     
     # *************************************************************************************************
     # ****** Add assertions here to test that the correct movies are in friends_unique_movies **********
