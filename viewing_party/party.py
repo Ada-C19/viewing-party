@@ -171,7 +171,6 @@ def get_friends_unique_watched(user_data):
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
-
 def get_available_recs(user_data):
     """Return list of dictionaries of movies recommended for user.
     
@@ -190,7 +189,6 @@ def get_available_recs(user_data):
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
-
 def get_new_rec_by_genre(user_data):
     """Return list of dictionaries of movies recommended for user by genre.
     
