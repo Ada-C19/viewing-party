@@ -113,38 +113,11 @@ def get_most_watched_genre(user_data):
     for watched in user_data["watched"]:
         genre = watched["genre"]
         movie_genres.append(genre)
-        # count_genre = movie_genres.count(genre)
-        if len(movie_genres) == 0:
-            return None
+    if len(movie_genres) == 0:
+        return None
 
     most_frequently_watched_genre = (mode(movie_genres))
     return most_frequently_watched_genre
-
-    # def most_common_genre(movie_genres):
-    #     most_frequently_watched_genre = (mode(movie_genres))
-    
-    #     return most_frequently_watched_genre
-
-        # if len(movie_genres) == 1:
-        #     return movie_genres[0]
-        # else:
-        #     return (mode(movie_genres))
-        
-
-
-    # def most_frequent_genre(movie_genres):
-
-    #     counter = 0
-    #     num_genre = movie_genres
-
-    # for element in movie_genres:
-    #     genre_counter = movie_genres.count(element)
-    #     if(genre_counter > counter):
-    #         counter = genre_counter
-    #         num_genre = element
-    
-    # return counter
-
 
 
 
