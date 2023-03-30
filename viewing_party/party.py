@@ -93,7 +93,8 @@ def get_available_recs(user_data):
             rec_movies.append(movie)
             
     return rec_movies
-
+#T= O(nm)depending on num friends, movies in each. 
+#S= O(n) bc new list of rec movies.
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------

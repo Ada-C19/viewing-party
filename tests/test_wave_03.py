@@ -54,9 +54,10 @@ def test_friends_unique_movies_not_duplicated():
 
     # Assert
     assert len(friends_unique_movies) == 3
-    assert HORROR_2 in friends_unique_movies
-    assert COMEDY_2 in friends_unique_movies
-    assert DRAMA_1 in friends_unique_movies 
+    assert {"title": "Zero Dark Python", "genre": "Intrigue", "rating": 3.0} in friends_unique_movies
+    assert {"title": "The Lord of the Functions: The Two Parameters", "genre": "Fantasy", "rating": 4.0} not in friends_unique_movies
+    assert {"title": "The JavaScript and the React", "genre": "Action", "rating": 2.2} not in friends_unique_movies
+
 
     #raise Exception("Test needs to be completed.")
     # *************************************************************************************************
