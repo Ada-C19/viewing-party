@@ -54,6 +54,9 @@ def test_friends_unique_movies_not_duplicated():
 
     # Assert
     assert len(friends_unique_movies) == 3
+    for movie in friends_unique_movies:
+        assert friends_unique_movies.count(movie) == 1
+
     
 
     # raise Exception("Test needs to be completed.")
@@ -61,6 +64,8 @@ def test_friends_unique_movies_not_duplicated():
     # ****** Add assertions here to test that the correct movies are in friends_unique_movies **********
     # **************************************************************************************************
 
+    
+    
 # @pytest.mark.skip()
 def test_friends_not_unique_movies():
     # Arrange
