@@ -198,13 +198,14 @@ def get_available_recs(user_data):
 
     ### iterating through movie dictionaries in friends_unique_watched_list to find movies user has 
     ### access to via subscription
-    for movie_dict in friends_unique_watched_list:
-        ### iterating through specific subscription services user has access to
-        for subscription_service in subscriptions_list:
-            ### determining if a given movie that user has not seen is available via subscription service, 
-            ### if so append to recommend_movies
-            if movie_dict["host"] == subscription_service:
-                recommended_movies.append(movie_dict)
+    for friend in friends_unique_watched_list:
+        for movie_dict in friend["watched"]:
+            ### iterating through specific subscription services user has access to
+            for subscription_service in subscriptions_list:
+                ### determining if a given movie that user has not seen is available via subscription service, 
+                ### if so append to recommend_movies
+                if movie_dict["host"] == subscription_service:
+                    recommended_movies.append(movie_dict)
     
     return recommended_movies
 
