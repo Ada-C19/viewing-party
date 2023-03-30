@@ -101,24 +101,10 @@ def get_available_recs(user_data):
     
     return [movie for movie in friends_unique_watched if movie['host'] in user_subscriptions]
 
-    
-
-    # for friend_watched_dict in user_data["friends"]:
-    #     for movie in friend_watched_dict["watched"]:
-    #         if movie["host"] in user_data["subscriptions"] and friend_watched_dict not in user_data["watched"]:
-    #             recommendations.append(movie)
-    # return recommendations
-
-
-
-
-
-
-
-
-
-
-
-# -----------------------------------------
 # ------------- WAVE 5 --------------------
-# -----------------------------------------
+
+def get_new_rec_by_genre(user_data):
+    top_genre = get_most_watched_genre(user_data)
+    friends_unique_watched = get_friends_unique_watched(user_data)
+
+    return [movie for movie in friends_unique_watched if movie['genre'] == top_genre]
