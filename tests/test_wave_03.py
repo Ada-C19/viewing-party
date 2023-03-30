@@ -2,7 +2,7 @@ import pytest
 from viewing_party.party import *
 from tests.test_constants import *
 
-@pytest.mark.skip()
+# @pytest.mark.skip()
 def test_my_unique_movies():
     # Arrange
     amandas_data = clean_wave_3_data()
@@ -56,11 +56,6 @@ def test_friends_unique_movies_not_duplicated():
     # Assert
     assert len(friends_unique_movies) == 3
     assert expected == friends_unique_movies
-
-    
-    # *************************************************************************************************
-    # ****** Add assertions here to test that the correct movies are in friends_unique_movies **********
-    # **************************************************************************************************
 
 # @pytest.mark.skip()
 def test_friends_not_unique_movies():
