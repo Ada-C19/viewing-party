@@ -16,9 +16,9 @@ def add_to_watchlist(user_data, movie):
 
 
 def watch_movie(user_data, title):
-    for movie in user_data["watchlist"]:
+    for idx, movie in enumerate(user_data["watchlist"]):
         if movie["title"] == title:
-            user_data["watchlist"].remove(movie)
+            user_data["watchlist"].pop(idx)
             user_data["watched"].append(movie)
     return user_data
 # -----------------------------------------
@@ -30,10 +30,6 @@ def watch_movie(user_data, title):
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 def get_unique_watched(user_data):
-    """
-    user_data: dict with "watched" list of dictionaries and "friends" list of dictionaries
-    """
-
     # Create list of all friends' watched movies
     friends_watched = []
     for friend in user_data["friends"]:
@@ -46,7 +42,9 @@ def get_unique_watched(user_data):
             unique_watched.append(movie)
     
     return unique_watched
-    
+
+
+
 def get_friends_unique_watched(user_data):
     friends_unique_watched = []
     for friend in user_data["friends"]:
