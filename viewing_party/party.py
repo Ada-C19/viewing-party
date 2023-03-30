@@ -56,6 +56,10 @@ def watch_movie(user_data, title):
 # -----------------------------------------
 
 def get_watched_avg_rating(user_data):
+    '''
+    input: takes in one parameter in the form of a dictionary named user_data.
+    output: returns the average rating (float) of all the movies within the watched list value in user_data.
+    '''
 
     if len(user_data["watched"]) == 0:
         return 0.0
@@ -66,7 +70,10 @@ def get_watched_avg_rating(user_data):
     return statistics.mean(ratings_list)
 
 def get_most_watched_genre(user_data):
-
+    '''
+    input: takes in one parameter in the form of a dictionary named user_data.
+    output: returns the movie genre (str) of the most frequently watched movie in the nested watched list (within user_data).
+    '''
 
     if len(user_data["watched"]) == 0:
         return None
@@ -130,6 +137,11 @@ def get_friends_unique_watched(user_data):
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
 def get_available_recs(user_data):
+    '''
+    input: takes in one parameter in the form of a dictionary named user_data.
+    output: returns a list of recommended movies from the same subscription service that the user has not watched but at least one of their friend(s) has watched.
+    '''
+    
     subscriptions = user_data["subscriptions"]
     friends_unique_movies= get_friends_unique_watched(user_data)
     avaible_friend_movies=[]
