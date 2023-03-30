@@ -231,7 +231,6 @@ def get_available_recs(user_data):
 # ---Wave_5_function_1---
 def get_new_rec_by_genre(user_data):
     rec_by_genre = []
-    
 
     users_watched = user_data["watched"]
     friends_watched = get_friends_unique_watched(user_data)
@@ -251,12 +250,15 @@ def get_new_rec_by_genre(user_data):
     
     return rec_by_genre
             
-
-
-
-
 # ---Wave_5_function_2---
 def get_rec_from_favorites(user_data):
-    pass
+    recommended = []
 
+    users_unique_movies = get_unique_watched(user_data)
+    users_favorites = user_data["favorites"]
 
+    for movie in users_unique_movies:
+        if movie in users_favorites:
+            recommended.append(movie) 
+        
+    return recommended
