@@ -2,6 +2,7 @@ import pytest
 from viewing_party.party import *
 from tests.test_constants import *
 
+
 # @pytest.mark.skip()
 def test_get_available_friend_rec():
     # Arrange
@@ -15,6 +16,7 @@ def test_get_available_friend_rec():
     assert HORROR_1b in recommendations
     assert FANTASY_4b in recommendations
     assert amandas_data == clean_wave_4_data()
+
 
 # @pytest.mark.skip()
 def test_no_available_friend_recs():
@@ -37,6 +39,7 @@ def test_no_available_friend_recs():
 
     # Assert
     assert len(recommendations) == 0
+
 
 # @pytest.mark.skip()
 def test_no_available_friend_recs_watched_all():
