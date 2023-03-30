@@ -171,8 +171,27 @@ def get_unique_watched(user_data):
     return user_unique_movies
 
 #---Wave_3_function_2---
+
 def get_friends_unique_watched(user_data):
-    pass
+    # user_data = {"watched": [{"title": "movie title"}, 
+    #                          {"title": "movie title"}],
+    #              "friends": [{"friend": "friend name",
+    #                           "watched": [{"title": "movie title"}, 
+    #                                       {"title": "movie title"}]}, 
+    #                          {"friend": "friend name",
+    #                           "watched": [{"title": "movie title"}, 
+    #                                       {"title": "movie title"}]}]
+    #           }
+    movies_user_watched = user_data["watched"]
+    unique_movies_friends_watched = []
+
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            if (movie not in unique_movies_friends_watched) and (movie not in movies_user_watched):
+                unique_movies_friends_watched.append(movie)
+    
+    # returns list of movie dictionaries
+    return unique_movies_friends_watched
 
 # ------------- WAVE 4 --------------------
 #---Wave_4_function_1---
