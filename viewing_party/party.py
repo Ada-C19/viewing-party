@@ -144,6 +144,7 @@ def get_friends_unique_watched(user_data):
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
+
 def get_available_recs(user_data): 
     # List of friends
     friends = user_data["friends"]
@@ -151,20 +152,19 @@ def get_available_recs(user_data):
     watched_movies = user_data["watched"]
     # Create empty list of recommended movies
     recommendations = []
-    
+    friend_movies = []    
     # Loop over friends
     for friend in friends:
         # List of movies watched by friend
         friend_movies = friend["watched"]
         # Loop over movies watched by friend
-    for movie in friend_movies:
-        # Conditional if movie user has not watched and movie has available host
-        if movie["host"] in user_data["subscriptions"] and movie not in watched_movies and movie not in recommendations:
-            # if so, add to list of recommended movies
-            recommendations.append(movie)
-    print(movie)
+        for movie in friend_movies:
+            if movie["host"] in user_data["subscriptions"] and movie not in watched_movies and movie not in recommendations:
+                # if so, add to list of recommended movies
+                recommendations.append(movie)
     # return list of recommended movies
     return recommendations
+
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
@@ -184,11 +184,11 @@ def get_new_rec_by_genre(user_data):
         # List of movies watched by friend
         friend_movies = friend["watched"]
         # Loop over movies watched by friend
-    for movie in friend_movies:
-        # Conditional if movie is favorite genre/user has not watched
-        if movie["genre"] == genre and movie not in watched_movies and movie not in recommended_movies:
-            # if so, add to list of recommended movies
-            recommended_movies.append(movie)
+        for movie in friend_movies:
+            # Conditional if movie is favorite genre/user has not watched
+            if movie["genre"] == genre and movie not in watched_movies and movie not in recommended_movies:
+                # if so, add to list of recommended movies
+                recommended_movies.append(movie)
     
     # return list of recommended movies
     return recommended_movies
