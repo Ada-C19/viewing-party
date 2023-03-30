@@ -34,6 +34,11 @@ print(set_comparison(user_data))
 # user_data = clean_wave_4_data()
 # get_available_recs(user_data)
 
+<<<<<<< HEAD
+# Wave 05 user data
+print("\n-----Wave 05 user_data-----")
+pp.pprint(clean_wave_5_data())
+=======
 # # Wave 05 user data
 # print("\n-----Wave 05 user_data-----")
 # pp.pprint(clean_wave_5_data())
