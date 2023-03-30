@@ -135,3 +135,57 @@ def get_available_recs(user_data):
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
+# def get_new_rec_by_genre(user_data):
+#     reccommended_movies = []
+#     user_watched = user_data["watched"]
+#     genre = get_most_watched_genre(user_watched)
+#     for movie in user_watched:
+#         if movie["genre"] == genre and movie not in user_watched:
+
+#             reccommended_movies.append(movie)
+#     return reccommended_movies
+
+
+# def get_new_rec_by_genre(user_data):
+#     most_watched_genre = get_most_watched_genre(user_data)
+#     recommended_movies = []
+#     [friend for friend in user_data["friends"]]:
+#         for movie in friend["watched"]:
+#             if movie["genre"] == most_watched_genre and movie not in user_data["watched"]:
+#                 recommended_movies.append(movie)
+                
+#     return recommended_movies
+
+def get_new_rec_by_genre(user_data):
+    # get most frequent genre
+    genre = get_most_watched_genre(user_data)
+    
+    # get list of friends
+    friends = user_data["friends"]
+    
+    # get list of movies user has watched
+    watched_movies = user_data["watched"]
+    # watchlist = get_friends_unique_watched(user_data)
+    
+    # create empty list of recommended movies
+    rec_movies = []
+    
+    # loop over friends
+    for friend in friends:
+        # get list of movies watched by friend
+        friend_movies = friend["watched"]
+        
+        # loop over movies watched by friend
+    for movie in friend_movies:
+        # check if movie meets criteria
+        if movie["genre"] == genre and movie not in watched_movies and movie not in rec_movies:
+            # if so, add to list of recommended movies
+            rec_movies.append(movie)
+    
+    # return list of recommended movies
+    return rec_movies
+
+
+def get_rec_from_favorites(user_data):
+    favorites = []
+    pass
