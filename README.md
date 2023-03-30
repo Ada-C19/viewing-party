@@ -1,5 +1,21 @@
 # Viewing Party
 
+## Pair Plan
+Access Needs
+- None
+
+Learning Style
+- Looking at each other's code and having each other explain how they thought through it
+- Refactoring together
+
+How You Prefer to Recieve Feedback
+- Directly, discuss different approaches and come a consensus on the one we both like or has the best space-time complexity
+
+One Team Communication Skill you Want to Improve with This Experience
+- Speaking up, and asking questions and offering alternatives for discussion
+- Managing my pace in programming to contribute to a more cohesive
+
+
 ## Skills Assessed
 
 Solving problems with...
