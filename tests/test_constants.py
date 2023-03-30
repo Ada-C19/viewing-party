@@ -138,9 +138,9 @@ INTRIGUE_3b["host"] = "disney+"
 
 USER_DATA_4 = {
     "watched": [
-        FANTASY_1b, 
+        FANTASY_1b, #
         FANTASY_2b, 
-        FANTASY_3b, 
+        FANTASY_3b, #
         ACTION_1b, 
         INTRIGUE_1b, 
         INTRIGUE_2b
@@ -150,14 +150,14 @@ USER_DATA_4 = {
             "watched": [
                 FANTASY_1b,
                 FANTASY_3b,
-                FANTASY_4b,
+                FANTASY_4b,# sugerir
                 HORROR_1b,
             ]
         },
         {
             "watched": [
                 FANTASY_1b,
-                FANTASY_4b,
+                FANTASY_4b,#sugerir
                 ACTION_1b,
                 INTRIGUE_1b,
                 INTRIGUE_3b,
