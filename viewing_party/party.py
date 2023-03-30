@@ -28,16 +28,23 @@ def add_to_watchlist(user_data, movie):
 
     return user_data
 
+def access_element_in_list(list):
+    for item in list:
+        desired_item = item
+    return desired_item
+
 def watch_movie(user_data, title):
     # list of dictionaries(each dictionary has title, genre, rating)
     watch_list = user_data["watchlist"]
     # list of watched movies
     watched = user_data["watched"]
 
-    for movie in watch_list:
-        if title in movie["title"]:
-            watch_list.remove(movie)
-            watched.append(movie)   
+    movie = access_element_in_list(watch_list)
+
+    # for movie in watch_list:
+    if title in movie["title"]:
+        watch_list.remove(movie)
+        watched.append(movie)   
     
     return user_data
 
@@ -59,7 +66,6 @@ def get_watched_avg_rating(user_data):
         average_rating = 0.0
 
     return average_rating
-
 
     
 def get_most_watched_genre(user_data):
@@ -124,7 +130,6 @@ def get_friends_unique_watched(user_data):
     return friend_unique_movies
             
 
-    
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
@@ -148,10 +153,9 @@ def get_available_recs(user_data):
 # -----------------------------------------
 def get_new_rec_by_genre(user_data):
     most_watched_genre = get_most_watched_genre(user_data)
+    friends_unique_watched = get_friends_unique_watched(user_data)
     
     rec_movies_by_genre = []
-    
-    friends_unique_watched = get_friends_unique_watched(user_data)
     
     for movie in friends_unique_watched:
         if movie["genre"] == most_watched_genre:
