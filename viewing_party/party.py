@@ -155,17 +155,30 @@ def get_friends_unique_watched(user_data):
 # -----------------------------------------
 
 def get_available_recs(user_data):
-    user_watched_movies = {movie['title']: movie for movie in user_data['watched']}
-    friends_watched_movies = {}
+    recommended_movies = []
+    subscriptions_set = set(user_data["subscriptions"])
+    friends_unique_watched = get_friends_unique_watched(user_data)
 
-    for friend in user_data['friends']:
-        for movie in friend['watched']:
-            friends_watched_movies[movie['title']] = movie
+    for movie in friends_unique_watched:
+        if movie["host"] in subscriptions_set:
+            recommended_movies.append(movie)
 
-    unique_friends_watched_movies = set(friends_watched_movies.keys()).difference(user_watched_movies.keys())
-    available_movies = [friends_watched_movies[movie] for movie in unique_friends_watched_movies if friends_watched_movies[movie]['host'] in user_data['subscriptions']]
+    return recommended_movies
+
+
+
+# def get_available_recs(user_data):
+#     user_watched_movies = {movie['title']: movie for movie in user_data['watched']}
+#     friends_watched_movies = {}
+
+#     for friend in user_data['friends']:
+#         for movie in friend['watched']:
+#             friends_watched_movies[movie['title']] = movie
+
+#     unique_friends_watched_movies = set(friends_watched_movies.keys()).difference(user_watched_movies.keys())
+#     available_movies = [friends_watched_movies[movie] for movie in unique_friends_watched_movies if friends_watched_movies[movie]['host'] in user_data['subscriptions']]
     
-    return available_movies
+#     return available_movies
 
 
 # # -----------------------------------------
