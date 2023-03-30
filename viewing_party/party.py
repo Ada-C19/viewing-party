@@ -42,13 +42,18 @@ def get_watched_avg_rating(user_data):
     return average
 
 def get_most_watched_genre(user_data):
-    genre_list = []
+    genre_frequency_dict = {}
     if not user_data["watched"]:
         return None
     for movie in user_data["watched"]:
-        genre_list.append(movie["genre"])
-    # Why does this method need set in order to count the frequency? What does key=genre_list do?
-    return max(set(genre_list),key=genre_list.count)
+        if not movie["genre"] in genre_frequency_dict.keys():
+            genre_frequency_dict[movie["genre"]]= 1
+        else:
+            genre_frequency_dict[movie["genre"]] += 1
+    
+    most_watched_genre = max(genre_frequency_dict, key = genre_frequency_dict.get)
+    return most_watched_genre
+
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
@@ -62,8 +67,6 @@ def get_unique_watched(user_data):
 
     for friend in user_data["friends"]:
         for friend_movie in friend["watched"]:
-            # for friend_key, friend_value in friend_movie.items():
-            #     if friend_key == "title":
             friend_watched_list.append(friend_movie["title"])
 
     user_set = set(user_watched_list)
@@ -85,8 +88,6 @@ def get_friends_unique_watched(user_data):
 
     for friend in user_data["friends"]:
         for friend_movie in friend["watched"]:
-            # for friend_key, friend_value in friend_list.items():
-            #     if friend_key == "title":
             friend_watched_list.append(friend_movie["title"])
 
     user_set = set(user_watched_list)
