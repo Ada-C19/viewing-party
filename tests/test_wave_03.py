@@ -48,7 +48,7 @@ def test_friends_unique_movies_not_duplicated():
     # Arrange
     amandas_data = clean_wave_3_data()
     amandas_data["friends"][0]["watched"].append(INTRIGUE_3)
-    expected = []
+    expected = [FANTASY_4, HORROR_1, INTRIGUE_3,]
 
     # Act
     friends_unique_movies = get_friends_unique_watched(amandas_data)
