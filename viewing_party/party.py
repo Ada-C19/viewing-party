@@ -25,13 +25,14 @@ def add_to_watchlist(user_data, movie):
 
 #4th function in wave_01
 def watch_movie(user_data, title):
-    index = 0
+
     for index in range(len(user_data["watchlist"])):
         if title in (user_data["watchlist"][index]["title"]):
             move_movie = user_data["watchlist"].pop(index)
-            #to move to end of list
+
+            # to move to end of "watched" list
             user_data["watched"].append(move_movie)
-            return user_data
+    
     return user_data
 
 # -----------------------------------------
@@ -63,6 +64,7 @@ def get_most_watched_genre(user_data):
         else: 
             genres[movie["genre"]] += 1 
     
+
     return max(genres, key = genres.get)
 
 
@@ -105,11 +107,6 @@ def get_friends_unique_watched(user_data):
     result = list(friends_unique_movies.values())
 
     return result
-
-    #         title = pelicula["watched"][num]["title"]
-    #         if title not in user_movies and title not in friends_unique_movies:
-    #             friends_unique_movies.append(pelicula["watched"][num])
-    # return friends_unique_movies
             
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
