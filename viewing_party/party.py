@@ -1,26 +1,36 @@
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
-    
+    """
+    Sets up a dictionary for a new movie that contials title, genre, and rating. 
+    """   
     new_movie = {}
     if not (title and genre and rating):
         return None 
     new_movie["title"] = title
     new_movie["genre"] = genre
     new_movie["rating"] = rating 
-    return new_movie
-    
+    return new_movie    
 
 def add_to_watched(user_data, movie):
+    """
+    Adds a movie dictionary to the users list of dictionaries containing watched movies. 
+    """ 
     user_data['watched'].append(movie)
     return user_data 
 
 def add_to_watchlist(user_data, movie):
+    """
+    Add the movie to the users the watchlist which is a list of dictionaries.
+    """ 
     user_data['watchlist'].append(movie)
     return user_data
 
 def watch_movie(user_data, title):
-
+    """
+    Searches for title in user's list of dictionaries containing watchlis movies.
+    Removes movie from watchlist and adds it to watched list. 
+    """ 
     for movie in user_data['watchlist']:
         if movie['title'] == title:  
             user_data['watched'].append(movie)
@@ -33,6 +43,9 @@ def watch_movie(user_data, title):
 # -----------------------------------------
 
 def get_watched_avg_rating(user_data):
+    """
+    Calculate the average rating of all movies in the watched list.
+    """
     sum = 0.0
     average = 0.0 
     for movies in user_data["watched"]:
@@ -45,6 +58,9 @@ def get_watched_avg_rating(user_data):
     return average
             
 def get_most_watched_genre(user_data):
+    """
+    Returns a string of most watched genre by searching in user's list of watched movies. 
+    """ 
     frequency_genre = {}
 
     if not user_data['watched']:
