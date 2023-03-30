@@ -58,7 +58,7 @@ def test_create_no_rating_movie():
     # Assert
     assert new_movie is None
 
-# @pytest.mark.skip()   test for wave 1 function 2 
+# @pytest.mark.skip()   
 def test_adds_movie_to_user_watched():
     # Arrange
     movie = {
@@ -161,7 +161,7 @@ def test_moves_movie_from_watchlist_to_empty_watched():
         assert len(updated_data["watched"]) == 1
     
     except:
-        print("Test needs to be completed.")
+        raise ValueError
     
 
     # *******************************************************************************************
@@ -184,12 +184,11 @@ def test_moves_movie_from_watchlist_to_watched():
     updated_data = watch_movie(janes_data, movie_to_watch["title"])
 
     # Assert
-    try:
-        assert len(updated_data["watchlist"]) == 1
-        assert len(updated_data["watched"]) == 2
-    
-    except:
-        print("Test needs to be completed.")
+    assert len(updated_data["watchlist"]) == 1
+    assert len(updated_data["watched"]) == 2
+
+    assert updated_data["watched"] == [FANTASY_2, HORROR_1]
+    assert updated_data["watchlist"] == [FANTASY_1]
     # *******************************************************************************************
     # ****** Add assertions here to test that the correct movie was added to "watched" **********
     # *******************************************************************************************
