@@ -164,6 +164,7 @@ def get_most_watched_genre(user_data):
     
     # iterate thru each "genre" key's value for the entire length of nested dictionary
     genres_watched = [watched[i]["genre"] for i in range(len(watched))]
+    
     # get the most watched genre with max function
     return max(genres_watched, key=genres_watched.count)
 
@@ -403,3 +404,49 @@ def get_available_recs(user_data):
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
+# ========================================= wave 05- # 1.  get_new_rec_by_genre ========== SJ
+
+
+
+
+# Return the list of recommended movies
+
+
+
+# Create a function named get_new_rec_by_genre. 
+# takes in one parameter: user_data
+
+def get_new_rec_by_genre(user_data):
+    # Consider the user's most frequently watched genre.
+    # the function get_most_wacthed_genre does this for us....
+    users_most_freq_watched_genre = get_most_watched_genre(user_data)
+    
+    # Then, determine a list of recommended movies. 
+    list_of_recommended = []
+
+    
+    # to get a list of recommended movies: 
+    # - 1. movies the user has NOT watched
+    # - 2. movie one of the friends has watched 
+    # - 3. the genre of the recommended movies is the same as users most frequent genre
+
+    
+    # the function get_friends_unique_watched returns a list of movies
+    #  the user's friends have watched but the user has not seen...
+    movies_not_watched = get_friends_unique_watched(user_data)
+    
+    
+    # for each movie dictionary in the list of movies not watched, 
+    for movie in movies_not_watched:
+        
+        # if the key "genre" in the movie dictionary is the same genre
+        # that is returned in the users_movst_freq_wateched_genre
+        if movie["genre"] in users_most_freq_watched_genre:
+            
+            # add the movie to the list of recs
+            list_of_recommended.append(movie)
+    
+    # then return list of recomneded movies
+    return list_of_recommended
+    
+    
