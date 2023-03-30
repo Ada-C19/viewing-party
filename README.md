@@ -222,6 +222,19 @@ We will note that much of the test data for this project is provided by the file
 For the time being, we need to make sure that the data provided to each test is clean and free of any changes that running another test may have introduced. Recall the *Modifying Mutable Objects* section of the *Variables Are References lesson.* To ensure that the data for each test is storied in a unique place in memory, there are functions implemented in `test_constants.py` that provide clean test data (i.e. `clean_wave_3_data`) by using `copy.deepcopy`. 
 
 ## Project Directions
+Plan of action
+learning style:
+  meet in quiet isolated room or on zoom
+  visualize input/output
+Communication goal: 
+  ask questions about expectation
+  check in often daily
+Skills to improve:
+  set a plan from the beginning
+  if it does not work change it
+  being more direct about their expectations
+  asking help from peers
+
 
 ### Set Up a Pair Plan
 
