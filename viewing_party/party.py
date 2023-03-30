@@ -157,8 +157,11 @@ def get_available_recs(user_data):
 # ------------- WAVE 5 --------------------
 # ---Wave_5_function_1---
 def get_new_rec_by_genre(user_data):
-    most_watched_genre = 
-    get_most_watched_genre(user_data)
+    pass
+#     most_watched_genre = get_most_watched_genre(user_data)
+#     print (most_watched_genre)
+    
+# get_most_watched_genre(janes_data)
 
 # ---Wave_5_function_2---
 def get_rec_from_favorites(user_data):
