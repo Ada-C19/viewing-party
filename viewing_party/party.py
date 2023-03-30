@@ -180,7 +180,7 @@ def get_friends_unique_watched(user_data):
     for title in friends_unique_watched_set:
         for friend in friends_watched_list:
             for movie_dict in friend["watched"]:
-                if movie_dict["title"] == title and movie_dict["title"]
+                if movie_dict["title"] == title and movie_dict["title"]:
                     # for entry in friends_unique_watched_list:
                     #     if movie_dict["title"] not in friends_unique_watched_list:
                     friends_unique_watched_list.append(movie_dict)
