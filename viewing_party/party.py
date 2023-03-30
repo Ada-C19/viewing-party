@@ -46,9 +46,25 @@ def get_watched_avg_rating(user_data):
     
     else:
         return 0.0
-
     #access watched and sum key values in list
     #take sum of key values of rating and divide by len of 
+
+def get_most_watched_genre(user_data):
+    genre_list = []
+    counter = 0
+    for i in range(len(user_data["watched"])):
+        genre_list.append(user_data["watched"][i]["genre"]) 
+        for i in genre_list:
+            frequency = genre_list.count(i)
+            if (frequency > counter):
+                counter = frequency
+                genre = i
+    return genre
+    # for key,value in genre_dict.items():
+    #     if value not in genre_dict        
+    
+
+    return most_watched
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
@@ -62,4 +78,3 @@ def get_watched_avg_rating(user_data):
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
-
