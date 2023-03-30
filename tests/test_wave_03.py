@@ -54,6 +54,9 @@ def test_friends_unique_movies_not_duplicated():
 
     # Assert
     assert len(friends_unique_movies) == 3
+    assert HORROR_2 in friends_unique_movies
+    assert COMEDY_2 in friends_unique_movies
+    assert DRAMA_1 in friends_unique_movies 
 
     #raise Exception("Test needs to be completed.")
     # *************************************************************************************************

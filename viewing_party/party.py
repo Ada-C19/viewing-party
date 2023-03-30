@@ -39,9 +39,6 @@ def watch_movie(user_data, title):
     return user_data
 # T= O(n)bc loop, S=O(1) bc no new data structures
 
-    
-
-
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
@@ -86,28 +83,17 @@ def get_friends_unique_watched(user_data):
 # -----------------------------------------
 
 def get_available_recs(user_data):
-    subscriptions = user_data['subscriptions']
-    recommended_movies = []
-    
-    for friend in user_data['friends']:
-        for movie in friend['watched']:
-            if movie['host'] in subscriptions and movie not in user_data['watched']:
-                recommended_movies.append(movie)
-    
-    return recommended_movies
-
-def get_available_recs(user_data):
     watched = user_data["watched"]
-    subs = [subscriptions for subscriptions in user_data["subscriptions"]]
+    subs = set(sub for sub in user_data["subscriptions"])
     friends_watched = [movie for friend in user_data["friends"] for movie in friend["watched"]]
     rec_movies = []
 
     for movie in friends_watched:
-        if movie not in watched and movie["host"] in subs:
-            if movie not in rec_movies:
-                rec_movies.append(movie)
+        if movie not in watched and movie["host"] in subs and movie not in rec_movies:
+            rec_movies.append(movie)
             
     return rec_movies
+
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
