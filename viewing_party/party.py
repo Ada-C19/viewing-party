@@ -21,29 +21,17 @@ def add_to_watchlist(user_data, movie):
     watch_list = user_data
     return watch_list
 
+#were we expected to use the previous functions as helper functions?
+
 def watch_movie(user_data, title):
-    # Create a new copy of the user_data dictionary to avoid modifying the original
     new_user_data = user_data.copy()
-    # Get the current watchlist and watched lists from the new_user_data dictionary,
-    # or create empty lists if they don't exist
     watchlist = new_user_data.get("watchlist", [])
     watched_list = new_user_data.get("watched", [])
-    # Check each movie in the watchlist to see if it matches the given title
     for movie in watchlist:
         if movie["title"] == title:
             if len(watchlist) > 0:
                 watched_list.append(watchlist[0])
                 watchlist.remove(watchlist[0])
-            else:
-            # If a match is found, remove the movie from the watchlist and add it to the watched list
-                watchlist.remove(movie)
-                watched_list.append(movie)
-            # Update the new_user_data dictionary with the modified watchlist and watched list
-                new_user_data["watchlist"] = watchlist
-                new_user_data["watched"] = watched_list
-            # Return the updated new_user_data dictionary
-                return new_user_data
-    # If no match is found, return the original user_data dictionary unchanged
     return new_user_data
 
 
@@ -54,6 +42,7 @@ def watch_movie(user_data, title):
 def get_watched_avg_rating(user_data):
     sum = 0.0
     movie_count = 0 
+    #another approach to accessing dictionary in list?
     for key, value in user_data.items():
         for movie in value:
             sum += movie["rating"]
@@ -68,8 +57,7 @@ def get_most_watched_genre(user_data):
     genre_dict = {}
     if user_data["watched"] == []:
         return None
-    for key, value in user_data.items():
-        for movie in value:
+    for movie in user_data["watched"]:
             if movie["genre"] in genre_dict:
                 genre_dict[movie["genre"]] += 1
             else:
@@ -77,6 +65,7 @@ def get_most_watched_genre(user_data):
 
     high_genre = max(genre_dict.values())
 
+#better way to go through the genre_dict to get high_genre?
     for key, value in genre_dict.items():
         if value == high_genre:
             return key
@@ -107,6 +96,7 @@ def get_friends_unique_watched(user_data):
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
+#another method to the "for" for "for" maddness?
 def get_available_recs(user_data):
     watched = user_data["watched"].copy()
     friends = user_data["friends"].copy()
@@ -114,12 +104,7 @@ def get_available_recs(user_data):
     recommendations = []
     for friend in friends:
         for movie in friend["watched"]:
-            if movie not in watched and movie not in recommendations:
-    #["subscriptions"] is for people; ["host"] is for movie
-    # compare subscription to host; if they match, put in recommendation 
-    # movie[host] is the value of the "host" key in th movie dictionary.
-    #Check if streaming service that hosts the mmovie is included in the list of streaming services of the user. If true, the movie is
-    # added to 'recommendations' list.  
+            if movie not in watched and movie not in recommendations:  
                 if movie ["host"] in  subscriptions:
                     recommendations.append(movie)   
     return recommendations
@@ -131,23 +116,8 @@ def get_available_recs(user_data):
 def get_new_rec_by_genre(user_data):
     watched = user_data["watched"].copy()
     friends = user_data["friends"].copy()
-    # subscriptions = user_data["subscriptions"].copy()
     recommendations = []
-    # favorites = get_most_watched_genre(user_data["watched"])
-    genre_dict = {}
-    if user_data["watched"] == []:
-        return recommendations
-    for movie in user_data["watched"]:
-            if movie["genre"] in genre_dict:
-                genre_dict[movie["genre"]] += 1
-            else:
-                genre_dict[movie["genre"]] = 1
-
-    high_genre = max(genre_dict.values())
-
-    for key, value in genre_dict.items():
-        if value == high_genre:
-            favorites = key 
+    favorites = get_most_watched_genre(user_data)
             
     for friend in friends:
         for movie in friend["watched"]:
@@ -157,18 +127,12 @@ def get_new_rec_by_genre(user_data):
     return recommendations
 
 def get_rec_from_favorites(user_data):
-    friends = user_data["friends"].copy()
     favorites = user_data["favorites"].copy()
     recommendations = []
     unique = get_unique_watched(user_data)
     for movie in unique:
         if movie in favorites:
             recommendations.append(movie)
-
-    # for friend in friends:
-    #     for movie in watched:
-    #         if movie not in friend["watched"] and movie in favorites:
-    #             recommendations.append(movie)
     
     return recommendations
 
