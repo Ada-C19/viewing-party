@@ -86,11 +86,6 @@ def get_unique_watched(user_data):
 
 
 
-# Consider the movies that the user has watched, 
-# and consider the movies that their friends have watched. 
-# Determine which movies at least one of the user's friends have watched,
-# but the user has not watched.
-# Return a list of dictionaries, that represents a list of movies
 def did_user_watch_this_title(user_data, title):
     for movie in user_data["watched"]:
         if movie["title"] == title:
@@ -123,12 +118,7 @@ def get_friends_unique_watched(user_data):
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
-# Determine a list of recommended movies. 
-# A movie should be added to this list if and only if:
-# The user has not watched it
-# At least one of the user's friends has watched
-# The "host" of the movie is a service that is in the user's "subscriptions"
-# Return the list of recommended movies
+
 def check_user_suscriptions(user_data):
     list_of_suscriptions = user_data["subscriptions"]
     return list_of_suscriptions
