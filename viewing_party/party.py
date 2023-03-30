@@ -20,15 +20,6 @@ def add_to_watchlist(user_data, movie):
     return user_data
 
 def watch_movie(user_data, title):
-    """
-    watch_movie(user_data, title)
-		if title is not in users watchlist
-			return user_data
-		else
-			remove that movie from watchlist
-			add it to watched
-			return user_data
-    """
     for i in range(len(user_data["watchlist"])):
         if user_data["watchlist"][i]["title"] == title:
             user_data["watched"].append(user_data["watchlist"][i])
@@ -56,11 +47,12 @@ def get_most_watched_genre(user_data):
         return None
     
     genre_counting_dict = {}
-    for movie in range(len(user_data["watched"])):
-        if user_data["watched"][movie]["genre"] not in genre_counting_dict:
-            genre_counting_dict[(user_data["watched"][movie]["genre"])] = 1
+    for i in range(len(user_data["watched"])):
+        genre_to_count = user_data["watched"][i]["genre"]
+        if genre_to_count not in genre_counting_dict:
+            genre_counting_dict[genre_to_count] = 1
         else:
-            genre_counting_dict[(user_data["watched"][movie]["genre"])] += 1
+            genre_counting_dict[genre_to_count] += 1
 
     most_watched_genre = ""
     most_watched_count = 0
