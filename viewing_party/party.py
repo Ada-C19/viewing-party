@@ -170,14 +170,11 @@ def get_friends_unique_watched(user_data):
     #grabs a list of watched dictionaries for friends
     list_of_friends = user_data['friends']
     
-    friend_movie_list = []
-    
-    for movie in list_of_friends: 
-        #iterates through all of the movies friends have watched
-        friend_movie_list += movie["watched"]
-        #friend_movie_list prints all of the movies all friends have watched 
-        friend_unique_watched_movies = []
-        for movie in friend_movie_list:
+    friend_unique_watched_movies = []
+    #iterates through all of the movies friends have watched
+    for friend in list_of_friends: 
+        #friend_movie_list prints all of the movies all friends have watched         
+        for movie in friend["watched"]:
             if movie not in list_watched_movies and movie not in friend_unique_watched_movies:
                 friend_unique_watched_movies.append(movie)
     return friend_unique_watched_movies
@@ -187,15 +184,19 @@ def get_friends_unique_watched(user_data):
 # -----------------------------------------
 def get_available_recs(user_data):
     recs = []
-    list_of_friends = user_data['friends']
-    unique_friend_watched_list = user_data['watched']
-    for movie in list_of_friends:
-        friend_movie_list = movie['watched']
+    friends = user_data['friends']
+    user_watched_movies = user_data['watched']
+    service_subscriptions = user_data['subscriptions']
+
+    for friend in friends:
+        friend_movie_list = friend['watched']
+
         for movie in friend_movie_list:
-            service_subscription = user_data['subscriptions']
             movie_host = movie['host']
-            if movie_host in service_subscription and movie not in unique_friend_watched_list:
+
+            if movie_host in service_subscriptions and movie not in user_watched_movies and movie not in recs:
                 recs.append(movie)
+
     return recs
 
 
