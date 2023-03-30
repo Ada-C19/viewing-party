@@ -15,7 +15,7 @@ def create_movie(title, genre, rating):
     movie["rating"] = rating
     return movie
     
-# not modify user_data
+
 def add_to_watched(user_data, movie):
     user_data_watched_list = user_data["watched"]
     user_data_watched_list.append(movie)
@@ -145,9 +145,8 @@ def get_available_recs(user_data):
     return recomendations_for_user
 
 
-    
-
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
+
 
