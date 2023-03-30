@@ -147,3 +147,13 @@ def get_new_rec_by_genre(user_data):
             final_recs.append(movie)
 
     return final_recs
+
+def get_rec_from_favorites(user_data):
+    user_recs = get_unique_watched(user_data)
+    final_recs = []
+
+    for movie in user_recs:
+        if movie in user_data["favorites"]:
+            final_recs.append(movie)
+
+    return final_recs
