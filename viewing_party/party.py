@@ -2,6 +2,7 @@ import statistics
 from statistics import mode
 from frozendict import frozendict
 
+
 # ------------- WAVE 1 --------------------
 
 def create_movie(movie_title, genre, rating):
@@ -62,7 +63,6 @@ def get_most_watched_genre(user_data):
     return mode(genre_list)
 
     
-
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
@@ -113,19 +113,17 @@ def get_friends_unique_watched(user_data):
 
 
     return list(set(movies_only_friends_watched))
-    
-        
-# -----------------------------------------
+
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
 
 def get_available_recs(user_data):
     recommended_movies = []
-    subscriptions_set = set(user_data["subscriptions"])
+    subscriptions = user_data["subscriptions"]
     friends_unique_watched = get_friends_unique_watched(user_data)
 
     for movie in friends_unique_watched:
-        if movie["host"] in subscriptions_set:
+        if movie["host"] in subscriptions:
             recommended_movies.append(movie)
 
     return recommended_movies
@@ -155,4 +153,3 @@ def get_rec_from_favorites(user_data):
             recommended.append(movie)
 
     return recommended
-
