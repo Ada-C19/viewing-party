@@ -25,5 +25,10 @@ pp = pprint.PrettyPrinter(indent=4)
 # pp.pprint(clean_wave_4_data())
 
 # Wave 05 user data
+<<<<<<< HEAD
 # print("\n-----Wave 05 user_data-----")
 # pp.pprint(clean_wave_5_data())
+=======
+#print("\n-----Wave 05 user_data-----")
+pp.pprint(clean_wave_5_data())
+>>>>>>> 252b6490ea420615c952654080210c8591b840bc
