@@ -5,7 +5,7 @@ def create_movie(title, genre, rating):
     new_movie["title"] = title
     new_movie["genre"] = genre
     new_movie["rating"] = rating
-    for key, value in new_movie.items():
+    for value in new_movie.values():
         if value == None:
             return None
 
@@ -21,7 +21,6 @@ def add_to_watchlist(user_data, movie):
     watch_list = user_data
     return watch_list
 
-#were we expected to use the previous functions as helper functions?
 
 def watch_movie(user_data, title):
     new_user_data = user_data.copy()
@@ -118,13 +117,20 @@ def get_new_rec_by_genre(user_data):
     friends = user_data["friends"].copy()
     recommendations = []
     favorites = get_most_watched_genre(user_data)
-            
+    movie_set = set()
+    recommendation_set = set()
+
+    for movie in watched:
+        movie_set.add(movie["title"])
+
     for friend in friends:
         for movie in friend["watched"]:
-            if movie not in watched and movie not in recommendations:
+            if movie["title"] not in movie_set and movie["title"] not in recommendation_set:
                 if movie["genre"] == favorites:
                     recommendations.append(movie)
+                    recommendation_set.add(movie["title"])
     return recommendations
+
 
 def get_rec_from_favorites(user_data):
     favorites = user_data["favorites"].copy()
@@ -136,3 +142,10 @@ def get_rec_from_favorites(user_data):
     
     return recommendations
 
+#before Ansel's advice on sets
+    # for friend in friends:
+    #     for movie in friend["watched"]:
+    #         if movie not in watched and movie not in recommendations:
+    #             if movie["genre"] == favorites:
+    #                 recommendations.append(movie)
+    # return recommendations
