@@ -164,9 +164,11 @@ def test_moves_movie_from_watchlist_to_empty_watched():
     # *******************************************************************************************
     # ****** Add assertions here to test that the correct movie was added to "watched" **********
     # *******************************************************************************************
-    # Added and I dont really understand why this didnt work -C
+    # Added. I dont really understand why the 2nd assert didnt work but the 3rd did -C
     assert MOVIE_TITLE_1 not in updated_data["watchlist"]
-    assert MOVIE_TITLE_1 in updated_data["watched"]
+    # assert MOVIE_TITLE_1 in updated_data["watched"]
+    # third trys the charm?
+    assert updated_data["watched"][0]["title"] == MOVIE_TITLE_1
 
 # @pytest.mark.skip()
 def test_moves_movie_from_watchlist_to_watched():
@@ -192,9 +194,10 @@ def test_moves_movie_from_watchlist_to_watched():
     # *******************************************************************************************
     # ****** Add assertions here to test that the correct movie was added to "watched" **********
     # *******************************************************************************************
-    # Added and I dont really understand why this didnt work -C
+    # Added -C
     assert movie_to_watch not in updated_data["watchlist"]
     assert movie_to_watch in updated_data["watched"]
+
 
 # @pytest.mark.skip()
 def test_does_nothing_if_movie_not_in_watchlist():
