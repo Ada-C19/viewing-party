@@ -54,8 +54,7 @@ def get_watched_avg_rating(user_data):
     # Iterate through movies in list of movies
     for movie in movie_list:
         # Find the sum of the integers in value for "rating" in the movie dict
-        #sum_rating += movie["rating"]
-        sum_rating += movie.get("rating")
+        sum_rating += movie["rating"]
     # If the input is an empty list, return 0.0 for average
     if len(movie_list) == 0:
         return 0.0
