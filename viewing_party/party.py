@@ -54,10 +54,7 @@ def watch_movie(user_data, title):
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
-#1. 2 variables and iterate list: sum the ratings and count how many movies 
-#2. create dictionary that creates key for each new genere and increments value 
-#      when it reappears
-#  
+
 def get_watched_avg_rating(user_data):
 
     if len(user_data["watched"]) == 0:
@@ -93,20 +90,20 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
-#friends is a list of dics
-#1. deep copy list of watched movies, iterate over all friends dics and remove movies 
-#2. Make list of docs with unique movies friends have and remove all the user has
 
 def get_unique_watched(user_data):
-    user_watched = {}
+    user_watched = {movie['title']:movie for movie in user_data['watched']}
+    #user_watched={}
 
-    for movie in user_data["watched"]:
-        user_watched[movie['title']]=movie
+    #for movie in user_data["watched"]:
+     #   user_watched[movie['title']]=movie
+
     
     for friend in user_data["friends"]:
         for movie in friend["watched"]:
             if movie['title'] in user_watched:
                 del user_watched[movie['title']]
+
     return_list=[]
     for title in user_watched:
         return_list.append(user_watched[title])
