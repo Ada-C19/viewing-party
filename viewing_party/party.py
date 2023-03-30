@@ -74,7 +74,7 @@ def get_most_watched_genre(user_data):
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 
-
+user_data = {"watched":[{"title":"meep","genre":"horror","rating":5},{"title":"Ghost","genre":"horror","rating":5},{"title":"Hehe","genre":"horror","rating":5}], "friends": [{"watched":[{"title":"Bionicles"},{"title":"Ghost"}, {"title":"Paranormal"} ]},{"watched":[{"title":"Bionicles"},{"title":"Paranormal"}]}]}
 def get_unique_watched(user_data):
     unique_movies = []
     friends_watched_set = set()
@@ -92,7 +92,6 @@ def get_unique_watched(user_data):
     for i in user_data["watched"]:
         if i["title"] in differences:
             unique_movies.append(i)
-
     return unique_movies
 
 user_data = {"watched":[{"title":"meep","genre":"horror","rating":5},{"title":"Ghost","genre":"horror","rating":5},{"title":"Hehe","genre":"horror","rating":5}], "friends": [{"watched":[{"title":"Bionicles"},{"title":"Ghost"}, {"title":"Paranormal"} ]},{"watched":[{"title":"Bionicles"},{"title":"Paranormal"}]}]}
@@ -114,20 +113,62 @@ def get_friends_unique_watched(user_data):
             if movie["title"] in differences and movie not in friends_unique_watched:
                 friends_unique_watched.append(movie)
                 continue
-    # print(friends_unique_watched)
     return friends_unique_watched
-get_friends_unique_watched(user_data)
 
 
 
-# - Consider the movies that the user has watched, and consider the movies that their friends have watched. Determine which movies at least one of the user's friends have watched, but the user has not watched.
-# - Return a list of dictionaries, that represents a list of movies
-# for genre in range(len(user_data["friends"])):
- 
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
     
+
+friends_unique_watched = [{"title": "Paranormal Activity"}, {"title": "Lord of the Rings"}]
+user_unique_watched = [{'title': 'meep', 'genre': 'horror', 'rating': 5}, {'title': 'Hehe', 'genre': 'horror', 'rating': 5}]
+user_data = {
+        "subscriptions": ["hulu", "disney+"],
+        "watched": [],
+        "friends": [
+            {
+                "watched": [{"title": "Paranormal Activity","genre":"horror","rating": 5,"host":"Netflix"}]
+            },
+            {
+                "watched": [{"title": "Lord of the Rings","genre":"fantasy","rating": 4, "host":"hulu"}]
+            }
+        ]
+    }
+def get_available_recs(user_data):
+    user_unique_watched = get_unique_watched(user_data)
+    friends_unique_watched = get_friends_unique_watched(user_data)
+    recommended_movies = []
+    for watchlist in user_data["friends"]:
+        for movie in watchlist["watched"]:
+            if movie["host"] in user_data["subscriptions"] and (movie in friends_unique_watched and movie not in recommended_movies):
+                recommended_movies.append(movie)
+                    
+                    
+    print(recommended_movies)
+    return recommended_movies
+            # if recommended movie in friends_unique_watched,
+
+
+    print(recommended_movies)
+        # if movie's subscription is in user_data subscriptions list
+        
+        # append movie title to recommended_movies
+get_available_recs(user_data)
+
+#   - `user_data` will have a field `"subscriptions"`. The value of `"subscriptions"` is a list of strings
+#     - This represents the names of streaming services that the user has access to
+#     - Each friend in `"friends"` has a watched list. Each movie in the watched list has a `"host"`, which is a string that says what streaming service it's hosted on
+# - Determine a list of recommended movies. A movie should be added to this list if and only if:
+#   - The user has not watched it
+#   - At least one of the user's friends has watched
+#   - The `"host"` of the movie is a service that is in the user's `"subscriptions"`
+# - Return the list of recommended movies
+
+# for i in range(len(user_data["friends"])):
+#    if movie in user_data["freinds"][i]:
+
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
