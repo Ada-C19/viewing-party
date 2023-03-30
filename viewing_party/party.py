@@ -114,7 +114,7 @@ def get_friends_unique_watched(user_data):
             if movie["title"] in differences and movie not in friends_unique_watched:
                 friends_unique_watched.append(movie)
                 continue
-    print(friends_unique_watched)
+    # print(friends_unique_watched)
     return friends_unique_watched
 get_friends_unique_watched(user_data)
 
@@ -122,12 +122,26 @@ get_friends_unique_watched(user_data)
 
 # - Consider the movies that the user has watched, and consider the movies that their friends have watched. Determine which movies at least one of the user's friends have watched, but the user has not watched.
 # - Return a list of dictionaries, that represents a list of movies
-        
+# for genre in range(len(user_data["friends"])):
+ 
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
+    
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
+
+# def get_new_rec_by_genre(user_data):
+#     recomended_by_genre = [] 
+   
+#     for friend in user_data["friends"]:
+#         for watched in friend["watched"]:
+#             genre = watched['genre']
+#             if genre in user_data["watched"][0]["genre"]:
+#                 recomended_by_genre.append(genre)
+#     print(recomended_by_genre)
+#     return recomended_by_genre
+    
 
