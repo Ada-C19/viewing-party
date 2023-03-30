@@ -90,12 +90,18 @@ janes_data = {
             }],
             "watched": [{"title": "black panther",
                 "genre": "action",
-                "rating": 9},]
+                "rating": 9},{"title": "john tucker must die",
+                "genre": "comedy",
+                "rating": 5}, {"title": "john wick",
+                "genre": "action",
+                "rating": 9}, {"title": "spider man",
+                "genre": "action",
+                "rating": 8}]
         }
 title = "iron man"
 
 
-def get_watched_avg_rating(janes_data):
+def get_watched_avg_rating(user_data):
 # - navigate to janes_data rating (watchlist -> dictionaries, rating)
 # - new list of ratings
 # - find function to calculate average get_watched_avg_rating
@@ -104,27 +110,54 @@ def get_watched_avg_rating(janes_data):
 
     ratings = []
     
-    if len(janes_data["watched"]) == 0:
+    if len(user_data["watched"]) == 0:
         return 0.0
     
-    for movie in janes_data["watched"]:
+    for movie in user_data["watched"]:
         ratings.append((movie["rating"]))
     
     ratings_sum = sum(ratings)
     ratings_average = (ratings_sum) / len(ratings)
 
-    print (ratings)
-    print (ratings_average)
     return ratings_average
 
-get_watched_avg_rating(janes_data)
+
         
 
-
-
-
 # ---Wave_2_function_2---
-# def get_most_watched_genre(user_data)
+def get_most_watched_genre(user_data):
+
+    movie_genre_dict = {}
+
+    if len(user_data["watched"]) == 0:
+        return None
+    
+    for movie in user_data["watched"]:
+        
+        # movie_genre_dict[(movie["genre"])].update(movie)
+        title = movie["title"]
+        genre = movie["genre"]
+        if genre not in movie_genre_dict:
+            movie_genre_dict[genre] = []
+        movie_genre_dict[genre].append(title)
+   
+        # append new value to existing key 
+    print(movie_genre_dict)
+
+    # figure out max count
+    max_genre = None
+    max_count = 0
+
+    
+
+    return max(movie_genre_dict)
+
+# movie_genre_dict.update({(movie["genre"]): movie})
+
+
+print (get_most_watched_genre(janes_data))
+
+
 
 
 # ------------- WAVE 3 --------------------
