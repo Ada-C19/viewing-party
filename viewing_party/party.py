@@ -53,14 +53,8 @@ def watch_movie(user_data, title):
         if movie_dict["title"] == title:
             watched_list.append(movie_dict)
             want_to_watch_list.remove(movie_dict)
-        ##tried to account for if title not in want_to_watch_list or watched_list
-        ## else:
-             ##if title not present in want_to_watch_list, just add to watched_list
-             ##watched_list.append(movie_dict)
+
     return user_data
-
-
-
 
 
 
@@ -100,6 +94,7 @@ def get_most_watched_genre(user_data):
                 genre_dict[movie_dict["genre"]] += 1
     ##return key that has the max value in genre_dict            
     return max(genre_dict, key=genre_dict.get)
+
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
@@ -177,7 +172,6 @@ def get_friends_unique_watched(user_data):
 
 def get_available_recs(user_data):
     friends_unique_watched_list = get_friends_unique_watched(user_data)
-    print(friends_unique_watched_list)
     subscriptions_list = user_data["subscriptions"]
     recommended_movies = []
 
@@ -197,12 +191,30 @@ def get_available_recs(user_data):
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
-# 1. Create a function named  `get_new_rec_by_genre`. This function should...
 
-# - take one parameter: `user_data`
-# - Consider the user's most frequently watched genre. Then, determine a list of recommended movies. A movie should be added to this list if and only if:
-#   - The user has not watched it
-#   - At least one of the user's friends has watched
-#   - The `"genre"` of the movie is the same as the user's most frequent genre
-# - Return the list of recommended movies
+def get_new_rec_by_genre(user_data):
+    friends_unique_watched_list = get_friends_unique_watched(user_data)
+    recommended_movies = []
+    most_watched_genre = get_most_watched_genre(user_data)
+    print(most_watched_genre)
+    for movie_dict in friends_unique_watched_list:
+        ### determining if a given movie that user has not seen is of preferred genre, 
+        ### if so append to recommend_movies
+        if movie_dict["genre"] == most_watched_genre:
+            recommended_movies.append(movie_dict)
+
+    return recommended_movies
+
+
+def get_rec_from_favorites(user_data):
+    user_unique_movies = get_unique_watched(user_data)
+    recommended_movies = []
+    favorites_list = user_data["favorites"]
+    for movie_dict in user_unique_movies:
+        ### determining if a given movie that user's friend has not seen is in favorites list, 
+        ### if so append to recommend_movies
+        if movie_dict in favorites_list:
+            recommended_movies.append(movie_dict)
+
+    return recommended_movies
 
