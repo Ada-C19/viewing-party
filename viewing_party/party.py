@@ -125,14 +125,14 @@ def get_unique_watched(user_data):
     user_watched = user_data["watched"]
     # Create variable of friends watched movies
     friends_watched = []
+    # Set variable to list of unique movies
+    unique_movies = []
 
     # Loop through friends 
     for friend in user_data["friends"]:
         # Adding friends watched movies to list friends_watched
         friends_watched += friend["watched"]
 
-    # Set variable to list of unique movies
-    unique_movies = []
     # Iterate through movies of user's watched list
     for movie in user_watched:
         # Conditional that movie is not in friends watched and not in unique movies lists
@@ -170,7 +170,7 @@ def get_available_recs(user_data):
         # Loop over movies watched by friend
     for movie in friend_unique_watched:
         # Conditional if host is in subscriptions and in friends watched and movie not in recommendations list
-        if movie["host"] in user_data["subscriptions"] and movie in friend_unique_watched and movie not in recommendations:
+        if (movie["host"] in user_data["subscriptions"]) and (movie in friend_unique_watched) and (movie not in recommendations):
             # If so, add to list of recommended movies
             recommendations.append(movie)
     
@@ -202,7 +202,6 @@ def get_new_rec_by_genre(user_data):
                 # If so, add to list of recommended movies
                 recommended_movies.append(movie)
     
-
     return recommended_movies
 
 
