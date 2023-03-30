@@ -1,12 +1,12 @@
 from statistics import multimode,mode
 # ------------- WAVE 1 --------------------
 
-#Create function to store movie
+# Create function to store movie
 def create_movie(title, genre, rating):
-    #create empty dictionary to store the movie
+    # Create empty dictionary to store the movie
     movie = { "title": "", "genre" : "", "rating" : 0}
 
-    #Check for edge case of one item being none
+    # Check for edge case of one item being none
     if title is None or genre is None or rating is None:
         return None
     else:
@@ -17,12 +17,12 @@ def create_movie(title, genre, rating):
     return movie
 
 def add_to_watched(user_data, movie):
-    #add movie a dictionary to watched
+    # Add movie a dictionary to watched
     user_data["watched"].append(movie)
     return user_data
     
 def add_to_watchlist(user_data, movie):
-    #add movie a dictionary to watchlist
+    # Add movie a dictionary to watchlist
     user_data["watchlist"].append(movie)
     return user_data
 
@@ -160,9 +160,9 @@ def get_available_recs(user_data):
         # Loop over movies watched by friend
         for movie in friend_movies:
             if movie["host"] in user_data["subscriptions"] and movie not in watched_movies and movie not in recommendations:
-                # if so, add to list of recommended movies
+                # If so, add to list of recommended movies
                 recommendations.append(movie)
-    # return list of recommended movies
+    # Return list of recommended movies
     return recommendations
 
 # -----------------------------------------
@@ -187,7 +187,7 @@ def get_new_rec_by_genre(user_data):
         for movie in friend_movies:
             # Conditional if movie is favorite genre/user has not watched
             if movie["genre"] == genre and movie not in watched_movies and movie not in recommended_movies:
-                # if so, add to list of recommended movies
+                # If so, add to list of recommended movies
                 recommended_movies.append(movie)
     
     # Return list of recommended movies
