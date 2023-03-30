@@ -55,6 +55,8 @@ def test_friends_unique_movies_not_duplicated():
     # Assert
     assert len(friends_unique_movies) == 3
     assert amandas_data['friends'][0]['watched'] not in amandas_data['watched']
+    assert INTRIGUE_3 in friends_unique_movies
+    
 
     # raise Exception("Test needs to be completed.")
     # *************************************************************************************************
