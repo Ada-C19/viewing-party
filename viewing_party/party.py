@@ -51,8 +51,6 @@ def get_most_watched_genre(user_data):
 
 
 
-
-
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
@@ -90,22 +88,11 @@ def get_friends_unique_watched(user_data):
     friends_unique_watched = friends_watched
     return friends_unique_watched
 
-
     
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
-#  Create a function named `get_available_recs`. This function should...
 
-# - take one parameter: `user_data`
-#   - `user_data` will have a field `"subscriptions"`. The value of `"subscriptions"` is a list of strings
-#     - This represents the names of streaming services that the user has access to
-#     - Each friend in `"friends"` has a watched list. Each movie in the watched list has a `"host"`, which is a string that says what streaming service it's hosted on
-# - Determine a list of recommended movies. A movie should be added to this list if and only if:
-#   - The user has not watched it
-#   - At least one of the user's friends has watched
-#   - The `"host"` of the movie is a service that is in the user's `"subscriptions"`
-# - Return the list of recommended movies
 def get_available_recs(user_data):
     friends_unique_watched = get_friends_unique_watched(user_data)
     recommended_list=[]
@@ -119,3 +106,20 @@ def get_available_recs(user_data):
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
+def get_new_rec_by_genre(user_data):
+    user_fav_genre = get_most_watched_genre(user_data)
+    friends_unique_watched = get_friends_unique_watched(user_data)
+    rec_by_genre = []
+    for dict in friends_unique_watched:
+        if user_fav_genre == dict["genre"]:
+            rec_by_genre.append(dict)
+    return rec_by_genre
+
+
+def  get_rec_from_favorites(user_data):
+    rec_list = []
+    friends_not_watched = get_unique_watched(user_data)
+    for dict in user_data["favorites"]:
+        if dict in friends_not_watched:
+            rec_list.append(dict)
+    return rec_list
