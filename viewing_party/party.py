@@ -93,76 +93,41 @@ def get_friends_unique_watched(user_data):
 # -----------------------------------------
 
 
-# def get_available_recs(user_data):
-#     recommended_movies = []
-#     for friend in user_data["friends"]: #iterate through friends
-#         for friend_movie in friend["watched"]: #iterate through friend movies
-#             is_recommended = True #flag saying movie is recommended or not
-#             #if the movie is in user_data["watched"]:, recommended = False
-#             #if the movie's "host" is not in user_data["subscriptions"] recommended = false
-#             # after passing these tests, if it is still recommended, append it to the list of recommended movie dictionaries
-#     return recommended_movies
-
 def get_available_recs(user_data):
     subscriptions = user_data["subscriptions"]
     user_watched = user_data["watched"]
     friends = user_data["friends"]
     recommended_movies = []
-		
     user_watched_titles = [movie["title"] for movie in user_watched]
-
-
-    # Loop through each friend's watched list
     for friend in friends:
         for movie in friend["watched"]:
-            # Check if the user has not watched the movie and the host is in their subscriptions
             if movie["title"] not in user_watched_titles and movie["host"] in subscriptions:
-                # Check if the movie is not already in the recommended list
-                if movie not in recommended_movies:
+                if movie not in recommended_movies:    
                     recommended_movies.append(movie)
-
     return recommended_movies
 
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
-# title = True
-# genre = True
-# rating = True
-# user_data = {
-#     "watched": [{
-#         "title": "Title A",
-#         "genre": "Horror",
-#         "rating": 3.5
-#     }, {
-#         "title": "Title A",
-#         "genre": "Romance",
-#         "rating": 4.7}, 
-#         {
-#         "title": "Title A",
-#         "genre": "Romance",
-#         "rating": 3.5
-#     }]
-#     }
-# get_watched_avg_rating(user_data)
-# get_most_watched_genre(user_data)
-# movie2 = {
-#         "title": "Title B",
-#         "genre": "Horror",
-#         "rating": 3.5
-#     }
-# watch_movie(user_data, title)
-
-# create_movie(title, genre, rating)
-# add_to_watched(user_data, movie)
-# add_to_watched(user_data, movie2)
-# print(user_data)
 
 
-# title = "MOVIE_TITLE_1"
-# genre = "GENRE_1"
-# rating = "RATING_1"
-# create_movie(title, genre, rating)
+def get_new_rec_by_genre(user_data):
+    most_watched_genre = get_most_watched_genre(user_data)
+    print(most_watched_genre)
+    movie_recs = []
+    friends_movies = get_friends_unique_watched(user_data)
+    for movie in friends_movies:
+        if movie["genre"] == most_watched_genre:
+            movie_recs.append(movie)
+    return movie_recs
 
-# get_unique_watched(user_data)
+
+def get_rec_from_favorites(user_data):
+    friends_movie_recs = []
+    favorites = user_data["favorites"]
+    unique_watched = get_unique_watched(user_data)
+    for movie in favorites:
+        if movie in unique_watched:
+            friends_movie_recs.append(movie)
+    return friends_movie_recs
