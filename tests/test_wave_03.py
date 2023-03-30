@@ -54,7 +54,7 @@ def test_friends_unique_movies_not_duplicated():
 
     # Assert
     assert len(friends_unique_movies) == 3
-    # assert movie !=     
+    assert "Zero Dark Python" == friends_unique_movies[1]["title"]
 
 # @pytest.mark.skip()
 def test_friends_not_unique_movies():
