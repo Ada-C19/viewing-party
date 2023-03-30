@@ -281,7 +281,7 @@ def get_available_recs(user_data):
     
     return movie_recs
 
-#CLEAN_WAVE_4_DATA = {'watched': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Two Parameters', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Return of the Value', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'amazon'}, {'title': 'The JavaScript and the React', 'genre': 'Action', 'rating': 2.2, 'host': 'amazon'}, {'title': 'Recursion', 'genre': 'Intrigue', 'rating': 2.0, 'host': 'hulu'}, {'title': 'Instructor Student TA Manager', 'genre': 'Intrigue', 'rating': 4.5, 'host': 'disney+'}], 'friends': [{'watched': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Return of the Value', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'amazon'}, {'title': 'The Programmer: An Unexpected Stack Trace', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'hulu'}, {'title': 'It Came from the Stack Trace', 'genre': 'Horror', 'rating': 3.5, 'host': 'netflix'}]}, {'watched': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Programmer: An Unexpected Stack Trace', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'hulu'}, {'title': 'The JavaScript and the React', 'genre': 'Action', 'rating': 2.2, 'host': 'amazon'}, {'title': 'Recursion', 'genre': 'Intrigue', 'rating': 2.0, 'host': 'hulu'}, {'title': 'Zero Dark Python', 'genre': 'Intrigue', 'rating': 3.0, 'host': 'disney+'}]}], 'subscriptions': ['netflix', 'hulu']}
+#CLEAN_WAVE_5_DATA = {'watched': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Two Parameters', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Return of the Value', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'amazon'}, {'title': 'The JavaScript and the React', 'genre': 'Action', 'rating': 2.2, 'host': 'amazon'}, {'title': 'Recursion', 'genre': 'Intrigue', 'rating': 2.0, 'host': 'hulu'}, {'title': 'Instructor Student TA Manager', 'genre': 'Intrigue', 'rating': 4.5, 'host': 'disney+'}], 'friends': [{'watched': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Return of the Value', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'amazon'}, {'title': 'The Programmer: An Unexpected Stack Trace', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'hulu'}, {'title': 'It Came from the Stack Trace', 'genre': 'Horror', 'rating': 3.5, 'host': 'netflix'}]}, {'watched': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Programmer: An Unexpected Stack Trace', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'hulu'}, {'title': 'The JavaScript and the React', 'genre': 'Action', 'rating': 2.2, 'host': 'amazon'}, {'title': 'Recursion', 'genre': 'Intrigue', 'rating': 2.0, 'host': 'hulu'}, {'title': 'Zero Dark Python', 'genre': 'Intrigue', 'rating': 3.0, 'host': 'disney+'}]}], 'subscriptions': ['netflix', 'hulu']}
 
 #print(get_available_recs(CLEAN_WAVE_4_DATA))
 # -----------------------------------------
@@ -336,4 +336,41 @@ def get_new_rec_by_genre(user_data):
 
     return list(rec_movies_by_gender.values())
 
-#print(get_new_rec_by_genre(USER_DATA))
+CLEAN_WAVE_5 = {'watched': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Two Parameters', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Return of the Value', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'amazon'}, {'title': 'The JavaScript and the React', 'genre': 'Action', 'rating': 2.2, 'host': 'amazon'}, {'title': 'Recursion', 'genre': 'Intrigue', 'rating': 2.0, 'host': 'hulu'}, {'title': 'Instructor Student TA Manager', 'genre': 'Intrigue', 'rating': 4.5, 'host': 'disney+'}], 'friends': [{'watched': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Return of the Value', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'amazon'}, {'title': 'The Programmer: An Unexpected Stack Trace', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'hulu'}, {'title': 'It Came from the Stack Trace', 'genre': 'Horror', 'rating': 3.5, 'host': 'netflix'}]}, {'watched': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Programmer: An Unexpected Stack Trace', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'hulu'}, {'title': 'The JavaScript and the React', 'genre': 'Action', 'rating': 2.2, 'host': 'amazon'}, {'title': 'Recursion', 'genre': 'Intrigue', 'rating': 2.0, 'host': 'hulu'}, {'title': 'Zero Dark Python', 'genre': 'Intrigue', 'rating': 3.0, 'host': 'disney+'}]}], 'subscriptions': ['netflix', 'hulu'], 'favorites': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Two Parameters', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'netflix'}, {'title': 'Recursion', 'genre': 'Intrigue', 'rating': 2.0, 'host': 'hulu'}, {'title': 'Instructor Student TA Manager', 'genre': 'Intrigue', 'rating': 4.5, 'host': 'disney+'}]}
+
+def get_rec_from_favorites(user_data):
+
+    if user_data["friends"] == []:
+        return []
+
+    # Dict that holds the titles of the favorite movies.
+    favorites_list = user_data["favorites"]
+    friends_titles = []
+
+    # Access the list of movies that friends' have watched
+    friends_watched_list = user_data["friends"]
+    
+    # Compare every item in the favorites list against the movies in friends_watched_list
+    # Nested loops to access every title in friends_watched_list
+    result_favs = []
+    for dict in friends_watched_list:
+        for value in dict.values():
+            for movie_watched in value:
+                title = movie_watched["title"]
+                print(title)
+                if title not in friends_titles:
+                    friends_titles.append(title)
+                
+                # Loop through Favorites list to compare titles
+                for movie in favorites_list:
+                    favorite_title = movie["title"]
+                    # print(favorite_title)
+                    # Check if the movie is in the user's favorites and None of its friends have watched
+                    if favorite_title not in friends_titles and movie not in result_favs:
+                        result_favs.append(movie)
+
+    return result_favs
+
+# print(CLEAN_WAVE_5)
+# print("###################################################################################")
+print(get_rec_from_favorites(CLEAN_WAVE_5))
