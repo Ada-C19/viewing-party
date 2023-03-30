@@ -128,16 +128,17 @@ def get_friends_unique_watched(user_data):
     """
     user_titles = get_user_titles(user_data)
     friend_titles = get_friend_titles(user_data)
-
-    only_friends_watched = []
-    only_friends_titles = set(friend_titles) - set(user_titles)
-    all_friend_watched_movies = {}
-
     
+    only_friends_titles = set(friend_titles) - set(user_titles)
+    
+    all_friend_watched_movies = {}
+    #Make a dictionary that contains all of the friends watched,key is title of movie, and value is movie dictionary.
     for friend in user_data["friends"]:
         for movie in friend['watched']:
             all_friend_watched_movies[movie["title"]]= (movie)
-
+    
+    only_friends_watched = []
+    #Make a list of dictionaries by comparing titles only friends have watched to keys in all friends watched dictionary
     for title in all_friend_watched_movies.keys():
         if title in only_friends_titles:
             only_friends_watched.append(all_friend_watched_movies[title]) 
