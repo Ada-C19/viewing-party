@@ -151,8 +151,11 @@ def test_moves_movie_from_watchlist_to_empty_watched():
         }],
         "watched": []
     }
+    # can we add a variable here? 
+    movie = janes_data["watchlist"][0]
 
     # Act
+
     updated_data = watch_movie(janes_data, MOVIE_TITLE_1)
 
     # Assert
@@ -161,7 +164,8 @@ def test_moves_movie_from_watchlist_to_empty_watched():
     
     #raise Exception("Test needs to be completed.")
     assert MOVIE_TITLE_1 == updated_data["watched"][0]["title"]
-    
+    assert movie == updated_data["watched"][0]
+        
     # *******************************************************************************************
     # ****** Add assertions here to test that the correct movie was added to "watched" **********
     # *******************************************************************************************
