@@ -60,7 +60,11 @@ def test_friends_unique_movies_not_duplicated():
     # *************************************************************************************************
     # ****** Add assertions here to test that the correct movies are in friends_unique_movies **********
     # **************************************************************************************************
+    for movie in friends_unique_movies:
+        assert test_friends_unique_movies.count(movie) == 1
 
+    
+    
 # @pytest.mark.skip()
 def test_friends_not_unique_movies():
     # Arrange

@@ -381,9 +381,9 @@ def create_unique_list(friends_watched_movies, user_movies_watched):
 
 
 
-#  2. Helper function to get a list of all the movies frends have watched. 
+#  2. Helper function to get a list of all the movies friends have watched. 
 def get_friends_movies(user_data):
-    #Return list of movies watched by friends (no duplicates)
+    # Return list of movies watched by friends (no duplicates)
     # initialize an empty list for movies the friend has watched. 
     friends_watched = []
     
