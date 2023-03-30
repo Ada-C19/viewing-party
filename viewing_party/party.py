@@ -47,9 +47,10 @@ def get_watched_avg_rating(user_data):
 
 # Method 2
 def get_watched_avg_rating_alternative(user_data):
-    avg_rating = sum(int(movie['rating']) for movie in user_data['watched'])/len(user_data['watched'])
-
-    return avg_rating
+    if len(user_data['watched']) == 0:
+        return 0.0
+    
+    return sum(movie['rating'] for movie in user_data['watched']) / len(user_data['watched'])
 
 def get_most_watched_genre(user_data):
     if len(user_data['watched']) == 0:
@@ -64,17 +65,39 @@ def get_most_watched_genre(user_data):
     
     return max_watched_list[0][0]
 
-
 # ------------- WAVE 3 --------------------
 
-
-
-
-
-
-
-
+def get_unique_watched(user_data):
+    watched_movies_set = set(movie['title'] for movie in user_data['watched'])
+    
+    friends_movie_set = set()
+    for friend_dict in user_data['friends']:
+        friends_movie_set.update(set(movie['title'] for movie in friend_dict['watched']))
         
+    unique_set = watched_movies_set - friends_movie_set
+    
+    return [m for m in user_data['watched'] if m['title'] in unique_set]
+
+def get_unique_watched_alternative(user_data):
+    movie_titles_friends_watched = set()
+    movies_friends_not_watched_list = []
+    movies_friends_not_watched_list_dict = []
+
+    for friend_movie in user_data["friends"]:
+        for movie in friend_movie["watched"]:
+            movie_titles_friends_watched.add(movie["title"])
+
+    for movie in user_data["watched"]:
+        if movie["title"] not in movie_titles_friends_watched:
+            movies_friends_not_watched_list.append(movie["title"])
+            movie_element = {}
+            movie_element["genre"]= movie["genre"]
+            movie_element["rating"] = movie["rating"]
+            movie_element["title"] = movie["title"]
+            movies_friends_not_watched_list_dict.append(movie_element)
+                
+    return movies_friends_not_watched_list_dict
+
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
