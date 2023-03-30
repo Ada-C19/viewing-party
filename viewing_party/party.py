@@ -376,42 +376,10 @@ def get_available_recs(user_data):
     return recommended_movies
 
 
-
-
-# how the data is structured:
-    # user data has a key "subscriptions"
-    # the value of user_data["subscriptions"] is a list
-    # the list contains strings
-    # the strings represent the name of the streaming services
-    # from playtester, wave 4: 
-    # 'subscriptions': ['netflix', 'hulu']
-
-    # user_data has a second key "friends"
-    # user_data["friends"] has a value of a list
-    # the list  for user_data["friends"] contains two elements
-    # each of those elements is a dictionary
-    #  the keys for each dictionary are both named "watched"
-    # for each of the watched movies in  "friends"
-    #  there is a "host"
-
-    # user_data has a third key "watched"
-    # user_data["watched"] has a value of a list
-    #  the list contains 6 elements
-    #  each of those elements in user_data["watched"][0] is a dictionary
-
-
-
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 # ========================================= wave 05- # 1.  get_new_rec_by_genre ========== SJ
-
-
-
-
-# Return the list of recommended movies
-
-
 
 # Create a function named get_new_rec_by_genre. 
 # takes in one parameter: user_data
