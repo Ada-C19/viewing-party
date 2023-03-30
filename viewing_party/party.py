@@ -462,6 +462,23 @@ def get_rec_from_favorites(user_data):
 
     list_of_recs = []
     
+# 2. Create a function named  `get_rec_from_favorites`. This function should...
+def get_rec_from_favorites(user_data):
+    # Create set of all movies that the user's friends have watched
+    friends_watched = set()
+    # for each friend's data in user_data.get()
+    #  use .get() to get key value
+    for friend_data in user_data.get("friends", []):
+        # loop through each friend's watched list to extract the movie titles
+        friends_watched.update(set(movie["title"] for movie in friend_data.get("watched", [])))
+    
+    # initialize empty list of recommended movies
+    rec_movies = []
+    # loop thru each movie in user's faves list
+    for movie in user_data.get("favorites", []):
+        # Check if movie is not watched by any of user's friends
+        if movie["title"] not in friends_watched:
+            rec_movies.append(movie)
     #  list of movies the fiends have watched
     friend_movies = get_friends_movies(user_data)
 
@@ -482,3 +499,6 @@ def get_rec_from_favorites(user_data):
 
 
 
+    
+
+    return rec_movies
