@@ -35,27 +35,30 @@ def watch_movie(user_data, title):
 def get_watched_avg_rating(user_data):
     sum = 0
     counter = 0
+
     if not user_data['watched']:
         return 0.0
+    
     for movies in user_data['watched']:
         sum += movies['rating']
-        counter +=1
+        counter += 1
     
     return sum/counter
     
 def get_most_watched_genre(user_data):
+    genre_dict = {}
+    largest_value = 0
+    most_common_genre = ""
+
     if not user_data["watched"]:
         return None
     
-    genre_dict = {}
     for movies in user_data["watched"]:
         if movies["genre"] not in genre_dict:
             genre_dict[movies["genre"]] = 1
         else:
             genre_dict[movies["genre"]] += 1
 
-    largest_value = 0
-    most_common_genre = ""
     for genre, freq in genre_dict.items():
         if freq > largest_value:
             largest_value = freq
