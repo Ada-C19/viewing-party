@@ -150,10 +150,13 @@ def get_friends_unique_watched(user_data):
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
 def get_available_recs(user_data):
-#Call get_friends_unique_watched on user data and assign to user_not_watched
+    """
+    Call get_friends_unique_watched on user data and assign to user_not_watched
+    Check if movie from friends_unique_watched == host in user_data 
+    """
     user_not_watched = get_friends_unique_watched(user_data)
     movie_recs = []
-#Check if movie from friends_unique_watched == host in user_data 
+
     for movie in user_not_watched:
         if movie["host"] in user_data["subscriptions"]:
             movie_recs.append(movie) 
@@ -166,27 +169,33 @@ def get_available_recs(user_data):
 # -----------------------------------------
 
 def get_new_rec_by_genre(user_data):
+    """
+    Call get_most_watched_genre and get_friends_unique_watched on user data 
+    Finds movies only friends have watched in users top genre to generate recs by genre 
+    """
     recs_by_genre = []
     most_common_genre = get_most_watched_genre(user_data)
-    unique_movies = get_friends_unique_watched(user_data)
-    for movie in unique_movies:
+    friend_recs = get_friends_unique_watched(user_data)
+    
+    for movie in friend_recs:
         if movie["genre"] == most_common_genre:
             recs_by_genre.append(movie)
     return recs_by_genre
 
 def get_rec_from_favorites(user_data):
+    """
+    Determine a list of recommended movies from user's favorites that friends have not watched.
+    """
     recs_from_faves= []
-    user_unique_recs = get_unique_watched(user_data)
+    user_recs = get_unique_watched(user_data)
 
     favorites = []
     for movie in user_data["favorites"]:
         favorites.append(movie["title"])
     
-    for favorite_title in favorites:
-        for movie in user_unique_recs:
-            if movie["title"] == favorite_title:
+    for title in favorites:
+        for movie in user_recs:
+            if movie["title"] == title:
                 recs_from_faves.append(movie)
-
-
 
     return recs_from_faves
