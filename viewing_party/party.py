@@ -8,7 +8,6 @@ def create_movie(title, genre, rating):
     movie["title"] = title
     movie["genre"] = genre
     movie["rating"] = rating
-    print(movie)
     return movie
 
 
@@ -49,35 +48,27 @@ def get_unique_watched(user_data):
             unique_movie_watched.append(movie_info)
     return unique_movie_watched
 
+def get_friends_unique_watched(user_data): 
+    movie_friend_watched = []
+    only_friends_watched = []
+    for watched_list in user_data["friends"]:
+        for movie in watched_list["watched"]:
+            if movie not in movie_friend_watched:
+                movie_friend_watched.append(movie)
+    
+    for movie_info in movie_friend_watched:
+        if movie_info not in user_data["watched"]:
+            only_friends_watched.append(movie_info)
+    return only_friends_watched
+        
 # WAVE 4
 def get_available_recs(user_data):
-    recommended_movies = []
-    user_subscription = set()
-    user_watched_movies = set()
-    friends_watched_movies = []
-    # find the subscriptions user has
-    for ott in user_data["subscriptions"]:
-        user_subscription.add(ott)
-    print(f"subscription:{user_subscription}")
-    # create a set with user's watched movie list
-    for user_movie_info in user_data["watched"]:
-         user_watched_movies.add(user_movie_info["title"])
-    print(f"user movie titles:{user_watched_movies}")
-    # create a list of dictionaries with friend's watched movies
-    for list in user_data["friends"]:
-        for movie_info in list["watched"]:
-            if movie_info not in friends_watched_movies:
-                friends_watched_movies.append(movie_info)
-    print(f"friends movie info: {friends_watched_movies}")
-    # generate a recommended list by checking to see if user did not watch movies that the friend did and
-    # if the OTT platform user subscribed to has it
-    for movie_info in friends_watched_movies:
-
-        # check the movie is not in user_watched_movies and its host is in user_subscription
-        if movie_info["title"] not in user_watched_movies and movie_info["host"] in user_subscription:
-            recommended_movies.append(movie_info)
-           
-    return recommended_movies
+    rec_movies_by_friends = []
+    friends_only = get_friends_unique_watched(user_data)
+    for movie_info in friends_only: 
+        if movie_info["host"] in user_data["subscriptions"]: 
+            rec_movies_by_friends.append(movie_info)
+    return rec_movies_by_friends
 
 # WAVE 5
 def get_new_rec_by_genre(user_data):
