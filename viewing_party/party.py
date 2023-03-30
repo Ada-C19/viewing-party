@@ -116,15 +116,26 @@ def get_available_recs(user_data):
             recommendation_list.append(friend_dict)
     return(recommendation_list)
             
-                
-                            
-
-
-    
-
-
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
+def get_new_rec_by_genre(user_data):
+    user_most_watched_genre = get_most_watched_genre(user_data)
+    friend_unique = get_friends_unique_watched(user_data)
+    recommendation_list = []
+
+    for friend_dict in friend_unique:
+        if friend_dict["genre"] == user_most_watched_genre:
+            recommendation_list.append(friend_dict)
+    return recommendation_list
+
+def get_rec_from_favorites(user_data):
+    user_unique = get_unique_watched(user_data)
+    recommendation_list = []
+
+    for favorite in user_data["favorites"]:
+        if favorite in user_unique:
+            recommendation_list.append(favorite)
+    return recommendation_list
