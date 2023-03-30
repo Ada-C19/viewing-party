@@ -147,9 +147,6 @@ def get_friends_unique_watched(user_data):
 ### if watched_list empty, return empty list
     if not friends_watched_list:
         return []
-### if friends_watched_list empty, return user's watched_list
-    elif not watched_list:
-        return friends_watched_list
 ### creating set of user's watched titles [same as prior]
     for movie_dict in watched_list:
         watched_list_set.add(movie_dict["title"])
@@ -178,39 +175,34 @@ def get_friends_unique_watched(user_data):
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
 
-# 1. Create a function named `get_available_recs`. This function should...
-
-# - take one parameter: `user_data`
-#   - `user_data` will have a field `"subscriptions"`. The value of `"subscriptions"` is a list of strings
-#     - This represents the names of streaming services that the user has access to
-#     - Each friend in `"friends"` has a watched list. Each movie in the watched list has a `"host"`, 
-#       which is a string that says what streaming service it's hosted on, ex: {"watched" = ["title", "genre", "rating", "host"]}
-# - Determine a list of recommended movies. A movie should be added to this list if and only if:
-#   - The user has not watched it
-#   - At least one of the user's friends has watched
-#   - The `"host"` of the movie is a service that is in the user's `"subscriptions"`
-# - Return the list of recommended movies
-
 def get_available_recs(user_data):
     friends_unique_watched_list = get_friends_unique_watched(user_data)
+    print(friends_unique_watched_list)
     subscriptions_list = user_data["subscriptions"]
     recommended_movies = []
 
     ### iterating through movie dictionaries in friends_unique_watched_list to find movies user has 
     ### access to via subscription
-    for friend in friends_unique_watched_list:
-        for movie_dict in friend["watched"]:
-            ### iterating through specific subscription services user has access to
-            for subscription_service in subscriptions_list:
-                ### determining if a given movie that user has not seen is available via subscription service, 
-                ### if so append to recommend_movies
-                if movie_dict["host"] == subscription_service:
-                    recommended_movies.append(movie_dict)
-    
+    for movie_dict in friends_unique_watched_list:
+        # for movie_dict in friend["watched"]:
+            ### determining if a given movie that user has not seen is available via subscription service, 
+            ### if so append to recommend_movies
+        if movie_dict["host"] in subscriptions_list:
+            recommended_movies.append(movie_dict)
+
     return recommended_movies
 
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
+
+# 1. Create a function named  `get_new_rec_by_genre`. This function should...
+
+# - take one parameter: `user_data`
+# - Consider the user's most frequently watched genre. Then, determine a list of recommended movies. A movie should be added to this list if and only if:
+#   - The user has not watched it
+#   - At least one of the user's friends has watched
+#   - The `"genre"` of the movie is the same as the user's most frequent genre
+# - Return the list of recommended movies
 
