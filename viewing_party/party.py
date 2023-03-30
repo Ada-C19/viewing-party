@@ -81,6 +81,42 @@ def get_watched_avg_rating(user_data):
     output: average rating float
     """
 
+    # need .round() in order to return float instead of int?
+
+    average_rating = 0.0
+    movie_ratings = []
+
+    # if len(movie_ratings) == 0:
+    #     return average_rating_list     
+
+    for watched in user_data["watched"]:
+        # print(watched)
+        movie_ratings = watched["rating"]
+        if len(movie_ratings) == 0:
+            return average_rating
+        average_rating = sum(movie_ratings)/len(movie_ratings)
+        # length_of_movie_ratings_list = len(movie_ratings)
+        # sum_of_movie_ratings_list = sum(movie_ratings)
+        # average = sum_of_movie_ratings_list / length_of_movie_ratings_list
+        # average_rating.append(average_rating)
+        
+        return average_rating
+    
+    return average_rating
+
+
+# iterate through user data
+    # for item in user_data.keys():
+    #     user_data["watched"]["rating"]
+        
+
+    # for item in user_data: 
+    #     for item in "watched":
+    #         ["rating"]
+    #     user_data["watched"]["rating"]
+        # user_data["watched"]["rating"]
+
+
 def get_most_watched_genre(user_data):
     """
     input: user_data dictionary with a "watched" list of movie dictionaries

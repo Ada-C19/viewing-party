@@ -161,7 +161,7 @@ def test_moves_movie_from_watchlist_to_empty_watched():
     # Assert
     assert len(updated_data["watchlist"]) == 0
     assert len(updated_data["watched"]) == 1
-    # modifications must move the entire dict
+    # modifications added assert statement below 
     assert movie_in_index_0 in updated_data["watched"]
 
     # assert updated_data["watched"][0]["title"] == MOVIE_TITLE_1
@@ -197,6 +197,7 @@ def test_moves_movie_from_watchlist_to_watched():
     assert len(updated_data["watched"]) == 2
     # assert movie_to_watch in updated_data["watched"]
     ##### OR  assert movie_to_watch in updated_data["watchlist"] #######
+    # modifications added three assert statements below
     assert HORROR_1 in updated_data["watched"]
     assert FANTASY_2 in updated_data["watched"]
     assert FANTASY_1 in updated_data["watchlist"]
