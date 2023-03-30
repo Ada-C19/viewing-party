@@ -1,10 +1,10 @@
-import source code
+# import source code
 from viewing_party.party import *
 
-import test data
+# import test data
 from tests.test_constants import *
 
-import "pretty-print" library
+# import "pretty-print" library
 import pprint
 pp = pprint.PrettyPrinter(indent=4)
 
