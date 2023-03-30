@@ -71,6 +71,45 @@ def get_most_watched_genre(user_data):
         return(multimode(genre_list)[0])
 
 
+# My super long implementation w/o using multimode
+# def get_most_watched_genre(user_data):
+#     # Check if user_data has a watched list
+#     if "watched" not in user_data:
+#         return None
+
+#     # Get the watched list
+#     watched_list = user_data["watched"]
+
+#     # Check if the watched list is empty
+#     if len(watched_list) == 0:
+#         return None
+
+#     # Create a dictionary to store the count of each genre
+#     genre_count = {}
+
+#     # Iterate through the watched list
+#     for movie in watched_list:
+#         genre = movie["genre"]
+
+#     # Check if the genre is already in the dictionary
+#     if genre in genre_count:
+#         # Increment the count
+#         genre_count[genre] += 1
+#     else:
+#         # Initialize the count
+#         genre_count[genre] = 1
+
+#     # Get the most frequent genre
+#     most_frequent_genre = None
+#     most_frequent_count = 0
+
+#     for genre, count in genre_count.items():
+#         if count > most_frequent_count:
+#             most_frequent_count = count
+    
+#     return most_frequent_count
+
+
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
@@ -163,6 +202,8 @@ def get_new_rec_by_genre(user_data):
 def get_rec_from_favorites(user_data):
     # List of friends
     friends = user_data["friends"]
+    # List of users favorite movies
+    user_favorites = user_data["favorites"]
     # Create empty list of recommended movies
     recommended_movies = []
 
@@ -174,7 +215,7 @@ def get_rec_from_favorites(user_data):
         # Loop over movies watched by friend
         for movie in friend_movies:
             # Conditional if movie is in favorites/friends have not watched
-            if movie in user_data["favorites"] and movie not in friend_movies:
+            if movie in user_favorites and movie not in friend_movies:
                 # if so, add to list of recommended movies
                 recommended_movies.append(movie)
     
