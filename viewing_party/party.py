@@ -110,27 +110,26 @@ def get_friends_unique_watched(user_data):
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
 def get_available_recs(user_data): 
-    recommended =[]
+    # List of friends
+    friends = user_data["friends"]
+    # List of movies user has watched
     watched_movies = user_data["watched"]
-    # Set up an empty list to store movies that the user's friends have watched
-    friends_watched = []
-    # Iterate through each friend in the user's list of friends
-    for friend in user_data["friends"]:
-        # Iterate through each movie that the friend has watched
-        for movie in friend["watched"]:
-            # Check if the user has watched the movie
-            if movie not in watched_movies:
-                # If not, add the movie to the friends_unique_watched list
-                friends_watched.append(movie)
-                print(friends_watched)
-                print("***********")
-                # Check if movie is available in the user's subscription
-                if friends_watched[0]["host"] in watched_movies:
-                    # If so, then add movie to recommended list
-                    recommended.append(movie)
-                    
-    return recommended
-    # Return the list of movies
+    # Create empty list of recommended movies
+    recommendations = []
+    
+    # Loop over friends
+    for friend in friends:
+        # List of movies watched by friend
+        friend_movies = friend["watched"]
+        # Loop over movies watched by friend
+    for movie in friend_movies:
+        # Conditional if movie user has not watched and movie has available host
+        if movie["host"] in user_data["subscriptions"] and movie not in watched_movies and movie not in recommendations:
+            # if so, add to list of recommended movies
+            recommendations.append(movie)
+    print(movie)
+    # return list of recommended movies
+    return recommendations
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
