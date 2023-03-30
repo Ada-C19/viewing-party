@@ -8,7 +8,7 @@ def create_movie(title, genre, rating):
     if not title or not genre or not rating:
         return None
     
-    movie["title"], movie["genre"], movie["rating"] = title, genre, rating
+    movie['title'], movie['genre'], movie['rating'] = title, genre, rating
     
     return movie
 
@@ -90,7 +90,8 @@ def get_friends_unique_watched(user_data):
     friends_unique_list = []
 
     for friend_dict in user_data['friends']:
-        friends_unique_list.extend(movie for movie in friend_dict['watched'] if movie['title'] in friends_unique_set if movie not in friends_unique_list)
+        friends_unique_list.extend(movie for movie in friend_dict['watched'] 
+                                   if movie['title'] in friends_unique_set if movie not in friends_unique_list)
 
     return friends_unique_list
 
