@@ -8,9 +8,9 @@ def create_movie(title, genre, rating):
     if not title or not genre or not rating:
         return None
     else:
-        new_movie['title'] = title
-        new_movie['genre'] = genre
-        new_movie['rating'] = rating
+        new_movie["title"] = title
+        new_movie["genre"] = genre
+        new_movie["rating"] = rating
 
     return new_movie
 
@@ -40,11 +40,11 @@ def get_watched_avg_rating(user_data):
     sum = 0
     counter = 0
 
-    if not user_data['watched']:
+    if not user_data["watched"]:
         return 0.0
     
-    for movies in user_data['watched']:
-        sum += movies['rating']
+    for movies in user_data["watched"]:
+        sum += movies["rating"]
         counter += 1
     
     return sum/counter
