@@ -50,31 +50,24 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 def get_unique_watched(user_data):
     movies_user_watched = []
-    movies_friends_watched = []
     for movies in user_data["watched"]:
         movies_user_watched.append(movies)
     for friend in user_data["friends"]:
         for film in friend["watched"]:
-            movies_friends_watched.append(film)
-    unique_movies = []
-    for movies in movies_user_watched:
-        if movies not in movies_friends_watched:
-            unique_movies.append(movies)
-    return unique_movies
+            if film in movies_user_watched:
+                movies_user_watched.remove(film)
+    return movies_user_watched
 
 def get_friends_unique_watched(user_data):
-    movies_user_watched = []
     movies_friends_watched = []
-    for movies in user_data["watched"]:
-        movies_user_watched.append(movies)
     for friend in user_data["friends"]:
         for film in friend["watched"]:
-            movies_friends_watched.append(film)
-    friend_unique_movies = []
-    for movies in movies_friends_watched:
-        if movies not in movies_user_watched and movies not in friend_unique_movies:
-                friend_unique_movies.append(movies)
-    return friend_unique_movies
+            if film not in movies_friends_watched:
+                movies_friends_watched.append(film)
+    for movie in user_data["watched"]:
+        if movie in movies_friends_watched:
+            movies_friends_watched.remove(movie)
+    return movies_friends_watched
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
@@ -90,7 +83,6 @@ def get_available_recs(user_data):
 # -----------------------------------------
 def get_new_rec_by_genre(user_data):
     recs_by_genre = []
-    # fav genre of movies of user
     fav_genre_movies = get_most_watched_genre(user_data)
     for friend in user_data["friends"]:
         for film in friend["watched"]:
