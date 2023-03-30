@@ -44,7 +44,7 @@ def test_friends_unique_movies():
     assert amandas_data == clean_wave_3_data()
 
 # Let's try and pair program this together
-@pytest.mark.skip()
+#@pytest.mark.skip()
 def test_friends_unique_movies_not_duplicated():
     # Arrange
     amandas_data = clean_wave_3_data()
@@ -55,13 +55,15 @@ def test_friends_unique_movies_not_duplicated():
 
     # Assert
     assert len(friends_unique_movies) == 3
+    assert friends_unique_movies[0] != friends_unique_movies[1]
+    assert friends_unique_movies[0] != friends_unique_movies[2]
 
-    raise Exception("Test needs to be completed.")
+
     # *************************************************************************************************
     # ****** Add assertions here to test that the correct movies are in friends_unique_movies **********
     # **************************************************************************************************
 
-@pytest.mark.skip()
+#@pytest.mark.skip()
 def test_friends_not_unique_movies():
     # Arrange
     amandas_data = {
