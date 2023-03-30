@@ -37,8 +37,6 @@ def get_watched_avg_rating(user_data):
     return average
 
 def get_most_watched_genre(user_data):
-    # keep count of genres in watched list
-        # maybe a dictionary
     if len(user_data["watched"]) == 0:
         return None
     
