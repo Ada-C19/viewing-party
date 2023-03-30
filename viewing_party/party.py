@@ -91,17 +91,26 @@ def get_watched_avg_rating(user_data):
 
     for watched in user_data["watched"]:
         # print(watched)
-        movie_ratings = watched["rating"]
-        if len(movie_ratings) == 0:
-            return average_rating
-        average_rating = sum(movie_ratings)/len(movie_ratings)
+        rating = watched["rating"]
+        movie_ratings.append(rating)
+        # if movie_ratings == 0:
+        # if len(movie_ratings) == 0:
+
+        # calculate_average_rating = sum(movie_ratings)/len(movie_ratings)
+        # average_rating.append(average_rating)
         # length_of_movie_ratings_list = len(movie_ratings)
         # sum_of_movie_ratings_list = sum(movie_ratings)
         # average = sum_of_movie_ratings_list / length_of_movie_ratings_list
         # average_rating.append(average_rating)
         
-        return average_rating
+        # return average_rating
     
+    sum_of_movie_ratings = sum(movie_ratings)
+    length_of_movie_ratings = len(movie_ratings)
+    if length_of_movie_ratings == 0:
+        return average_rating
+    average_rating = sum_of_movie_ratings/length_of_movie_ratings
+
     return average_rating
 
 
