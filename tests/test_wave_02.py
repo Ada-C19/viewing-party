@@ -2,7 +2,6 @@ import pytest
 from viewing_party.party import *
 from tests.test_constants import *
 
-@pytest.mark.skip()
 def test_calculates_watched_average_rating():
     # Arrange
     janes_data = clean_wave_2_data()
@@ -14,7 +13,7 @@ def test_calculates_watched_average_rating():
     assert average == pytest.approx(3.58333)
     assert janes_data == clean_wave_2_data()
 
-@pytest.mark.skip()
+
 def test_empty_watched_average_rating_is_zero():
     # Arrange
     janes_data = {
@@ -27,6 +26,32 @@ def test_empty_watched_average_rating_is_zero():
     # Assert
     assert average == pytest.approx(0.0)
 
+def test_calculates_watched_average_rating():
+    # Arrange
+    janes_data = {
+        "watched": [{   'genre': 'Fantasy',
+                       'host': 'netflix',
+                       'rating':None,
+                       'title': 'The Lord of the Functions: The Fellowship of '
+                                'the Function'},
+                   {   'genre': 'Fantasy',
+                       'host': 'netflix',
+                       'rating': "string",
+                       'title': 'The Lord of the Functions: The Two '
+                                'Parameters'},
+                    { 'genre': 'Fantasy',
+                       'host': 'amazon',
+                       'rating': 4.0,
+                       'title': 'The Lord of the Functions: The Return of the '
+                                'Value'}]
+    } 
+
+    # Act
+    average = get_watched_avg_rating(janes_data)
+
+    # Assert
+    assert average == 4.0
+    
 @pytest.mark.skip()
 def test_most_watched_genre():
     # Arrange
