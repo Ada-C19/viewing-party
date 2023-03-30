@@ -1,4 +1,9 @@
 # Viewing Party
+
+random line
+
+I do not know what I'm doing.
+
 <p><b>Collaborators:</b> Lou Loera & Linh Huynh</p>
 
 <p><h2>Pair Plan:</h2></p>
