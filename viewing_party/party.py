@@ -1,86 +1,4 @@
-import pprint
-pp = pprint.PrettyPrinter(indent=4)
 import copy
-
-HORROR_1 = {
-    "title": "MOVIE_TITLE_1",
-    "genre": "GENRE_1",
-    "rating": 1
-}
-FANTASY_1 = {
-    "title": "The Lord of the Functions: The Fellowship of the Function",
-    "genre": "Fantasy",
-    "rating": 4.8
-}
-FANTASY_2 = {
-    "title": "The Lord of the Functions: The Two Parameters",
-    "genre": "Fantasy",
-    "rating": 4.0
-}
-FANTASY_3 = {
-    "title": "The Lord of the Functions: The Return of the Value",
-    "genre": "Fantasy",
-    "rating": 4.0
-}
-FANTASY_4 = {
-    "title": "The Programmer: An Unexpected Stack Trace",
-    "genre": "Fantasy",
-    "rating": 4.0
-}
-ACTION_1 = {
-    "title": "The JavaScript and the React",
-    "genre": "Action",
-    "rating": 2.2
-}
-ACTION_2 = {
-    "title": "2 JavaScript 2 React",
-    "genre": "Action",
-    "rating": 4.2
-}
-ACTION_3 = {
-    "title": "JavaScript 3: VS Code Lint",
-    "genre": "Action",
-    "rating": 3.5
-}
-INTRIGUE_1 = {
-    "title": "Recursion",
-    "genre": "Intrigue",
-    "rating": 2.0
-}
-INTRIGUE_2 = {
-    "title": "Instructor Student TA Manager",
-    "genre": "Intrigue",
-    "rating": 4.5
-}
-INTRIGUE_3 = {
-    "title": "Zero Dark Python",
-    "genre": "Intrigue",
-    "rating": 3.0
-}
-USER_DATA_3 = { "watched": [FANTASY_3,
-                FANTASY_4,
-                HORROR_1],
-            "friends" : [
-        {
-            "watched": [
-                FANTASY_1,
-                FANTASY_3,
-                FANTASY_4,
-                HORROR_1,
-            ]
-        },
-        {
-            "watched": [
-                FANTASY_1,
-                ACTION_1,
-                INTRIGUE_1,
-                INTRIGUE_3,
-            ]
-        }
-]}  
-
-
-
 
 # ------------- WAVE 1 --------------------
 
@@ -114,10 +32,9 @@ def add_to_watchlist(user_data, movie):
     return user_data
 
 def watch_movie(user_data, title):
-    # if item in list
+
     for i in range(len(user_data['watchlist'])):
         title_from_dict = user_data['watchlist'][i]['title']
-    # print("TITLE:", title)
 
     # If title is in watchlist, remove that movie from watchlist
         if title_from_dict == title:
@@ -125,25 +42,12 @@ def watch_movie(user_data, title):
             user_data["watchlist"].remove(dict_from_list)
             # Add that movie to "watched"
             user_data["watched"].append(dict_from_list)
-        print(user_data)
-        print("USER DATA WATCHLIST:", user_data['watchlist'])
+
     return user_data
-
-
-# print(watch_movie({
-#             "watchlist": [{
-#                 "title": "Scooby Doo",
-#                 "genre": "GENRE_1",
-#                 "rating": 1
-#             }],
-#             "watched": []
-#         }, "Scooby Doo"))
-
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
-
 
 def get_watched_avg_rating(user_data):
 
@@ -158,8 +62,7 @@ def get_watched_avg_rating(user_data):
     num_of_movies = len(user_data["watched"])
     return total_rating / num_of_movies
 
-# print(get_watched_avg_rating({'watchlist': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8}], 'watched': [{'title': 'The Lord of the Functions: The Two Parameters', 'genre': 'Fantasy', 'rating': 4.0}, {'title': 'It Came from the Stack Trace', 'genre': 'Horror', 'rating': 3.5}]}))
-    
+
 def get_most_watched_genre(user_data):
     genres_most_watched = {}
 
@@ -182,14 +85,14 @@ def get_most_watched_genre(user_data):
             
     return most_watched
 
-
-# print(get_most_watched_genre({'watchlist': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8}], 'watched': [{'title': 'The Lord of the Functions: The Two Parameters', 'genre': 'Fantasy', 'rating': 4.0}, {'title': 'It Came from the Stack Trace', 'genre': 'Horror', 'rating': 3.5}]}))
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
+
 def get_unique_watched(user_data):
+
     copy_from_user_data = copy.deepcopy(user_data)
-    
+
     friends_movie_titles = []
     users_movie_titles = []
     my_list = copy_from_user_data["watched"]
@@ -197,7 +100,7 @@ def get_unique_watched(user_data):
     
     for i in range(len(friends_list)):
         values_of_watched = friends_list[i]["watched"]
-        print(values_of_watched)
+        
         for j in range(len(values_of_watched)):
             titles = values_of_watched[j]["title"]
             friends_movie_titles.append(titles)
@@ -207,7 +110,6 @@ def get_unique_watched(user_data):
 
     user_unique_movies = set(users_movie_titles) - set(friends_movie_titles)
     users_unique_movies_list = list(user_unique_movies)
-    print(users_unique_movies_list)
     
     result_list = []
 
@@ -218,7 +120,6 @@ def get_unique_watched(user_data):
 
     return result_list
 
-# print(get_unique_watched(USER_DATA_3))
 
 def get_friends_unique_watched(user_data):
 
@@ -232,7 +133,7 @@ def get_friends_unique_watched(user_data):
     
     for i in range(len(friends_list)):
         values_of_watched = friends_list[i]["watched"]
-        print(values_of_watched)
+        
         for j in range(len(values_of_watched)):
             titles = values_of_watched[j]["title"]
             friends_movie_titles.append(titles)
@@ -243,7 +144,6 @@ def get_friends_unique_watched(user_data):
 
     friends_unique_movies = set(friends_movie_titles) - set(users_movie_titles)
     friends_unique_movies_list = list(friends_unique_movies)
-    print(friends_unique_movies_list)
     
     result_list = []
 
@@ -258,6 +158,7 @@ def get_friends_unique_watched(user_data):
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
+
 def get_available_recs(user_data):
 
     friends_list = user_data["friends"]
@@ -272,7 +173,6 @@ def get_available_recs(user_data):
     for dict in friends_list:
         for value in dict.values():
             for movie in value:
-                # movie_recs.append(movie)
                 friends_title = movie["title"]
 
                 for user_dict in user_watched:
@@ -281,18 +181,9 @@ def get_available_recs(user_data):
     
     return movie_recs
 
-#CLEAN_WAVE_5_DATA = {'watched': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Two Parameters', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Return of the Value', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'amazon'}, {'title': 'The JavaScript and the React', 'genre': 'Action', 'rating': 2.2, 'host': 'amazon'}, {'title': 'Recursion', 'genre': 'Intrigue', 'rating': 2.0, 'host': 'hulu'}, {'title': 'Instructor Student TA Manager', 'genre': 'Intrigue', 'rating': 4.5, 'host': 'disney+'}], 'friends': [{'watched': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Return of the Value', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'amazon'}, {'title': 'The Programmer: An Unexpected Stack Trace', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'hulu'}, {'title': 'It Came from the Stack Trace', 'genre': 'Horror', 'rating': 3.5, 'host': 'netflix'}]}, {'watched': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Programmer: An Unexpected Stack Trace', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'hulu'}, {'title': 'The JavaScript and the React', 'genre': 'Action', 'rating': 2.2, 'host': 'amazon'}, {'title': 'Recursion', 'genre': 'Intrigue', 'rating': 2.0, 'host': 'hulu'}, {'title': 'Zero Dark Python', 'genre': 'Intrigue', 'rating': 3.0, 'host': 'disney+'}]}], 'subscriptions': ['netflix', 'hulu']}
-
-#print(get_available_recs(CLEAN_WAVE_4_DATA))
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
-
-# Main function will return a list of recommended movies => 
-## User has not watched!, At least 1 friend has watched!, genre of the movie is
-### the same as the most watched movie!
-
-#USER_DATA = {"favorites": [{"genre": "horror", "host":"netflix", "rating": 4, "title": "parasite"}, {"genre": "fantasy", "host":"netflix", "rating": 4, "title": "cinderella"}], "friends": [{"watched": [{"genre": "horror", "host":"netflix", "rating": 4, "title": "parasite"}]}, {"watched": [{"genre": "horror", "host": "yyyyyy", "rating": 6, "title": "zzzzz"}]}], "subscriptions": ["netflix", "hulu"], "watched": [{"genre": "horror", "host":"netflix", "rating": 4, "title": "parasite"}, {"genre": "horror", "host": "vvvvvv", "rating": 7, "title": "bbbbbb"}, {"genre": "rrrrrrr", "host": "ffffff", "rating": 9, "title": "dddddd"}]}
 
 def get_new_rec_by_genre(user_data):
     # New dict will hold the most watched genre
@@ -335,17 +226,16 @@ def get_new_rec_by_genre(user_data):
 
     return list(rec_movies_by_gender.values())
 
-CLEAN_WAVE_5 = {'watched': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Two Parameters', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Return of the Value', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'amazon'}, {'title': 'The JavaScript and the React', 'genre': 'Action', 'rating': 2.2, 'host': 'amazon'}, {'title': 'Recursion', 'genre': 'Intrigue', 'rating': 2.0, 'host': 'hulu'}, {'title': 'Instructor Student TA Manager', 'genre': 'Intrigue', 'rating': 4.5, 'host': 'disney+'}], 'friends': [{'watched': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Return of the Value', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'amazon'}, {'title': 'The Programmer: An Unexpected Stack Trace', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'hulu'}, {'title': 'It Came from the Stack Trace', 'genre': 'Horror', 'rating': 3.5, 'host': 'netflix'}]}, {'watched': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Programmer: An Unexpected Stack Trace', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'hulu'}, {'title': 'The JavaScript and the React', 'genre': 'Action', 'rating': 2.2, 'host': 'amazon'}, {'title': 'Recursion', 'genre': 'Intrigue', 'rating': 2.0, 'host': 'hulu'}, {'title': 'Zero Dark Python', 'genre': 'Intrigue', 'rating': 3.0, 'host': 'disney+'}]}], 'subscriptions': ['netflix', 'hulu'], 'favorites': [{'title': 'The Lord of the Functions: The Fellowship of the Function', 'genre': 'Fantasy', 'rating': 4.8, 'host': 'netflix'}, {'title': 'The Lord of the Functions: The Two Parameters', 'genre': 'Fantasy', 'rating': 4.0, 'host': 'netflix'}, {'title': 'Recursion', 'genre': 'Intrigue', 'rating': 2.0, 'host': 'hulu'}, {'title': 'Instructor Student TA Manager', 'genre': 'Intrigue', 'rating': 4.5, 'host': 'disney+'}]}
 
 def get_rec_from_favorites(user_data):
 
-    # Dict that holds the titles of the favorite movies.
+    # List that holds the titles of the favorite movies.
     favorites_list = user_data["favorites"]
     friends_titles = []
 
     # Access the list of movies that friends' have watched
     friends_watched_list = user_data["friends"]
-    
+
     # Compare every item in the favorites list against the movies in friends_watched_list
     # Nested loops to access every title in friends_watched_list
     result_favs = []
@@ -353,6 +243,7 @@ def get_rec_from_favorites(user_data):
         for value in dict.values():
             for movie_watched in value:
                 title = movie_watched["title"]
+
                 if title not in friends_titles:
                     friends_titles.append(title)
 
@@ -363,7 +254,4 @@ def get_rec_from_favorites(user_data):
         if favorite_title not in friends_titles and movie not in result_favs:
             result_favs.append(movie)            
                 
-
     return result_favs
-
-print(get_rec_from_favorites(CLEAN_WAVE_5))
