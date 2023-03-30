@@ -196,12 +196,3 @@ def get_rec_from_favorites(user_data):
 
 
 
-# 2. Create a function named  `get_rec_from_favorites`. This function should...
-
-# - take one parameter: `user_data`
-#   - `user_data` will have a field `"favorites"`. The value of `"favorites"` is a list of movie dictionaries
-#     - This represents the user's favorite movies
-# - Determine a list of recommended movies. A movie should be added to this list if and only if:
-#   - The movie is in the user's `"favorites"`
-#   - None of the user's friends have watched it
-# - Return the list of recommended movies
