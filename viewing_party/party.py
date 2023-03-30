@@ -69,13 +69,74 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
-
+def get_unique_watched(user_data):
+    unique = []
+    for movie_data in user_data["watched"]:
+       unique.append(movie_data)
+    
+    for friends in user_data["friends"]:
+        for watched in friends["watched"]:
+            if watched in unique:
+                 unique.remove(watched)
         
+    return unique 
+
+def get_friends_unique_watched(user_data):
+    unique = []
+    for friends in user_data["friends"]:
+        for watched in friends["watched"]:
+           
+            if watched not in unique:
+                unique.append(watched)
+
+    for movie_data in user_data["watched"]:
+        if movie_data in unique:
+            unique.remove(movie_data) 
+    
+    return unique
+
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
+
+def get_available_recs(user_data):
+    unwatched_movies = get_friends_unique_watched(user_data)
+    recommended = []
+
+    
+    for movie_data in unwatched_movies:
+        if movie_data["host"] in user_data["subscriptions"]:
+            recommended.append(movie_data)
+    
+    return recommended
+
+        
+
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
+
+def get_new_rec_by_genre(user_data):
+    movie_options = get_friends_unique_watched(user_data)
+    fav_genre = get_most_watched_genre(user_data)
+    rec_by_genre = []
+
+    for movie_data in movie_options:
+        if movie_data["genre"] == fav_genre:
+            rec_by_genre.append(movie_data)
+
+    return rec_by_genre
+
+
+def get_rec_from_favorites(user_data):
+    user_unique = get_unique_watched(user_data)
+    rec_by_fav = []
+
+    for movie_data in user_data["favorites"]:
+        if movie_data in user_unique:
+            rec_by_fav.append(movie_data)
+
+    
+    return rec_by_fav
