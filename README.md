@@ -1,4 +1,11 @@
 # Viewing Party
+<!-- Plan of Action:
+Use VS Code live share
+Work wave 1 together, divide next four waves and come together
+Spend first day brainstorming
+Give specific feedback and share ideas
+Goal: finish by Thursday 3pm -->
+
 
 ## Skills Assessed
 
