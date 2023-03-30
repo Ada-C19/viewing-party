@@ -58,4 +58,6 @@ print(get_friends_unique_watched(user_data))
 
 # user_data = clean_wave_5_data()
 
-# get_rec_from_favorites(user_data)
+# Wave 05 user data
+#print("\n-----Wave 05 user_data-----")
+#pp.pprint(clean_wave_5_data())
