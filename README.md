@@ -1,4 +1,15 @@
 # Viewing Party
+## MEL & JEN
+
+#Pair Plan:
+Access needs - In Person and then if needed zoom/liveshare. (Possibly evening works for both of us for zoom)
+
+Your learning style - Getting errors and failed tests, also making print tests. Comments to help catch what the code is doing behind the scenes. 
+
+How you prefer to receive feedback - Communicating ideas to each other and finding common ground or compromise for ideas that we are split on. 
+
+One team communication skill you want to improve with this experience - New to team collaboration so we want to see what we might need to improve and what we excel at. 
+
 
 ## Skills Assessed
 

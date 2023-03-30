@@ -91,6 +91,16 @@ USER_DATA_2b = {
 
 #-----WAVE 3--------
 USER_DATA_3 = copy.deepcopy(USER_DATA_2)
+# USER_DATA_2 = {
+#     "watched": [
+#         FANTASY_1, 
+#         FANTASY_2, 
+#         FANTASY_3, 
+#         ACTION_1, 
+#         INTRIGUE_1, 
+#         INTRIGUE_2
+#         ],    
+# }
 USER_DATA_3["friends"] =  [
         {
             "watched": [
