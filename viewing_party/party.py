@@ -160,8 +160,9 @@ def get_friends_unique_watched(user_data):
     """  
     # Check if each friends' movie is in user's watched list
     # If not, add to unique list if not already in it
+    friends_watched = get_friends_watched(user_data)
     unique_watched = []
-    for movie in get_friends_watched(user_data):
+    for movie in friends_watched:
         if (movie not in user_data["watched"]
                 and movie not in unique_watched):
             unique_watched.append(movie)
@@ -179,8 +180,9 @@ def get_available_recs(user_data):
     """  
     # Check if each friends' movie uses a service user has
     # If yes, add to movie recs list if not already in it 
+    friends_unique_watched = get_friends_unique_watched(user_data)
     movie_recs = []
-    for movie in get_friends_unique_watched(user_data):
+    for movie in friends_unique_watched:
         if movie["host"] in user_data["subscriptions"]:
             movie_recs.append(movie)
             
@@ -197,9 +199,11 @@ def get_new_rec_by_genre(user_data):
     """  
     # Check if each friends' movie is user's most-watched genre
     # If yes, add to genre recs list if not already in it
+    friends_unique_watched = get_friends_unique_watched(user_data)
+    most_watched = get_most_watched_genre(user_data)
     genre_recs = []
-    for movie in get_friends_unique_watched(user_data):
-        if movie["genre"] == get_most_watched_genre(user_data):
+    for movie in friends_unique_watched:
+        if movie["genre"] == most_watched:
             genre_recs.append(movie)
     
     return genre_recs
@@ -212,10 +216,10 @@ def get_rec_from_favorites(user_data):
     """
     # Check if each of user's movies is in friends' list
     # If not, add to favorite recs list if not already in it
+    friends_watched = get_friends_watched(user_data)
     favorite_recs = []
     for movie in user_data["favorites"]:
-        if (movie not in get_friends_watched(user_data)
-                and movie not in favorite_recs):
+        if (movie not in friends_watched and movie not in favorite_recs):
             favorite_recs.append(movie)
 
     return favorite_recs
