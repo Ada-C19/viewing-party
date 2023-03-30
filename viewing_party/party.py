@@ -103,15 +103,15 @@ def get_available_recs(user_data):
     if user_data['watched'] == []:
         return movie_recs
 
-    for i in range(len(user_data["friends"])):
-        for j in range(len(user_data["friends"][i]["watched"])):
-            if user_data["friends"][i]["watched"][j] in user_data["watched"]:
+    for friend in range(len(user_data["friends"])):
+        for movie in range(len(user_data["friends"][friend]["watched"])):
+            movie_friend_has_watched = user_data["friends"][friend]["watched"][movie]
+            if movie_friend_has_watched in user_data["watched"]:
                 continue
-            elif user_data["friends"][i]["watched"][j] in movie_recs:
+            elif movie_friend_has_watched in movie_recs:
                 continue
-            elif user_data["friends"][i]["watched"][j]["host"] in\
-            user_data["subscriptions"]:
-                movie_recs.append(user_data["friends"][i]["watched"][j])
+            elif movie_friend_has_watched["host"] in user_data["subscriptions"]:
+                movie_recs.append(movie_friend_has_watched)
     
     return movie_recs
 
