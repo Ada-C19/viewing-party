@@ -146,3 +146,20 @@ def get_new_rec_by_genre(user_data):
         if movie["genre"] == most_common_genre:
             recs_by_genre.append(movie)
     return recs_by_genre
+
+def get_rec_from_favorites(user_data):
+    recs_from_faves= []
+    user_unique_recs = get_unique_watched(user_data)
+
+    favorites = []
+    for movie in user_data["favorites"]:
+        favorites.append(movie["title"])
+    
+    for favorite_title in favorites:
+        for movie in user_unique_recs:
+            if movie["title"] == favorite_title:
+                recs_from_faves.append(movie)
+
+
+
+    return recs_from_faves
