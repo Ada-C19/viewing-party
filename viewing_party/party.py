@@ -63,40 +63,49 @@ def get_most_watched_genre(user_data):
             if (frequency > counter):
                 counter = frequency
                 genre = i
-                
+
     return genre
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
-def get_unique_watched(user_data):
-    # initialize empty set
+def get_friends_movie_titles(user_data):
     friends_movies = set()
-    unique_movies = []
-    # loop through the movies in watched
+
     for friend in user_data["friends"]:
         for movie in friend["watched"]:
-            # add movies to a set
-            friends_movies.add(movie["title"])    # return the set
-    # for all movies in user_data friends
-    # for friend in user_data["friends"]:
-    #     for i in range(len(friend["watched"])):
-            
-    #         # if movie title not in unique movies
-    #         if friend["watched"][i]["title"] not in unique_movies:
-    #             # add movie dict to unique movies
-    #             unique_movies.append(friend["watched"][i])
+            friends_movies.add(movie["title"])
+    
+    return friends_movies
+
+def get_unique_watched(user_data):
+    # initialize empty set
+    friends_movies = get_friends_movie_titles(user_data)
+    unique_movies = []
+    
     for movie in user_data["watched"]:
         if movie["title"] not in friends_movies:
             unique_movies.append(movie)
-            
 
-    return unique_movies    
+    return unique_movies        
 
-    
+def get_friends_unique_watched(user_data):
+    friends_movie_titles = get_friends_movie_titles(user_data)
+    user_movie_titles = set()
 
+    for movie in user_data["watched"]:
+        user_movie_titles.add(movie["title"])
 
-    
+    friends_unique = friends_movie_titles - user_movie_titles
+    friends_unique_movies = []
+
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            if movie["title"] in friends_unique:
+                if movie not in friends_unique_movies:
+                    friends_unique_movies.append(movie)
+
+    return friends_unique_movies    
         
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
