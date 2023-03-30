@@ -1,4 +1,7 @@
+import copy
+
 # ------------- WAVE 1 --------------------
+
 
 def create_movie(title, genre, rating):
     movie = {
@@ -31,8 +34,9 @@ def watch_movie(user_data, title):
 
     return user_data
 
-# -----------------------------------------
 # ------------- WAVE 2 --------------------
+
+
 def get_watched_avg_rating(user_data):
     if not user_data["watched"]:
         return 0.0
@@ -51,7 +55,6 @@ def get_watched_avg_rating(user_data):
     # get rating value
     # compare values
     # count number
-
     # calculate average
 
 
@@ -76,37 +79,14 @@ def get_most_watched_genre(user_data):
 
 # ------------- WAVE 3 --------------------
 def get_unique_watched(user_data):
-    # initialize emoty list
-    # nested dictionary - friends - watched
-    # append list
+    unique_watched = copy.deepcopy(user_data["watched"])
 
-    friends_list = []
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            if movie in unique_watched:
+                unique_watched.remove(movie)
 
-    for each_friend_dict in user_data.get("friends", []):
-        for each_movie_dict in each_friend_dict.get("watched", []):
-            friends_list.append(each_movie_dict)
-
-# initialize a set of friend's list title
-# loop through the friends_list:
-# get value of title
-# if title is existent, add the title to the set -
-
-    friends_titles = set()
-    for each_movie_dict in friends_list:
-        title = each_movie_dict.get("title")
-        if title:
-            friends_titles.add(title)
-
-# loop through the user_data["watched"]
-
-    unique_movies = []
-    for each_movie_dict in user_data["watched"]:
-        title = each_movie_dict.get("title", [])
-        # if title is not in friends's list then add the dictionary to the unique list
-        if title and title not in friends_titles:
-            unique_movies.append(each_movie_dict)
-
-    return unique_movies
+    return unique_watched
 
 
 def get_friends_unique_watched(user_data):
@@ -141,12 +121,13 @@ def get_new_rec_by_genre(user_data):
     friends_recs = get_friends_unique_watched(user_data)
     user_fav_genre = get_most_watched_genre(user_data)
     final_recs = []
-    
+
     for movie in friends_recs:
         if movie["genre"] is user_fav_genre:
             final_recs.append(movie)
 
     return final_recs
+
 
 def get_rec_from_favorites(user_data):
     user_recs = get_unique_watched(user_data)
