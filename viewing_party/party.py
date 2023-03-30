@@ -98,7 +98,7 @@ def get_friends_unique_watched(user_data):
 # ------------- WAVE 4 --------------------
 
 def get_available_recs(user_data):
-    user_subscriptions = [host for host in user_data['subscriptions']]
+    user_subscriptions = set(host for host in user_data['subscriptions'])
     friends_unique_watched = get_friends_unique_watched(user_data)
     
     return [movie for movie in friends_unique_watched if movie['host'] in user_subscriptions]
