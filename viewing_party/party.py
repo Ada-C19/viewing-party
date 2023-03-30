@@ -173,7 +173,7 @@ def get_rec_from_favorites(user_data):
 
         # Loop over movies watched by friend
         for movie in friend_movies:
-            # Conditional if movie is favorite genre/user has not watched
+            # Conditional if movie is in favorites/friends have not watched
             if movie in user_data["favorites"] and movie not in friend_movies:
                 # if so, add to list of recommended movies
                 recommended_movies.append(movie)
