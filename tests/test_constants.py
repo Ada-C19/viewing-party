@@ -43,7 +43,7 @@ ACTION_1 = {
     "rating": 2.2
 }
 ACTION_2 = {
-   "t itle": "2 JavaScript 2 React",
+    "title": "2 JavaScript 2 React",
     "genre": "Action",
     "rating": 4.2
 }
