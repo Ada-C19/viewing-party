@@ -65,16 +65,80 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
+def get_unique_watched(user_data):
+    """
+    user_data: dict with "watched" list of dictionaries and "friends" list of dictionaries
+    """
 
+    # Create list of all friends' watched movies
+    friends_watched = []
+    for friend in user_data["friends"]:
+        friends_watched += friend["watched"]
+    
+    # Create list of movies that only user_data has watched
+    unique_watched = []
+    for movie in user_data["watched"]:
+        if movie not in friends_watched:
+            unique_watched.append(movie)
+    
+    return unique_watched
+    
+def get_friends_unique_watched(user_data):
+    friends_unique_watched = []
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            if movie not in user_data["watched"] and movie not in friends_unique_watched:
+                friends_unique_watched.append(movie)
+    
+    return friends_unique_watched
+
+            
         
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
 
+<<<<<<< HEAD
 def get_available_recs(user_data):
     
     subscriptions = user_data["subscriptions"] # list of strings
     watched_list = user_data["watched"] # list of dicts of watched movies
+=======
+# -----------------------------------------
+# ------------- WAVE 5 --------------------
+# -----------------------------------------
+def get_new_rec_by_genre(user_data):
+    genres = []
+    for movie in user_data["watched"]:
+        genres.append(movie["genre"])
+
+    # Determine most frequent genre from watched list   
+    try:
+        fav_genre = max(genres, key=genres.count)
+    # Capture exception for when user_data's watched list is empty
+    except ValueError:
+        fav_genre = None
+
+    movie_recs = []
+    # Create a list of all the movies friends have watched that user_data has not
+    friends_movies = get_friends_unique_watched(user_data)
+    
+    for movie in friends_movies:
+        if movie["genre"] == fav_genre:
+            movie_recs.append(movie)
+    
+    return movie_recs
+
+def get_rec_from_favorites(user_data):
+    # Create list of movies only watched by user, not by friends
+    friends_not_watched = get_unique_watched(user_data)
+    
+    # Create list of movies from favorites that have not been watched by friends
+    fav_movie_recs = [movie for movie in user_data["favorites"] if movie in friends_not_watched]
+ 
+    return fav_movie_recs
+
+>>>>>>> dd04daac08bae9f850bcdef65c46d8ddc2e35f6c
 
     movie_recs = []
 
