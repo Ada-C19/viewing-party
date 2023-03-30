@@ -138,3 +138,11 @@ def get_available_recs(user_data):
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
+def get_new_rec_by_genre(user_data):
+    recs_by_genre = []
+    most_common_genre = get_most_watched_genre(user_data)
+    unique_movies = get_friends_unique_watched(user_data)
+    for movie in unique_movies:
+        if movie["genre"] == most_common_genre:
+            recs_by_genre.append(movie)
+    return recs_by_genre
