@@ -52,6 +52,10 @@ def get_watched_avg_rating(user_data):
 def get_most_watched_genre(user_data):
     genre_list = []
     counter = 0
+
+    if len(user_data["watched"]) == 0:
+        return None
+    
     for i in range(len(user_data["watched"])):
         genre_list.append(user_data["watched"][i]["genre"]) 
         for i in genre_list:
@@ -59,12 +63,8 @@ def get_most_watched_genre(user_data):
             if (frequency > counter):
                 counter = frequency
                 genre = i
+                
     return genre
-    # for key,value in genre_dict.items():
-    #     if value not in genre_dict        
-    
-
-    return most_watched
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
