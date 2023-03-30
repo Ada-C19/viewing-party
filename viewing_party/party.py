@@ -1,5 +1,6 @@
 import statistics
 from statistics import mode
+
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
@@ -31,7 +32,6 @@ def watch_movie(user_data, title):
         
     return user_data
 
-
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
@@ -58,6 +58,7 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
+
 def get_unique_watched(user_data):
     user_movies = [movie for movie in user_data["watched"]]
     friend_movies = [movie for friend_dict in user_data["friends"] for movie in friend_dict["watched"]]
@@ -76,11 +77,10 @@ def get_friends_unique_watched(user_data):
     # unique_movies = dict.fromkeys(unique_movies)
     return unique_movies
 
-
-
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
+
 def get_available_recs(user_data):
     recommended = []
     for friend_dict in user_data["friends"]:
@@ -90,7 +90,23 @@ def get_available_recs(user_data):
                     recommended.append(movie)
 
     return recommended
+
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
+def get_new_rec_by_genre(user_data):
+    recommended = []
+
+    genres = []
+    if not len(user_data["watched"]):
+        return recommended
+    for movie in user_data["watched"]:
+        genres.append(movie["genre"])
+    genre = mode(genres)
+
+    for friend_dict in user_data["friends"]:
+        for movie in friend_dict["watched"]:
+            if movie["genre"] == genre and movie not in user_data["watched"] and movie not in recommended:
+                recommended.append(movie)
+    return recommended
