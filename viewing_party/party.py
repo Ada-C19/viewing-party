@@ -203,19 +203,26 @@ def get_available_recs(user_data):
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
+    for movie in user_data['watched']:
+        #get the genre of the movie
+        movie_genre = movie['genre']
+        
 def get_new_rec_by_genre(user_data):
+    
     recommended_movies = []
-    user_frequently_watched_genre = get_most_watched_genre(user_data)
     user_watched_movies = user_data['watched']
+    user_frequently_watched_genre = get_most_watched_genre(user_data)
     friends_watched_movies = get_friends_unique_watched(user_data)
     
-    for movie in user_watched_movies:
-        if movie not in friends_watched_movies:
-            recommended_movies.append(movie)
-
-        if not user_watched_movies['genre'] in list(set(user_frequently_watched_genre)):
-            recommended_movies.remove(movie)
-    
+    # go through the list of movies that only friends have watched
+    for movie in friends_watched_movies:
+        #get the genre of the movie
+            movie_genre = movie['genre']
+            # if the movie isn't one that the user has watched and the movie genre matches their favorite:
+            if not movie in user_watched_movies and movie_genre == user_frequently_watched_genre:
+                #append the movie to the recommended list
+                recommended_movies.append(movie)
+                
     return recommended_movies
 
 
