@@ -1,4 +1,22 @@
 # Viewing Party
+# Team Contract
+  We will meet Mon - Thurs from 6-8pm. If we are falling behind we will talk on Wednesday to meet in the morning as well. 
+  Feedback:
+  - Listen to the full explanation. Do not interrupt. 
+  - We can write notes to not forget our idea but don't interrupt speaker. 
+  - Direct feedback
+
+  Learning styles:
+  - When one of us is confused, give them a second to look at it - then explain. 
+  - If someone is still not understamding take a little break, maybe find a visual video or graphic to explain. 
+  - especially with nested data it helps me to write it out by hand. 
+  - take a portion of the code and look at what is doing in another file, python tutor, etc. 
+
+  Goals:
+  - finish before it's due!
+  - Practice talking through code.
+  - having fun!
+  - Be open to others solutions and expand how we think we can solve code. Collaborate on the final solution. 
 
 ## Skills Assessed
 
