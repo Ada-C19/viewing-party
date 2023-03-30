@@ -1,4 +1,7 @@
+
+# -----------------------------------------
 # ------------- WAVE 1 --------------------
+# -----------------------------------------
 
 def create_movie(title, genre, rating):
     if title and genre and rating:
@@ -24,6 +27,41 @@ def watch_movie(user_data, title):
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
+def get_watched_avg_rating(user_data):
+
+    if not user_data["watched"]: # or if empty string
+        return 0.0
+    
+    total_rating = 0
+    for movie in user_data["watched"]:
+        total_rating += movie["rating"]
+    average_rating_watched = total_rating / len(user_data["watched"])
+    print(average_rating_watched)
+    return average_rating_watched
+    
+def get_most_watched_genre(user_data):
+
+    if user_data["watched"] == []:
+        return None
+    
+    genre_counter = {}
+    for movie in user_data["watched"]:
+        genre = movie["genre"]
+        if genre in genre_counter:
+            genre_counter[genre] += 1
+        else:
+            genre_counter[genre] = 1
+    print(genre_counter)
+
+    most_watched_genre_count = 0
+    most_watched_genre = ""
+    # add a new variable to put the key in. Initialize to None or empty string
+    for key, value in genre_counter.items():
+        if value > most_watched_genre_count:
+            most_watched_genre_count = value
+            most_watched_genre = key
+    print(most_watched_genre)
+    return most_watched_genre
 
 
 # -----------------------------------------
@@ -53,16 +91,29 @@ def get_friends_unique_watched(user_data):
                 friends_unique_watched.append(movie)
     
     return friends_unique_watched
-
-            
         
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
 
+def get_available_recs(user_data):
+    
+    subscriptions = user_data["subscriptions"] # list of strings
+    watched_list = user_data["watched"] # list of dicts of watched movies
+
+    movie_recs = []
+
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            if movie not in user_data["watched"] and movie in friend["watched"] and movie["host"] in subscriptions:
+                movie_recs.append(movie)
+        return movie_recs
+
+
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
+
 def get_new_rec_by_genre(user_data):
     genres = []
     for movie in user_data["watched"]:
@@ -95,69 +146,7 @@ def get_rec_from_favorites(user_data):
     return fav_movie_recs
 
 
-# ------------- WAVE 1 --------------------
-
-# def create_movie(title, genre, rating):
-#     pass
-
-# If parameters title, genre, rating are all truthy:
-# Return a dictionary with: 3 key-value pairs 
-# If title, genre, and rating are falsy: return NONE
 
 
-# def add_to_watched(user_data, movie):
-#     pass
-# Dictionary of list of dictionaries
-# Value of user_data is a dictionary with key: "watched", value is a list of dictionary with movies watched
-# Empty list --> no movies in watched list
-#     user_data = {
-#        "watched": [movie]
-#    }
-# How can I add to the "watched" list?
-# add "movie" to the watched list inside of user_data
-# return user data
 
-
-# def add_to_watchlist(user_data, movie):
-#     pass
-
-# Dictionary of list of dictionaries
-# Value of user_data is a dictionary with key: "watchlist", value is a list of dictionary with movies watched
-# Empty list --> no movies in watched list
-# my_watchlist_dict = {
-# "watchlist:" [
-#      {
-#        "title": "Title A",
-#        "genre": "Horror",
-#        "rating": 3.5
-#      }
-#            ]
-# }
-
-# add "movie" to the watchlist list inside of user_data
-# return user data
-
-# def watch_movie(user_data, title):
-#     pass
-# The value of user_data is a dictonary with "watchlist" and "watched" -Keys
-# Value of keys is a list of the watchlist and list of watched movies
-# 
-
-# -----------------------------------------
-# ------------- WAVE 2 --------------------
-# -----------------------------------------
-
-
-# -----------------------------------------
-# ------------- WAVE 3 --------------------
-# -----------------------------------------
-
-        
-# -----------------------------------------
-# ------------- WAVE 4 --------------------
-# -----------------------------------------
-
-# -----------------------------------------
-# ------------- WAVE 5 --------------------
-# -----------------------------------------
 
