@@ -61,20 +61,20 @@ def get_most_watched_genre(user_data):
     """
     Returns a string of most watched genre by searching in user's list of watched movies. 
     """ 
-    frequency_genre = {}
+    genre_freq = {}
 
     if not user_data['watched']:
         return None 
     for movie in user_data['watched']:
         genre = movie['genre']
-        if genre in frequency_genre:
-            frequency_genre[genre] += 1
+        if genre in genre_freq:
+            genre_freq[genre] += 1
         else:
-            frequency_genre[genre] = 1
+            genre_freq[genre] = 1
     
-    max_frequency = max(frequency_genre.values())
+    max_frequency = max(genre_freq.values())
     most_common_genre = None   
-    for genre, frequency in frequency_genre.items():
+    for genre, frequency in genre_freq.items():
         if frequency == max_frequency:
             most_common_genre = genre
             break
@@ -86,53 +86,63 @@ def get_most_watched_genre(user_data):
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 def get_user_titles(user_data):
+    """
+    Helper function that returns list of strings movie titles from user watched list.
+    """
     user_titles  = []
     for movie in user_data["watched"]:
         user_titles.append(movie["title"])
     return user_titles
 
 def get_friend_titles(user_data):
-    friend_titles = []
-    for friend_movie in user_data["friends"]:
-        for watched_dict in friend_movie['watched']:
-            friend_titles.append(watched_dict["title"])
-    return friend_titles
+    """
+    Helper function that returns list of strings containing the tiles that the friends have watched. 
+    """ 
+    friend_movie_titles = []
+    for friend_movies in user_data["friends"]:
+        for watched_movie in friend_movies['watched']:
+            friend_movie_titles.append(watched_movie["title"])
+    return friend_movie_titles
 
 def get_unique_watched(user_data):
+    """
+    Get the movies that user has watched, but none of their friends have watched.
+    """
     user_titles = get_user_titles(user_data)
     friend_titles = get_friend_titles(user_data)
     
-    user_unique_list = []
+    only_user_watched = []
   
-    set_difference = set(user_titles) - set(friend_titles)
+    only_user_titles = set(user_titles) - set(friend_titles)
    
     for movie in user_data["watched"]:
-        for title in set_difference:
+        for title in only_user_titles:
             if movie["title"] == title:
-                user_unique_list.append(movie)
-    return user_unique_list
+                only_user_watched.append(movie)
+    return only_user_watched
 
 def get_friends_unique_watched(user_data):
+    """
+    Returns list of dictionaries with movies that at least one of the user's friends have watched, 
+    but the user has not watched.
+    """
     user_titles = get_user_titles(user_data)
     friend_titles = get_friend_titles(user_data)
 
-    friend_unique_list = []
-    set_difference = set(friend_titles) - set(user_titles)
-    
+    only_friends_watched = []
+    only_friends_titles = set(friend_titles) - set(user_titles)
+    all_friend_watched_movies = {}
 
-    for friend_movie in user_data["friends"]:
-        for friends_watched_dict in friend_movie['watched']:
-            for title in set_difference:
-                if friends_watched_dict["title"] == title:
-                    friend_unique_list.append(friends_watched_dict)
-    no_duplicates_friends_list = []
-    for item in friend_unique_list:
-        if item not in no_duplicates_friends_list:
-            no_duplicates_friends_list.append(item)
-   
     
-    return no_duplicates_friends_list
+    for friend in user_data["friends"]:
+        for movie in friend['watched']:
+            all_friend_watched_movies[movie["title"]]= (movie)
 
+    for title in all_friend_watched_movies.keys():
+        if title in only_friends_titles:
+            only_friends_watched.append(all_friend_watched_movies[title]) 
+    
+    return only_friends_watched
 
 
 # -----------------------------------------
