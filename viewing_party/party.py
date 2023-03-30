@@ -4,6 +4,7 @@
 def create_movie(title, genre, rating):
     new_movie = {}
 
+#   Check to see if there is a title, genre, rating
     if not title or not genre or not rating:
         return None
     else:
@@ -14,14 +15,17 @@ def create_movie(title, genre, rating):
     return new_movie
 
 def add_to_watched(user_data, movie):
+#   Add movie to user's watched list
     user_data["watched"].append(movie)
     return user_data
 
 def add_to_watchlist(user_data, movie):
+#   Add movie to user's watchlist list
     user_data["watchlist"].append(movie)
     return user_data
 
 def watch_movie(user_data, title):
+#   Check to see if movie's in watchlist, and put into watched
     for movie in user_data["watchlist"]:
         if movie["title"] == title:
             user_data["watchlist"].remove(movie)
@@ -53,12 +57,14 @@ def get_most_watched_genre(user_data):
     if not user_data["watched"]:
         return None
     
+#   Count frequency of genre
     for movies in user_data["watched"]:
         if movies["genre"] not in genre_dict:
             genre_dict[movies["genre"]] = 1
         else:
             genre_dict[movies["genre"]] += 1
 
+#   Find the most common genre
     for genre, freq in genre_dict.items():
         if freq > largest_value:
             largest_value = freq
@@ -76,10 +82,13 @@ def get_unique_watched(user_data):
     unique_movies = []
     friend_movies = []
 
+#   Create a list of movies that friends have
     for watched_list in user_data["friends"]:
         for movies in watched_list["watched"]:
             friend_movies.append(movies)
 
+#   Check to see if there are common movies between user movies and friends movies
+#   Adds uncommon movies for user
     for user_movies in user_data["watched"]:
         if user_movies not in friend_movies:
             unique_movies.append(user_movies)
@@ -90,9 +99,12 @@ def get_friends_unique_watched(user_data):
     unique_movies = []
     user_movies = []
 
+#   Create a list of movies that users have
     for movies in user_data["watched"]:
         user_movies.append(movies)
 
+#   Check to see if there are common movies between user movies and friends movies
+#   Adds uncommon movies for friends
     for watched_list in user_data["friends"]:
         for movies in watched_list["watched"]:
             if movies not in user_movies and movies not in unique_movies:
@@ -107,6 +119,7 @@ def get_available_recs(user_data):
     recommended = []
     unique_movies = get_friends_unique_watched(user_data)
 
+#   Recommend movies with matching host and subscription
     for subscription in user_data["subscriptions"]:
         for movies in unique_movies:
             if subscription == movies["host"]:
@@ -123,9 +136,10 @@ def get_new_rec_by_genre(user_data):
     unique_movies = get_friends_unique_watched(user_data)
     most_common_genre = get_most_watched_genre(user_data)
 
-    for unique_movie in unique_movies:
-        if unique_movie["genre"] == most_common_genre:
-            recommended_by_genre.append(unique_movie)
+#   Recommends movies from friends unique list based on most common genre
+    for movie in unique_movies:
+        if movie["genre"] == most_common_genre:
+            recommended_by_genre.append(movie)
     
     return recommended_by_genre
 
@@ -133,10 +147,12 @@ def get_rec_from_favorites(user_data):
     friend_movies = []
     recommendations = []
     
+#   Create list of friends movies
     for watched_list in user_data["friends"]:
         for movies in watched_list["watched"]:
             friend_movies.append(movies)
 
+#   Recommend movies in user favorites but not in friends movies
     for favorites in user_data["favorites"]:
         if favorites not in friend_movies:
             recommendations.append(favorites)
