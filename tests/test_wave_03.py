@@ -55,18 +55,10 @@ def test_friends_unique_movies_not_duplicated():
     # Assert
     assert len(friends_unique_movies) == 3
 
-    #raise Exception("Test needs to be completed.")
+    assert INTRIGUE_3 in friends_unique_movies
+    assert HORROR_1 in friends_unique_movies
+    assert FANTASY_4 in friends_unique_movies
 
-    # can we use for loop?
-    # check no duplicates in friends_unique_movies
-    non_duplicate_list = []
-    for movie in friends_unique_movies:
-        if movie not in non_duplicate_list:
-            non_duplicate_list.append(movie)
-    assert len(non_duplicate_list) == len(friends_unique_movies)
-
-    for movie in friends_unique_movies:
-        assert movie not in amandas_data["watched"]
     # *************************************************************************************************
     # ****** Add assertions here to test that the correct movies are in friends_unique_movies **********
     # **************************************************************************************************

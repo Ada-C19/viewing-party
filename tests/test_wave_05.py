@@ -61,6 +61,7 @@ def test_new_genre_rec_from_empty_friends():
     # assert
     # are we supposed to return an empty list?
     assert recommendations == []
+    assert len(recommendations) == 0
     # *********************************************************************
     # ****** Complete the Act and Assert Portions of these tests **********
     # *********************************************************************
