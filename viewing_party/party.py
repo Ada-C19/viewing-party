@@ -158,6 +158,26 @@ def get_friends_unique_watched(user_data):
     input: user_data dictionary with a "watched" list of movie dictionaries
     output: list of dictionaries (which represents list of movies)
     """
+    user_watched_list = []
+    friends_watched_list = []
+    movies_friends_watched_that_user_didnt_watch = []
+
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            friends_watched_list.append(movie)
+
+    for user in user_data["watched"]:
+        user_watched_list.append(user)
+
+    for movie in friends_watched_list:
+        if movie not in user_watched_list and movie not in movies_friends_watched_that_user_didnt_watch:
+            movies_friends_watched_that_user_didnt_watch.append(movie)
+
+    return movies_friends_watched_that_user_didnt_watch
+
+
+
+
 
 
 
