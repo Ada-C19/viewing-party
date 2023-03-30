@@ -74,7 +74,6 @@ def get_watched_avg_rating(user_data):
         for movie_data in user_data['watched']:
         
             if 'rating' in movie_data:
-                # rating = movie_data['rating']
                 num_of_ratings.append(movie_data['rating'])
                 rating_sum += movie_data['rating']
                 average_rating = rating_sum / len(num_of_ratings)
@@ -105,10 +104,51 @@ def get_most_watched_genre(user_data):
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 
-        
+def get_unique_watched(user_data):
+
+    user_unique = []
+    for user_watched in user_data['watched']:
+        if not user_watched in user_unique:
+            user_unique.append(user_watched)
+
+    for friends in user_data['friends']:
+        for watched in friends['watched']:
+            if watched in user_unique:
+                user_unique.remove(watched)
+
+    return user_unique
+
+def get_friends_unique_watched(user_data):
+    unique = []
+    for friends in user_data["friends"]:
+        for watched in friends["watched"]:
+            if watched not in unique:
+                unique.append(watched)
+
+    for movie_data in user_data["watched"]:
+        if movie_data in unique:
+            unique.remove(movie_data)
+    return unique
+
+
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
+
+def get_available_recs(user_data):
+
+    user_movies = []
+    for user in user_data['watched']:
+        user_movies.append(user['title'])
+
+    recommend_movies = []
+    for friends in user_data['friends']:
+        for watched in friends['watched']:
+           if not watched['title'] in user_movies and watched['host'] in user_data['subscriptions'] and not watched['title'] in recommend_movies:
+               recommend_movies.append(watched)
+
+    return recommend_movies
+
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
