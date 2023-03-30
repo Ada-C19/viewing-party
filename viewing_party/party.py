@@ -50,15 +50,16 @@ def get_watched_avg_rating(user_data):
         return 0
     avg_rating = sum(avg_list) / len(avg_list)
     return avg_rating
-
-
+#T - O(n)
+#S O(1 or n, we're not sure about this one)
 def get_most_watched_genre(user_data):
     watched = user_data["watched"]
     genre_freq = [movie["genre"] for movie in watched]
     if genre_freq == []:
         return None
     return max(set(genre_freq), key=genre_freq.count)
-
+#T - O(n)
+#S - O(n)
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
@@ -66,7 +67,8 @@ def get_unique_watched(user_data):
     user_watched = user_data["watched"]
     friends_watched = set(movie["title"] for friend in user_data["friends"] for movie in friend["watched"])
     return [movie for movie in user_watched if movie["title"] not in friends_watched]
-
+#T - looping through bought O(n^2)
+#S - O(n)
 def get_friends_unique_watched(user_data):
     user_watched = set(movie["title"] for movie in user_data["watched"])
     friends_watched = [movie for friend in user_data["friends"] for movie in friend["watched"]]
@@ -77,7 +79,8 @@ def get_friends_unique_watched(user_data):
                 if movie not in unique_watched:
                     unique_watched.append(movie)
     return unique_watched
-
+#T - O(n^2)
+#S - O(n)
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
@@ -112,7 +115,8 @@ def get_new_rec_by_genre(user_data):
                 recommended_movies.append(movie)
                 
     return recommended_movies
-
+#T - O(n^2)
+#S - O(n)
 
 def get_rec_from_favorites(user_data):
     watched_by_friends = []
@@ -127,3 +131,5 @@ def get_rec_from_favorites(user_data):
             recommended_movies.append(movie)
             
     return recommended_movies
+#T - O(n^2)
+#S- O(n)
