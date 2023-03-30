@@ -40,7 +40,8 @@ def watch_movie(user_data, title):
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
 
-
+# Alternative version commented out 
+#
 # def get_watched_avg_rating(user_data):
 #     if not user_data["watched"]:
 #         return 0
@@ -120,9 +121,8 @@ def get_friends_unique_watched(user_data):
 
     return list(set(movies_only_friends_watched))
     
-
+# Alternative version commented out 
 # def get_unique_watched(user_data):
-
     # user_watched_movies = {movie['title']: movie for movie in user_data['watched']}
 
     # for movie in user_data['watched']:
@@ -138,6 +138,7 @@ def get_friends_unique_watched(user_data):
     # return [user_watched_movies[movie] for movie in unique_watched_movies]
 
 
+# Alternative version commented out 
 # def get_friends_unique_watched(user_data):
 #     user_watched_movies = {movie['title']: movie for movie in user_data['watched']}
 #     friends_watched_movies = {}
@@ -166,7 +167,7 @@ def get_available_recs(user_data):
     return recommended_movies
 
 
-
+# Alternative version commented out 
 # def get_available_recs(user_data):
 #     user_watched_movies = {movie['title']: movie for movie in user_data['watched']}
 #     friends_watched_movies = {}
@@ -206,6 +207,7 @@ def get_rec_from_favorites(user_data):
 
     return recommended
 
+# Alternative version commented out 
 # def get_rec_from_favorites(user_data):
 #     recommended = []
     
