@@ -174,30 +174,9 @@ def get_available_recs(user_data):
 
 
 
-
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
-
-# def get_new_rec_by_genre(user_data):
-#     recomended_by_genre = [] 
-   
-#     for friend in user_data["friends"]:
-#         for watched in friend["watched"]:
-#             genre = watched['genre']
-#             if genre in user_data["watched"][0]["genre"]:
-#                 recomended_by_genre.append(genre)
-#     print(recomended_by_genre)
-#     return recomended_by_genre
-    
-    
-    for movie in range(len(friends_unique_watched)):
-        if top_genre == friends_unique_watched[movie]["genre"] :
-            recommended_movies_by_genre.append(friends_unique_watched[movie])
-                    
-    return recommended_movies_by_genre
-
-
 
 # returns list of movie dictionaries that user has watched but friends have not based on users favorite movies
 
