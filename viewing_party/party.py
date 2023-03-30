@@ -27,6 +27,9 @@ def add_to_watchlist(user_data, movie):
 
 
 def watch_movie(user_data, title):
+    '''This function removes a specified movie from user's
+    watchlist and adds it to their list of watched movies'''
+
     for movie in user_data["watchlist"]:
         if title == movie["title"]:
             user_data["watched"].append(movie)
@@ -62,9 +65,8 @@ def get_most_watched_genre(user_data):
     user_genres = {}
     most_watched = None
 
-    # Iterates through each movie in watched list and adds
-    # each genre to a user_genres dictionary with an initial value of 1.
-    # If the genre already exists in user_genres, it +1 to the value.
+    # Creates dictionary from list of movies watched
+    # with genres as keys and their occurences as values
     for movie in user_data["watched"]:
         if movie["genre"] not in user_genres:
             user_genres[movie["genre"]] = 1
@@ -80,6 +82,7 @@ def get_most_watched_genre(user_data):
 # ------------- WAVE 3 --------------------
 
 def get_unique_watched(user_data):
+    # Creates deep copy to avoid changing original list
     unique_watched = copy.deepcopy(user_data["watched"])
 
     for friend in user_data["friends"]:
@@ -95,7 +98,7 @@ def get_friends_unique_watched(user_data):
 
     for friend in user_data["friends"]:
         for movie in friend["watched"]:
-            if (movie not in user_data["watched"] and 
+            if (movie not in user_data["watched"] and
                     movie not in unique_watched):
                 unique_watched.append(movie)
 
