@@ -111,9 +111,6 @@ def get_new_rec_by_genre(user_data):
     return [movie for movie in friends_unique_watched if movie['genre'] == top_genre]
 
 def get_rec_from_favorites(user_data):
-    top_genre = get_most_watched_genre(user_data)
     user_unique_watched = get_unique_watched(user_data)
-
-    recommendations = [movie for movie in user_unique_watched if movie['genre'] == top_genre]
-
-    return [movie for movie in user_data['favorites'] if movie in recommendations]
+    
+    return [movie for movie in user_unique_watched if movie in user_data['favorites']]
