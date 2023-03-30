@@ -123,10 +123,10 @@ def get_friends_unique_watched(user_data):
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
 def get_available_recs(user_data):
-
+#Call get_friends_unique_watched on user data and assign to user_not_watched
     user_not_watched = get_friends_unique_watched(user_data)
     movie_recs = []
-
+#Check if movie from friends_unique_watched == host in user_data 
     for movie in user_not_watched:
         if movie["host"] in user_data["subscriptions"]:
             movie_recs.append(movie) 
