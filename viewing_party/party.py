@@ -35,6 +35,8 @@ def watch_movie(user_data, title):
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
+import statistics
+
 
 def get_watched_avg_rating(user_data):
 
@@ -52,42 +54,14 @@ def get_watched_avg_rating(user_data):
 
 
 def get_most_watched_genre(user_data):
-    counter_fantasy = 0
-    counter_horror = 0
-    counter_action = 0
-    counter_intrigue = 0
-
+    genre = []
+    
     if user_data["watched"] == []:
         return None
     for movie in user_data["watched"]:
-        if movie["genre"] == "Fantasy":
-            counter_fantasy += 1
-        elif movie["genre"] == "Action":
-            counter_action += 1
-        elif movie["genre"] == "intrigue":
-            counter_intrigue += 1
-        elif movie["genre"] == "Horror":
-            counter_horror += 1 
-
-    if  counter_fantasy > counter_horror and counter_fantasy > counter_action and \
-    counter_fantasy > counter_intrigue:
-        return "Fantasy"
-    
-    elif counter_horror > counter_action and counter_horror > counter_intrigue and \
-    counter_horror > counter_fantasy:
-        return "Horror"
-    
-    elif  counter_action > counter_horror and counter_action > counter_fantasy and \
-    counter_action > counter_intrigue:
-        return "Action"
-    
-    elif  counter_action > counter_horror and counter_action > counter_fantasy and \
-    counter_action > counter_intrigue:
-        return "Action"
-    
-    elif  counter_intrigue > counter_horror and counter_intrigue > counter_fantasy and \
-    counter_intrigue > counter_action:
-        return "Intrigue"
+        genre.append(movie["genre"])
+    return statistics.mode(genre)
+  
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
