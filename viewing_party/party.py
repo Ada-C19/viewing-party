@@ -161,5 +161,22 @@ def get_new_rec_by_genre(user_data):
 
 
 def get_rec_from_favorites(user_data):
-    favorites = []
-    pass
+    # List of friends
+    friends = user_data["friends"]
+    # Create empty list of recommended movies
+    recommended_movies = []
+
+    # # Loop over friends
+    for friend in friends:
+        # List of movies watched by friend
+        friend_movies = friend["watched"]
+
+        # Loop over movies watched by friend
+        for movie in friend_movies:
+            # Conditional if movie is favorite genre/user has not watched
+            if movie in user_data["favorites"] and movie not in friend_movies:
+                # if so, add to list of recommended movies
+                recommended_movies.append(movie)
+    
+    # return list of recommended movies
+    return recommended_movies
