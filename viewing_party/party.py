@@ -294,7 +294,6 @@ def get_available_recs(user_data):
 
 #USER_DATA = {"favorites": [{"genre": "horror", "host":"netflix", "rating": 4, "title": "parasite"}, {"genre": "fantasy", "host":"netflix", "rating": 4, "title": "cinderella"}], "friends": [{"watched": [{"genre": "horror", "host":"netflix", "rating": 4, "title": "parasite"}]}, {"watched": [{"genre": "horror", "host": "yyyyyy", "rating": 6, "title": "zzzzz"}]}], "subscriptions": ["netflix", "hulu"], "watched": [{"genre": "horror", "host":"netflix", "rating": 4, "title": "parasite"}, {"genre": "horror", "host": "vvvvvv", "rating": 7, "title": "bbbbbb"}, {"genre": "rrrrrrr", "host": "ffffff", "rating": 9, "title": "dddddd"}]}
 
-
 def get_new_rec_by_genre(user_data):
     # New dict will hold the most watched genre
     user_watched_list = user_data["watched"]
@@ -340,9 +339,6 @@ CLEAN_WAVE_5 = {'watched': [{'title': 'The Lord of the Functions: The Fellowship
 
 def get_rec_from_favorites(user_data):
 
-    if user_data["friends"] == []:
-        return []
-
     # Dict that holds the titles of the favorite movies.
     favorites_list = user_data["favorites"]
     friends_titles = []
@@ -357,20 +353,17 @@ def get_rec_from_favorites(user_data):
         for value in dict.values():
             for movie_watched in value:
                 title = movie_watched["title"]
-                print(title)
                 if title not in friends_titles:
                     friends_titles.append(title)
+
+    # Loop through Favorites list to compare titles
+    for movie in favorites_list:
+        favorite_title = movie["title"]
+        # Check if the movie is in the user's favorites and None of its friends have watched
+        if favorite_title not in friends_titles and movie not in result_favs:
+            result_favs.append(movie)            
                 
-                # Loop through Favorites list to compare titles
-                for movie in favorites_list:
-                    favorite_title = movie["title"]
-                    # print(favorite_title)
-                    # Check if the movie is in the user's favorites and None of its friends have watched
-                    if favorite_title not in friends_titles and movie not in result_favs:
-                        result_favs.append(movie)
 
     return result_favs
 
-# print(CLEAN_WAVE_5)
-# print("###################################################################################")
 print(get_rec_from_favorites(CLEAN_WAVE_5))
