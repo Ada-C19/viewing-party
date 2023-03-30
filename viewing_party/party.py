@@ -65,20 +65,27 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # ------------------------------------------
+from frozendict import frozendict
+
+# use frozendict to optimize time complexity, but trade off space
 def get_unique_watched(user_data):
     
-    unique_watched = []
     friends_watched = []
+    friends_watched_set = set()
+    watched_set = set()
 
     for friend in user_data.get("friends"):
         friends_watched.extend(friend.get("watched"))
-
+    
+    for movie in friends_watched:
+        friends_watched_set.add(frozendict(movie))
+        
     for movie in user_data.get("watched"):
-        if movie not in friends_watched and movie not in unique_watched:
-            unique_watched.append(movie)
+        watched_set.add(frozendict(movie))
 
-    return unique_watched
+    return list(watched_set.difference(friends_watched_set))
 
+# use nested loop, less space, more time when data gets big
 def get_friends_unique_watched(user_data):
     unique_watched = []
     friends_watched = []
