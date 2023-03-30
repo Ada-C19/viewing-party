@@ -437,41 +437,35 @@ def get_rec_from_favorites(user_data):
         # Check if movie is not watched by any of user's friends
         if movie["title"] not in friends_watched:
             rec_movies.append(movie)
+            
+        return rec_movies
 
 # ========================================= wave 05- # 2.  get_rec_from_favorites ========== SJ
 
-# Create a function named get_rec_from_favorites. 
-# take one parameter: user_data
+# # Create a function named get_rec_from_favorites. 
+# # take one parameter: user_data
 
-def get_rec_from_favorites(user_data):
+# def get_rec_from_favorites(user_data):
     
-    # Determine a list of recommended movies.
-    # A movie should be added to this list if and only if:
-    # The movie is in the user's "favorites"
+#     # Determine a list of recommended movies.
+#     # A movie should be added to this list if and only if:
+#     # The movie is in the user's "favorites"
 
-    list_of_recs = []
+#     list_of_recs = []
     
-    #  list of movies the fiends have watched
-    friend_movies = get_friends_movies(user_data)
+#     #  list of movies the fiends have watched
+#     friend_movies = get_friends_movies(user_data)
 
 
-    # user_data will have a field "favorites". 
-    # The value of "favorites" is a list of movie dictionaries
-    # This represents the user's favorite movies
-    # user_data["favorites"]
-    for movie in user_data["favorites"]: 
+#     # user_data will have a field "favorites". 
+#     # The value of "favorites" is a list of movie dictionaries
+#     # This represents the user's favorite movies
+#     # user_data["favorites"]
+#     for movie in user_data["favorites"]: 
         
-        # None of the user's friends have watched it
-        if movie not in friend_movies:
-            list_of_recs.append(movie)
+#         # None of the user's friends have watched it
+#         if movie not in friend_movies:
+#             list_of_recs.append(movie)
 
-    # Return the list of recommended movies
-    return list_of_recs
-
-
-
-
-
-    
-
-    return rec_movies
+#     # Return the list of recommended movies
+#     return list_of_recs
