@@ -110,3 +110,28 @@ def get_new_rec_by_genre(user_data):
             if movie["genre"] == genre and movie not in user_data["watched"] and movie not in recommended:
                 recommended.append(movie)
     return recommended
+
+def get_rec_from_favorites(user_data):
+    # user_data["favorites"] = [{}, {}]
+    recommended = []
+    # for friend_dict in user_data["friends"]:
+    #     for u_movie in user_data["favorites"]:
+    #         if u_movie not in friend_dict["watched"]:
+    #             # if movie["host"] in user_data["subscriptions"] and movie not in recommended:
+    #             recommended.append(u_movie)
+    # for u_movie in user_data["favorites"]:
+    #     for friend_dict in user_data["friends"]:
+    #         if u_movie not in friend_dict["watched"] and u_movie not in recommended:
+    #             recommended.append("u_movie")
+    # friends_movies = get_friends_unique_watched(user_data)
+    friends_watched = []
+    for item in user_data["friends"]:
+        for movie in item["watched"]:
+            friends_watched.append(movie)
+
+    for u_movie in user_data["favorites"]:
+        if not u_movie in friends_watched:
+            recommended.append(u_movie)
+    
+    return recommended
+
