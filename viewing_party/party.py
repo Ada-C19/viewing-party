@@ -32,8 +32,6 @@ def watch_movie(user_data, title):
 # WAVE 2
 
 # WAVE 3
-
-
 def get_unique_watched(user_data):
     friends_watched_movie = set()
     user_watched_movie = []
@@ -52,16 +50,6 @@ def get_unique_watched(user_data):
     return unique_movie_watched
 
 # WAVE 4
-#   - `user_data` will have a field `"subscriptions"`. The value of `"subscriptions"` is a list of strings
-#     - This represents the names of streaming services that the user has access to
-#     - Each friend in `"friends"` has a watched list. Each movie in the watched list has a `"host"`, which is a string that says what streaming service it's hosted on
-# - Determine a list of recommended movies. A movie should be added to this list if and only if:
-#   - The user has not watched it
-#   - At least one of the user's friends has watched
-#   - The `"host"` of the movie is a service that is in the user's `"subscriptions"`
-# - Return the list of recommended movies
-
-
 def get_available_recs(user_data):
     recommended_movies = []
     user_subscription = set()
@@ -88,27 +76,10 @@ def get_available_recs(user_data):
         # check the movie is not in user_watched_movies and its host is in user_subscription
         if movie_info["title"] not in user_watched_movies and movie_info["host"] in user_subscription:
             recommended_movies.append(movie_info)
-            # rec_with_duplicates.add(movie_info["title"])
-
-    #     if movie_info["title"] in rec_with_duplicates:
-    #         recommended_movies.append(movie_info)
-    # print(rec_with_duplicates)
-    # print(f"final:{recommended_movies}")
+           
     return recommended_movies
 
 # WAVE 5
-# 1. Create a function named  `get_new_rec_by_genre`. This function should...
-
-# - take one parameter: `user_data`
-# - Consider the user's most frequently watched genre. Then,
-# determine a list of recommended movies.
-# A movie should be added to this list if and only if:
-#   - The user has not watched it
-#   - At least one of the user's friends has watched
-#   - The `"genre"` of the movie is the same as the user's most frequent genre
-# - Return the list of recommended movies
-
-
 def get_new_rec_by_genre(user_data):
 
     print("user_data", user_data)
@@ -165,15 +136,11 @@ def get_new_rec_by_genre(user_data):
 
 def get_rec_from_favorites(user_data):
    recommended_movies = []
-
-   # if "favorites" is not in user_data
    if 'favorites' not in user_data:
         return recommended_movies
-   
-   # if "friends" is not in user_data
    if 'friends' not in user_data:
         return recommended_movies
-
+   
    # add all friends' watched movies in a set
    friend_fav_mov = set()
    for movies in user_data['friends']:
