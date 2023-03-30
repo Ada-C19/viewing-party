@@ -51,15 +51,13 @@ def test_friends_unique_movies_not_duplicated():
 
     # Act
     friends_unique_movies = get_friends_unique_watched(amandas_data)
+    unique_movie_set = set()
+    for unique_movie in friends_unique_movies:
+        unique_movie_set.add(unique_movie["title"])
 
     # Assert
     assert len(friends_unique_movies) == 3
-
-    raise Exception("Test needs to be completed.")
-    # *************************************************************************************************
-    # ****** Add assertions here to test that the correct movies are in friends_unique_movies **********
-    # **************************************************************************************************
-
+    assert len(unique_movie_set) == 3
 
 def test_friends_not_unique_movies():
     # Arrange

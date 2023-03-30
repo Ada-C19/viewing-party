@@ -137,20 +137,6 @@ def get_unique_watched(user_data):
     
     return unique_watched_list
 
-# 2. Create a function named `get_friends_unique_watched`. This function should...
-
-# - take one parameter: `user_data`
-#   - the value of `user_data` will be a dictionary with a `"watched"` list of movie dictionaries, 
-#     and a `"friends"`
-#     - This represents that the user has a list of watched movies and a list of friends
-#     - The value of `"friends"` is a list
-#     - Each item in `"friends"` is a dictionary. This dictionary has a key `"watched"`, 
-#       which has a list of movie dictionaries.
-#     - Each movie dictionary has a `"title"`.
-# - Consider the movies that the user has watched, and consider the movies that their friends have 
-#   watched. Determine which movies at least one of the user's friends have watched, but the user has 
-#   not watched.
-# - Return a list of dictionaries, that represents a list of movies
 def get_friends_unique_watched(user_data):
     watched_list = user_data["watched"]
     friends_watched_list = user_data["friends"]
@@ -180,19 +166,49 @@ def get_friends_unique_watched(user_data):
     for title in friends_unique_watched_set:
         for friend in friends_watched_list:
             for movie_dict in friend["watched"]:
-                if movie_dict["title"] == title and movie_dict["title"]:
+                if movie_dict["title"] == title:
                     # for entry in friends_unique_watched_list:
-                    #     if movie_dict["title"] not in friends_unique_watched_list:
-                    friends_unique_watched_list.append(movie_dict)
+                        if movie_dict not in friends_unique_watched_list:
+                            friends_unique_watched_list.append(movie_dict)
                     
-    
     return friends_unique_watched_list
-
 
 
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
+
+# 1. Create a function named `get_available_recs`. This function should...
+
+# - take one parameter: `user_data`
+#   - `user_data` will have a field `"subscriptions"`. The value of `"subscriptions"` is a list of strings
+#     - This represents the names of streaming services that the user has access to
+#     - Each friend in `"friends"` has a watched list. Each movie in the watched list has a `"host"`, 
+#       which is a string that says what streaming service it's hosted on, ex: {"watched" = ["title", "genre", "rating", "host"]}
+# - Determine a list of recommended movies. A movie should be added to this list if and only if:
+#   - The user has not watched it
+#   - At least one of the user's friends has watched
+#   - The `"host"` of the movie is a service that is in the user's `"subscriptions"`
+# - Return the list of recommended movies
+
+def get_available_recs(user_data):
+    friends_unique_watched_list = get_friends_unique_watched(user_data)
+    subscriptions_list = user_data["subscriptions"]
+    recommended_movies = []
+
+    ### iterating through movie dictionaries in friends_unique_watched_list to find movies user has 
+    ### access to via subscription
+    for friend in friends_unique_watched_list:
+        for movie_dict in friend["watched"]:
+            ### iterating through specific subscription services user has access to
+            for subscription_service in subscriptions_list:
+                ### determining if a given movie that user has not seen is available via subscription service, 
+                ### if so append to recommend_movies
+                if movie_dict["host"] == subscription_service:
+                    recommended_movies.append(movie_dict)
+    
+    return recommended_movies
+
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
