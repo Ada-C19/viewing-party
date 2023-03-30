@@ -156,12 +156,7 @@ def get_unique_watched(user_data):
     return unique_watched_movies
 
 
-
-
-
-
 def get_friends_unique_watched(user_data):
-    pass
     '''
     input: user_data is a dictionary with a "watched" list of movies dictionaries and a "friends"
     # user_data represents a list of watched movies and a list of friends 
@@ -170,6 +165,22 @@ def get_friends_unique_watched(user_data):
     # function should determine which movies at least one of the friends has watched, user has not watched it
     output: list of dictionaries that represents a list of movies 
     '''
+    #grab a list of all the movies the user has watched
+    list_watched_movies = user_data['watched']
+    #grabs a list of watched dictionaries for friends
+    list_of_friends = user_data['friends']
+    
+    friend_movie_list = []
+    
+    for movie in list_of_friends: 
+        #iterates through all of the movies friends have watched
+        friend_movie_list += movie["watched"]
+        #friend_movie_list prints all of the movies all friends have watched 
+        friend_unique_watched_movies = []
+        for movie in friend_movie_list:
+            if movie not in list_watched_movies and movie not in friend_unique_watched_movies:
+                friend_unique_watched_movies.append(movie)
+    return friend_unique_watched_movies
 
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
