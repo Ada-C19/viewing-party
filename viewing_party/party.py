@@ -195,8 +195,37 @@ def get_friends_unique_watched(user_data):
 
 # ------------- WAVE 4 --------------------
 #---Wave_4_function_1---
+
 def get_available_recs(user_data):
-    pass
+    # user_data = {"subscriptions": ["netflix", "hulu", "disney plus"],
+    #              "watched": [{"title": movie title}, 
+    #                          {"title": "movie title"}],
+    #              "friends": [{"friend": "friend name",
+    #                           "watched": [{"title": "movie title",
+    #                                        "host": "netflix"}, 
+    #                                       {"title": "movie title",
+    #                                        "host": "hulu"}]}, 
+    #                          {"friend": "friend name",
+    #                           "watched": [{"title": "movie title",
+    #                                        "host": "disney plus"}, 
+    #                                       {"title": "movie title",
+    #                                        "host": "netflix"}]}]
+    #           }
+    # add movie to recommended_movies list if:
+        # user has not watched movie
+        # at least one of user's friends has watched movie
+        # host of movie is in user's subscriptions
+
+    # figure out list of movie dictionaries user has not watched. use helper function
+    friends_unique_movie_list = get_friends_unique_watched(user_data)
+
+    # figure out if host is in user's subscriptions
+    recommended_movies = []
+    for movie in friends_unique_movie_list:
+        if movie["host"] in user_data["subscriptions"]:
+            recommended_movies.append(movie)
+    
+    return recommended_movies
 
 # ------------- WAVE 5 --------------------
 # ---Wave_5_function_1---
