@@ -115,15 +115,15 @@ def get_available_recs(user_data):
     
     return movie_recs
 
-
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
 def get_new_rec_by_genre(user_data):
     genre_count = []
-    for i in range(len(user_data["watched"])):
-        genre_count.append(user_data["watched"][i]["genre"])
+    for movie in range(len(user_data["watched"])):
+        genre_count.append(user_data["watched"][movie]["genre"])
+
     current_favorite_count = 0
     favorite_genre = ""
     for genre in genre_count:
@@ -132,17 +132,15 @@ def get_new_rec_by_genre(user_data):
             favorite_genre = genre
     
     recs_by_genre = []
-    for i in range(len(user_data["friends"])):
-        for j in range(len(user_data["friends"][i]["watched"])):
-            if user_data["friends"][i]["watched"][j] in\
-            recs_by_genre:
+    for friend in range(len(user_data["friends"])):
+        for movie in range(len(user_data["friends"][friend]["watched"])):
+            movie_to_recommend = user_data["friends"][friend]["watched"][movie]
+            if movie_to_recommend in recs_by_genre:
                 continue
-            if user_data["friends"][i]["watched"][j] in\
-            user_data["watched"]:
+            if movie_to_recommend in user_data["watched"]:
                 continue
-            elif user_data["friends"][i]["watched"][j]["genre"] ==\
-            favorite_genre:
-                recs_by_genre.append(user_data["friends"][i]["watched"][j])
+            elif movie_to_recommend["genre"] == favorite_genre:
+                recs_by_genre.append(movie_to_recommend)
 
     return recs_by_genre
 
@@ -153,9 +151,10 @@ def get_rec_from_favorites(user_data):
     for i in range(len(user_data["favorites"])):
         favorite_movie = user_data["favorites"][i]
         recs_by_favs.append(favorite_movie)
-        for j in range(len(user_data["friends"])):
-            if favorite_movie in user_data["friends"][j]["watched"] \
-            and favorite_movie in  recs_by_favs:
+        for friend in range(len(user_data["friends"])):
+            friend_watched_list = user_data["friends"][friend]["watched"]
+            if favorite_movie in friend_watched_list \
+            and favorite_movie in recs_by_favs:
                 recs_by_favs.remove(favorite_movie)
-    print(recs_by_favs)
+
     return recs_by_favs
