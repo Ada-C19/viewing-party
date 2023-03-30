@@ -1,5 +1,7 @@
 
+# -----------------------------------------
 # ------------- WAVE 1 --------------------
+# -----------------------------------------
 
 def create_movie(title, genre, rating):
     if title and genre and rating:
@@ -91,22 +93,29 @@ def get_friends_unique_watched(user_data):
                 friends_unique_watched.append(movie)
     
     return friends_unique_watched
-
-            
         
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
 
-<<<<<<< HEAD
 def get_available_recs(user_data):
     
     subscriptions = user_data["subscriptions"] # list of strings
     watched_list = user_data["watched"] # list of dicts of watched movies
-=======
+
+    movie_recs = []
+
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            if movie not in user_data["watched"] and movie in friend["watched"] and movie["host"] in subscriptions:
+                movie_recs.append(movie)
+        return movie_recs
+
+
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
+
 def get_new_rec_by_genre(user_data):
     genres = []
     for movie in user_data["watched"]:
@@ -138,17 +147,8 @@ def get_rec_from_favorites(user_data):
  
     return fav_movie_recs
 
->>>>>>> dd04daac08bae9f850bcdef65c46d8ddc2e35f6c
-
-    movie_recs = []
-
-    for friend in user_data["friends"]:
-        for movie in friend["watched"]:
-            if movie not in user_data["watched"] and movie in friend["watched"] and movie["host"] in subscriptions:
-                movie_recs.append(movie)
-        return movie_recs
 
 
-# -----------------------------------------
-# ------------- WAVE 5 --------------------
-# -----------------------------------------
+
+
+
