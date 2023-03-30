@@ -57,51 +57,28 @@ def get_most_watched_genre(user_data):
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 def get_unique_watched(user_data):
-    user_watched_set = set()
+    copy_user_list = []
     for movie in user_data["watched"]:
-        user_watched_set.add(movie["title"])
-    # print(user_watched_set)
+        copy_user_list.append(movie)
 
-    user_friends_watched_set = set()
     for friend in user_data["friends"]:
-        for movie in friend["watched"]:
-            user_friends_watched_set.add(movie["title"])
-       # user_friends_watched_set.add(movie["title"])
-    print(user_friends_watched_set)
-    unique_set = user_watched_set.difference(user_friends_watched_set)
-    print(unique_set)
-
-    unique_list = []
-
-    for movie in user_data["watched"]:
-        user_watched_set.add(movie["title"])
-
-        if movie["title"] in unique_set:
-            unique_list.append(movie)
-    return unique_list  
+        for friend_movie in friend["watched"]:
+            if friend_movie in copy_user_list:
+                copy_user_list.remove(friend_movie)
+    
+    return copy_user_list
 
 def get_friends_unique_watched(user_data):
-    user_watched_set = set()
-    for movie in user_data["watched"]:
-        user_watched_set.add(movie["title"])
-    #print(user_watched_set)
-
-    user_friends_watched_list = []
-    user_friends_watched_set = set()
+    copy_friend_list = []
     for friend in user_data["friends"]:
         for movie in friend["watched"]:
-            user_friends_watched_set.add(movie["title"])
-            user_friends_watched_list.append(movie)
-        user_friends_watched_set.add(movie["title"])
-    unique_set = user_friends_watched_set.difference(user_watched_set)
-
-    unique_movie_list = []
-    for movie in user_friends_watched_list:
-        if movie["title"] in unique_set:
-            unique_movie_list.append(movie)
-            unique_set.remove(movie["title"])
-
-    return unique_movie_list
+            if movie not in copy_friend_list:
+                copy_friend_list.append(movie)
+    
+    for movie in user_data["watched"]:
+        if movie in copy_friend_list:
+            copy_friend_list.remove(movie)
+    return copy_friend_list
 
 
 # -----------------------------------------

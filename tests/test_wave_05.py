@@ -59,6 +59,7 @@ def test_new_genre_rec_from_empty_friends():
     recommendations = get_new_rec_by_genre(sonyas_data)
     
     # assert
+    # are we supposed to return an empty list?
     assert recommendations == []
     # *********************************************************************
     # ****** Complete the Act and Assert Portions of these tests **********
