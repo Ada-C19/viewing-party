@@ -99,39 +99,75 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 
 def get_unique_watched(user_data):
-    user_watched = {movie['title']:movie for movie in user_data['watched']}
-    #user_watched={}
 
-    #for movie in user_data["watched"]:
-     #   user_watched[movie['title']]=movie
 
-    
+    '''
+    input: user_data - dictionary with information about users movie and friends
+    output: list of movie dctionaries that the user has watched but
+            their friends havent
+    '''
+
+
+    # Created a dictionay with the movie the user has watched
+        #Key : str / movie tiitle   Value: dictionary containing movie info 
+    watched_movies_by_user = {movie['title']:movie for movie in user_data['watched']}
+
+
+    # Looped over the movies the friends have watched and modified user_watched
+    # by removing the key value pair when a friend had already watched a movie
+
+
     for friend in user_data["friends"]:
         for movie in friend["watched"]:
-            if movie['title'] in user_watched:
-                del user_watched[movie['title']]
+            if movie['title'] in watched_movies_by_user:
+                del watched_movies_by_user[movie['title']]
 
-    return_list=[]
-    for title in user_watched:
-        return_list.append(user_watched[title])
+    # Created a list and looped over user_watched to return 
+    # the movie dictionaries in a list
 
-    return return_list
+
+    movies_only_user_watched=[]
+    for title in watched_movies_by_user:
+        movies_only_user_watched.append(watched_movies_by_user[title])
+
+    return movies_only_user_watched
+
+
 
 def get_friends_unique_watched(user_data):
+    '''
+    input: user_data - dictionary with information about users movie and friends
+    output: list of movie dctionaries that the users friends have watched but
+    they havent
+    '''
+
+
+# Created a dictionay with the movie the users friends have watched
+        #Key : str / movie tiitle   Value: dictionary containing movie info 
+
     friend_watched = {}
     for friend in user_data["friends"]:
         for movie in friend["watched"]:
             friend_watched[movie['title']] = movie
 
+
+    # Looped over the movies the friends have watched and modified friend_watched
+    # by removing the key value pair when the user has already watched a movie
+
+
     for movie in user_data["watched"]:
         if movie['title'] in friend_watched:
             del friend_watched[movie['title']] 
 
-    user_not_watched_list = []
-    for title in friend_watched:
-        user_not_watched_list.append(friend_watched[title])
+    # Created a list and looped over friend_watched to return 
+    # the movie dictionaries in a list
 
-    return user_not_watched_list
+    user_not_watched_movies = []
+    for title in friend_watched:
+        user_not_watched_movies.append(friend_watched[title])
+
+    return user_not_watched_movies
+
 
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
