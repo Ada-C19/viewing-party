@@ -1,5 +1,14 @@
 # Viewing Party
 
+Access needs: Carolyn works part time, so will not be free from 3:30 - 5:30, but happy to work later. We will try to do as much in person as possible. 
+Your learning style:
+We both want to go through the document first and then think through it individually before coming together to write sudo code or write the code.
+How you prefer to receive feedback:
+Direct feedback
+One team communication skill you want to improve with this experience:
+Being able to support one another more affectively. 
+
+
 ## Skills Assessed
 
 Solving problems with...
