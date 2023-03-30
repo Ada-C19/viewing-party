@@ -148,21 +148,21 @@ def get_unique_watched(user_data):
     print(friends_watched_list)
     # return friends_watched_list
 
-
+    # 
     for user in user_data["watched"]:
         value_is_list = user["title"]
         user_watched_list.append(value_is_list)
 
 
     for movie in user_watched_list: 
-        if movie in friends_watched_list:
-            movies_watched_by_all = {movies_user_watched_that_friends_didnt_watch}
+        # if movie in friends_watched_list:
+        #     movies_watched_by_all = {movies_user_watched_that_friends_didnt_watch}
         if movie not in friends_watched_list:
             movies_user_watched_that_friends_didnt_watch.append(movie)
             movies_user_watched_that_friends_didnt_watch = {movies_user_watched_that_friends_didnt_watch}
 
 
-            return movies_user_watched_that_friends_didnt_watch
+    return movies_user_watched_that_friends_didnt_watch
 
 
 
