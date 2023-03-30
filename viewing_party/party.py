@@ -179,24 +179,19 @@ def get_new_rec_by_genre(user_data):
 
 def get_rec_from_favorites(user_data):
     favorite_movies = user_data["favorites"]
-    friends_watched = get_friends_unique_watched(user_data)
+    friends_watched_list = []
     recommended_favorite_movies = []
-    recommended_favorite_set = set()
-    not_duplicated_movies = [] 
-
+ 
+    for friend in user_data["friends"]:
+        for movie in friend["watched"]:
+            if movie in favorite_movies:
+                friends_watched_list.append(movie)
+    
     for movie in favorite_movies:
-        if movie not in friends_watched:
+        if movie not in friends_watched_list:
             recommended_favorite_movies.append(movie)
 
-    for movie in recommended_favorite_movies:
-        t = tuple(movie.items())
-        if t not in recommended_favorite_set:
-            recommended_favorite_set.add(t)
-            not_duplicated_movies.append(movie)
-        #if movie not in not_duplicated_movies:
-        #    not_duplicated_movies.append(movie)
-
-    return not_duplicated_movies
+    return recommended_favorite_movies
 
 
 
