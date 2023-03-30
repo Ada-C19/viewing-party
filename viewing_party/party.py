@@ -71,12 +71,8 @@ def get_most_watched_genre(user_data):
         return(multimode(genre_list)[0])
 
 
-# My super long implementation w/o using multimode
+# # My super long implementation w/o using multimode
 # def get_most_watched_genre(user_data):
-#     # Check if user_data has a watched list
-#     if "watched" not in user_data:
-#         return None
-
 #     # Get the watched list
 #     watched_list = user_data["watched"]
 
@@ -106,7 +102,7 @@ def get_most_watched_genre(user_data):
 #     for genre, count in genre_count.items():
 #         if count > most_frequent_count:
 #             most_frequent_count = count
-    
+
 #     return most_frequent_count
 
 
