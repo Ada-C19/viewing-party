@@ -17,6 +17,7 @@ def create_movie(title, genre, rating):
 
 
 def add_to_watched(user_data, movie):
+    # Handles if create_movie() returns None for movie
     if movie:
         user_data["watched"].append(movie)
        
@@ -57,13 +58,11 @@ def get_watched_avg_rating(user_data):
 
 
 def get_most_watched_genre(user_data):
-    genre_list = []
-
     if not user_data["watched"]:
         return None
 
-    for movie in user_data["watched"]:
-        genre_list.append(movie["genre"])
+    genre_list = [movie["genre"] for movie in user_data["watched"]]
+   
     # Returns the first instance of a most-watched genre
     return max(genre_list, key=genre_list.count)
 
@@ -130,7 +129,7 @@ def get_new_rec_by_genre(user_data):
 def get_rec_from_favorites(user_data):
     only_user_watched = get_unique_watched(user_data)
 
-    recommendations = [fav_movie for fav_movie in user_data['favorites']
+    recommendations = [fav_movie for fav_movie in user_data["favorites"]
                        for movie in only_user_watched
                        if movie["title"] == fav_movie["title"]]
 
