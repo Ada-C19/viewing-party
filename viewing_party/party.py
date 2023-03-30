@@ -61,10 +61,10 @@ def get_unique_watched(user_data):
         user_watched_list.append(movie["title"])
 
     for friend in user_data["friends"]:
-        for friend_list in friend["watched"]:
-            for friend_key, friend_value in friend_list.items():
-                if friend_key == "title":
-                    friend_watched_list.append(friend_value)
+        for friend_movie in friend["watched"]:
+            # for friend_key, friend_value in friend_movie.items():
+            #     if friend_key == "title":
+            friend_watched_list.append(friend_movie["title"])
 
     user_set = set(user_watched_list)
     friend_set = set(friend_watched_list)
@@ -84,10 +84,10 @@ def get_friends_unique_watched(user_data):
         user_watched_list.append(movie["title"])
 
     for friend in user_data["friends"]:
-        for friend_list in friend["watched"]:
-            for friend_key, friend_value in friend_list.items():
-                if friend_key == "title":
-                    friend_watched_list.append(friend_value)
+        for friend_movie in friend["watched"]:
+            # for friend_key, friend_value in friend_list.items():
+            #     if friend_key == "title":
+            friend_watched_list.append(friend_movie["title"])
 
     user_set = set(user_watched_list)
     friend_set = set(friend_watched_list)
@@ -96,11 +96,10 @@ def get_friends_unique_watched(user_data):
     unique_list = []
     for title in unique_set:
         for friend in user_data["friends"]:
-            for friend_list in friend["watched"]:
-                if title == friend_list["title"] and not (friend_list in unique_list):
-                    unique_list.append(friend_list)
-    print(unique_list)
-    return list(set(unique_list))   
+            for friend_movie in friend["watched"]:
+                if title == friend_movie["title"] and not (friend_movie in unique_list):
+                    unique_list.append(friend_movie)
+    return unique_list  
 
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
