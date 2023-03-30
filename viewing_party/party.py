@@ -96,9 +96,7 @@ def get_available_recs(user_data):
         user_watched_list = user_data["watched"]
         for movie in friend["watched"]:
             subscription_list = user_data["subscriptions"]
-            if movie["host"] in subscription_list and movie not in user_watched_list:
-                #dont add to recs if its already there
-                if movie not in recommendations:
+            if movie["host"] in subscription_list and movie not in user_watched_list and movie not in recommendations:
                     recommendations.append(movie)
     return recommendations
 
