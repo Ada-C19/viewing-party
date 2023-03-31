@@ -13,7 +13,7 @@ def create_movie(title, genre, rating):
     # If all 3 parameters are falsy, return None.
     
     if title and genre and rating:
-        movie_details = {'title': title, 'genre': genre, 'rating': rating }
+        movie_details = {'title': title, 'genre': genre, 'rating': rating}
         return movie_details
     else:
         return None
@@ -152,7 +152,7 @@ def get_unique_watched(user_data):
     # the movie dictionaries in a list
 
 
-    movies_only_user_watched=[]
+    movies_only_user_watched = []
     for title in watched_movies_by_user:
         movies_only_user_watched.append(watched_movies_by_user[title])
 
