@@ -145,6 +145,9 @@ def get_unique_watched(user_data):
     list_watched_movies = user_data['watched']
     list_of_friends = user_data['friends']
     friend_movie_list = []
+
+    if len(list_of_friends) == 0:
+        return list_watched_movies
     
     for movie in list_of_friends: 
         friend_movie_list += movie["watched"]
@@ -203,9 +206,6 @@ def get_available_recs(user_data):
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
-    for movie in user_data['watched']:
-        #get the genre of the movie
-        movie_genre = movie['genre']
         
 def get_new_rec_by_genre(user_data):
     
@@ -225,17 +225,16 @@ def get_new_rec_by_genre(user_data):
                 
     return recommended_movies
 
-
     
 def get_rec_from_favorites(user_data):
-    friends_watched_movies = get_friends_unique_watched(user_data)
+    user_watched_movies = get_unique_watched(user_data)
+    # was friends have only watched but wanted user has only watched
     favorite_movies = user_data['favorites']
     reccommended_from_favorites = []
 
     for movie in favorite_movies:
         #for favorite in favorite_movies:
-        if not friends_watched_movies:
-                reccommended_from_favorites.append(movie)
+        if movie in user_watched_movies :
+            reccommended_from_favorites.append(movie)
+            
     return reccommended_from_favorites
-
-
