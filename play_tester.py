@@ -16,15 +16,16 @@ pp = pprint.PrettyPrinter(indent=4)
 
 # print("\n-----Wave 02 user_data-----")
 # pp.pprint(clean_wave_2_data())
- # Arrange
-janes_data = clean_wave_2_data()
+#  # Arrange
 
+# janes_data = clean_wave_2_data()
+# average = get_watched_avg_rating(janes_data)
 
-average = get_watched_avg_rating(janes_data)
-print(f"{average = }")
-print(f"{average=}")
+# print(f"{average = }")
+# print(f"{average=}")
+
 #print("\n-----Wave 03 user_data-----")
-#pp.pprint(clean_wave_3_data())
+pp.pprint(clean_wave_3_data())
 
 # Wave 04 user data
 #print("\n-----Wave 04 user_data-----")
@@ -32,4 +33,6 @@ print(f"{average=}")
 
 # Wave 05 user data
 #print("\n-----Wave 05 user_data-----")
-#pp.pprint(clean_wave_5_data())
+pp.pprint(clean_wave_5_data())
+
+get_rec_from_favorites(clean_wave_5_data())

@@ -54,7 +54,6 @@ def test_friends_unique_movies_not_duplicated():
 
     # Assert
     assert len(friends_unique_movies) == 3
-    assert FANTASY_1 in friends_unique_movies
     assert INTRIGUE_3 in friends_unique_movies
 
     

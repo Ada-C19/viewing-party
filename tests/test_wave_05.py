@@ -57,7 +57,9 @@ def test_new_genre_rec_from_empty_friends():
     new_genre_rec = get_new_rec_by_genre(sonyas_data)
 
     # Assert
-    assert new_genre_rec is None
+    # assert new_genre_rec is None
+    # assert len(new_genre_rec) == 0
+    assert new_genre_rec == []
     
     # raise Exception("Test needs to be completed.")
     # *********************************************************************
