@@ -96,6 +96,7 @@ def get_friends_unique_watched(user_data):
 
 def get_available_recs(user_data):
     available_recs = []
+
     friends_movies_recs = get_friends_unique_watched(user_data)
 
     for i in range(len(friends_movies_recs)):
@@ -103,42 +104,32 @@ def get_available_recs(user_data):
             available_recs.append(friends_movies_recs[i])
     return available_recs
         
+        
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
-def get_new_rec_by_genre(user_data):
-    recommended_genre = []
-    fave_genre = get_most_watched_genre(user_data)
-    unique_list_of_movies_watched_by_friends = get_most_watched_genre(user_data)
-    user_titles_that_match_my_fave_genre = []
+def get_new_rec_by_genre(user_data):    
+    available_recs = []
+    friends_movies_recs = get_friends_unique_watched(user_data)
+    user_fav_genre = get_most_watched_genre(user_data)
 
-    for movie in user_data["watched"]:
-        if movie["genre"] == fave_genre:
-            user_titles_that_match_my_fave_genre.append(movie["title"])
-    
-
+    for i in range(len(friends_movies_recs)):
+        if friends_movies_recs[i]["genre"] == user_fav_genre:
+            available_recs.append(friends_movies_recs[i])
+    return available_recs
 
 
 
-    
-    # recommended_genre = []
-    # new_list = []
-    # fave_genre = get_most_watched_genre(user_data)
-   
-    # for movie in user_data["friends"]:
-    #     for i in movie["watched"]:
-    #         new_list.append(i)
-    # for movie in new_list:
-    #     if movie["genre"] == fave_genre:
-    #         recommended_genre.append(movie)
-    # return recommended_genre
+def get_rec_from_favorites(user_data):
+    available_recs = []
+    users_watchlist = get_unique_watched(user_data)
 
-    
-    # for friend in unique_list_of_movies_watched_by_friends:
-    #     for indiv_movie in friend["watched"]:
-    #         if indiv_movie["genre"] == fave_genre and movie["title"] not in user_title_that_match_my_fave_genre:
-    #             recommended_genre.append(indiv_movie)
-    # return recommended_genre       
-    
+    for i in range(len(user_data["favorites"])):
+        if user_data["favorites"][i] in users_watchlist:
+            available_recs.append(user_data["favorites"][i])
+    return available_recs
+  
+
+
