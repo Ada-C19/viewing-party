@@ -1,7 +1,7 @@
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
-    if title == None or genre == None or rating == None:
+    if title is None or genre is None or rating is None:
         return None
     movie = {"title": title, "genre": genre, "rating": rating}
     return movie
@@ -31,7 +31,6 @@ def watch_movie(user_data, title):
 # -----------------------------------------
 import statistics
 
-
 def get_watched_avg_rating(user_data):
 
     try:
@@ -42,6 +41,7 @@ def get_watched_avg_rating(user_data):
             number_of_movies += 1
         average_rating = average_rating / number_of_movies
         return average_rating
+    
     except ZeroDivisionError:
         return 0.0
 
@@ -50,6 +50,7 @@ def get_most_watched_genre(user_data):
     genre = []
     if user_data["watched"] == []:
         return None
+    
     for movie in user_data["watched"]:
         genre.append(movie["genre"])
     return statistics.mode(genre)
@@ -104,6 +105,7 @@ def get_new_rec_by_genre(user_data):
     unique_movies = get_friends_unique_watched(user_data)
     if most_frequently_watched is None:
         return []
+    
     for movie in unique_movies:
         if movie["genre"] in most_frequently_watched:
             recommended_movies.append(movie)
