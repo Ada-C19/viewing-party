@@ -43,7 +43,6 @@ def get_watched_avg_rating(user_data):
     return average_rating
 
 
-
 def get_most_watched_genre(user_data):
     genre_options = []
 
@@ -54,7 +53,6 @@ def get_most_watched_genre(user_data):
         genre_options.append(user_data["watched"][i]["genre"])
         highest_watched = (max(set(genre_options), key=genre_options.count))
     return highest_watched
-
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
@@ -73,7 +71,7 @@ def get_unique_watched(user_data):
             unique_watch.append(movie)
     return unique_watch
 
-  
+
 def get_friends_unique_watched(user_data):
     unique_watch = []
     no_duplicate_unique_watch = []
@@ -89,14 +87,12 @@ def get_friends_unique_watched(user_data):
             no_duplicate_unique_watch.append(movie)
     return no_duplicate_unique_watch
 
-
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
 
 def get_available_recs(user_data):
     available_recs = []
-
     friends_movies_recs = get_friends_unique_watched(user_data)
 
     for i in range(len(friends_movies_recs)):
@@ -104,8 +100,6 @@ def get_available_recs(user_data):
             available_recs.append(friends_movies_recs[i])
     return available_recs
         
-        
-
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
@@ -119,7 +113,6 @@ def get_new_rec_by_genre(user_data):
         if friends_movies_recs[i]["genre"] == user_fav_genre:
             available_recs.append(friends_movies_recs[i])
     return available_recs
-
 
 
 def get_rec_from_favorites(user_data):
