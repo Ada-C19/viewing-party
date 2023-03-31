@@ -187,28 +187,48 @@ def get_available_recs(user_data):
     input: user_data dictionary with field "subscriptions", value of "subscriptions" is list of strings
     output: recommended movies list
     """
-    services_user_has_access_to = []
-    friends_streaming_services = []
-    movies_user_hasnt_watched = []
+        
+    # services_user_has_access_to = []
+    # friends_streaming_services = []
+    # movies_user_hasnt_watched = []
     recommended_movies = []
 
-    # for element in user_data["subscriptions"]:
-    # streaming services the user has access to 
-    services_user_has_access_to.append(user_data["subscriptions"])
+    # # for element in user_data["subscriptions"]:
+    # # streaming services the user has access to 
+    # services_user_has_access_to.append(user_data["subscriptions"])
 
 
-    # streaming services friends host/have 
-    for friend in user_data["friends"]:
-        for watched_movie in friend["watched"]:
-            friends_streaming_services.append(watched_movie["host"])
+    # # streaming services friends host/have 
+    # for friend in user_data["friends"]:
+    #     for watched_movie in friend["watched"]:
+    #         friends_streaming_services.append(watched_movie["host"])
+
+    # # if check to see if friends have no streaming services # needed?
+    # if len(friends_streaming_services) == 0:
+    #     return recommended_movies
 
     # at least one friend has watched, user has not watched it -> use return statement from function get_friends_unique_watched
     movies_user_hasnt_watched = get_friends_unique_watched(user_data)
+    print(movies_user_hasnt_watched)
 
-    # check if
-    if friends_streaming_services in services_user_has_access_to:
+    
+    if len(movies_user_hasnt_watched) == 0:
+        return movies_user_hasnt_watched
 
-        return recommended_movies
+    
+    for movie in movies_user_hasnt_watched:
+        for subscription in user_data['subscriptions']:
+            if movie["host"] == subscription:
+                recommended_movies.append(movie["title"])
+
+    return recommended_movies
+
+    # # friends_streaming_services in services_user_has_access_to:
+    
+    # # return recommended_movies
+
+    # if movies_user_hasnt_watched and friends_streaming_services in services_user_has_access_to:
+    #     return recommended_movies
 
 
 
