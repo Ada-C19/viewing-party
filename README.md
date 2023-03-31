@@ -223,16 +223,16 @@ For the time being, we need to make sure that the data provided to each test is 
 
 ## Project Directions
 " plan of action" 
-    learning style: 
-      Meet in a quiet/ isolated room, or on Zoom 
-      visualize input/output 
-    communication goal: 
-      ask questions about expectations 
-      check in often daily textmessages 
-    skills to improve: 
-      set a plan from the beginning, plan fails then backtrace and have another conversation 
-      being direct with my partner about their expectations and their plan 
-      asking help from peers    
+  learning style: 
+    Meet in a quiet/ isolated room, or on Zoom 
+    visualize input/output 
+  communication goal: 
+    ask questions about expectations 
+    check in often daily textmessages 
+  skills to improve: 
+    set a plan from the beginning, plan fails then backtrace and have another conversation 
+    being direct with my partner about their expectations and their plan 
+    asking help from peers    
 ### Set Up a Pair Plan
 
 First, come up with a "plan of action" for how you want to work as a pair. Discuss your learning style, how you prefer to receive feedback, and one team communication skill you want to improve with this experience.
