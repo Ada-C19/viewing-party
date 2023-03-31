@@ -45,6 +45,7 @@ def get_watched_avg_rating(user_data):
             average = mean(movie["rating"])
     return average
 
+
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
