@@ -41,7 +41,6 @@ def watch_movie(user_data, title):
 def get_watched_avg_rating(user_data):
     sum = 0.0
     movie_count = 0 
-    #another approach to accessing dictionary in list?
     for key, value in user_data.items():
         for movie in value:
             sum += movie["rating"]
@@ -64,7 +63,6 @@ def get_most_watched_genre(user_data):
 
     high_genre = max(genre_dict.values())
 
-#better way to go through the genre_dict to get high_genre?
     for key, value in genre_dict.items():
         if value == high_genre:
             return key
@@ -95,7 +93,7 @@ def get_friends_unique_watched(user_data):
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
-#another method to the "for" for "for" maddness?
+
 def get_available_recs(user_data):
     watched = user_data["watched"].copy()
     friends = user_data["friends"].copy()
