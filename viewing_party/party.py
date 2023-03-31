@@ -127,7 +127,7 @@ def get_new_rec_by_genre(user_data):
     recommended_movies = []
     friends_unique_movies = get_friends_unique_watched(user_data)
     for movie in friends_unique_movies:
-        if movie["genre"] == top_genre and movie not in recommended_movies:
+        if movie["genre"] == top_genre:
             recommended_movies.append(movie)
     return recommended_movies
 
