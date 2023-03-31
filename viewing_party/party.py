@@ -124,7 +124,32 @@ def get_available_recs(user_data):
     return movie_recommendations
 
 
+
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
+
+def get_new_rec_by_genre(user_data):
+
+    # Consider the user's most frequently watched genre.
+
+    frequently_watched_genre = []
+    for item in user_data.get("watched"):
+        frequently_watched_genre.append(item.get("genre"))
+    
+    # Here I converted from list to set, then again to list to get rid of the duplicates
+    frequently_watched_genre_set = set(frequently_watched_genre)
+    frequently_watched_genre_list = list(frequently_watched_genre_set)
+
+        
+    friends_recommendations_list_of_dict = get_friends_unique_watched(user_data)
+
+
+    movie_recommendations_genre = []
+    for i in friends_recommendations_list_of_dict:
+        if i.get("genre") == frequently_watched_genre_list:
+            movie_recommendations_genre.append(i)
+            
+
+    return movie_recommendations_genre
 
