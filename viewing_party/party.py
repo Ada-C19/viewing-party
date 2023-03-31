@@ -74,6 +74,9 @@ def get_most_watched_genre(user_data):
     if not genre_dict:
         return None
     
+    # If not use python build-in function max, we can also uses for loop to iterate over genre_dict to find the highest value
+    # and use 2 varibles genre_count and most_watched_genre to return the most watched genre
+    
     return max(genre_dict, key=genre_dict.get)
 
 
