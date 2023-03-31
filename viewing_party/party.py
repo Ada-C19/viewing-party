@@ -1,3 +1,5 @@
+from statistics import mean
+
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
@@ -21,36 +23,27 @@ def add_to_watchlist(user_data, movie):
         return user_data
 
 def watch_movie(user_data, title):
-    pass
-
-    # user_data = dictionary with 'watchlist' and 'watched': 
-        # watchlist and watched represent that the user has a watchlist (<---is this a list as well?) 
-        # and a list of watched movies.
-
-        # title = str; represents the title of the movie the user has watched
-    
-    # if title in user's watchlist:
-        # remove that movie from the watchlist
-        # add that movie to watched
-        # return user_data
-    # elif not title in user's watchlist:
-        #return user_data
+    movie_found = False
+    for movie in user_data["watchlist"]:
+        if movie["title"] == title:
+            user_data["watched"].append(movie)
+            user_data["watchlist"].remove(movie)
+            movie_found = True
+            break
+    if not movie_found:
+        return user_data
+            
+    return user_data
 
 # ****** Waves 2, 3, 4, 5: should not modify user_data ******
 
-
-
-
-
-
-
-
-
-
-# -----------------------------------------
-# ------------- WAVE 2 --------------------
-# -----------------------------------------
-
+def get_watched_avg_rating(user_data):
+    for movie in user_data["watched"]:
+        if movie["watched"] == []:
+            average = 0.0
+        else:
+            average = mean(movie["rating"])
+    return average
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
