@@ -24,7 +24,6 @@ def watch_movie(user_data, title):
     return user_data
 
 # WAVE 2
-
 def get_watched_avg_rating(user_data):
     ratings = 0.0
     count_movies = 0
@@ -36,16 +35,17 @@ def get_watched_avg_rating(user_data):
             count_movies += 1
     return ratings/count_movies
 
-# 2. Create a function named `get_most_watched_genre`. This function should...
-
-# - take one parameter: `user_data`
-#   - the value of `user_data` will be a dictionary with a `"watched"` list of movie dictionaries. Each movie dictionary has a key `"genre"`.
-#     - This represents that the user has a list of watched movies. Each watched movie has a genre.
-#     - The values of `"genre"` is a string.
-# - Determine which genre is most frequently occurring in the watched list
-# - return the genre that is the most frequently watched
-# - If the value of "watched" is an empty list, `get_most_watched_genre` should return `None`.
-
+def get_most_watched_genre(user_data):
+    favorite_genre ={}
+    if not user_data["watched"]:
+        return None 
+    for movie_info in user_data["watched"]: 
+        if movie_info["genre"] not in favorite_genre:
+            favorite_genre[movie_info["genre"]] = 1
+        else:
+            favorite_genre[movie_info["genre"]] += 1
+    return max(favorite_genre, key=favorite_genre.get)        
+            
 # WAVE 3
 def get_unique_watched(user_data):
     friends_watched_movie = set()
