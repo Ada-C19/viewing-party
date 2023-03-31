@@ -187,6 +187,15 @@ def get_available_recs(user_data):
     input: user_data dictionary with field "subscriptions", value of "subscriptions" is list of strings
     output: recommended movies list
     """
+    rec_movies = []
+    unique_list = get_friends_unique_watched(user_data)
+
+    for movie in unique_list:
+        if movie["host"] in user_data["subscriptions"]:
+            rec_movies.append(movie)
+    return rec_movies
+
+    # 1st attempt from Monica & Ariel mush brains
     # services_user_has_access_to = []
     # friends_streaming_services = []
     # movies_user_hasnt_watched = []
@@ -210,14 +219,13 @@ def get_available_recs(user_data):
 
     #     return recommended_movies
 
-    rec_movies = []
 
-    for friend in user_data["friends"]:
-            for watched_movie in friend["watched"]:
-                if watched_movie["host"] in user_data["subscriptions"] and watched_movie not in user_data["watched"]:
-                    rec_movies.append(watched_movie)
-            return rec_movies
-
+    # 2nd random scary attempt from Monica's over caffeinated brain
+    # for friend in user_data["friends"]:
+    #         for watched_movie in friend["watched"]:
+    #             if watched_movie["host"] in user_data["subscriptions"] and watched_movie not in user_data["watched"]:
+    #                 rec_movies.append(watched_movie)
+    #         return rec_movies
 
 
 
