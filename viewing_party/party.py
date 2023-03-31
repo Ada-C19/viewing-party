@@ -69,11 +69,9 @@ def get_most_watched_genre(user_data):
     #this better work
     return highest_genre           
             
-
-
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
-
+# -----------------------------------------
 
 def get_unique_watched(user_data):
 
@@ -90,7 +88,6 @@ def get_unique_watched(user_data):
                 user_unique_movies.append(movie_user_has_watched)
 
     return user_unique_movies
-
 
 def get_friends_unique_watched(user_data):
 
@@ -112,11 +109,10 @@ def get_friends_unique_watched(user_data):
     
     return new_list
 
-
-
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
+
 def get_available_recs(user_data):
 
     friends_unique_watched = get_friends_unique_watched(user_data)
@@ -130,8 +126,8 @@ def get_available_recs(user_data):
 
     return movie_recommendations
 
-
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
+
 
