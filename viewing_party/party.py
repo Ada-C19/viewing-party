@@ -62,8 +62,7 @@ def get_friend_movies(user_data):
 def create_unique_list(movies, comparison):
     #Return a list of items in movies that are not in comparison
     unique_movies = []
-    for movie in movies:
-        if movie not in comparison: unique_movies.append(movie)
+    unique_movies.extend(movie for movie in movies if movie not in comparison)
     return unique_movies
 
 def get_unique_watched(user_data):
