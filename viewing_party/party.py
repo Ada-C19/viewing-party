@@ -126,17 +126,10 @@ def get_available_recs(user_data):
 
     return movie_recommendations
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 678668bbfc0ac6e62137e92d28ca167f8abaf3a5
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
-<<<<<<< HEAD
-=======
 def get_new_rec_by_genre(user_data):
 
     # Consider the user's most frequently watched genre.
@@ -160,5 +153,4 @@ def get_new_rec_by_genre(user_data):
             
 
     return movie_recommendations_genre
->>>>>>> 678668bbfc0ac6e62137e92d28ca167f8abaf3a5
 
