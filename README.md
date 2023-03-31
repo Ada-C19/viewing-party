@@ -222,7 +222,17 @@ We will note that much of the test data for this project is provided by the file
 For the time being, we need to make sure that the data provided to each test is clean and free of any changes that running another test may have introduced. Recall the *Modifying Mutable Objects* section of the *Variables Are References lesson.* To ensure that the data for each test is storied in a unique place in memory, there are functions implemented in `test_constants.py` that provide clean test data (i.e. `clean_wave_3_data`) by using `copy.deepcopy`. 
 
 ## Project Directions
-
+" plan of action" 
+  learning style: 
+    Meet in a quiet/ isolated room, or on Zoom 
+    visualize input/output 
+  communication goal: 
+    ask questions about expectations 
+    check in often daily textmessages 
+  skills to improve: 
+    set a plan from the beginning, plan fails then backtrace and have another conversation 
+    being direct with my partner about their expectations and their plan 
+    asking help from peers    
 ### Set Up a Pair Plan
 
 First, come up with a "plan of action" for how you want to work as a pair. Discuss your learning style, how you prefer to receive feedback, and one team communication skill you want to improve with this experience.
@@ -338,6 +348,13 @@ Note: For Waves 2, 3, 4, and 5, your implementation of each of the functions sho
 - Return a list of dictionaries, that represents a list of movies
 
 ### Wave 4
+def get_available_recs(user_data): 
+  recommended_movies = []
+  user_not_watched = get_friends_unique_watched(user_data)
+  for movie_dict in user_not_watched: 
+    if movie_dict["host] in user_data["subscriptions]:
+      recommended_movies.append(movie_dict)
+  return recommended_movies
 
 1. Create a function named `get_available_recs`. This function should...
 
