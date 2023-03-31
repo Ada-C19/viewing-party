@@ -1,5 +1,15 @@
 # Viewing Party
 
+## Pair Programming "Contract"
+- cowork virtually 1-3pm
+- general 8pm hard stop every day
+- zoom call + screenshare / vs live share
+- take time so that both folks understand what the code is doing
+- be in communication either live or comments or chat about what's being updated / changed
+- leave room to let driver "finish thought" before chatting / circling back / fixing errors
+- don't work ahead more than one test solo
+- tentative refactor schedule: check-in after wave_01 tests all pass
+
 ## Skills Assessed
 
 Solving problems with...
