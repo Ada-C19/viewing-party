@@ -1,5 +1,3 @@
-from statistics import mean
-
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
@@ -9,8 +7,6 @@ def create_movie(title, genre, rating):
         return movie
     else:
         return None
-    
-user_data = {"watched": [], "watchlist": []}
 
 def add_to_watched(user_data, movie):
     if movie:
@@ -37,20 +33,37 @@ def watch_movie(user_data, title):
 
 # ****** Waves 2, 3, 4, 5: should not modify user_data ******
 
+# -----------------------------------------
+# ------------- WAVE 2 --------------------
+# -----------------------------------------
+
 def get_watched_avg_rating(user_data):
-    for movie in user_data["watched"]:
-        if movie["watched"] == []:
+    ratings_sum = 0
+    if user_data["watched"] == []:
             average = 0.0
-        else:
-            average = mean(movie["rating"])
+    else:
+        for movie in user_data["watched"]:
+            ratings_sum += movie["rating"]
+        average = ratings_sum/len(user_data["watched"])
     return average
 
+def get_most_watched_genre(user_data):
+    if not user_data["watched"]:
+            return None
+    
+    genre_count_dict = {}
+    for movie in user_data["watched"]:
+        if movie["genre"] in genre_count_dict:
+            genre_count_dict[movie["genre"]] += 1
+        else:
+            genre_count_dict[movie["genre"]] = 1
+    popular_genre = max(genre_count_dict, key=genre_count_dict.get)
+    return popular_genre    
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 
-        
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
