@@ -75,7 +75,9 @@ def test_adds_movie_to_user_watched():
 
     # Assert
     assert len(updated_data["watched"]) == 1
-    assert updated_data["watched"][0]["title"] == MOVIE_TITLE_1
+    watched_movies = updated_data["watched"]
+    first_movie =watched_movies[0]
+    assert first_movie["title"] == MOVIE_TITLE_1
     assert updated_data["watched"][0]["genre"] == GENRE_1
     assert updated_data["watched"][0]["rating"] == RATING_1
 
