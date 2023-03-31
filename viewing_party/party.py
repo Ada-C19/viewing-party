@@ -46,8 +46,6 @@ def get_watched_avg_rating(user_data):
     
     else:
         return 0.0
-    #access watched and sum key values in list
-    #take sum of key values of rating and divide by len of 
 
 def get_most_watched_genre(user_data):
     genre_list = []
@@ -79,7 +77,6 @@ def get_friends_movie_titles(user_data):
     return friends_movies
 
 def get_unique_watched(user_data):
-    # initialize empty set
     friends_movies = get_friends_movie_titles(user_data)
     unique_movies = []
     
@@ -140,7 +137,6 @@ def get_new_rec_by_genre(user_data):
         for rec in full_recs:
             if rec["genre"] == genre:
                 genre_recs.append(rec)
-
     return genre_recs
 
 def get_rec_from_favorites(user_data):
