@@ -7,6 +7,10 @@ def create_movie(title, genre, rating):
     input: 3 parameters (title, genre, and rating) which all consist of strings
     output: dictionary containing the 3 input parameters
     '''
+
+    # Check to see if the 3 parameters (title, genre, and rating) are truthy.
+    # If so, return a dictionary named movie_details containing these 3 attributes as key-value pairs.
+    # If all 3 parameters are falsy, return None.
     
     if title and genre and rating:
         movie_details = {'title': title, 'genre': genre, 'rating': rating }
@@ -16,13 +20,14 @@ def create_movie(title, genre, rating):
     
 
 
-
 def add_to_watched(user_data, movie):
 
     '''
     input: user_data-dictionary with list of dictionaries & movie dictionary with title of movie watched
     ouput: modified user_data with movie added to 'watched' list
     '''
+
+    # Add new movie (dictionary) as a value (list) associated to the key, "watched" within the user_data dictionary. 
 
     user_data['watched'].append(movie)
     return user_data
@@ -36,6 +41,8 @@ def add_to_watchlist(user_data, movie):
     ouput: modified user_data with movie added to 'watchlist'
     '''
 
+    # Add new movie (dictionary) as a value (list) associated to the key, "watchlist" within the user_data dictionary. 
+
     user_data['watchlist'].append(movie)
     return user_data
 
@@ -48,11 +55,13 @@ def watch_movie(user_data, title):
     ouput: updated user_data
     '''
 
+    # Loop through each movie within the "watchlist" nested data structure to see if the title (parameter) exists.
+    # If so, remove that movie from the "watchlist" and append it to the "watched" list of user_data.
+
     for movies in user_data['watchlist']:
-        if movies['title']==title:
+        if movies['title'] == title:
             user_data["watchlist"].remove(movies)
             user_data["watched"].append(movies)
-
     return user_data
     
 
@@ -67,8 +76,14 @@ def get_watched_avg_rating(user_data):
     output: returns the average rating (float) of all the movies within the watched list value in user_data.
     '''
 
+    # Return 0.0 if the average rating of all the movies int he "watched" list is empty.
+
     if len(user_data["watched"]) == 0:
         return 0.0
+
+    # Calculate the average rating of all movies within the "watched" list by creating an
+    # empty dictionary named "ratings", then looping through each movie in the "watched" list
+    # to retrieve and append the rating value of each movie to the "ratings" list, and performing statistics.mean()
 
     ratings = []
     for movie in user_data["watched"]:
@@ -84,18 +99,24 @@ def get_most_watched_genre(user_data):
     output: returns the movie genre (str) of the most frequently watched movie in the nested watched list (within user_data).
     '''
 
+    # Account for empty movie list as the value of "watched" by returning None.
+
     if len(user_data["watched"]) == 0:
         return None
 
-    movie_genre_ranquing={}
-    for movie in user_data['watched']:
-        if movie['genre'] not in movie_genre_ranquing:
-            movie_genre_ranquing[movie['genre']]=1
-        else:
-            movie_genre_ranquing[movie['genre']]+=1
+    # Determine the genre that is most frequently watched by looping through each movie genre in "watched" to take count of
+    # the frequency and adding them as values to the key, 'genre' in a new dictionary named movie_genre_ranking. From there,
+    # sort the movie_genre_ranking dictionary from highest to lowest and return the highest value.
 
-    sorted_genre_ranquing=dict(sorted(movie_genre_ranquing.items(),key=lambda item:item[1], reverse = True))
-    return list(sorted_genre_ranquing.keys())[0]
+    movie_genre_ranking={}
+    for movie in user_data['watched']:
+        if movie['genre'] not in movie_genre_ranking:
+            movie_genre_ranking[movie['genre']] = 1
+        else:
+            movie_genre_ranking[movie['genre']] += 1
+
+    sorted_genre_ranking = dict(sorted(movie_genre_ranking.items(),key=lambda item:item[1], reverse = True))
+    return list(sorted_genre_ranking.keys())[0]
 
 
 
@@ -198,7 +219,6 @@ def get_available_recs(user_data):
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
-
 
 def get_new_rec_by_genre(user_data):
 
