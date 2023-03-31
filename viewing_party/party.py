@@ -85,15 +85,18 @@ def get_most_watched_genre(user_data):
         else:
             movie_genre[movie['genre']]+=1
 
-    most_watched_genre=''
-    frequency=0
+    # most_watched_genre=''
+    # frequency=0
 
-    for genre, amount in movie_genre.items():
-        if amount > frequency:
-            most_watched_genre = genre
-            frequency = amount
+    # for genre, amount in movie_genre.items():
+    #     if amount > frequency:
+    #         most_watched_genre = genre
+    #         frequency = amount
 
-    return most_watched_genre
+    sorted_genre=dict(sorted(movie_genre.items(),key=lambda item:item[1], reverse = True))
+    return list(sorted_genre.keys())[0]
+
+    #return most_watched_genre
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
