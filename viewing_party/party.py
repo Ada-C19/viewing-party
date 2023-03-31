@@ -87,7 +87,15 @@ def get_friends_unique_watched(user_data):
                 friends_unique_movies.append(movie)
     return friends_unique_movies
 
-
+def count_friends_unique_movies(*arg):
+    movie_count = {}
+    for movie in get_friends_unique_watched(*arg):
+        for movie["title"] in movie: 
+            if movie["title"] not in movie_count:
+                movie_count["title"] = 1
+            else:
+                movie_count["title"] += 1
+    return movie_count
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
