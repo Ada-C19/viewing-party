@@ -9,7 +9,7 @@ import copy
 #----------WAVE01-------------
 MOVIE_TITLE_1 = "It Came from the Stack Trace"
 GENRE_1 = "Horror"
-RATING_1 = 3.5
+RATING_1 = 3.5,
 
 #----------WAVE02-------------
 HORROR_1 = {
