@@ -1,3 +1,17 @@
+Pair Plan:
+- Access needs
+  -Tuesday and Thursday cowoorking 1-3
+  - after class if needed
+  - work from home if needed -starting 7pm ~ 2 hours
+
+-your learning style
+ - hands on practice
+-how you prefer to receive feedback
+ - through slack or in person
+-team communication skill to improve on with this experience
+ - tell each other of changes we make on our own (like refactoring)
+
+
 # Viewing Party
 
 ## Skills Assessed
