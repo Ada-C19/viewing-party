@@ -1,5 +1,25 @@
 # Viewing Party
 
+## Plan Of Action
+
+Access Needs: 
+
+Communication: Slack or text is preferable. Text is more expedient if a timely response is needed. 
+
+Method of Co-Working: Zoom (camera off is okay), Liveshare VS Code, this may change (we are both comfortable with experimenting!) Running code through PyTutor	
+
+Approach to Collaborative Coding: Review the prompt and README.md
+Dividing up responsibilities and (pair programming) refactoring together
+If we hit a wall, reach out to pair program (if in line with working hours)
+
+Schedules and Working Time: Working hours: Daily 9am ,Co-working during school hours, Thursday TA hours 3-5pm if needed. 
+
+Team Expectations: Open line of communication - When you hit a wall, when you push a commit, when live happens and impacts work
+
+Learning Style(s): Hannah - Visual/ Audio Learner (see code and talk through it) diagrams, pictures, creating tables.
+Niambi - Visual / Kinetic Learner (get hands on something and move it around) pictures, videos, diagrams
+
+
 ## Skills Assessed
 
 Solving problems with...
@@ -371,3 +391,4 @@ Note: For Waves 2, 3, 4, and 5, your implementation of each of the functions sho
   - The movie is in the user's `"favorites"`
   - None of the user's friends have watched it
 - Return the list of recommended movies
+
