@@ -74,9 +74,9 @@ def get_most_watched_genre(user_data):
     if not genre_dict:
         return None
     
-    # If not use python build-in function max, we can also uses for loop to iterate over genre_dict to find the highest value
+    # If not using python build-in function max, we can also use for loop to iterate over genre_dict to find the highest value
     # and use 2 varibles genre_count and most_watched_genre to return the most watched genre
-    
+
     return max(genre_dict, key=genre_dict.get)
 
 
@@ -170,14 +170,14 @@ def get_rec_from_favorites (user_data):
 
     recommended_movie = []
     user_favorite_movie = user_data["favorites"]
-    user_favorite_movie_set = {tuple(movie.values()) for movie in user_favorite_movie}
+    user_favorite_movie_set = {tuple(movie) for movie in user_favorite_movie}
     user_unique_watched_movie = get_unique_watched(user_data)
 
     if not user_favorite_movie or not user_unique_watched_movie:
         return recommended_movie
 
     for movie in user_unique_watched_movie:
-        if tuple(movie.values()) in user_favorite_movie_set:
+        if tuple(movie) in user_favorite_movie_set:
             recommended_movie.append(movie)
 
     return recommended_movie
