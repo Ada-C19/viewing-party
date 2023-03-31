@@ -187,29 +187,36 @@ def get_available_recs(user_data):
     input: user_data dictionary with field "subscriptions", value of "subscriptions" is list of strings
     output: recommended movies list
     """
-    services_user_has_access_to = []
-    friends_streaming_services = []
-    movies_user_hasnt_watched = []
-    recommended_movies = []
+    # services_user_has_access_to = []
+    # friends_streaming_services = []
+    # movies_user_hasnt_watched = []
+    # recommended_movies = []
 
-    # for element in user_data["subscriptions"]:
-    # streaming services the user has access to 
-    services_user_has_access_to.append(user_data["subscriptions"])
+    # # for element in user_data["subscriptions"]:
+    # # streaming services the user has access to 
+    # services_user_has_access_to.append(user_data["subscriptions"])
 
 
-    # streaming services friends host/have 
+    # # streaming services friends host/have 
+    # for friend in user_data["friends"]:
+    #     for watched_movie in friend["watched"]:
+    #         friends_streaming_services.append(watched_movie["host"])
+
+    # # at least one friend has watched, user has not watched it -> use return statement from function get_friends_unique_watched
+    # movies_user_hasnt_watched = get_friends_unique_watched(user_data)
+
+    # # check if
+    # if friends_streaming_services in services_user_has_access_to:
+
+    #     return recommended_movies
+
+    rec_movies = []
+
     for friend in user_data["friends"]:
-        for watched_movie in friend["watched"]:
-            friends_streaming_services.append(watched_movie["host"])
-
-    # at least one friend has watched, user has not watched it -> use return statement from function get_friends_unique_watched
-    movies_user_hasnt_watched = get_friends_unique_watched(user_data)
-
-    # check if
-    if friends_streaming_services in services_user_has_access_to:
-
-        return recommended_movies
-
+            for watched_movie in friend["watched"]:
+                if watched_movie["host"] in user_data["subscriptions"] and watched_movie not in user_data["watched"]:
+                    rec_movies.append(watched_movie)
+            return rec_movies
 
 
 
