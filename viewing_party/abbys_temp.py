@@ -13,30 +13,23 @@
 #     return unique_watched
 
 def get_unique_watched(user_data):
-#    unique_watched = []
     user_watched = user_data["watched"]
     friends = user_data["friends"]
     friends_watched = []
-    #print(friends_watched)
     
     # Create list with everyone else's movies
     for friend in range(0, len(friends)):
-        friend_watched_list = friends[friend]["watched"]
-        for movie in range(0, len(friend_watched_list)):
-            friends_watched.append(friend_watched_list[movie]["title"])
-            
-        print(f"friends_watched: {friends_watched}")
-    # for friend in friends:
-    #     print user_data["friends"]["watched"].values
-    
-    # # for my_movie in user_watched:
-    # #     print(f"BEGINNING OF {my_movie} LOOP")
-    # #     for friend in range(0, len(friends)):
-    # #         print(f"BEGINNING OF {friend} LOOP")
-    # #         print(user_data["watched"][friend]["title"])
+        friend_watched_movies = friends[friend]["watched"]
+        for movie in friend_watched_movies:
+            friends_watched.append(movie)
 
-            
-    #print(user_watched)
+    # Loop through friends' movies, compare with user's movies
+    for film in friends_watched:
+        for entertainment in user_watched:
+            if entertainment == film:
+                user_watched.remove(entertainment)
+    
+    return user_watched
 
 me_and_my_friends = {
     "watched": [{"title": "Spirited Away"}, {"title": "Sharknado"}, {"title": "Dinosaurs"}, {"title": "Jurassic Park"}, {"title": "Jaws"}],

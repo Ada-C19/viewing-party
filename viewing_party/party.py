@@ -81,22 +81,7 @@ def get_most_watched_genre(user_data):
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 
-# def get_unique_watched(user_data):
-#     unique_watched = []
-#     # so you need to access the nested data structure.
-#     # you are comparing elements. you are comparing the elements
-#     # that can be found at user_data["friends"][n]["watched"][n]["title"] on the one hand,
-#     # with the data at user_data["watched"][n]["title"]
-    
-    
-#     return unique_watched
 
-# user_data = {
-#     "watched": [{"title": "Spirited Away"}, {"title": "Sharknado"}, {"title": "Dinosaurs"}, {"title": "Jurassic Park"}, {"title": "Jaws"}],
-#     "friends": [{"watched": [{"title": "Jurassic Park"}, {"title": "Dinosaurs"}]},
-#                 {"watched": [{"title": "Spirited Away"}, {"title": "My Neighbor Totoro"}, {"title": "Princess Mononoke"}]},
-#                 {"watched": [{"title": "Eraserhead"}]}]
-# }
         
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
