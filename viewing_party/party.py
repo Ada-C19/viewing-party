@@ -5,7 +5,7 @@ def create_movie(title, genre, rating):
 
     '''
     input: 3 parameters (title, genre, and rating) which all consist of strings
-    output: Dictionary containing the 3 input parameters
+    output: dictionary containing the 3 input parameters
     '''
     
     if title and genre and rating:
@@ -20,8 +20,8 @@ def create_movie(title, genre, rating):
 def add_to_watched(user_data, movie):
 
     '''
-    input: user_data-dictionary with list of dictionaries & movie- dict. with title of movie watched
-    ouput: modified user_data with movie added to watched list
+    input: user_data-dictionary with list of dictionaries & movie dictionary with title of movie watched
+    ouput: modified user_data with movie added to 'watched' list
     '''
 
     user_data['watched'].append(movie)
@@ -33,7 +33,7 @@ def add_to_watchlist(user_data, movie):
 
     '''
     input: user_data-dictionary with list of dictionaries & movie- dict. with title of movie user wants to watch
-    ouput: modified user_data with movie added to watchlist
+    ouput: modified user_data with movie added to 'watchlist'
     '''
 
     user_data['watchlist'].append(movie)
@@ -113,7 +113,7 @@ def get_unique_watched(user_data):
     '''
 
     # Created a dictionay with the movie the user has watched
-        #Key : str / movie tiitle   Value: dictionary containing movie info 
+    # Key : str / movie tiitle   Value: dictionary containing movie info 
 
     watched_movies_by_user = {movie['title']:movie for movie in user_data['watched']}
 
@@ -147,8 +147,8 @@ def get_friends_unique_watched(user_data):
     they havent
     '''
 
-# Created a dictionay with the movie the users friends have watched
-        #Key : str / movie tiitle   Value: dictionary containing movie info 
+    # Created a dictionay with the movie the users friends have watched
+    # Key : str / movie tiitle   Value: dictionary containing movie info 
 
     movies_friends_watched = {}
     for friend in user_data["friends"]:
@@ -202,6 +202,12 @@ def get_available_recs(user_data):
 
 def get_new_rec_by_genre(user_data):
 
+    '''
+    input: takes in one parameter in the form of a dictionary named user_data.
+    output: returns a list of recommended movies where the genre is the same as the user's most frequently watched genre.
+    Additionally, these movies are ones that the user has not watched but at least one of their friend(s) has watched.
+    '''
+
     movies_user_has_not_watched = get_friends_unique_watched(user_data)
     most_watched_genre = get_most_watched_genre(user_data)
 
@@ -215,6 +221,12 @@ def get_new_rec_by_genre(user_data):
 
 
 def get_rec_from_favorites (user_data):
+
+    '''
+    input: takes in one parameter in the form of a dictionary named user_data.
+    output: returns a list of recommended movies containing only the user's "favorites" that none of their friends have watched.
+    '''
+
     favorites = user_data['favorites']
     user_favorite_movies = []
     user_watched= get_unique_watched(user_data)
