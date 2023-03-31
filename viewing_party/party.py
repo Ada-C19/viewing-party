@@ -44,23 +44,47 @@ def get_watched_avg_rating(user_data):
     avg = running_total / number_of_movies
     return avg
 
+# def get_most_watched_genre(user_data):
+#     most_watched_genre_dict = {}
+#     times_watched_genre = 0
+#     most_watched_genre = None
+#     for movie in user_data["watched"]:
+#         if movie["genre"] not in most_watched_genre_dict:
+#             most_watched_genre_dict[movie["genre"]] = 1
+#         else:
+#             most_watched_genre_dict[movie["genre"]] += 1
+#     for genre in most_watched_genre_dict:
+#         if most_watched_genre_dict["genre"] < times_watched_genre:
+#             continue
+#         elif most_watched_genre_dict["genre"] > times_watched_genre:
+#             most_watched_genre_dict["genre"] = times_watched_genre
+#             most_watched_genre = genre
+#     return most_watched_genre
+
 def get_most_watched_genre(user_data):
+    #make sure an empty list returns None
+    if len(user_data["watched"]) < 1:
+        most_watched_genre = None 
+        return most_watched_genre
+
+    #establish dictionary there the genre is the key and the value is the intances of viewing ex {"genre": 1}
     most_watched_genre_dict = {}
-    times_watched_genre = 0
-    most_watched_genre = ""
+    #loop through watched to add to dictionary
     for movie in user_data["watched"]:
         if movie["genre"] not in most_watched_genre_dict:
             most_watched_genre_dict[movie["genre"]] = 1
-        else:
+        else: 
             most_watched_genre_dict[movie["genre"]] += 1
-    for genre in most_watched_genre_dict:
-        if most_watched_genre_dict["genre"] < times_watched_genre:
-            continue
-        elif most_watched_genre_dict["genre"] > times_watched_genre:
-            most_watched_genre_dict["genre"] = times_watched_genre
-            most_watched_genre = " "
-
-            
+    #establish variables to hold the count and name of highest genre
+    highest_genre = None
+    highest_count_sofar = 0
+    # loop through most watched dict to update
+    for genre, count in most_watched_genre_dict.items():
+        if count > highest_count_sofar:
+            highest_count_sofar = count
+            highest_genre = genre
+    #this better work
+    return highest_genre           
             
 
 
