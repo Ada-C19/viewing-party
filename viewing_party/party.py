@@ -145,10 +145,5 @@ def get_rec_from_favorites(user_data):
     
     # Create list of movies from favorites that have not been watched by friends
     fav_movie_recs = [movie for movie in user_data["favorites"] if movie in friends_not_watched]
-    
-    fav_movie_recs = []
-    for movie in user_data["favorites"]:
-        if movie in friends_not_watched:
-            fav_movie_recs.append(movie)
 
     return fav_movie_recs
