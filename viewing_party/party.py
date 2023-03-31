@@ -44,23 +44,6 @@ def get_watched_avg_rating(user_data):
     avg = running_total / number_of_movies
     return avg
 
-# def get_most_watched_genre(user_data):
-#     most_watched_genre_dict = {}
-#     times_watched_genre = 0
-#     most_watched_genre = None
-#     for movie in user_data["watched"]:
-#         if movie["genre"] not in most_watched_genre_dict:
-#             most_watched_genre_dict[movie["genre"]] = 1
-#         else:
-#             most_watched_genre_dict[movie["genre"]] += 1
-#     for genre in most_watched_genre_dict:
-#         if most_watched_genre_dict["genre"] < times_watched_genre:
-#             continue
-#         elif most_watched_genre_dict["genre"] > times_watched_genre:
-#             most_watched_genre_dict["genre"] = times_watched_genre
-#             most_watched_genre = genre
-#     return most_watched_genre
-
 def get_most_watched_genre(user_data):
     #make sure an empty list returns None
     if len(user_data["watched"]) < 1:
