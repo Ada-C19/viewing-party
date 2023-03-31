@@ -26,10 +26,11 @@ def add_to_watchlist(user_data, movie):
 
 def watch_movie(user_data, title):
     """Relocate the movie from "watchlist" to "watched" if the user has watched the movie."""
-    for movie in user_data["watchlist"]:
-        if movie["title"] == title:
-            user_data["watched"].append(movie)
-            user_data["watchlist"].remove(movie)
+    watchlist_movies = user_data["watchlist"]
+    for index in range(len(watchlist_movies)):
+        if watchlist_movies[index]["title"] == title:
+            user_data["watched"].append(watchlist_movies[index])
+            user_data["watchlist"].pop(index) # pop() removes the value at the specified index
     return user_data
 
 
