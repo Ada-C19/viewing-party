@@ -116,7 +116,6 @@ def get_friends_unique_watched(user_data):
 
 
 def get_available_recs(user_data):
-
     movies_to_consider = get_friends_unique_watched(user_data)
     subscriptions_owned = user_data["subscriptions"]
 
@@ -149,7 +148,6 @@ def get_new_rec_by_genre(user_data):
 
 
 def get_rec_from_favorites(user_data):
-
     user_unique_watched_movies = get_unique_watched(user_data)
     favorite_movies = user_data["favorites"]
 
