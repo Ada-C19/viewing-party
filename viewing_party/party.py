@@ -58,7 +58,7 @@ def get_most_watched_genre(user_data):
     if genre_freq == []:
         return None
     return max(genre_freq, key=genre_freq.count)
-#T - O(n)
+#T - O(n) -- removing set() increased complexity to O(n^2)
 #S - O(n)
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
