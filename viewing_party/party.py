@@ -141,4 +141,16 @@ def get_new_rec_by_genre(user_data):
             if rec["genre"] == genre:
                 genre_recs.append(rec)
 
-    return genre_recs#
+    return genre_recs
+
+def get_rec_from_favorites(user_data):
+    friends_watchlist = []
+    recs = []
+    for friend in user_data["friends"]:
+        for movie in friend:
+            friends_watchlist.append(movie)
+    favorites = user_data["favorites"]
+    for favorite in favorites:
+        if favorite not in friends_watchlist:
+            recs.append(favorite)
+    return recs
