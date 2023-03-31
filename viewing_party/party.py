@@ -118,12 +118,6 @@ def get_new_rec_by_genre(user_data):
         if movie["genre"] == fave_genre:
             user_titles_that_match_my_fave_genre.append(movie["title"])
     
-    for indivd_movie in unique_list_of_movies_watched_by_friends:
-        for individ_movie in friend[0]["watched"]:
-            if individ_movie["genre"] == fave_genre and movie["title"] not in user_titles_that_match_my_fave_genre:
-                recommended_genre.append(individ_movie)
-    return recommended_genre
-
 
 
 
