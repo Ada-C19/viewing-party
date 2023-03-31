@@ -117,8 +117,13 @@ def get_friends_unique_watched(user_data):
     friend_watched_list = get_friend_watched_list(user_data)
     friends_unique_watched_list = []
     
-    no_dup_friends_watched_list = [i for n, i in enumerate(friend_watched_list)
-        if i not in friend_watched_list[n + 1:]]
+    seen = set()
+    no_dup_friends_watched_list = []
+    for dictionary in friend_watched_list:
+        t = tuple(dictionary.items())
+        if t not in seen:
+            seen.add(t)
+            no_dup_friends_watched_list.append(dictionary)
 
     for movie in no_dup_friends_watched_list:
         if movie not in watched_list:
