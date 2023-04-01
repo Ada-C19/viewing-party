@@ -64,50 +64,41 @@ def get_most_watched_genre(user_data):
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 def user_movies_watched(user_data):
-    movie = user_data['watched']    # dictionary: movie
-    user_watched_titles = []   # empty list
+    """ Helper function #1 for get_unique_watched(): returns a list of movies watched by user. """
+    user_watched_list = []
 
-    for element in movie:
-        title = movie.get('title', 'N/A')
-        user_watched_titles.append(title)
-    
-    return user_watched_titles
+    watched = user_data['watched']
+    for movie in watched:
+        user_watched_list.append(movie)
 
-def user_movies_watched(user_data):
-    """ Helper function for get_unique_watched(): returns a list of movie titles watched by user. """
-    watched_list = user_data['watched']
-    user_watched_titles = []
-
-    for movie in watched_list:
-        for key in movie:
-            if key == 'title':
-                title = movie.get(key)
-                user_watched_titles.append(title) 
-    
-    return user_watched_titles
+    return user_watched_list
 
 def friends_movies_watched(user_data):
-    """ Helper function #2 for get_unique_watched(): returns a list of movie titles watched by user's friends. """
-    friends_watched_titles = []
+    """ Helper function #2 for get_unique_watched(): returns a list of movies watched by user's friends. """
+    friends_watched_list = []
 
-    for watched_dict in user_data['friends']:
-        watched_list = watched_dict['watched']
-        for movie in watched_list:
-            for key in movie:
-                if key == 'title':
-                    title = movie.get(key)
-                    friends_watched_titles.append(title)
+    for each_dict in user_data['friends']:
+        for watched in each_dict['watched']:
+            movie = watched
+            friends_watched_list.append(movie)
 
-    return friends_watched_titles
+    return friends_watched_list
 
 def get_unique_watched(user_data):
+    pass
+    # user_watched = user_movies_watched(user_data)   # returns a list of user movies watched(dict)
+    # friends_watched = friends_movies_watched(user_data) # returns a list of friend's movies watched(dict)
+    # user_unique_watched = []
+
+
     # (x) 1 - create a list of movies user has watched: helper fx: user_watched
-    # ( ) 2 - create a list of movies friends have watched: helper fx: friends_watched
-    # ( ) 3 - initiate empty list: user_unique_watched
-    # ( ) 4 - for each movie in user_watched:
-    # ( ) 5 - if the movie from user_watched is in friends_watched: keep looping.
-    # ( ) 6 - else: user_unique_watched.append(movie)
-    # ( ) 7 - return user_unique_watched
+    # (x) 2 - create a list of movies friends have watched: helper fx: friends_watched
+    # (x) 3 - create variables to hold user and friends watch_lists
+    # (x) 4 - initiate empty list: user_unique_watched
+    # (x) 5 - for each movie_title in user_watched:
+    # (x) 6 - if the movie from user_watched is in friends_watched: keep looping.
+    # ( ) 7 - else: user_unique_watched.append(movie)
+    # ( ) 8 - return user_unique_watched
 
     # user_data = {'watched': [{'TITLE': "I See You", 'genre': 'Horror', 'rating': 5.0}],
     #             'friends': [{'watched': [{'TITLE': 'You', 'genre': 'Suspense', 'rating': 4.8}]}]}
