@@ -79,8 +79,7 @@ def friends_movies_watched(user_data):
 
     for each_dict in user_data['friends']:
         for watched in each_dict['watched']:
-            movie = watched
-            friends_watched_list.append(movie)
+            friends_watched_list.append(watched)
 
     return friends_watched_list
 
