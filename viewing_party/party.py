@@ -74,7 +74,7 @@ def user_movies_watched(user_data):
     return user_watched_titles
 
 def user_movies_watched(user_data):
-    """ Helper function for get_unique_watched(): returns a list of movies titles watched by user. """
+    """ Helper function for get_unique_watched(): returns a list of movie titles watched by user. """
     watched_list = user_data['watched']
     user_watched_titles = []
 
@@ -85,6 +85,20 @@ def user_movies_watched(user_data):
                 user_watched_titles.append(title) 
     
     return user_watched_titles
+
+def friends_movies_watched(user_data):
+    """ Helper function #2 for get_unique_watched(): returns a list of movie titles watched by user's friends. """
+    friends_watched_titles = []
+
+    for watched_dict in user_data['friends']:
+        watched_list = watched_dict['watched']
+        for movie in watched_list:
+            for key in movie:
+                if key == 'title':
+                    title = movie.get(key)
+                    friends_watched_titles.append(title)
+
+    return friends_watched_titles
 
 def get_unique_watched(user_data):
     # (x) 1 - create a list of movies user has watched: helper fx: user_watched
