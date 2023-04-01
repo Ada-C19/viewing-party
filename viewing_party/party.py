@@ -97,37 +97,38 @@ def get_friends_unique_watched(user_data):
 
     return friends_unique_watched
 
-def friends_movies(user_data):
-    friends_movie_data = []
-    for movies_dict in user_data["friends"]:
-        for movies in movies_dict["watched"]: 
-            friends_movie_data.append(movies) 
-    return (friends_movie_data)
+# def friends_movies(user_data):
+#     friends_movie_data = []
+#     for movies_dict in user_data["friends"]:
+#         for movies in movies_dict["watched"]: 
+#             friends_movie_data.append(movies) 
+#     return (friends_movie_data)
 
-def get_unique_watched(user_data):
-    user_unique_movies =[]
-    for movie in user_data["watched"]:
-        if movie not in friends_movies(user_data):
-            user_unique_movies.append(movie)
-    return(user_unique_movies)
+# def get_unique_watched(user_data):
+#     user_unique_movies =[]
+#     for movie in user_data["watched"]:
+#         if movie not in friends_movies(user_data):
+#             user_unique_movies.append(movie)
+#     return(user_unique_movies)
 
-def get_friends_unique_watched(user_data):
-    friends_unique_movies = []
-    filter_out_dupes = []
-    for movie in friends_movies(user_data):
-        if movie not in user_data["watched"]:
-            friends_unique_movies.append(movie)
+# def get_friends_unique_watched(user_data):
+#     friends_unique_movies = []
+#     filter_out_dupes = []
+#     for movie in friends_movies(user_data):
+#         if movie not in user_data["watched"]:
+#             friends_unique_movies.append(movie)
 
-    for movie in friends_unique_movies:
-        if movie not in filter_out_dupes:
-            filter_out_dupes.append(movie)
-    return (filter_out_dupes)
+#     for movie in friends_unique_movies:
+#         if movie not in filter_out_dupes:
+#             filter_out_dupes.append(movie)
+#     return (filter_out_dupes)
 
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
 
 def get_available_recs(user_data):
+    """ Return a list of recommended movies. """
     recommended_movies = []
     for movie in get_friends_unique_watched(user_data):
         if movie["host"] in user_data["subscriptions"]:
