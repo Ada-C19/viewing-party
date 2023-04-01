@@ -85,6 +85,7 @@ def friends_movies_watched(user_data):
     return friends_watched_list
 
 def get_unique_watched(user_data):
+    """ Return a list of movies only the user has watched. """
     user_watched = user_movies_watched(user_data)
     friends_watched = friends_movies_watched(user_data)
     user_unique_watched = []
@@ -92,23 +93,20 @@ def get_unique_watched(user_data):
     for movie in user_watched:
         if not movie in friends_watched:
             user_unique_watched.append(movie)
-    
+
     return user_unique_watched
 
+def get_friends_unique_watched(user_data):
+    """ Return a list of movies only the user's friends have watched. """
+    user_watched = user_movies_watched(user_data)
+    friends_watched = friends_movies_watched(user_data)
+    friends_unique_watched = []
 
-    # (x) 1 - create a list of movies user has watched: helper fx: user_watched
-    # (x) 2 - create a list of movies friends have watched: helper fx: friends_watched
-    # (x) 3 - create variables to hold user and friends watch_lists
-    # (x) 4 - initiate empty list: user_unique_watched
-    # (x) 5 - for each movie_title in user_watched:
-    # (x) 6 - if the movie from user_watched is in friends_watched: keep looping.
-    # ( ) 7 - else: user_unique_watched.append(movie)
-    # ( ) 8 - return user_unique_watched
+    for movie in friends_watched:
+        if not movie in user_watched and not movie in friends_unique_watched:
+            friends_unique_watched.append(movie)
 
-    # user_data = {'watched': [{'TITLE': "I See You", 'genre': 'Horror', 'rating': 5.0}],
-    #             'friends': [{'watched': [{'TITLE': 'You', 'genre': 'Suspense', 'rating': 4.8}]}]}
-
-    
+    return friends_unique_watched
 
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
