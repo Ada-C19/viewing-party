@@ -85,10 +85,15 @@ def friends_movies_watched(user_data):
     return friends_watched_list
 
 def get_unique_watched(user_data):
-    pass
-    # user_watched = user_movies_watched(user_data)   # returns a list of user movies watched(dict)
-    # friends_watched = friends_movies_watched(user_data) # returns a list of friend's movies watched(dict)
-    # user_unique_watched = []
+    user_watched = user_movies_watched(user_data)
+    friends_watched = friends_movies_watched(user_data)
+    user_unique_watched = []
+
+    for movie in user_watched:
+        if not movie in friends_watched:
+            user_unique_watched.append(movie)
+    
+    return user_unique_watched
 
 
     # (x) 1 - create a list of movies user has watched: helper fx: user_watched
