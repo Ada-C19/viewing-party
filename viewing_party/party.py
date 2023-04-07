@@ -1,15 +1,14 @@
 # ------------- WAVE 1 --------------------
 
 def create_movie(title, genre, rating):
-    movie_dict = {}
-
     if not (title and genre and rating):
         return None
-    else:
-        movie_dict["title"] = title
-        movie_dict["genre"] = genre
-        movie_dict["rating"] = rating
-        return movie_dict
+    
+    movie_dict = {}
+    movie_dict["title"] = title
+    movie_dict["genre"] = genre
+    movie_dict["rating"] = rating
+    return movie_dict
 
 def add_to_watched(user_data, movie):
     user_data["watched"].append(movie)
@@ -30,17 +29,15 @@ def watch_movie(user_data, title):
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
 def get_watched_avg_rating(user_data):
+    if not user_data["watched"]:
+        return 0.0
+    
     sum = 0 
-    count = 0
+    for movie in user_data["watched"]:
+        rating = movie["rating"]
+        sum += rating
 
-    if user_data["watched"] != []:
-        for movie in user_data["watched"]:
-            rating = movie["rating"]
-            sum += rating
-            count += 1
-    if count > 0:
-        return sum / count
-    return 0.0
+    return sum / len(user_data["watched"])
     
 
 def get_most_watched_genre(user_data):
