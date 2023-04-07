@@ -103,26 +103,17 @@ def get_available_recs(user_data):
 # -----------------------------------------
 
 def get_new_rec_by_genre(user_data):
-    genre_count = []
-    for movie in range(len(user_data["watched"])):
-        genre_count.append(user_data["watched"][movie]["genre"])
 
-    current_favorite_count = 0
-    favorite_genre = ""
-    for genre in genre_count:
-        if genre_count.count(genre) > current_favorite_count:
-            current_favorite_count = genre_count.count(genre)
-            favorite_genre = genre
+    favorite_genre = get_most_watched_genre(user_data)
     
     recs_by_genre = []
-    for friend in range(len(user_data["friends"])):
-        for movie in range(len(user_data["friends"][friend]["watched"])):
-            movie_to_recommend = user_data["friends"][friend]["watched"][movie]
-            if movie_to_recommend in recs_by_genre:
-                continue
-            if movie_to_recommend in user_data["watched"]:
-                continue
-            elif movie_to_recommend["genre"] == favorite_genre:
+    for friend in user_data["friends"]:
+        for movie_to_recommend in friend["watched"]:
+            is_movie_in_recs = movie_to_recommend in recs_by_genre
+            is_movie_in_watched = movie_to_recommend in user_data["watched"]
+            is_movie_favorite_genre = movie_to_recommend["genre"] == favorite_genre
+            if not is_movie_in_recs and not is_movie_in_watched \
+                    and is_movie_favorite_genre:
                 recs_by_genre.append(movie_to_recommend)
 
     return recs_by_genre
@@ -131,13 +122,8 @@ def get_new_rec_by_genre(user_data):
 def get_rec_from_favorites(user_data):
     recs_by_favs = []
 
-    for i in range(len(user_data["favorites"])):
-        favorite_movie = user_data["favorites"][i]
-        recs_by_favs.append(favorite_movie)
-        for friend in range(len(user_data["friends"])):
-            friend_watched_list = user_data["friends"][friend]["watched"]
-            if favorite_movie in friend_watched_list \
-            and favorite_movie in recs_by_favs:
-                recs_by_favs.remove(favorite_movie)
+    for favorite_movie in user_data["favorites"]:
+        if favorite_movie in get_unique_watched(user_data):
+            recs_by_favs.append(favorite_movie)
 
     return recs_by_favs
