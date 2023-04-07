@@ -34,8 +34,8 @@ def get_watched_avg_rating(user_data):
     count = 0
 
     if user_data["watched"] != []:
-        for movie in range(len(user_data["watched"])):
-            rating = user_data["watched"][movie]["rating"]
+        for movie in user_data["watched"]:
+            rating = movie["rating"]
             sum += rating
             count += 1
     if count > 0:
@@ -48,8 +48,8 @@ def get_most_watched_genre(user_data):
         return None
     
     genre_counting_dict = {}
-    for movie in range(len(user_data["watched"])):
-        genre_to_count = user_data["watched"][movie]["genre"]
+    for movie in user_data["watched"]:
+        genre_to_count = movie["genre"]
         if genre_to_count not in genre_counting_dict:
             genre_counting_dict[genre_to_count] = 1
         else:
