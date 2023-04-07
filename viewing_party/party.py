@@ -46,19 +46,12 @@ def get_most_watched_genre(user_data):
     
     genre_counting_dict = {}
     for movie in user_data["watched"]:
-        genre_to_count = movie["genre"]
-        if genre_to_count not in genre_counting_dict:
-            genre_counting_dict[genre_to_count] = 1
+        if movie["genre"] not in genre_counting_dict:
+            genre_counting_dict[movie["genre"]] = 1
         else:
-            genre_counting_dict[genre_to_count] += 1
-
-    most_watched_genre = ""
-    most_watched_count = 0
-
-    for genre, count in genre_counting_dict.items():
-        if count > most_watched_count:
-            most_watched_genre = genre
-            most_watched_count = count
+            genre_counting_dict[movie["genre"]] += 1
+    
+    most_watched_genre = max(genre_counting_dict, key=genre_counting_dict.get)
 
     return most_watched_genre
 # -----------------------------------------
