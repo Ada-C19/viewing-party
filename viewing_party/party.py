@@ -47,8 +47,6 @@ def watch_movie(user_data, title):
     """ 
 
     for movie in user_data["watchlist"]:
-        print(movie, 'here')
-        print(title, "lll")
         if movie["title"] == title:
             user_data["watchlist"].remove(movie)
             user_data["watched"].append(movie)
@@ -183,6 +181,22 @@ def get_new_rec_by_genre(user_data):
     input: user_data dictionary 
     output: recommended movies list
     """
+
+    recommendation_by_genre = []
+
+    users_watched = user_data["watched"]
+    friends_watched = get_friends_unique_watched(user_data)
+    users_most_frequent_genre = get_most_watched_genre(user_data)
+
+    if len(users_watched) == 0 or len(users_watched) == 0:
+        return recommendation_by_genre
+    
+    for movie in friends_watched:
+        if movie["genre"] == users_most_frequent_genre:
+            recommendation_by_genre.append(movie)
+
+    return recommendation_by_genre
+
 
 
 def get_rec_from_favorites(user_data):

@@ -1,8 +1,3 @@
-# Monica Lagdaan (She/Her)
-# 360-513-9577
-# MonicaLagdaan@hotmail.com
-# Ariel Williams (she/they), (714) 900-6524, arielwilliams121013@gmail.com
-
 # Viewing Party
 
 ## Skills Assessed
