@@ -198,9 +198,20 @@ def get_new_rec_by_genre(user_data):
     return recommendation_by_genre
 
 
-
 def get_rec_from_favorites(user_data):
     """
     input: user_data dictionary with field "favorites", value of "favorites" is a list of movie dictionaries
     output: recommended movies list
     """
+
+    recommended_movies_list = []
+
+    users_unique_movies = get_unique_watched(user_data)
+    users_favorite_movies = user_data["favorites"]
+
+    for movie in users_unique_movies:
+        if movie in users_favorite_movies:
+            recommended_movies_list.append(movie)
+
+    return recommended_movies_list
+
