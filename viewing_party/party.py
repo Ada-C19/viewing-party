@@ -26,13 +26,12 @@ def watch_movie(user_data, title):
     for movie in watchlist:
         if movie["title"] == title:
             found_movie = movie
-            break
-
-    if found_movie:
-        watchlist.remove(found_movie)
-        watched.append(found_movie)
-
+            watchlist.remove(movie)
+            watched.append(movie)
+            
+        
     return user_data
+    
 
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
