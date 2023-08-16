@@ -172,14 +172,22 @@ def test_moves_movie_from_watchlist_to_watched():
         ],
         "watched": [FANTASY_2]
     }
+    print("Before watch_movie:")
+    print("Watchlist:", janes_data["watchlist"])
+    print("Watched:", janes_data["watched"])
 
     # Act
     updated_data = watch_movie(janes_data, movie_to_watch["title"])
+
+    print("After watch_movie:")
+    print("Watchlist:", updated_data["watchlist"])
+    print("Watched:", updated_data["watched"])
 
     # Assert
     assert len(updated_data["watchlist"]) == 1
     assert len(updated_data["watched"]) == 2
     assert HORROR_1 == updated_data["watched"][1]["title"]
+    assert any(movie["title"] == movie_to_watch["title"] for movie in updated_data["watched"])
     
     #raise Exception("Test needs to be completed.")
     # *******************************************************************************************
