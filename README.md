@@ -9,7 +9,6 @@ Solving problems with...
 - Dictionaries
 - Nested loops
 - Nested data structures
-- Pair-programming techniques
 
 ## Goal
 
