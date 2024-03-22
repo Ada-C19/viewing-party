@@ -19,39 +19,16 @@ You've been using a spreadsheet to compare everyone's watched list, favorites li
 
 For this project, you and your partner will be given some data structure that represents the things you've watched, favorited, and want to watch. The directions below will lead you and your partner to create a series of functions. These functions will modify the data, and implement features like adding and removing things between different lists. Other features include creating recommendations!
 
-## Pair Programming
-
-Utilize good pair programming practices. Refer to this [medium article](https://medium.com/@weblab_tech/pair-programming-guide-a76ca43ff389), and the lesson in Learn titled Intro to Pair Programming from Approaching a Problem if you need a refresher for some best practices. Switch _driver_ and _navigator_ roles often. When there is uncertainty or confusion, step away from the keyboard and discuss, plan, and document on paper or whiteboard before continuing.
 
 ## One-Time Project Setup
 
 Follow these directions once, at the beginning of your project:
 
-*Only one member of the team should complete the following two steps:*
-
 1. In GitHub, click on the "Fork" button and fork the repository to your GitHub account.  This will make a copy of the project in your GitHub account. 
 
 ![Fork Button](images/fork.png)
 
-2. In Github, add the other member(s) of your team as collaborators to the repository. The student who forked the respository should do this by first choosing **Settings** from the top menu bar, then choosing **Collaborators** from the navigation bar on the left, and finally selecting the green **Add People** button.
-
-You can find detailed instructions [here](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/).
-
-![Settings](images/settings.png)
-
-<img src="images/manage-access.png" alt="Collaborators and teams" width="250"/>
-
-![Invite teams or people](images/invite.png)
-
-The invited member(s) will need to accept the invitation either by accepting the email invitation or accepting the invitation in Github.
-
-Both members of the team will be working from the same forked repository.  Be sure to follow proper git protocol from the Intro to Git topic in Learn.
-
-*Each member of the pair should complete the following steps:*
-
-3. Navigate to your projects folder which is named `projects`. 
-
-If you followed Ada's recommended file system structure from the Intro to Dev Environment lesson in Learn, you can navigate to your projects folder with the following command:
+3. Navigate to your folder which where this project will be cloned. Example below is named `projects`. 
 
 ```bash
 $ cd ~/Developer/projects
@@ -222,12 +199,6 @@ We will note that much of the test data for this project is provided by the file
 For the time being, we need to make sure that the data provided to each test is clean and free of any changes that running another test may have introduced. Recall the *Modifying Mutable Objects* section of the *Variables Are References lesson.* To ensure that the data for each test is storied in a unique place in memory, there are functions implemented in `test_constants.py` that provide clean test data (i.e. `clean_wave_3_data`) by using `copy.deepcopy`. 
 
 ## Project Directions
-
-### Set Up a Pair Plan
-
-First, come up with a "plan of action" for how you want to work as a pair. Discuss your learning style, how you prefer to receive feedback, and one team communication skill you want to improve with this experience.
-
-We recommend spending at least a portion of the time pair programming and working collaboratively from the same machine.  Zoom and screen sharing or [VSCode Live Share](https://code.visualstudio.com/learn/collaboration/live-share) are good tools to consider.  Some teams will choose to pair program and work collaboratively from the same machine for the entire project.  Some teams will choose to divide a portion of the work and combine their code using git.
 
 This project is designed such that one could puzzle together how to implement this project without many directions. Being able to read tests to understand what is expected of our program is a skill that needs to be developed; programmers often take years to develop this skill competently.
 
